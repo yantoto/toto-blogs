@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Sep 21, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一-let"><a href="#一-let" class="headerlink" title="一.let"></a>一.let</h2><h3 id="1-变量不能重复声明"><a href="#1-变量不能重复声明" class="headerlink" title="1.变量不能重复声明"></a>1.变量不能重复声明</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let star=&#x27;我&#x27;;</span><br><span class="line">let star=&#x27;你&#x27;;// 会报错，而var 可以正常使用</span><br></pre></td></tr></table></figure>
+
+<p><strong>暂时性死区</strong>：本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="comment">// TDZ开始</span></span><br><span class="line">  tmp = <span class="string">&#x27;abc&#x27;</span>; <span class="comment">// ReferenceError</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(tmp); <span class="comment">// ReferenceError</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> tmp; <span class="comment">// TDZ结束</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(tmp); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">  tmp = <span class="number">123</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(tmp); <span class="comment">// 123</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-块级作用域-全局-函数-eval"><a href="#2-块级作用域-全局-函数-eval" class="headerlink" title="2.块级作用域 全局 函数 eval"></a>2.块级作用域 全局 函数 eval</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	let girl=&#x27;在&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">console.log(girl);// 报错</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-不存在变量提升"><a href="#3-不存在变量提升" class="headerlink" title="3.不存在变量提升"></a>3.不存在变量提升</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(song);</span><br><span class="line">let song=&#x27;恋爱&#x27;;</span><br><span class="line">// 在var中，会先在开头声明，再赋值，输出为null</span><br><span class="line">// 而这里，不存在开头声明</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-不影响作用域链-正常输出"><a href="#4-不影响作用域链-正常输出" class="headerlink" title="4.不影响作用域链(正常输出)"></a>4.不影响作用域链(正常输出)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">     let s=&#x27;ooooo&#x27;;</span><br><span class="line">     function fn()&#123;</span><br><span class="line">     	console.log(s);</span><br><span class="line">     &#125;</span><br><span class="line">     fn();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>es6中函数</p>
+<h2 id="二-对象简化写法"><a href="#二-对象简化写法" class="headerlink" title="二.对象简化写法"></a>二.对象简化写法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let name=&#x27;toot&#x27;;</span><br><span class="line">let change=function()&#123;</span><br><span class="line">	console.log(&#x27;we can change you&#x27;)</span><br><span class="line">&#125;</span><br><span class="line">// 原写法</span><br><span class="line">const school=&#123;</span><br><span class="line">	name:name,</span><br><span class="line">	change:change,</span><br><span class="line">	improve:function()&#123;</span><br><span class="line">		console.log(&#x27;你好&#x27;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">const school=&#123;</span><br><span class="line">	name,</span><br><span class="line">	change,</span><br><span class="line">	improve()&#123;</span><br><span class="line">		console.log(&#x27;你好&#x27;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-Symbol"><a href="#三-Symbol" class="headerlink" title="三.Symbol"></a>三.Symbol</h2><p>创建及运用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">window.onload=function()&#123;</span><br><span class="line">           // 一.创建 即使存储值是一样的，但他的编码是独一无二的</span><br><span class="line">           let s=Symbol();</span><br><span class="line">           let s2=Symbol(&#x27;toto&#x27;);</span><br><span class="line">           let s3=Symbol(&#x27;toto&#x27;);</span><br><span class="line">           console.log(s2===s3);</span><br><span class="line">           // Symbol.for 创建(可以获取s4的标记值赋给s5)</span><br><span class="line">           let s4=Symbol.for(&#x27;toto&#x27;);</span><br><span class="line">           let s5=Symbol.for(&#x27;toto&#x27;);</span><br><span class="line">           console.log(s4===s5);</span><br><span class="line">           // 不能运算！！！</span><br><span class="line"></span><br><span class="line">           // 二.使用</span><br><span class="line">           // 场景：在一个你不知道有多少属性的对象中加入新属性</span><br><span class="line">           // 难点：新增属性名和原属性名重复</span><br><span class="line">           let game=&#123;</span><br><span class="line">               up:&quot;1213&quot;,</span><br><span class="line">               down:&#x27;456&#x27;</span><br><span class="line">           &#125;;</span><br><span class="line">       </span><br><span class="line">           let methods=&#123;</span><br><span class="line">               up:Symbol(),</span><br><span class="line">               down:Symbol()</span><br><span class="line">           &#125;;</span><br><span class="line">           game[methods.up]=function()&#123;</span><br><span class="line">               console.log(&#x27;1111111111111111&#x27;);</span><br><span class="line">           &#125;</span><br><span class="line">           game[methods.down]=function()&#123;</span><br><span class="line">               console.log(&#x27;2222222222222222&#x27;);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           console.log(game);</span><br><span class="line"></span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/09/21/hello-world/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
