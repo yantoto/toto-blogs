@@ -14,7 +14,7 @@
 
 
 
-<title>Hexo</title>
+<title>Es | Hexo</title>
 
 
 
@@ -112,7 +112,7 @@
         <div class="post-title">
             
             
-                *Untitled
+                Es
             
             
         </div>
@@ -144,6 +144,9 @@
 <h2 id="三-Symbol"><a href="#三-Symbol" class="headerlink" title="三.Symbol"></a>三.Symbol</h2><p>创建及运用：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">window.onload=function()&#123;</span><br><span class="line">           // 一.创建 即使存储值是一样的，但他的编码是独一无二的</span><br><span class="line">           let s=Symbol();</span><br><span class="line">           let s2=Symbol(&#x27;toto&#x27;);</span><br><span class="line">           let s3=Symbol(&#x27;toto&#x27;);</span><br><span class="line">           console.log(s2===s3);</span><br><span class="line">           // Symbol.for 创建(可以获取s4的标记值赋给s5)</span><br><span class="line">           let s4=Symbol.for(&#x27;toto&#x27;);</span><br><span class="line">           let s5=Symbol.for(&#x27;toto&#x27;);</span><br><span class="line">           console.log(s4===s5);</span><br><span class="line">           // 不能运算！！！</span><br><span class="line"></span><br><span class="line">           // 二.使用</span><br><span class="line">           // 场景：在一个你不知道有多少属性的对象中加入新属性</span><br><span class="line">           // 难点：新增属性名和原属性名重复</span><br><span class="line">           let game=&#123;</span><br><span class="line">               up:&quot;1213&quot;,</span><br><span class="line">               down:&#x27;456&#x27;</span><br><span class="line">           &#125;;</span><br><span class="line">       </span><br><span class="line">           let methods=&#123;</span><br><span class="line">               up:Symbol(),</span><br><span class="line">               down:Symbol()</span><br><span class="line">           &#125;;</span><br><span class="line">           game[methods.up]=function()&#123;</span><br><span class="line">               console.log(&#x27;1111111111111111&#x27;);</span><br><span class="line">           &#125;</span><br><span class="line">           game[methods.down]=function()&#123;</span><br><span class="line">               console.log(&#x27;2222222222222222&#x27;);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           console.log(game);</span><br><span class="line"></span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
 
+
+
+<p><img src="/../images/9FIO@H$GGM%60JYMCB4SNBOF.png" alt="img"></p>
 
 </div> 
 
