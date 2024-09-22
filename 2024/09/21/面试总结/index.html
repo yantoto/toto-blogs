@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>面试总结 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                面试总结
+            
+            
+        </div>
+        <span class="post-date">
+            Sep 21, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一-宏任务与微任务"><a href="#一-宏任务与微任务" class="headerlink" title="一.宏任务与微任务"></a>一.宏任务与微任务</h2><h3 id="1-宏任务（MacroTask）："><a href="#1-宏任务（MacroTask）：" class="headerlink" title="1.宏任务（MacroTask）："></a>1.宏任务（MacroTask）：</h3><ul>
+<li>定义：宏任务是消息队列（或称为回调队列）中的任务，这些任务由宿主环境（如浏览器或Node.js）提供，并通过事件循环不断从消息队列中取出并执行。</li>
+<li>特性：宏任务在执行时，不能获取到任务外的上下文。</li>
+<li>示例：包括整体代码（script，可以理解为外层同步代码）、setTimeout、setInterval、setImmediate（在IE或Node.js中）、requestAnimationFrame、I&#x2F;O、UI rendering、注册事件等</li>
+</ul>
+<h3 id="2-微任务（MicroTask）："><a href="#2-微任务（MicroTask）：" class="headerlink" title="2.微任务（MicroTask）："></a>2.微任务（MicroTask）：</h3><ul>
+<li>定义：微任务是由JavaScript引擎发起的异步任务，它们在当前宏任务执行结束后立即执行。可以把微任务看作是一个需要异步执行的函数，执行时机是在主函数执行结束之后、当前宏任务结束之前。</li>
+<li>示例：常见的微任务包括Promise的回调函数、process.nextTick（在Node.js中）等。</li>
+</ul>
+<p><strong>在事件循环中，主线程会不断地从宏任务队列中取出并执行宏任务，然后在宏任务执行结束后检查微任务队列。如果有微任务，则立即执行微任务队列中的所有任务，然后再继续下一个宏任务。</strong>这种机制确保了微任务在宏任务之间的无缝插入，从而实现了一种更加灵活和高效的异步编程方式。</p>
+<p>需要注意的是，虽然微任务和宏任务在概念上有所不同，但在实际编程中，它们经常一起使用，以实现复杂的异步操作。同时，由于JavaScript是单线程的，因此异步操作对于提高程序的性能和响应性至关重要。</p>
+<h2 id="二-单线程与多线程"><a href="#二-单线程与多线程" class="headerlink" title="二.单线程与多线程"></a>二.单线程与多线程</h2><h3 id="1-定义与执行方式："><a href="#1-定义与执行方式：" class="headerlink" title="1.定义与执行方式："></a>1.定义与执行方式：</h3><ul>
+<li><p>单线程：单线程是指程序只有一个执行线程，在任何时候只能执行一个任务。如果当前任务没有执行完毕，那么其他任务必须等待。单线程在程序执行时，所走的程序路径按照连续顺序排下来，前面的必须处理好，后面的才会执行。</p>
+</li>
+<li><p>多线程：多线程是指程序有多个执行线程，每个线程可以独立地执行任务，各个线程之间互不干扰，可以同时执行多个任务。多线程常用于后端开发中的服务器编程，可以提高程序的并发处理能力，实现高并发处理。</p>
+<h3 id="2-优缺点："><a href="#2-优缺点：" class="headerlink" title="2.优缺点："></a>2.优缺点：</h3></li>
+<li><p>单线程：</p>
+<ul>
+<li>优点：系统稳定、扩展性极强、软件丰富、不会对服务器造成压力。</li>
+<li>缺点：当具有多个进程时，CPU不会分配资源给其他进程，处理时间会变长变慢；程序在运行时窗口不能拖动，必须等到程序运行结束。</li>
+</ul>
+</li>
+<li><p>多线程：</p>
+<ul>
+<li>优点：可以提高程序的效率；在比较耗时的操作中（如下载文件、数据库读写等），多个任务可以同时进行，并且可以执行其他操作；多线程技术使程序的响应速度更快，因为用户界面可以在进行其他工作的同时一直处于活动状态。</li>
+<li>缺点：线程使用不当容易出bug；多线程需要协调和管理，因此需要CPU时间跟踪线程；更多的线程需要更多的内存空间。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-使用场景："><a href="#3-使用场景：" class="headerlink" title="3.使用场景："></a>3.使用场景：</h3><ul>
+<li>单线程：适用于串行化执行代码的场景，即需要按照先后顺序执行的任务。</li>
+<li>多线程：适用于需要处理并发任务或需要长时间等待的任务的场景，如后台数据处理、网络请求等。</li>
+</ul>
+<h3 id="4-注意事项："><a href="#4-注意事项：" class="headerlink" title="4.注意事项："></a>4.注意事项：</h3><ul>
+<li>多线程编程需要考虑线程安全和同步问题，因为多个线程可能会同时访问共享的资源，导致数据不一致或死锁等问题。</li>
+<li>多线程编程还需要注意线程的创建和销毁，以及线程的调度和优先级等问题。</li>
+</ul>
+<h2 id="难题："><a href="#难题：" class="headerlink" title="难题："></a>难题：</h2><p>（1）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const promise1 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  console.log(&#x27;promise1&#x27;)</span><br><span class="line">  resolve(&#x27;resolve1&#x27;)</span><br><span class="line">&#125;)</span><br><span class="line">const promise2 = promise1.then(res =&gt; &#123;</span><br><span class="line">  console.log(res)</span><br><span class="line">&#125;)</span><br><span class="line">console.log(&#x27;1&#x27;, promise1);</span><br><span class="line">console.log(&#x27;2&#x27;, promise2);</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">promise1</span><br><span class="line">1 Promise&#123;&lt;resolved&gt;: resolve1&#125;</span><br><span class="line">2 Promise&#123;&lt;pending&gt;&#125;</span><br><span class="line">resolve1</span><br></pre></td></tr></table></figure>
+
+<p>script是一个宏任务，按照顺序执行这些代码；</p>
+<p>首先进入Promise，执行该构造函数中的代码，打印<code>promise1</code>；</p>
+<p>碰到<code>resolve</code>函数, 将<code>promise1</code>的状态改变为<code>resolved</code>, 并将结果保存下来；</p>
+<p>碰到<code>promise1.then</code>这个微任务，将它放入微任务队列；</p>
+<p>promise2<code>是一个新的状态为</code>pending<code>的</code>Promise&#96;；</p>
+<p>执行同步代码1， 同时打印出<code>promise1</code>的状态是<code>resolved</code>；</p>
+<p>执行同步代码2，同时打印出<code>promise2</code>的状态是<code>pending</code>；</p>
+<p>宏任务执行完毕，查找微任务队列，发现<code>promise1.then</code>这个微任务且状态为<code>resolved</code>，执行它。</p>
+<p><strong>Promise的状态在发生变化之后，就不会再发生变化</strong></p>
+<h3 id="目前梳理的流程："><a href="#目前梳理的流程：" class="headerlink" title="目前梳理的流程："></a>目前梳理的流程：</h3><p>第一轮宏任务（通常是整体脚本）执行完毕后，会立即执行与之关联的所有微任务（即第一轮宏任务产生的所有微任务）。这些微任务执行完毕后，事件循环会检查是否有新的宏任务要执行。如果有，则取出并执行该宏任务，然后再执行该宏任务产生的所有微任务，以此类推。</p>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const promise1 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  setTimeout(() =&gt; &#123;</span><br><span class="line">    resolve(&#x27;success&#x27;)</span><br><span class="line">  &#125;, 1000)</span><br><span class="line">&#125;)</span><br><span class="line">const promise2 = promise1.then(() =&gt; &#123;</span><br><span class="line">  throw new Error(&#x27;error!!!&#x27;)</span><br><span class="line">&#125;)</span><br><span class="line">console.log(&#x27;promise1&#x27;, promise1)</span><br><span class="line">console.log(&#x27;promise2&#x27;, promise2)</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">  console.log(&#x27;promise1&#x27;, promise1)</span><br><span class="line">  console.log(&#x27;promise2&#x27;, promise2)</span><br><span class="line">&#125;, 2000)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20240921223037140.png" alt="image-20240921223037140"></p>
+<p>（2）典型22  25给我脑子看烧了</p>
+<h2 id="三-forin和forof"><a href="#三-forin和forof" class="headerlink" title="三.forin和forof"></a>三.forin和forof</h2><p><strong>for in返回数组里的索引值(变量名)，for of返回元素值</strong></p>
+<p>在JavaScript中，<code>for...of</code> 和 <code>for...in</code> 都是用于遍历数组或对象的循环结构，但它们之间存在一些重要的区别。</p>
+<ol>
+<li><strong>for…of</strong></li>
+</ol>
+<p><code>for...of</code> 循环主要用于遍历可迭代对象（包括数组、Map、Set、String、TypedArray、函数的 arguments 对象等等）。这个循环会返回可迭代对象的元素值（对于数组来说就是数组的元素）。</p>
+<p>示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> array) &#123;  </span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(value); <span class="comment">// 输出：1, 2, 3, 4, 5  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>for…in</strong></li>
+</ol>
+<p><code>for...in</code> 循环主要用于遍历对象的可枚举属性（包括对象的自有属性和继承自原型链的属性）。这个循环会返回对象的属性名（字符串类型）。</p>
+<p>示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;  </span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(key); <span class="comment">// 输出：a, b, c  </span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(obj[key]); <span class="comment">// 输出：1, 2, 3  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：</p>
+<ul>
+<li>如果你使用 <code>for...in</code> 来遍历数组，它会返回数组的索引（字符串类型），而不是数组的元素值。</li>
+<li><code>for...in</code> 会遍历对象及其原型链上的所有可枚举属性。因此，如果你只想遍历对象的自有属性，你可能需要使用 <code>Object.prototype.hasOwnProperty.call()</code> 方法来检查属性是否是对象的自有属性。</li>
+<li><code>for...of</code> 不能用于遍历普通的对象属性，只能用于遍历可迭代对象。</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>当你需要遍历数组或类似数组的可迭代对象，并获取它们的元素值时，应该使用 <code>for...of</code>。</li>
+<li>当你需要遍历对象的属性名时，应该使用 <code>for...in</code>。但请注意，它会遍历对象的所有可枚举属性，包括从原型链上继承的属性。</li>
+</ul>
+<h2 id="四-异步和同步"><a href="#四-异步和同步" class="headerlink" title="四.异步和同步"></a>四.异步和同步</h2><p>​	同步操作会阻塞后面代码的进程，而异步操作不会，可以与后面代码同时进行。比如定时器，Promise（记住定时器是规定多少秒后执行代码块里的内容）。</p>
+<p>​	说到Promise，它的方法有不少，then、catch、all、rice、finally。</p>
+<p>​	then、catch、finally写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Promise.then((res)=&gt;&#123;&#125;)</span><br><span class="line">	.catch((err)=&gt;&#123;&#125;)</span><br><span class="line">	.finally(...)</span><br></pre></td></tr></table></figure>
+
+<p>​	其中all和rice传的参数是带有Promise对象的数组，两者的差异在于all以数组全部对象的返回参数来判断返回参数，一旦有reject,则返回reject,全为resolve则返回resolve。而rice（比赛），谁最先返回状态那么该函数的状态就为第一个返回的状态。</p>
+<h2 id="五-数组方法"><a href="#五-数组方法" class="headerlink" title="五.数组方法"></a>五.数组方法</h2><ol>
+<li><p>尾部 pop出 push入</p>
+</li>
+<li><p>头部 unshift出 shift 入</p>
+</li>
+<li><p>分割slice(start,end) 不影响原数组 插入splice(start,last,a,b,c…）影响原数组，均不包括起始位置。个人觉得splice的作用就很广泛了，什么都可以干。</p>
+</li>
+<li><p>filter（fn）,改变原数组，fn返回符合条件的数组；</p>
+</li>
+<li><p>map ( fn ) 遍历数组，返回新数组</p>
+</li>
+<li><p>sort (fn) 改变原数组，若返回的值是正数，交换位置</p>
+</li>
+<li><p>reverse() 翻转</p>
+</li>
+<li><p>concat()连接，返回新数组</p>
+</li>
+<li><p>Array.from()将泛数组转换为数组，如set，’hello‘(转换为[‘h’,’e’,’l’,’l’,’o’])</p>
+</li>
+<li><p>join(‘,’) 数组转换为字符串，里面的参数可以作为插入值</p>
+</li>
+<li><p>—split(‘,’)字符串转换为数组</p>
+</li>
+<li><p>indexof() 返回索引值</p>
+</li>
+<li><p>some，every,</p>
+</li>
+<li><p>reduce()方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let numbers = [1, 2, 3, 4, 5];  </span><br><span class="line">let sum = numbers.reduce((accumulator, currentValue) =&gt; &#123;  </span><br><span class="line">  return accumulator + currentValue;  </span><br><span class="line">&#125;, 0); // 初始值设置为0  </span><br><span class="line">  </span><br><span class="line">console.log(sum); // 输出: 15</span><br></pre></td></tr></table></figure>
+
+<p>回调函数第一次执行时，会接收两个参数：第一个是初始值（或者数组中的第一个元素，如果未提供初始值），第二个是当前元素。以后每次执行回调函数时，会接收两个参数：第一个是上一次回调函数返回的累积值，第二个是当前元素。</p>
+</li>
+</ol>
+<h2 id="六-项目中的问题"><a href="#六-项目中的问题" class="headerlink" title="六.项目中的问题"></a>六.项目中的问题</h2><h4 id="1-首次进入页面加载慢，出现默认样式"><a href="#1-首次进入页面加载慢，出现默认样式" class="headerlink" title="1.首次进入页面加载慢，出现默认样式"></a>1.首次进入页面加载慢，出现默认样式</h4><ol>
+<li><strong>CSS 动画&#x2F;过渡</strong>:<br> 如果问题是你希望页面以某种动画方式平滑地出现，而不是突然地完全显示，你可以使用 Vue 的 <code>&lt;transition&gt;</code> 组件和 CSS 动画&#x2F;过渡来实现。这不会等待 CSS 加载完成，但可以提供更好的用户体验。</li>
+<li><strong>骨架屏（Skeleton Screens）或加载指示器</strong>:<br> 最后，一个常见的做法是在页面加载时使用骨架屏或加载指示器来隐藏页面的实际内容，直到所有数据（包括 CSS）都加载完成。这样，用户就会看到一个加载中的动画或占位符，而不是页面的“半成品”状态。当所有数据都加载完成后，你可以隐藏加载指示器并显示页面的实际内容。</li>
+<li><strong>使用 CSS 加载器（如 loadCSS）</strong>:<br> 你可以使用像 <code>loadCSS</code> 这样的库来异步加载 CSS，并在加载完成后通过回调或事件来触发页面的显示。但是，这种方法主要用于非阻塞 CSS 的加载，而不是等待 CSS 加载后再渲染页面。</li>
+<li></li>
+</ol>
+<h2 id="七-面经"><a href="#七-面经" class="headerlink" title="七.面经"></a>七.面经</h2><h3 id="1-CSS怎么解析选择器"><a href="#1-CSS怎么解析选择器" class="headerlink" title="1.CSS怎么解析选择器"></a>1.CSS怎么解析选择器</h3><ol>
+<li>读取CSS规则</li>
+</ol>
+<ul>
+<li>浏览器首先读取CSS文件中的每一条规则。每条规则都由选择器和一组声明（属性和值）组成。</li>
+</ul>
+<ol start="2">
+<li>解析选择器</li>
+</ol>
+<ul>
+<li>浏览器开始解析选择器。选择器可以是简单的元素名、类名、ID，也可以是更复杂的组合，如后代选择器、子元素选择器、属性选择器等。</li>
+<li>解析选择器时，浏览器会识别选择器的类型（如元素选择器、类选择器、ID选择器等）以及它们之间的关系（如空格表示后代选择器、<code>&gt;</code>表示子元素选择器等）。</li>
+</ul>
+<ol start="3">
+<li>应用选择器到DOM</li>
+</ol>
+<ul>
+<li>浏览器将解析后的选择器与DOM（文档对象模型）中的元素进行匹配。DOM是HTML文档的树形表示，其中每个元素都是一个节点。</li>
+<li>匹配过程通常从右到左进行，特别是当选择器包含多个部分时（如<code>.parent .child</code>）。这是因为从左到右匹配可能会不必要地检查大量元素。</li>
+<li>对于每个选择器，浏览器都会遍历DOM树，查找与选择器匹配的元素。</li>
+</ul>
+<ol start="4">
+<li>计算样式</li>
+</ol>
+<ul>
+<li>一旦找到匹配的元素，浏览器就会计算与该选择器关联的样式声明。这包括确定哪些样式规则是有效的（基于来源顺序、特异性、重要性等），并解析任何简写的CSS属性（如<code>margin</code>、<code>padding</code>、<code>border</code>等）。</li>
+<li>浏览器还会处理任何继承的样式，这些样式会从父元素传递给子元素。</li>
+</ul>
+<ol start="5">
+<li>应用样式到元素</li>
+</ol>
+<ul>
+<li>最后，浏览器将计算出的样式应用到匹配的元素上。这包括改变元素的外观（如颜色、字体、布局等）以及触发任何与样式更改相关的行为（如动画、过渡等）。</li>
+</ul>
+<h3 id="2-V8解析执行JavaScript代码过程"><a href="#2-V8解析执行JavaScript代码过程" class="headerlink" title="2.V8解析执行JavaScript代码过程"></a>2.V8解析执行JavaScript代码过程</h3><p>词法分析 语法分析 语法规则检测 生成字节码 执行字节码 优化和编译机器代码 垃圾回收机制</p>
+<ol>
+<li><p>词法分析（Lexical Analysis）和语法分析（Syntax Analysis）</p>
+<ul>
+<li>V8 首先将 JavaScript 源代码转换为一系列的记号（tokens）。这个过程称为词法分析（或称为扫描）。</li>
+<li>接着，V8 使用这些记号来构建抽象语法树（AST, Abstract Syntax Tree）。这个过程称为语法分析（或称为解析）。AST 是源代码结构的内部表示，用于进一步的分析和优化。</li>
+</ul>
+</li>
+<li><p>语义分析（Semantic Analysis）</p>
+<ul>
+<li>在语法分析之后，V8 会检查 AST 是否符合 JavaScript 语言的语义规则。例如，它会检查变量是否在使用前已声明，函数参数的数量是否正确等。</li>
+</ul>
+</li>
+<li><p>生成字节码（Generate Bytecode）</p>
+<ul>
+<li>接下来，V8 的 Ignition 解释器会将 AST 转换为字节码（bytecode）。字节码是介于源代码和机器代码之间的一种中间表示形式。与直接生成机器代码相比，生成字节码可以更快地完成，并且允许后续的优化。</li>
+</ul>
+</li>
+<li><p>执行字节码</p>
+<ul>
+<li>Ignition 解释器执行字节码。与许多传统的解释器一样，它逐个执行字节码指令。但是，由于 V8 的优化技术，这个过程通常比传统的解释器要快得多。</li>
+</ul>
+</li>
+<li><p>优化和编译为机器代码（Optimization and Compilation to Machine Code）</p>
+<ul>
+<li>如果 V8 检测到某个函数被频繁调用（即它是“热”的），它会启动 TurboFan 编译器。TurboFan 是一个基于 JIT（Just-In-Time）编译的编译器，它将字节码编译为高效的机器代码。</li>
+<li>TurboFan 使用各种优化技术来生成更高效的机器代码，包括内联（inlining）、死代码消除（dead code elimination）、循环展开（loop unrolling）等。</li>
+<li>编译后的机器代码会存储在 V8 的代码缓存中，以便后续快速执行。</li>
+</ul>
+</li>
+<li><p>垃圾回收（Garbage Collection）</p>
+<ul>
+<li>V8 还包括一个高效的垃圾回收器，用于管理 JavaScript 对象占用的内存。当不再需要某个对象时，垃圾回收器会释放其占用的内存。</li>
+</ul>
+</li>
+<li><p>其他优化</p>
+<ul>
+<li>V8 还包括许多其他优化技术，如隐藏类（hidden classes）用于优化对象属性的访问，内联缓存（inline caches）用于加速属性查找等。</li>
+</ul>
+</li>
+</ol>
+<p>注意，上述过程是一个高级概述，V8 的内部实现更加复杂。而且，随着时间的推移，V8 的开发者会不断改进和优化这些过程，以提高性能。</p>
+<h3 id="3-什么情况会脱离文档流"><a href="#3-什么情况会脱离文档流" class="headerlink" title="3.什么情况会脱离文档流"></a>3.什么情况会脱离文档流</h3><ol>
+<li><strong>浮动（Float）</strong>：<br> 当元素设置了 <code>float</code> 属性（如 <code>float: left;</code> 或 <code>float: right;</code>）时，它会脱离文档流，向左或向右浮动，使文本或内联元素环绕它。浮动元素不会占据文档流中的空间，而是处于浮动状态。</li>
+<li><strong>绝对定位（Absolute Positioning）</strong>：<br> 当元素的 <code>position</code> 属性设置为 <code>absolute</code> 时，它会脱离文档流并相对于其最近的已定位祖先元素（而不是正常的文档流）进行定位。如果没有已定位的祖先元素，那么它会相对于初始包含块进行定位。绝对定位的元素不会占据文档流中的空间。</li>
+<li><strong>固定定位（Fixed Positioning）</strong>：<br> 与绝对定位类似，当元素的 <code>position</code> 属性设置为 <code>fixed</code> 时，它会脱离文档流并相对于浏览器窗口进行定位。无论页面如何滚动，固定定位的元素都会保持在同一的位置。</li>
+<li><strong>Flexbox 和 Grid 布局</strong>：<br> 虽然 Flexbox 和 Grid 布局系统本身并不直接导致元素脱离文档流，但它们提供了更高级的布局控制，允许元素在容器内部以不同于常规文档流的方式排列和对齐。然而，在这些布局中，元素仍然属于其容器，并且受到容器尺寸和布局的约束。</li>
+</ol>
+<p>当元素脱离文档流时，它们在文档中的位置将由其他属性（如 <code>top</code>、<code>right</code>、<code>bottom</code>、<code>left</code>）或相对于其他元素（在绝对或固定定位的情况下）来确定。脱离文档流的元素不会影响或受到周围文档流中元素的影响。</p>
+<h3 id="4-怎么形成BFC"><a href="#4-怎么形成BFC" class="headerlink" title="4.怎么形成BFC"></a>4.怎么形成BFC</h3><p>我把他理解为脱离文档流后对的布局</p>
+<p>BFC（Block Formatting Context）是W3C CSS 2.1规范中的一个概念，它指的是页面中的一块渲染区域，这块区域拥有一套自己的渲染规则，能够决定子元素在页面的定位以及和其他元素的相互作用。要形成一个BFC，可以通过以下几种方式：</p>
+<ol>
+<li><strong>浮动元素</strong>：当元素的<code>float</code>属性值不为<code>none</code>时（即<code>left</code>或<code>right</code>），会创建BFC。</li>
+<li>**元素的<code>overflow</code>值不为<code>visible</code>**：当元素的<code>overflow</code>属性值为<code>hidden</code>、<code>auto</code>或<code>scroll</code>时，会创建BFC。</li>
+<li><strong>元素的<code>display</code>值为<code>table-cell</code>、<code>table-caption</code>、<code>inline-block</code>中的任意一个</strong>：这些<code>display</code>属性值都会使元素创建BFC。</li>
+<li>**元素的<code>position</code>为<code>absolute</code>或<code>fixed</code>**：当元素的定位方式为绝对定位或固定定位时，会创建BFC。</li>
+</ol>
+<p>BFC的一个主要特性是它会阻止垂直外边距折叠。只有同属于一个BFC时，两个元素才有可能发生垂直margin的重叠。如果两个元素不希望发生垂直margin的重叠，可以将它们分别放在两个BFC中。</p>
+<h3 id="5-ES6新特性"><a href="#5-ES6新特性" class="headerlink" title="5.ES6新特性"></a>5.ES6新特性</h3><p>set map  Symbol 箭头函数 Promise let const 本地存储 块级作用域 解构赋值 类和模块 迭代器与生成器 默认参数 扩展运算符 模板字符串</p>
+<p>ES6（ECMAScript 2015）引入了许多新特性和语法改进，以下是一些主要的ES6新特性：</p>
+<ol>
+<li><strong>块级作用域</strong>：通过<code>let</code>和<code>const</code>关键字可以在块级作用域中声明变量。在ES5中，只有函数作用域和全局作用域，这可能导致变量污染和意外的变量覆盖。</li>
+<li><strong>箭头函数</strong>：箭头函数提供了一种新的函数声明方式，使用箭头(<code>=&gt;</code>)取代了传统的<code>function</code>关键字。箭头函数没有自己的<code>this</code>、<code>arguments</code>、<code>super</code>或<code>new.target</code>，这些值由外围的正常函数值提供。</li>
+<li><strong>解构赋值</strong>：这是一种从数组或对象中提取值并赋值给变量的语法。它允许你以一种更简洁、更语义化的方式访问对象的属性和数组的元素。</li>
+<li><strong>默认参数</strong>：ES6引入了函数的默认参数，允许在函数定义时为参数提供默认值。如果函数调用时没有提供参数，那么将使用默认值。</li>
+<li><strong>扩展运算符</strong>：扩展运算符（<code>...</code>）可以将数组或对象展开，提取出其中的元素或属性。这在复制数组、合并对象等方面非常有用。</li>
+<li><strong>模板字符串</strong>：模板字符串允许你嵌入表达式，并通过<code>$&#123;&#125;</code>来访问JavaScript变量的值。这使得字符串拼接和插入变量值变得更加简洁和易读。</li>
+<li><strong>类和模块</strong>：ES6引入了类的概念，这是一种更面向对象的方式来组织代码。同时，ES6也支持模块化的导入和导出，使得代码的组织和复用更加灵活和方便。</li>
+<li><strong>迭代器和生成器</strong>：迭代器允许你遍历集合（如数组、Map、Set等）的元素，而生成器则是一种返回迭代器的函数。它们提供了一种更灵活、更可控制的方式来处理集合数据。</li>
+<li><strong>Promise对象</strong>：Promise是一种表示异步操作最终完成或失败的对象。它提供了一种更优雅的方式来处理异步操作，避免了回调地狱等问题。</li>
+</ol>
+<p>除了以上这些主要的新特性外，ES6还引入了许多其他的新特性和语法改进，如<code>Map</code>、<code>Set</code>、<code>Symbol</code>等新的数据结构，以及<code>for...of</code>循环、<code>Array.prototype.includes()</code>等新的语法和API。这些新特性和改进使得JavaScript代码更加简洁、易读和强大。</p>
+<h3 id="6-ES6新增什么作用域，之前有什么作用域"><a href="#6-ES6新增什么作用域，之前有什么作用域" class="headerlink" title="6.ES6新增什么作用域，之前有什么作用域"></a>6.ES6新增什么作用域，之前有什么作用域</h3><p><strong>ES6新增了块级作用域</strong>，这是通过<code>let</code>和<code>const</code>关键字来实现的。在ES6之前，JavaScript只有全局作用域和函数作用域两种。</p>
+<ol>
+<li><strong>全局作用域</strong>：在代码的任何地方都能访问到的变量拥有全局作用域。全局作用域中声明的变量可以在整个代码中的任何地方访问到。</li>
+<li><strong>函数作用域</strong>：在函数内部声明的变量（使用<code>var</code>关键字）拥有函数作用域。这些变量只能在函数内部访问，函数外部无法访问。但是需要注意的是，在ES6之前，即使变量是在一个代码块（如<code>if</code>或<code>for</code>循环）中声明的，只要使用了<code>var</code>关键字，它仍然具有函数作用域，而不是块级作用域。</li>
+</ol>
+<p>ES6的块级作用域通过<code>let</code>和<code>const</code>关键字实现，它们允许在代码块中声明变量，并且这些变量只在代码块内部可见。这使得代码块内部的变量不会影响到代码块外部，提高了代码的模块化和可维护性。同时，<code>let</code>和<code>const</code>声明的变量还具有暂时性死区（Temporal Dead Zone, TDZ）的特性，即在变量被声明之前的区域，无法访问到该变量。</p>
+<p>块级作用域与函数作用域的区别：</p>
+<p>块级作用域（Block Scope）和函数作用域（Function Scope）在 JavaScript 中是两个不同的概念，它们在变量和函数声明的可见性和生命周期上有所不同。以下是它们之间的主要区别：</p>
+<h4 id="函数作用域（Function-Scope）"><a href="#函数作用域（Function-Scope）" class="headerlink" title="函数作用域（Function Scope）"></a>函数作用域（Function Scope）</h4><p>在 ES6 之前，JavaScript 主要使用函数作用域。当你在函数内部使用 <code>var</code> 关键字声明一个变量时，这个变量就具有函数作用域。这意味着：</p>
+<ul>
+<li>变量在声明它的函数体内是可见的。</li>
+<li>变量在函数体外是不可见的（除非它被明确地声明为全局变量）。</li>
+<li>如果在函数内部没有使用 <code>var</code> 关键字声明变量，那么这个变量将自动成为全局变量（这是一个常见的错误，因此在 ES6 中引入了 <code>let</code> 和 <code>const</code> 来避免这种情况）。</li>
+</ul>
+<h4 id="块级作用域（Block-Scope）"><a href="#块级作用域（Block-Scope）" class="headerlink" title="块级作用域（Block Scope）"></a>块级作用域（Block Scope）</h4><p>ES6 引入了 <code>let</code> 和 <code>const</code> 关键字，这两个关键字允许我们声明具有块级作用域的变量。块级作用域是指在一对大括号 <code>&#123;&#125;</code> 内声明的变量只在当前代码块内有效。这意味着：</p>
+<ul>
+<li>使用 <code>let</code> 或 <code>const</code> 声明的变量只在它们被声明的代码块内可见。</li>
+<li>一旦离开这个代码块，变量就不可见了。</li>
+<li>这有助于避免变量名冲突和意外的变量提升（hoisting）。</li>
+</ul>
+<h4 id="主要区别"><a href="#主要区别" class="headerlink" title="主要区别"></a>主要区别</h4><p><strong>可见性</strong>：<em>函数作用域中的变量在函数体内可见，块级作用域中的变量在声明它的代码块内可见。</em></p>
+<p><strong>生命周期</strong>：函数作用域中的变量在函数执行完毕后仍然存在，但不再可访问（除非它被返回或成为某个对象的属性）。块级作用域中的变量在代码块执行完毕后立即被销毁。</p>
+<p><strong>变量提升（Hoisting）</strong>：在函数作用域中，使用 <code>var</code> 声明的变量会经历变量提升，这意味着变量可以在声明之前就被访问（尽管它的值是 <code>undefined</code>）。而在块级作用域中，<code>let</code> 和 <code>const</code> 声明的变量不会发生变量提升，在声明之前访问它们会导致引用错误（ReferenceError）。</p>
+<p><strong>重复声明</strong>：在函数作用域中，使用 <code>var</code> 可以多次声明同一个变量，但这通常是不好的做法。在块级作用域中，使用 <code>let</code> 或 <code>const</code> 声明同一个变量会导致语法错误。</p>
+<p><strong>常量</strong>：<code>const</code> 关键字用于声明一个只读的常量，它只能在声明时赋值一次，并且以后不能被重新赋值。这是块级作用域特有的功能，函数作用域中的 <code>var</code> 和 <code>let</code> 都不能实现这一点。</p>
+<h3 id="7-cdn原理"><a href="#7-cdn原理" class="headerlink" title="7.cdn原理"></a>7.cdn原理</h3><p>本质是一个散布全球的虚拟网络，网站的内容会分布给这些节点。当用户访问网站时，会根据用户的地理位置，ip，网络状况等分配最优的cdn为其传输资源。实现就近访问和缓存。</p>
+<p>CDN（Content Delivery Network，内容分发网络）是一个建立在现有网络基础之上的智能虚拟网络，它能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。</p>
+<p>CDN 的工作原理是通过将网站的内容分发至遍布全球的高效数据中心，确保用户能够从离自己最近的最佳位置访问所需内容，从而提高网站的响应速度。当用户访问一个网站时，CDN 会自动根据用户的地理位置、网络状况等因素，选择最优的 CDN 节点来提供内容服务。</p>
+<p>CDN 的优势包括：</p>
+<ol>
+<li><strong>加速网站访问</strong>：通过将内容分发至全球各地的 CDN 节点，用户可以就近访问内容，从而减少网络延迟，提高网站的响应速度。</li>
+<li><strong>减轻源站压力</strong>：CDN 节点会缓存网站的内容，当用户访问这些内容时，可以直接从 CDN 节点获取，而无需访问源站，从而减轻源站的压力。</li>
+<li><strong>提高网站可用性</strong>：CDN 节点遍布全球，当某个节点出现故障时，可以自动切换到其他节点，确保用户能够正常访问网站。</li>
+<li><strong>提升安全性</strong>：CDN 提供商通常会提供一系列的安全措施，如 DDoS 防护、WAF（Web Application Firewall）等，以提高网站的安全性。</li>
+</ol>
+<p>CDN 的应用场景包括但不限于：</p>
+<ul>
+<li>电商网站：提高页面加载速度，提升用户体验和转化率。</li>
+<li>视频网站：提供流畅的视频播放体验，减少卡顿和缓冲。</li>
+<li>新闻媒体：确保新闻内容的快速传播和访问。</li>
+<li>大型企业官网：提升企业形象和用户体验。</li>
+</ul>
+<p>总之，CDN 通过将内容分发至全球各地的 CDN 节点，实现就近访问和缓存，从而提高了网站的访问速度和可用性，是提升网站性能的重要工具之一。</p>
+<h3 id="8-http2-0"><a href="#8-http2-0" class="headerlink" title="8.http2.0"></a>8.http2.0</h3><p>HTTP&#x2F;2.0（原名HTTP&#x2F;2.0）即超文本传输协议2.0，是下一代HTTP协议，由互联网工程任务组（IETF）的Hypertext Transfer Protocol Bis（httpbis）工作小组进行开发，是自1999年HTTP 1.1发布后的首个更新。HTTP 2.0在2013年8月进行了首次合作共事性测试。以下是关于HTTP 2.0的主要特点和优势：</p>
+<ol>
+<li>多路复用：HTTP&#x2F;2.0允许同时发送多个请求和响应，而不是像HTTP&#x2F;1.1一样只能一个一个地处理。这样可以减少延迟，提高效率，提高网络吞吐量。</li>
+<li>二进制传输：HTTP&#x2F;2.0使用二进制协议，与HTTP&#x2F;1.1使用的文本协议不同。二进制协议可以更快地解析，更有效地传输数据，减少了传输过程中的开销和延迟。</li>
+<li>头部压缩：HTTP&#x2F;2.0使用HPACK算法对HTTP头部进行压缩，减少了头部传输的数据量，从而减少了网络延迟。</li>
+<li>服务器推送：HTTP&#x2F;2.0支持服务器推送，允许服务器在客户端请求之前推送资源，以提高性能。</li>
+<li>兼容性：HTTP&#x2F;2.0可以与HTTP&#x2F;1.1共存，服务器可以同时支持HTTP&#x2F;1.1和HTTP&#x2F;2.0。如果客户端不支持HTTP&#x2F;2.0，服务器可以回退到HTTP&#x2F;1.1。</li>
+<li>安全性增强：HTTP&#x2F;2.0采用了TLS 1.2或更高版本的加密协议，提供了更强的安全性保护，有效防止了中间人攻击。</li>
+</ol>
+<p>HTTP&#x2F;2.0相较于HTTP&#x2F;1.1的主要改进包括解决了队头阻塞问题、提高了数据传输效率、降低了数据传输的延迟、减少了数据传输量等。目前，已有一些大型网站（如谷歌、淘宝等）开始使用HTTP&#x2F;2.0协议。</p>
+<p>以上信息仅供参考，如需了解更多关于HTTP&#x2F;2.0的详细信息，建议查阅相关书籍或咨询专业技术人员。</p>
+<h3 id="9-tcp和udp的区别和应用场景"><a href="#9-tcp和udp的区别和应用场景" class="headerlink" title="9.tcp和udp的区别和应用场景"></a>9.tcp和udp的区别和应用场景</h3><p>区别：tcp传输安全性更高（传输中两点对接，三次握手和四次挥手），传输可靠性更高（重传、确认机制、确认序列号），传输效率更低（建立联系和错误处理等让他速度变慢），头部开销较大（加入了序列号等等资源）</p>
+<p>TCP（传输控制协议）和UDP（用户数据报协议）都位于TCP&#x2F;IP模型的传输层（Transport Layer）。然而，它们在协议设计、数据传输方式以及应用场景上有所不同。</p>
+<h4 id="1-TCP与UDP的位置"><a href="#1-TCP与UDP的位置" class="headerlink" title="1. TCP与UDP的位置"></a>1. TCP与UDP的位置</h4><p>在TCP&#x2F;IP模型中，传输层位于网络层和应用层之间。它负责为应用层提供端到端的通信服务，确保数据包的可靠传输。</p>
+<h4 id="2-TCP与UDP的区别"><a href="#2-TCP与UDP的区别" class="headerlink" title="2. TCP与UDP的区别"></a>2. TCP与UDP的区别</h4><ol>
+<li><p>连接性</p>
+<p> ：</p>
+<ul>
+<li>TCP是面向连接的协议，它需要在通信双方之间建立连接（三次握手）后才能传输数据。连接建立后，TCP会维护这个连接状态，直到数据传输完毕并关闭连接（四次挥手）。</li>
+<li>UDP是无连接的协议，它不需要在通信双方之间建立连接，每个数据报都是独立的。发送方只需将数据报封装成UDP数据包，然后发送给接收方即可。</li>
+</ul>
+</li>
+<li><p>可靠性</p>
+<p> ：</p>
+<ul>
+<li>TCP提供了可靠的数据传输服务。它使用序列号、确认机制、重传机制等技术来确保数据的完整性和顺序性。如果数据包在传输过程中丢失或损坏，TCP会重新发送这些数据包。</li>
+<li>UDP不提供可靠的数据传输服务。它不关心数据包是否到达接收方，也不关心数据包的顺序。因此，UDP传输的数据可能会丢失、乱序或重复。</li>
+</ul>
+</li>
+<li><p>效率</p>
+<p> ：</p>
+<ul>
+<li>由于TCP需要建立连接、维护连接状态以及进行错误处理等操作，因此它的传输效率相对较低。但是，对于需要可靠传输的场景（如文件传输、邮件发送等），TCP是更好的选择。</li>
+<li>UDP的传输效率较高，因为它不需要建立连接和进行复杂的错误处理。对于实时性要求较高、对可靠性要求不高的场景（如实时视频传输、语音通话等），UDP是更好的选择。</li>
+</ul>
+</li>
+<li><p>头部开销</p>
+<p> ：</p>
+<ul>
+<li>TCP的头部开销较大，因为它需要包含序列号、确认号、窗口大小等字段来支持可靠传输。</li>
+<li>UDP的头部开销较小，只包含必要的字段（如源端口号、目的端口号、数据长度等）。</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-应用场景"><a href="#3-应用场景" class="headerlink" title="3. 应用场景"></a>3. 应用场景</h4><ol>
+<li><p>TCP的应用场景</p>
+<p> ：</p>
+<ul>
+<li>文件传输（如FTP、HTTP等）</li>
+<li>邮件发送（如SMTP）</li>
+<li>远程登录（如Telnet）</li>
+<li>数据库连接（如MySQL、PostgreSQL等）</li>
+</ul>
+</li>
+<li><p>UDP的应用场景</p>
+<p> ：</p>
+<ul>
+<li>实时视频传输（如RTMP、WebRTC等）</li>
+<li>实时语音通话（如VoIP）</li>
+<li>网络游戏（如多人在线游戏）</li>
+<li>DNS查询（虽然DNS也支持TCP，但UDP更为常见）</li>
+</ul>
+</li>
+</ol>
+<p>需要注意的是，虽然TCP和UDP在设计和应用场景上有所不同，但在实际应用中，它们并不是完全独立的。很多应用会同时使用TCP和UDP来满足不同的需求。例如，一个在线游戏可能使用UDP来传输实时游戏数据，而使用TCP来传输游戏设置和更新信息。</p>
+<h2 id="八-哪些数据可以继承"><a href="#八-哪些数据可以继承" class="headerlink" title="八.哪些数据可以继承"></a>八.哪些数据可以继承</h2><p>在CSS中，一些属性是可以从父元素继承到子元素的。这些属性主要涉及到文本的样式和字体的设置。以下是一些可以继承的CSS属性：</p>
+<ol>
+<li><strong>字体系列属性</strong>：<ul>
+<li><code>font</code></li>
+<li><code>font-family</code></li>
+<li><code>font-weight</code></li>
+<li><code>font-size</code></li>
+<li><code>font-style</code></li>
+<li><code>font-variant</code></li>
+<li><code>font-stretch</code></li>
+<li><code>font-size-adjust</code></li>
+</ul>
+</li>
+<li><strong>文本系列属性</strong>（对于内联元素）：<ul>
+<li><code>text-decoration</code></li>
+<li><code>text-align</code></li>
+<li><code>letter-spacing</code></li>
+<li><code>word-spacing</code></li>
+<li><code>white-space</code></li>
+<li><code>line-height</code></li>
+<li><code>color</code></li>
+<li><code>text-transform</code></li>
+<li><code>direction</code></li>
+</ul>
+</li>
+<li><strong>块级元素和终端块状元素</strong>：<ul>
+<li><code>text-indent</code></li>
+<li><code>text-align</code></li>
+</ul>
+</li>
+<li><strong>列表元素</strong>：<ul>
+<li><code>list-style</code></li>
+<li><code>list-style-type</code></li>
+<li><code>list-style-position</code></li>
+<li><code>list-style-image</code></li>
+</ul>
+</li>
+<li><strong>其他</strong>：<ul>
+<li><code>visibility</code></li>
+<li><code>cursor</code></li>
+</ul>
+</li>
+</ol>
+<p>然而，需要注意的是，并非所有的CSS属性都可以继承。例如，以下属性是不可继承的：</p>
+<ul>
+<li><code>display</code></li>
+<li><code>margin</code></li>
+<li><code>border</code></li>
+<li><code>padding</code></li>
+<li><code>background</code></li>
+<li><code>height</code>、<code>min-height</code>、<code>max-height</code></li>
+<li><code>width</code>、<code>min-width</code>、<code>max-width</code></li>
+<li><code>overflow</code></li>
+<li><code>position</code>（以及与之相关的<code>top</code>、<code>right</code>、<code>bottom</code>、<code>left</code>等）</li>
+<li><code>z-index</code></li>
+<li><code>float</code>、<code>clear</code></li>
+<li><code>table-layout</code></li>
+<li><code>vertical-align</code></li>
+<li><code>page-break-after</code>、<code>page-break-before</code></li>
+<li><code>unicode-bidi</code></li>
+</ul>
+<p>以上内容主要基于CSS的继承规则，但具体的继承情况可能还受到HTML元素类型和上下文的影响。</p>
+<h2 id="九-面试经验"><a href="#九-面试经验" class="headerlink" title="九.面试经验"></a>九.面试经验</h2><h3 id="1-从项目实际出发，别只说干条条。"><a href="#1-从项目实际出发，别只说干条条。" class="headerlink" title="1.从项目实际出发，别只说干条条。"></a>1.从项目实际出发，别只说干条条。</h3><h3 id="2-闭包"><a href="#2-闭包" class="headerlink" title="2.闭包"></a>2.闭包</h3><h3 id="3-html基础"><a href="#3-html基础" class="headerlink" title="3.html基础"></a>3.html基础</h3><h3 id="4-css基础"><a href="#4-css基础" class="headerlink" title="4.css基础"></a>4.css基础</h3><h3 id="5-vue3基础"><a href="#5-vue3基础" class="headerlink" title="5.vue3基础"></a>5.vue3基础</h3><h3 id="6-vue2和vue3的区别是什么（在项目中的体现）"><a href="#6-vue2和vue3的区别是什么（在项目中的体现）" class="headerlink" title="6.vue2和vue3的区别是什么（在项目中的体现）"></a>6.vue2和vue3的区别是什么（在项目中的体现）</h3><ol>
+<li><p>双向数据绑定原理</p>
+<p> ：</p>
+<ul>
+<li>Vue2的双向数据绑定是利用ES5的<code>Object.defineProperty()</code> API对数据进行劫持，并结合发布订阅模式实现的。这种方法虽然有效，但存在一些限制，例如不支持数组的拦截、对象新增或删除属性没有响应式等。</li>
+<li>Vue3则使用ES6的<code>Proxy</code> API对数据代理，通过<code>reactive()</code>函数给每一个对象都包一层<code>Proxy</code>，通过<code>Proxy</code>监听属性的变化，从而实现对数据的监控。这种方法克服了Vue2中的限制，提供了更强大和灵活的数据响应式能力。</li>
+</ul>
+</li>
+<li><p>生命周期钩子函数</p>
+<p> ：</p>
+<ul>
+<li>Vue2的生命周期钩子函数包括<code>beforeCreate</code>、<code>created</code>、<code>beforeMount</code>、<code>mounted</code>、<code>beforeUpdate</code>、<code>updated</code>、<code>beforeDestroy</code>和<code>destroyed</code>等。</li>
+<li>Vue3的生命周期钩子函数有所不同，新增了<code>setup()</code>函数，它替代了Vue2中的<code>beforeCreate</code>和<code>created</code>钩子函数。同时，Vue3还引入了<code>onBeforeMount</code>、<code>onMounted</code>、<code>onBeforeUpdate</code>、<code>onUpdated</code>等新的生命周期钩子函数，并在调用前需要先进行引入。此外，Vue3还增加了<code>onRenderTracked</code>和<code>onRenderTriggered</code>两个用于渲染跟踪和触发的钩子函数。</li>
+</ul>
+</li>
+<li><p>API类型</p>
+<p> ：</p>
+<ul>
+<li>Vue2使用选项型API，将不同的属性（如<code>data</code>、<code>computed</code>、<code>methods</code>等）分割到不同的选项中。</li>
+<li>Vue3则引入了合成型API（Composition API），允许我们使用方法来分割组件的逻辑，使得代码更加简洁和可维护。在Vue3中，数据和方法被定义在<code>setup()</code>函数中，并使用<code>reactive()</code>或<code>ref()</code>来创建响应式数据。</li>
+</ul>
+</li>
+<li><p>性能优化</p>
+<p> ：</p>
+<ul>
+<li>Vue3在性能上进行了大量的优化，包括重写了虚拟DOM的实现、优化了编译模板、提高了组件初始化的速度、提升了<code>update</code>性能（提高了1.3<del>2倍）、提高了SSR速度（提高了2</del>3倍）等。</li>
+<li>Vue3还通过减少打包体积和提供更灵活的模块系统，使得开发者能够更容易地扩展Vue的功能，同时保持较小的打包体积。</li>
+</ul>
+</li>
+<li><p>类型系统和可维护性</p>
+<p> ：</p>
+<ul>
+<li>Vue3是基于TypeScript编写的，因此可以享受自动的类型定义提示和更好的IDE支持。这使得Vue3的代码更加健壮和易于维护。</li>
+<li>Vue3还引入了Composition API，使得代码的逻辑组合和复用变得更加灵活和方便。</li>
+</ul>
+</li>
+<li><p>其他特性</p>
+<p> ：</p>
+<ul>
+<li>Vue3支持碎片（Fragment），即允许组件有多个根节点。</li>
+<li>Vue3提供了更接近原生的自定义渲染API，使得开发者能够更深入地控制组件的渲染过程。</li>
+</ul>
+</li>
+</ol>
+<p>综上所述，Vue3在数据绑定原理、生命周期钩子函数、API类型、性能优化、类型系统和可维护性等方面相对于Vue2进行了大量的改进和优化，使得Vue3成为了一个更加强大、灵活和易于使用的JavaScript框架。</p>
+<p>我：1.使用proviede和inject允许祖先组与孙组件的传输；</p>
+<p>​	2.废弃了vuex，转而使用pinna进行数据的传输。</p>
+<h3 id="7-项目中vue3适用于有哪些难点和方便的地方"><a href="#7-项目中vue3适用于有哪些难点和方便的地方" class="headerlink" title="7.项目中vue3适用于有哪些难点和方便的地方"></a>7.项目中vue3适用于有哪些难点和方便的地方</h3><h4 id="（1）数据传输方面，"><a href="#（1）数据传输方面，" class="headerlink" title="（1）数据传输方面，"></a>（1）数据传输方面，</h4><p>​		利用inject相较于props更方便实现祖先与子孙的数据传输。</p>
+<p>​		vue3取消了事件订阅。</p>
+<p>​		vue3使用了pinna，和vuex的作用差不多。</p>
+<h5 id="同级传输："><a href="#同级传输：" class="headerlink" title="同级传输："></a><em>同级传输：</em></h5><p>在 TypeScript 和 Vue 3 中，同级组件之间的通信通常不会直接进行，因为组件之间的数据流应该是单向的，遵循 props down, events up 的原则。但是，你可以通过几种不同的方式间接实现同级组件之间的通信。</p>
+<h3 id="1-使用-Vuex-或-Pinia"><a href="#1-使用-Vuex-或-Pinia" class="headerlink" title="1. 使用 Vuex 或 Pinia"></a>1. 使用 Vuex 或 Pinia</h3><p>Vuex 和 Pinia 是 Vue.js 的状态管理库，它们允许你在整个应用程序中共享状态。这是实现同级组件之间通信的最常见方式。</p>
+<p><strong>Vuex</strong></p>
+<ol>
+<li>安装 Vuex（如果你还没有安装的话）：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash复制代码</span><br><span class="line"></span><br><span class="line">npm install vuex@next --save</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在你的 Vue 应用中设置 Vuex store。</li>
+<li>在需要通信的组件中通过 <code>computed</code>、<code>mapActions</code> 等辅助函数或者使用 Composition API 的 <code>useStore</code> 钩子来访问和修改状态。</li>
+</ol>
+<p><strong>Pinia</strong></p>
+<ol>
+<li>安装 Pinia：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash复制代码</span><br><span class="line"></span><br><span class="line">npm install pinia</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在你的 Vue 应用中设置 Pinia store。</li>
+<li>在需要通信的组件中通过 <code>defineStore</code> 函数定义 store，并使用 <code>useStore</code> 钩子来访问和修改状态。</li>
+</ol>
+<h3 id="2-使用事件总线（Event-Bus）"><a href="#2-使用事件总线（Event-Bus）" class="headerlink" title="2. 使用事件总线（Event Bus）"></a>2. 使用事件总线（Event Bus）</h3><p>虽然 Vue 3 不再直接支持事件总线（因为 Vue 实例不再暴露 <code>$on</code>、<code>$off</code> 和 <code>$emit</code>），但你可以使用第三方库（如 mitt）或自己创建一个简单的发布-订阅模式的事件总线。</p>
+<ol>
+<li>创建一个事件总线实例。</li>
+<li>在需要通信的组件中导入事件总线实例，并使用它来发布和订阅事件。</li>
+</ol>
+<h3 id="3-使用-Vue-3-的-Provide-Inject-API"><a href="#3-使用-Vue-3-的-Provide-Inject-API" class="headerlink" title="3. 使用 Vue 3 的 Provide &#x2F; Inject API"></a>3. 使用 Vue 3 的 Provide &#x2F; Inject API</h3><p>Provide &#x2F; Inject API 允许你在祖先组件中提供数据或方法，并在任何后代组件中注入它们。虽然这主要是用于跨层级传递数据，但在某些情况下也可以用于同级组件之间，尤其是当它们有共同的祖先时。</p>
+<ol>
+<li>在共同的祖先组件中使用 <code>provide</code> 提供数据或方法。</li>
+<li>在需要数据的组件中使用 <code>inject</code> 注入数据或方法。</li>
+</ol>
+<h3 id="4-使用父组件作为中介"><a href="#4-使用父组件作为中介" class="headerlink" title="4. 使用父组件作为中介"></a>4. 使用父组件作为中介</h3><p>如果两个同级组件有共同的父组件，你可以让父组件作为它们之间的中介。</p>
+<ol>
+<li>在父组件中定义数据和方法。</li>
+<li>使用 props 将数据传递给子组件。</li>
+<li>使用自定义事件（<code>$emit</code>）或 <code>v-model</code> 从子组件向父组件发送消息。</li>
+<li>父组件接收到消息后，可以更新其状态或调用其他子组件的方法。</li>
+</ol>
+<h3 id="5-使用自定义-Hooks（Composition-Functions）"><a href="#5-使用自定义-Hooks（Composition-Functions）" class="headerlink" title="5. 使用自定义 Hooks（Composition Functions）"></a>5. 使用自定义 Hooks（Composition Functions）</h3><p>如果通信逻辑可以在多个组件之间复用，你可以创建自定义的 Composition Functions（组合函数）或 Hooks。这些函数可以封装状态逻辑，并在需要时导入到组件中。</p>
+<h3 id="6-使用-Vue-3-的-Teleport-功能（如果适用于你的场景）"><a href="#6-使用-Vue-3-的-Teleport-功能（如果适用于你的场景）" class="headerlink" title="6. 使用 Vue 3 的 Teleport 功能（如果适用于你的场景）"></a>6. 使用 Vue 3 的 Teleport 功能（如果适用于你的场景）</h3><p>Vue 3 引入了 Teleport 功能，允许你将组件的 DOM 结构“传送”到 DOM 树中的其他位置。虽然这主要是用于解决 DOM 结构与实际 Vue 组件逻辑不一致的问题（例如，模态框、弹出层等），但在某些情况下，你也可以利用它来实现同级组件之间的间接通信。但请注意，这通常不是最佳实践，并且可能会引入不必要的复杂性。</p>
+<p>（2）</p>
+<h3 id="8-ts相较于js的难点和方便的点"><a href="#8-ts相较于js的难点和方便的点" class="headerlink" title="8.ts相较于js的难点和方便的点"></a>8.ts相较于js的难点和方便的点</h3><h3 id="9-输入url后的转换过程"><a href="#9-输入url后的转换过程" class="headerlink" title="9.输入url后的转换过程"></a>9.输入url后的转换过程</h3><h2 id="十-DOM元素"><a href="#十-DOM元素" class="headerlink" title="十.DOM元素"></a>十.DOM元素</h2><p>分为三个部分，元素节点，文本节点，属性节点。</p>
+<p>document obj model 能够允许程序动态的访问、更新文档的内容结构和样式。</p>
+<p>DOM，全称Document Object Model（文档对象模型），是W3C组织推荐的处理可扩展置标语言（如HTML和XML）的标准编程接口。以下是关于DOM的详细解释：</p>
+<ol>
+<li><p>定义</p>
+<p> ：</p>
+<ul>
+<li>DOM是一种与平台和语言无关的应用程序接口(API)，它允许程序和脚本动态地访问、更新文档的内容、结构和样式。</li>
+<li>DOM是一种基于树的API文档，它将文档视为一个由节点组成的树形结构，每个节点代表文档中的一个部分（如HTML标签、文本内容等）。</li>
+</ul>
+</li>
+<li><p>作用</p>
+<p> ：</p>
+<ul>
+<li>提供对整个文档的访问模型，允许开发者通过编程方式遍历和修改文档的结构、内容和样式。</li>
+<li>增强了页面与脚本之间的交互性，使得JavaScript等脚本语言能够方便地操作HTML文档。</li>
+</ul>
+</li>
+<li><p>特点</p>
+<p> ：</p>
+<ul>
+<li><strong>平台无关性</strong>：DOM是跨平台的，可以在不同的操作系统和浏览器上运行。</li>
+<li><strong>语言无关性</strong>：DOM支持多种编程语言，如JavaScript、Python等。</li>
+<li><strong>动态性</strong>：DOM允许在运行时动态地改变文档的结构和内容。</li>
+</ul>
+</li>
+<li><p>结构</p>
+<p> ：</p>
+<ul>
+<li>DOM树由三种类型的节点组成：元素节点（Element Node）、文本节点（Text Node）和属性节点（Attribute Node）。</li>
+<li>元素节点对应于HTML文档中的标签，如<code>&lt;p&gt;</code>、<code>&lt;div&gt;</code>等。</li>
+<li>文本节点包含标签之间的文本内容。</li>
+<li>属性节点包含元素的属性信息，如<code>&lt;img src=&quot;example.jpg&quot;&gt;</code>中的<code>src</code>属性。</li>
+</ul>
+</li>
+<li><p>操作方式</p>
+<p> ：</p>
+<ul>
+<li>通过JavaScript等脚本语言，开发者可以遍历DOM树，访问和修改节点的属性和内容。</li>
+<li>常用的DOM操作方法包括：<code>getElementById</code>、<code>getElementsByName</code>、<code>getElementsByTagName</code>、<code>getElementsByClassName</code>等，用于获取文档中的特定元素。</li>
+<li>开发者还可以使用<code>querySelector</code>和<code>querySelectorAll</code>等更高级的选择器方法来选择元素。</li>
+</ul>
+</li>
+<li><p>发展</p>
+<p> ：</p>
+<ul>
+<li>DOM的发展经历了多个阶段，从最初的DOM Level 1到现在的DOM Level 4，每个版本都增加了新的功能和优化。</li>
+<li>DOM Level 1支持HTML和XML的基本操作，而后续的版本则增加了对CSS、事件处理、XML命名空间等功能的支持。</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://nlp-eb.cdn.bcebos.com/static/eb/asset/eb35.393ea35b.png" alt="img">综上所述，DOM是Web开发中不可或缺的一部分，它为开发者提供了一种方便、灵活的方式来操作HTML和XML文档。</p>
+<h2 id="十一-前后端数据传输属于传输层还是应用层"><a href="#十一-前后端数据传输属于传输层还是应用层" class="headerlink" title="十一.前后端数据传输属于传输层还是应用层"></a>十一.前后端数据传输属于传输层还是应用层</h2><p>应用层</p>
+<h2 id="十二-长连接和短连接（http1-0-1-1）与长轮询短轮询的区别"><a href="#十二-长连接和短连接（http1-0-1-1）与长轮询短轮询的区别" class="headerlink" title="十二.长连接和短连接（http1.0&#x2F;1.1）与长轮询短轮询的区别"></a>十二.长连接和短连接（http1.0&#x2F;1.1）与长轮询短轮询的区别</h2><p>没啥关系这俩</p>
+<h2 id="十三-公司面试"><a href="#十三-公司面试" class="headerlink" title="十三.公司面试"></a>十三.公司面试</h2><h3 id="好未来"><a href="#好未来" class="headerlink" title="好未来"></a>好未来</h3><p>js考的很多，主要就是深拷贝，浅拷贝，数组,对象，递归和原型对象的考察。</p>
+<h5 id="1-在对象中寻找出所要求的值"><a href="#1-在对象中寻找出所要求的值" class="headerlink" title="1.在对象中寻找出所要求的值"></a>1.在对象中寻找出所要求的值</h5><p>思路：1.先判空</p>
+<p>​			2.再判断数组还是对象类型（因为是数组的话可以直接用include函数，更方便）</p>
+<p>​			3.是数组，直接用includes</p>
+<p>​			4.是对象，循环寻找，并且考虑递归</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">containValueDeep</span>(<span class="params">obj,value</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(obj==<span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="title class_">Array</span>.<span class="title function_">isArray</span>(obj))&#123;</span><br><span class="line">       <span class="keyword">return</span>  obj.<span class="title function_">includes</span>(value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> obj ===<span class="string">&#x27;Object&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> obj)&#123;</span><br><span class="line">            <span class="keyword">if</span>(obj.<span class="title function_">hasOwnProperty</span>(key))&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="title function_">containValueDeep</span>(obj[key],value))</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果既不是对象也不是数组，直接返回对比值</span></span><br><span class="line">    retrurn obj===value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用示例  </span></span><br><span class="line"><span class="keyword">const</span> nestedObj = &#123;  </span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,  </span><br><span class="line">  <span class="attr">b</span>: [<span class="number">2</span>, <span class="number">3</span>, &#123; <span class="attr">d</span>: <span class="number">4</span> &#125;],  </span><br><span class="line">  <span class="attr">c</span>: &#123; <span class="attr">e</span>: <span class="number">5</span>, <span class="attr">f</span>: [<span class="number">6</span>, &#123; <span class="attr">g</span>: <span class="number">7</span> &#125;] &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line">  </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">containsValueDeep</span>(nestedObj, <span class="number">1</span>)); <span class="comment">// true  </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">containsValueDeep</span>(nestedObj, <span class="number">4</span>)); <span class="comment">// true  </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">containsValueDeep</span>(nestedObj, <span class="number">8</span>)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>obj.hasOwnProperty(),用于判断函数本身（不包括原型链）是否含有指定名称的属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;  </span><br><span class="line">  a: 1,  </span><br><span class="line">  b: 2  </span><br><span class="line">&#125;;  </span><br><span class="line">  </span><br><span class="line">Object.prototype.c = 3; // 在Object的原型上添加一个属性c  </span><br><span class="line">  </span><br><span class="line">for (const key in obj) &#123;  </span><br><span class="line">  if (obj.hasOwnProperty(key)) &#123;  </span><br><span class="line">    console.log(key, obj[key]); // 只输出对象自身的属性  </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">// 输出:  </span><br><span class="line">// a 1  </span><br><span class="line">// b 2  </span><br><span class="line">// 注意：c没有被输出，因为它不是obj自身的属性</span><br></pre></td></tr></table></figure>
+
+<h2 id="十四-SSR"><a href="#十四-SSR" class="headerlink" title="十四.SSR"></a>十四.SSR</h2><p>前端SSR指的是<strong>服务器端渲染（Server-Side Rendering）</strong>。这是一种在服务器端完成页面渲染的技术。在这种模式下，当用户访问一个SSR应用的页面时，客户端会向服务器发起请求。服务器接收到请求后，会根据请求的路径和参数，获取对应的数据，并通过调用后端数据接口或其他数据源获取页面所需的数据。获取到数据后，服务器使用模板引擎或渲染框架将数据填充到页面模板中，生成完整的HTML页面。最后，服务器将这个生成的HTML页面直接发送给客户端，客户端接收到后直接渲染显示页面内容。</p>
+<p>前端SSR的主要优点包括：</p>
+<ol>
+<li><strong>更快的首屏加载速度</strong>：由于服务器已经将数据填充到了页面中，客户端无需再进行数据获取和页面渲染的过程，因此可以显著提高页面的加载速度，特别是首屏加载速度。</li>
+<li><strong>更好的搜索引擎优化（SEO）</strong>：搜索引擎可以更容易地爬取完整的HTML内容，因此SSR可以更好地改善网站的SEO效果。</li>
+<li><strong>更好的用户体验</strong>：用户可以更快地看到完整的页面内容，从而提高整体的用户体验。</li>
+</ol>
+<p>然而，前端SSR也存在一些挑战和限制，如：</p>
+<ol>
+<li><p><strong>开发条件受限</strong>：在服务端渲染中，可能会限制一些第三方库的使用，因为只会执行到特定的生命周期钩子。</p>
+</li>
+<li><p><strong>项目构建和部署复杂</strong>：相对于客户端渲染，SSR的项目构建和部署过程可能更为复杂。</p>
+</li>
+<li><p><strong>服务器资源占用</strong>：在高并发访问的情况下，服务端渲染会大量占用服务器的CPU资源。、</p>
+</li>
+<li><p>在Vue组件中，您需要确保它们可以在服务器端和客户端都能运行。这通常意味着您需要避免在组件的<code>created</code>、<code>mounted</code>等生命周期钩子中执行依赖于DOM的操作，因为这些操作在服务器端是不可用的。</p>
+</li>
+</ol>
+<p>为了克服这些挑战，开发者需要根据项目的具体需求、技术栈和框架来选择合适的SSR实现方案，并综合考虑性能、开发体验、部署成本和维护复杂度等因素来做出决策。例如，一些前端框架（如Next.js、Nuxt.js等）提供了内置的SSR功能，可以更方便地实现SSR，并优化开发体验和性能。</p>
+<h2 id="十五-性能优化"><a href="#十五-性能优化" class="headerlink" title="十五.性能优化"></a>十五.性能优化</h2><h3 id="首屏加载优化"><a href="#首屏加载优化" class="headerlink" title="首屏加载优化"></a>首屏加载优化</h3><p>SSR 终极方案</p>
+<p>思路：什么原因导致加载慢?</p>
+<ul>
+<li>网络延迟</li>
+<li>资源太大,3M js,4G网</li>
+</ul>
+<h3 id="网路延迟"><a href="#网路延迟" class="headerlink" title="网路延迟"></a>网路延迟</h3><ul>
+<li>cdn -用户节点就近</li>
+<li>preload </li>
+<li>prerender</li>
+</ul>
+<h3 id="资源太大"><a href="#资源太大" class="headerlink" title="资源太大"></a>资源太大</h3><ul>
+<li>分包 chunk</li>
+<li>懒加载</li>
+<li>公共资源 vender</li>
+<li>缓存（强缓存 Expore、Cache-Control、协商缓存（Last-Modified、If-Modified-Since,Etag、If-None-Match）、策略缓存 service-worker）</li>
+<li>服务端渲染</li>
+<li>局部SSR(落地页、广告页、营销活动页)</li>
+<li>pwd(冷门)</li>
+</ul>
+<p><strong>preload和prerender</strong>是前端性能优化中的两种不同技术，它们各自具有不同的特点和应用场景。下面将详细解释这两种技术的区别：</p>
+<h4 id="preload"><a href="#preload" class="headerlink" title="preload"></a>preload</h4><p><strong>定义与功能</strong>：<br>preload是浏览器的一种预加载资源模式，它的作用是将资源率先加载，然后等到需要的时候再去使用。这是一种资源的加载和解析解耦的方法，具有优先级，但并不会阻塞onload事件。preload的主要目的是为当前页面的资源进行预加载，以便在后续需要时能够更快地呈现给用户，而不会影响到页面的初始加载时间。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li><strong>优先级</strong>：preload具有强制加载的功能，其加载具有优先级，但仅仅是加载资源，并不会执行。</li>
+<li><strong>使用场景</strong>：适用于那些对当前页面性能有直接影响，且需要尽早加载的资源，如字体文件、关键图片等。</li>
+<li><strong>设置方式</strong>：通过HTML的<code>&lt;link&gt;</code>标签的<code>rel=&quot;preload&quot;</code>属性来指定需要预加载的资源。</li>
+<li><strong>示例</strong>：<code>&lt;link rel=&quot;preload&quot; href=&quot;https://fonts.gstatic.com/s/sofia/v8/8QIHdirahM3j_su5uI0Orbjl.woff2&quot; as=&quot;font&quot; crossorigin=&quot;anonymous&quot;&gt;</code></li>
+</ul>
+<h4 id="prerender"><a href="#prerender" class="headerlink" title="prerender"></a>prerender</h4><p><strong>定义与功能</strong>：<br>prerender是一种更为激进的预渲染技术，它不仅仅预加载资源，还会提前完成资源的加载、执行、渲染，并将渲染结果保存在内存中。当用户实际需要访问该页面时，可以直接从内存中调出渲染结果，从而实现几乎瞬间的页面呈现。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li><strong>资源消耗大</strong>：prerender是一个非常“重”的操作，因为它会消耗大量的浏览器资源和算力。</li>
+<li><strong>应用场景有限</strong>：由于资源消耗大，prerender在单页应用（SPA）中基本没有应用场景，更适合于传统多页应用或预测用户即将访问的页面。</li>
+<li><strong>使用场景</strong>：适用于那些预测用户很可能会访问，且对性能要求极高的页面。</li>
+<li><strong>设置方式</strong>：通过HTML的<code>&lt;link&gt;</code>标签的<code>rel=&quot;prerender&quot;</code>属性来指定需要预渲染的页面。</li>
+</ul>
+<h3 id="区别总结"><a href="#区别总结" class="headerlink" title="区别总结"></a>区别总结</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>preload</th>
+<th>prerender</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>定义与功能</strong></td>
+<td>预加载资源，不阻塞onload事件，为当前页面资源做准备</td>
+<td>提前完成资源加载、执行、渲染，并保存在内存中</td>
+</tr>
+<tr>
+<td><strong>优先级与资源消耗</strong></td>
+<td>具有优先级，但仅加载资源，不执行，资源消耗相对较小</td>
+<td>资源消耗大，是一个非常“重”的操作</td>
+</tr>
+<tr>
+<td><strong>使用场景</strong></td>
+<td>适用于对当前页面性能有直接影响，且需要尽早加载的资源</td>
+<td>适用于预测用户很可能会访问，且对性能要求极高的页面</td>
+</tr>
+<tr>
+<td><strong>设置方式</strong></td>
+<td><code>&lt;link rel=&quot;preload&quot; ...&gt;</code></td>
+<td><code>&lt;link rel=&quot;prerender&quot; ...&gt;</code></td>
+</tr>
+</tbody></table>
+<p>综上所述，preload和prerender在前端性能优化中扮演着不同的角色，开发者应根据实际需求和资源情况来选择合适的技术。</p>
+<h3 id="指标衡量"><a href="#指标衡量" class="headerlink" title="指标衡量"></a>指标衡量</h3><p><strong>FP</strong> First Paint 首次绘制</p>
+<p><strong>FCP</strong> First Contentful Paint 首次内容绘制</p>
+<p>——浏览器提供的API计算 performance </p>
+<p><strong>FMP</strong> First Meaningful Paint 首次有效绘制  ——mutationObserver</p>
+<p><strong>LCP</strong> Largest Contentful Paint 最大内容绘制</p>
+<p>这些性能监听或者上报的代码，我们通常只写一次，web-tracker</p>
+<ul>
+<li><p>性能采集</p>
+<p>  <em>performance</em> </p>
+<p>  <em>mutation Observer</em></p>
+</li>
+<li><p>用户行为采集</p>
+<p>  <em>无痕埋点</em></p>
+<p>  <em>手动埋点</em></p>
+<p>  <em>可视化埋点</em></p>
+</li>
+<li><p>异常采集</p>
+<p>  <em>react ErorBoundary</em></p>
+<p>  <em>异常捕获</em></p>
+</li>
+</ul>
+<p>SSR:可交互事件（TTI）</p>
+<p>TTB (Total Blocking Time)</p>
+<p>TTI（从FCP-&gt;可交互，中间的事件time to interact）</p>
+<p>指标衡量，webvital,写性能采集截屏或者录像（rrweb）</p>
+<h3 id="具体优化基础细节-—要用数据进行说话"><a href="#具体优化基础细节-—要用数据进行说话" class="headerlink" title="具体优化基础细节 —要用数据进行说话"></a>具体优化基础细节 —要用数据进行说话</h3><p>面试思路：从多少到多少，FMP时间，针对这些做了哪些处理</p>
+<h4 id="优化图片："><a href="#优化图片：" class="headerlink" title="优化图片："></a>优化图片：</h4><p>推荐使用webP,不要太大（上传头像控制size 200*200）</p>
+<h4 id="组件按需加载："><a href="#组件按需加载：" class="headerlink" title="组件按需加载："></a>组件按需加载：</h4><p>React Suspense +React.Lazy</p>
+<h4 id="延迟加载："><a href="#延迟加载：" class="headerlink" title="延迟加载："></a>延迟加载：</h4><p>xxx，滚动加载，可视区内容渲染</p>
+<h4 id="tree-shaking："><a href="#tree-shaking：" class="headerlink" title="tree-shaking："></a>tree-shaking：</h4><p>通过代码编写的方式去约定，需要的条件是？esm(模块化–amd，cmd ,commonjs,imd,esm) rollup,parcel,rspack,esbuild,swc</p>
+<p>有些情况是摇不掉的。</p>
+<h4 id="CDN："><a href="#CDN：" class="headerlink" title="CDN："></a>CDN：</h4><p>oss+cdn</p>
+<h4 id="精简三方库："><a href="#精简三方库：" class="headerlink" title="精简三方库："></a>精简三方库：</h4><p>antd,mantine,mui,nextui,arco UI</p>
+<ul>
+<li>要实现按需导入。</li>
+<li>国际化文件，要移除。</li>
+</ul>
+<h4 id="缓存："><a href="#缓存：" class="headerlink" title="缓存："></a>缓存：</h4><p>（强缓存 Expore、Cache-Control、协商缓存（Last-Modified、If-Modified-Since,Etag、If-None-Match）、策略缓存 service-worker）</p>
+<h4 id="字体压缩："><a href="#字体压缩：" class="headerlink" title="字体压缩："></a>字体压缩：</h4><p>font-spider 移除无用字体 webfont 处理字体加载</p>
+<h4 id="SSR-Server-side-render-、SSG-server-side-generate"><a href="#SSR-Server-side-render-、SSG-server-side-generate" class="headerlink" title="SSR(Server side render)、SSG(server side generate)"></a>SSR(Server side render)、SSG(server side generate)</h4><h3 id="具体实现的进阶"><a href="#具体实现的进阶" class="headerlink" title="具体实现的进阶"></a>具体实现的进阶</h3><h4 id="预加载-preload"><a href="#预加载-preload" class="headerlink" title="预加载:preload"></a>预加载:preload</h4><link rel="preload" href="xxx.js" as="script">
+
+<h4 id="加载关键CSS"><a href="#加载关键CSS" class="headerlink" title="加载关键CSS"></a>加载关键CSS</h4><p>什么叫关键css,怎么提取关键CS？</p>
+<p>利用webpack-css-pick-plugin(合一自创)、webpack-prerender-plugin将提取到的css内联插入节点。</p>
+<h4 id="HTTP-2-Server-Push"><a href="#HTTP-2-Server-Push" class="headerlink" title="HTTP&#x2F;2 Server Push"></a>HTTP&#x2F;2 Server Push</h4><h4 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h4><p>dom要不要等js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script defer&gt;&lt;/script&gt;</span><br><span class="line">&lt;script acync&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="预渲染"><a href="#预渲染" class="headerlink" title="预渲染"></a>预渲染</h4><p>prerender </p>
+<p>webpack prerender 方案</p>
+<p>@prerender&#x2F;webpack-plugin+@prerender&#x2F;renderer-puppeteer</p>
+<p><em>playwrite 做测试</em></p>
+<h4 id="SSR"><a href="#SSR" class="headerlink" title="SSR"></a>SSR</h4><p>vue nuxt </p>
+<h3 id="低代码动态物料体系"><a href="#低代码动态物料体系" class="headerlink" title="低代码动态物料体系"></a>低代码动态物料体系</h3><p>插件化（微内核），远程物料</p>
+<p>插件底座的设计是非常重要的</p>
+<p>babel,webpack,vite,pinia 插件化机制的践行者</p>
+<p>koa,redux,axios面向切面编程(AOP)（中间件机制）的践行者</p>
+<h3 id="远程插件"><a href="#远程插件" class="headerlink" title="远程插件"></a>远程插件</h3><ul>
+<li>requirejs</li>
+<li>systemjs</li>
+<li>react-loadable</li>
+<li>module-federation runtime</li>
+</ul>
+<h2 id="十六-mixin"><a href="#十六-mixin" class="headerlink" title="十六.mixin"></a>十六.mixin</h2><p><code>Mixin</code>（混入）是面向对象编程（OOP）和函数式编程中常见的一种特性，特别是在JavaScript的框架和库（如Vue.js、React的HOC等）中广泛使用。它允许开发者将一些可复用的功能或属性“混入”到一个或多个对象中，从而避免了代码重复，提高了代码的可维护性和复用性。</p>
+<h3 id="Mixin-的基本思想"><a href="#Mixin-的基本思想" class="headerlink" title="Mixin 的基本思想"></a>Mixin 的基本思想</h3><p>Mixin 的核心思想是<strong>通过某种方式将多个对象的能力组合成一个新的对象</strong>。它不是通过继承机制实现的，而是将多个对象的“片段”（可能是方法、属性等）组合起来，形成一个新的对象。这种组合可以是静态的（在编译时确定），也可以是动态的（在运行时确定）。</p>
+<h3 id="Mixin-在不同场景下的实现"><a href="#Mixin-在不同场景下的实现" class="headerlink" title="Mixin 在不同场景下的实现"></a>Mixin 在不同场景下的实现</h3><h4 id="1-在-JavaScript-中手动实现"><a href="#1-在-JavaScript-中手动实现" class="headerlink" title="1. 在 JavaScript 中手动实现"></a>1. 在 JavaScript 中手动实现</h4><p>在纯 JavaScript 中，你可以通过简单地复制对象的属性或方法到一个新对象中来手动实现 Mixin。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">mixin</span>(<span class="params">target, source</span>) &#123;  </span><br><span class="line">  <span class="title class_">Object</span>.<span class="title function_">keys</span>(source).<span class="title function_">forEach</span>(<span class="function"><span class="params">key</span> =&gt;</span> &#123;  </span><br><span class="line">    target[key] = source[key];  </span><br><span class="line">  &#125;);  </span><br><span class="line">  <span class="keyword">return</span> target;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">const</span> sourceObject = &#123;  </span><br><span class="line">  <span class="title function_">foo</span>(<span class="params"></span>) &#123;  </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;foo&#x27;</span>);  </span><br><span class="line">  &#125;,  </span><br><span class="line">  <span class="attr">bar</span>: <span class="string">&#x27;bar&#x27;</span>  </span><br><span class="line">&#125;;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">const</span> targetObject = &#123;  </span><br><span class="line">  <span class="attr">baz</span>: <span class="string">&#x27;baz&#x27;</span>  </span><br><span class="line">&#125;;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">const</span> mixedObject = <span class="title function_">mixin</span>(targetObject, sourceObject);  </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(mixedObject); <span class="comment">// &#123; baz: &#x27;baz&#x27;, foo: [Function: foo], bar: &#x27;bar&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-在-Vue-js-中使用-Mixins"><a href="#2-在-Vue-js-中使用-Mixins" class="headerlink" title="2. 在 Vue.js 中使用 Mixins"></a>2. 在 Vue.js 中使用 Mixins</h4><p>Vue.js 提供了一个内置的 Mixins 机制，允许你将可复用的组件选项组合在一起。一个 Mixin 对象可以包含任何组件选项，如数据、方法、生命周期钩子等。当组件使用 Mixin 时，所有的选项将被混入该组件本身的选项中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个 mixin  </span></span><br><span class="line"><span class="keyword">const</span> myMixin = &#123;  </span><br><span class="line">  <span class="title function_">created</span>(<span class="params"></span>) &#123;  </span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">hello</span>();  </span><br><span class="line">  &#125;,  </span><br><span class="line">  <span class="attr">methods</span>: &#123;  </span><br><span class="line">    <span class="title function_">hello</span>(<span class="params"></span>) &#123;  </span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hello from mixin!&#x27;</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 定义一个使用 mixin 的组件  </span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Component</span> = <span class="title class_">Vue</span>.<span class="title function_">extend</span>(&#123;  </span><br><span class="line">  <span class="attr">mixins</span>: [myMixin],  </span><br><span class="line">  <span class="title function_">created</span>(<span class="params"></span>) &#123;  </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;component created!&#x27;</span>);  </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;)  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 当这个组件被创建时，它将调用 `hello` 方法两次：  </span></span><br><span class="line"><span class="comment">// 1. 首先是 mixin 中的 `created` 钩子  </span></span><br><span class="line"><span class="comment">// 2. 然后是组件自身的 `created` 钩子</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Mixin-的优缺点"><a href="#Mixin-的优缺点" class="headerlink" title="Mixin 的优缺点"></a>Mixin 的优缺点</h3><p><strong>优点</strong>：</p>
+<ul>
+<li>提高代码复用性。</li>
+<li>减少代码冗余。</li>
+<li>易于扩展和维护。</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>滥用 Mixins 可能会导致<strong>命名冲突</strong>（如果多个 Mixins 包含同名方法或属性）。</li>
+<li>Mixins 的逻辑可能不够清晰，<strong>难以追踪和理解</strong>（特别是在大型项目中）。</li>
+<li>可能会使组件的依赖关系变得复杂。</li>
+</ul>
+<p>因此，虽然 Mixins 是一种强大的特性，但在使用时应当谨慎，确保它们不会使你的项目变得更加<strong>难以维护。</strong></p>
+<h2 id="十七-V8"><a href="#十七-V8" class="headerlink" title="十七.V8"></a>十七.V8</h2><p>V8引擎是由Google开源的一个高性能JavaScript和WebAssembly引擎，主要用于Chrome浏览器和Node.js等应用中。其工作原理和核心原理可以归纳如下：</p>
+<h3 id="一、V8引擎的主要任务"><a href="#一、V8引擎的主要任务" class="headerlink" title="一、V8引擎的主要任务"></a>一、V8引擎的主要任务</h3><p>V8引擎的主要任务是执行JavaScript代码，并且能够处理JavaScript源代码、即时编译（JIT）代码以及执行代码。</p>
+<h3 id="二、V8引擎的工作流程"><a href="#二、V8引擎的工作流程" class="headerlink" title="二、V8引擎的工作流程"></a>二、V8引擎的工作流程</h3><ol>
+<li><p>词法分析</p>
+<p> ：</p>
+<ul>
+<li>V8引擎的词法分析器将JavaScript代码分成一个个标记或词法单元（程序语法的最小单元），如变量名、关键字、运算符等。</li>
+</ul>
+</li>
+<li><p>语法分析</p>
+<p> ：</p>
+<ul>
+<li>在生成词法单元后，V8引擎使用语法分析器将这些词法单元转换为抽象语法树（AST）。AST是代码的抽象表示，它捕捉了代码的结构和关系。</li>
+</ul>
+</li>
+<li><p>字节码生成</p>
+<p> ：</p>
+<ul>
+<li>V8引擎的Ignition解释器将AST转换成字节码。字节码是一种介于机器码和高级语言代码之间的代码，它比源代码更接近机器语言，但执行效率比机器码低，占用的内存也较小。</li>
+</ul>
+</li>
+<li><p>即时编译（JIT）</p>
+<p> ：</p>
+<ul>
+<li>V8引擎使用TurboFan编译器将热点字节码（即被频繁执行的代码）编译成高效的机器码。这种编译是动态进行的，即根据代码的执行特性来优化代码。</li>
+</ul>
+</li>
+</ol>
+<h3 id="三、V8引擎的核心组件"><a href="#三、V8引擎的核心组件" class="headerlink" title="三、V8引擎的核心组件"></a>三、V8引擎的核心组件</h3><ol>
+<li><p>Ignition解释器</p>
+<p> ：</p>
+<ul>
+<li>负责将JavaScript源代码编译成字节码，并提供快速的启动和较低的内存使用。</li>
+</ul>
+</li>
+<li><p>TurboFan编译器</p>
+<p> ：</p>
+<ul>
+<li>将字节码编译成高效的机器码，并进行各种优化，如内联函数、隐藏类、去虚拟化等。</li>
+</ul>
+</li>
+<li><p>Orinoco垃圾回收器</p>
+<p> ：</p>
+<ul>
+<li>使用多种垃圾回收策略，如分代回收、标记-清除、增量标记等，以实现高效内存管理。</li>
+</ul>
+</li>
+</ol>
+<h3 id="四、V8引擎的优化机制"><a href="#四、V8引擎的优化机制" class="headerlink" title="四、V8引擎的优化机制"></a>四、V8引擎的优化机制</h3><ol>
+<li><p>热点代码优化</p>
+<p> ：</p>
+<ul>
+<li>如果一个函数被频繁调用，它会被标记为热点函数，并通过TurboFan编译器转换成优化后的机器码。</li>
+</ul>
+</li>
+<li><p>去优化（Deoptimization）</p>
+<p> ：</p>
+<ul>
+<li>如果热点函数在执行过程中类型发生了变化，就需要通过Ignition进行反优化，将机器码转回字节码，然后再次转换成机器码执行。</li>
+</ul>
+</li>
+<li><p>内存管理</p>
+<p> ：</p>
+<ul>
+<li>V8引擎将堆内存分为新生代和老生代两个区域，分别使用不同的垃圾回收策略进行回收，以提高内存使用效率。</li>
+</ul>
+</li>
+</ol>
+<h3 id="五、V8引擎的应用案例"><a href="#五、V8引擎的应用案例" class="headerlink" title="五、V8引擎的应用案例"></a>五、V8引擎的应用案例</h3><ol>
+<li><p>Chrome浏览器</p>
+<p> ：</p>
+<ul>
+<li>Chrome是第一个将V8作为JavaScript执行引擎的浏览器，由于V8的高性能，Chrome在推出时就在JavaScript执行速度上取得了显著的领先。</li>
+</ul>
+</li>
+<li><p>Node.js</p>
+<p> ：</p>
+<ul>
+<li>Node.js将V8引擎用于服务器端的JavaScript执行，使得开发者可以使用JavaScript来编写后端代码，极大地扩展了JavaScript的应用范围。</li>
+</ul>
+</li>
+</ol>
+<h3 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h3><p>V8引擎通过其高效的词法分析、语法分析、字节码生成、即时编译和垃圾回收等机制，为JavaScript的执行提供了强大的支持。其核心原理在于动态优化代码执行，提高JavaScript的执行效率，从而推动Web技术的发展。</p>
+<h2 id="十八-架构设计与工程化"><a href="#十八-架构设计与工程化" class="headerlink" title="十八.架构设计与工程化"></a>十八.架构设计与工程化</h2><h3 id="1、基础架构"><a href="#1、基础架构" class="headerlink" title="1、基础架构"></a>1、基础架构</h3><p>在一个git仓库中，放多个项目，这个仓库叫做monorepo(multirepo)</p>
+<h4 id="以vue3原码举例"><a href="#以vue3原码举例" class="headerlink" title="以vue3原码举例"></a>以vue3原码举例</h4><p>看github源码</p>
+<ul>
+<li>vue</li>
+<li>compiler-core</li>
+<li>reactivity</li>
+<li>runtime-core</li>
+</ul>
+<h3 id="monorepo设计实战"><a href="#monorepo设计实战" class="headerlink" title="monorepo设计实战"></a>monorepo设计实战</h3><ul>
+<li>统一的依赖管理</li>
+<li>版本同步</li>
+<li>模板共享</li>
+<li>统一工具链</li>
+<li>相同代码风格</li>
+<li>统一 CI&#x2F;CD</li>
+<li>增量部署</li>
+<li>一键生成依赖图</li>
+<li>分支管理</li>
+</ul>
+<h3 id="2、技术方案"><a href="#2、技术方案" class="headerlink" title="2、技术方案"></a>2、技术方案</h3><h4 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h4><ul>
+<li>vite</li>
+<li>vue-router</li>
+<li>pinia</li>
+<li>vee-validate</li>
+<li>axios</li>
+<li>vue-query</li>
+<li>scoped style</li>
+<li>element plus</li>
+<li>rollup</li>
+<li>jest</li>
+<li>playwright</li>
+<li>cypress</li>
+<li>eslibt</li>
+<li>stylelint</li>
+<li>prettier</li>
+<li>commitlint</li>
+<li>cspell</li>
+<li>husky</li>
+<li>Jenkins</li>
+<li>github actions</li>
+<li>流程引擎编辑器：react-flow</li>
+<li>3d:threejs</li>
+<li>anltr,生成编辑器</li>
+<li>低代码编排引擎：smooth-dnd</li>
+</ul>
+<h3 id="业务重难点"><a href="#业务重难点" class="headerlink" title="业务重难点"></a>业务重难点</h3><ol>
+<li><p>低代码平台中的编排引擎实现</p>
+</li>
+<li><p>低代码平台中公示编辑执行器开发</p>
+</li>
+<li><p>低代码平台流程引擎实现</p>
+</li>
+<li><p>3D可视化着色器优化</p>
+</li>
+<li><p>基于wasm+skia的渲染引擎优化</p>
+</li>
+<li><p>纹理、贴图、tile的延迟加载</p>
+</li>
+<li><p>可视区检测与加载</p>
+</li>
+<li><p>cli</p>
+</li>
+<li><p>基础库</p>
+</li>
+<li><p>可视化图表</p>
+</li>
+</ol>
+<h4 id="复杂编辑器"><a href="#复杂编辑器" class="headerlink" title="复杂编辑器"></a>复杂编辑器</h4><ul>
+<li>光标处理</li>
+<li>缓存区处理</li>
+<li>结合公式编辑器，自动提示，自动补全</li>
+</ul>
+<h4 id="3D"><a href="#3D" class="headerlink" title="3D"></a>3D</h4><ul>
+<li><p>tile、瓦片、着色器、shadder、粒子</p>
+</li>
+<li><p>svg、canvas 双引擎 echarts -&gt;svg 、canvas</p>
+</li>
+<li><p>低代码</p>
+</li>
+<li><p>数字孪生</p>
+</li>
+<li><p>团队基建</p>
+</li>
+</ul>
+<h2 id="十九-微前端"><a href="#十九-微前端" class="headerlink" title="十九.微前端"></a>十九.微前端</h2><p>1.0</p>
+<p>MPA 多页web应用 页面分开独立，早期页面组合的形式</p>
+<p>通过将功能分拆到不同页面实现，nginx做反向代理实现路由跳转</p>
+<p>2.0 通过组织化组织</p>
+<p>SPA(single page application)</p>
+<p>功能模块可拆分为子组件，页面跳转逻辑基于router（react-router、vue-router）运行时（runtime）</p>
+<p>如果想要跨应用使用子组件的话有点困难。</p>
+<p>3.0 微前端</p>
+<p>单页web应用逐渐趋于庞大（用户中心、资产中心等等融合到一个项目统一入口的话，需要事先定义一些协议）</p>
+<ul>
+<li>用户中心，vue3</li>
+<li>资产中心，react 16</li>
+<li>CRM，jQuery</li>
+<li>项目管理，Vue2</li>
+</ul>
+<p>我们就需要摸抹平一个差异，团队间的技术差异、团队时间线上的技术决策差异（时间、空间上的差异【包袱】）</p>
+<p><strong>解法</strong></p>
+<p>通过一种通用协议，将这些应用接入到一个基础应用中（微前端基座）</p>
+<p>怎么来定这个通用协议。</p>
+<p>核心概念：</p>
+<p><strong>Vue 生命周期</strong></p>
+<ul>
+<li>onMounted</li>
+<li>onUnMounted</li>
+</ul>
+<p>基座只需要关心子应用的：</p>
+<ul>
+<li>初始化，bootstrap</li>
+<li>挂载，mount</li>
+<li>卸载，unmount</li>
+</ul>
+<h2 id="二十-代理与反向代理"><a href="#二十-代理与反向代理" class="headerlink" title="二十.代理与反向代理"></a>二十.代理与反向代理</h2><p>反向代理是一种代理服务器模型，它位于客户端和后端服务器之间，扮演着中介的角色。以下是关于反向代理的详细解释：</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>反向代理服务器接收来自Internet上用户的连接请求，并将这些请求转发给内部网络上的服务器（即后端服务器）。然后，它将从内部服务器上得到的响应返回给Internet上请求连接的客户端。对于用户而言，反向代理服务器就相当于目标服务器，即用户直接访问反向代理服务器就可以获得目标服务器的资源，而无需知道目标服务器的实际地址。</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li><strong>负载均衡</strong>：通过将请求分发到多个后端服务器来平衡负载，从而减少单个服务器的负担，提高系统的可伸缩性和稳定性。</li>
+<li><strong>提高访问速度</strong>：反向代理服务器可以对经常访问的资源进行缓存，减少对后端服务器的直接访问，从而提高访问速度。</li>
+<li><strong>安全性</strong>：反向代理服务器可以作为应用层防火墙，提供对基于Web的攻击的防护，排查恶意软件，还可以为后端服务器提供加密和SSL加速，提高系统的安全性。</li>
+<li><strong>隐藏真实地址</strong>：反向代理服务器可以隐藏后端服务器的真实地址，使得外部网络用户无法直接访问后端服务器，增强了系统的安全性。</li>
+<li><strong>服务治理</strong>：通过反向代理服务器，可以监控和管理后端服务器的状态，如进行健康检查、服务降级等操作，确保系统的稳定运行。</li>
+</ol>
+<h3 id="常见应用"><a href="#常见应用" class="headerlink" title="常见应用"></a>常见应用</h3><ol>
+<li><strong>Web加速</strong>：使用反向代理作为Web服务器的前置机来降低网络和服务器的负载，提高访问效率。</li>
+<li><strong>API网关</strong>：通过反向代理实现API网关，可以实现身份验证、授权、路由等功能，提高系统的安全性和灵活性。</li>
+<li><strong>多语言&#x2F;多协议支持</strong>：通过反向代理实现多语言&#x2F;多协议支持，可以提供不同的后端服务器给不同的客户端，满足多样化的需求。</li>
+</ol>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>在Web开发中，反向代理的应用非常广泛。例如，客户端（租客）发送请求到负载均衡服务器（二房东），负载均衡服务器（二房东）再把请求转发给一台真正的服务器（房东）来执行，再把执行结果返回给客户端（租客）。在这个过程中，负载均衡服务器就扮演了反向代理的角色。</p>
+<p>综上所述，反向代理是一种重要的网络架构模式，它通过提供负载均衡、提高访问速度、增强安全性等功能，为现代网络应用提供了强有力的支持。</p>
+<h3 id="代理（Forward-Proxy）"><a href="#代理（Forward-Proxy）" class="headerlink" title="代理（Forward Proxy）"></a>代理（Forward Proxy）</h3><ol>
+<li><p>代理对象</p>
+<p> ：</p>
+<ul>
+<li>代理主要代理客户端的请求。客户端通过代理服务器访问其他服务或资源。</li>
+</ul>
+</li>
+<li><p>工作方式</p>
+<p> ：</p>
+<ul>
+<li>客户端明确知道自己正在使用代理，并需要配置代理服务器的信息（如IP地址、端口等）。</li>
+<li>代理服务器代表客户端向目标服务器发起请求，并将响应返回给客户端。</li>
+</ul>
+</li>
+<li><p>应用场景</p>
+<p> ：</p>
+<ul>
+<li>绕过网络限制：如访问被封锁的网站或资源。</li>
+<li>隐藏客户端的真实IP地址：增强隐私保护。</li>
+<li>缓存：减少对目标服务器的直接访问，提高访问速度。</li>
+</ul>
+</li>
+<li><p>保护内容</p>
+<p> ：</p>
+<ul>
+<li>代理主要保护客户端，隐藏客户端的真实身份和请求信息。</li>
+</ul>
+</li>
+</ol>
+<h3 id="反向代理（Reverse-Proxy）"><a href="#反向代理（Reverse-Proxy）" class="headerlink" title="反向代理（Reverse Proxy）"></a>反向代理（Reverse Proxy）</h3><ol>
+<li><p>代理对象</p>
+<p> ：</p>
+<ul>
+<li>反向代理主要代理服务器的响应。客户端不直接与真实服务器通信，而是通过反向代理服务器间接访问。</li>
+</ul>
+</li>
+<li><p>工作方式</p>
+<p> ：</p>
+<ul>
+<li>客户端不知道自己在与反向代理通信，只知道与一个服务器（反向代理服务器）通信。</li>
+<li>反向代理服务器接收来自客户端的请求，并根据配置将请求转发给内部网络中的真实服务器。然后，将真实服务器的响应返回给客户端。</li>
+</ul>
+</li>
+<li><p>应用场景</p>
+<p> ：</p>
+<ul>
+<li>负载均衡：将请求分发到多个后端服务器，提高系统的可伸缩性和稳定性。</li>
+<li>安全性：作为应用层防火墙，提供对基于Web的攻击的防护。</li>
+<li>隐藏真实地址：隐藏后端服务器的真实地址，增强系统的安全性。</li>
+<li>缓存：减少对后端服务器的直接访问，提高访问速度。</li>
+<li>服务治理：监控和管理后端服务器的状态，如健康检查、服务降级等。</li>
+</ul>
+</li>
+<li><p>保护内容</p>
+<p> ：</p>
+<ul>
+<li>反向代理主要保护服务器，隐藏服务器的真实地址和状态信息，防止直接受到外部攻击。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>代理（Forward Proxy）</th>
+<th>反向代理（Reverse Proxy）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>代理对象</strong></td>
+<td>客户端的请求</td>
+<td>服务器的响应</td>
+</tr>
+<tr>
+<td><strong>工作方式</strong></td>
+<td>客户端明确知道并使用代理，配置代理信息</td>
+<td>客户端不知道反向代理的存在，直接与反向代理通信</td>
+</tr>
+<tr>
+<td><strong>应用场景</strong></td>
+<td>绕过网络限制、隐藏客户端IP、缓存等</td>
+<td>负载均衡、安全性、隐藏真实地址、缓存、服务治理等</td>
+</tr>
+<tr>
+<td><strong>保护内容</strong></td>
+<td>客户端</td>
+<td>服务器</td>
+</tr>
+</tbody></table>
+<p>综上所述，反向代理和代理在代理对象、工作方式、应用场景以及保护的内容等方面存在显著差异。选择使用哪种代理方式，需要根据具体的应用场景和需求来决定。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/09/21/%E7%AE%97%E6%B3%95/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/09/21/webpack/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

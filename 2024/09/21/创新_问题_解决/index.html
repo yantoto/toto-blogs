@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>创新——问题——解决 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                创新——问题——解决
+            
+            
+        </div>
+        <span class="post-date">
+            Sep 21, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一-问题：图片总是无法得到特定长和宽"><a href="#一-问题：图片总是无法得到特定长和宽" class="headerlink" title="一.问题：图片总是无法得到特定长和宽"></a>一.问题：图片总是无法得到特定长和宽</h2><p>Q:图片利用时直接定义长和宽会导致图片畸形，但只定义单一长或宽又无法得到想要的大小。</p>
+<p>A:使用<strong>object-fit</strong>属性。在父元素中设置想要的长和宽，子元素中100%覆盖，在定义该属性后，图片会自动裁剪，得到理想图片。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.left_touxiang &#123;</span><br><span class="line">            width: 80px;</span><br><span class="line">            height: 80px;</span><br><span class="line">        &#125;</span><br><span class="line">.left_touxiang&gt;img &#123;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 100%;</span><br><span class="line">            object-fit: cover;</span><br><span class="line">            border-radius: 50%;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h2 id="二-加引号对变量有什么作用？有什么区别？"><a href="#二-加引号对变量有什么作用？有什么区别？" class="headerlink" title="二.加引号对变量有什么作用？有什么区别？"></a>二.加引号对变量有什么作用？有什么区别？</h2><p>Q:props:  [name,age]  和  [‘name’,’age’]有什么不同？</p>
+<p>A:（个人理解）加引号，就是代表里面的是<strong>字符串</strong>。而不加引号，则代表变量。</p>
+<p>​			第一个意思是传递两个变量进来，<code>name</code> 和 <code>age</code> 被解析为 JavaScript 变量。这意味着在使用这个组件时，需要将对应的属性值作为变量传递进去，而不是使用字符串。传递数据的一方则应该[Demo :name&#x3D;‘uesrname’ :age&#x3D;‘userage’],: 就是v-bind,这允许我们将变量的值作为属性值传递给组件。</p>
+<p>​		第二个则是传递两个字符串进来，可以使用传统方法[Demo name&#x3D;‘小宋’ age&#x3D;‘18’]。当然也可以使用： ，起作用是传递表达式，可以对引号内的变量做处理再传递参数。如[Demo name&#x3D;‘小宋’ :age&#x3D;‘18+1’]传递的就是19的Number型，而不是字符串类型了。</p>
+<p>在 Vue.js 中，你可以使用两种方式给组件传递属性值：</p>
+<ol>
+<li>直接传递固定值：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;my-component name=&quot;John Doe&quot; age=&quot;30&quot;&gt;&lt;/my-component&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>使用属性绑定语法 <code>:</code> 将变量的值作为属性值传递：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;my-component :name=&quot;username&quot; :age=&quot;userAge&quot;&gt;&lt;/my-component&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在第一种情况下，我们直接将固定字符串值作为属性值传递给了组件。</p>
+<p>而在第二种情况下，我们使用了属性绑定语法 <code>:</code>，这允许我们将变量的值作为属性值传递给组件。例如，<code>:name=&quot;username&quot;</code> 将变量 <code>username</code> 的值作为 <code>name</code> 属性的值传递给组件。</p>
+<p>总结起来，你可以根据需要选择直接传递固定值或者使用属性绑定语法将变量的值作为属性值传递给组件。这取决于你想要达到的效果。</p>
+<p>此外，对象的属性值是变量名才能简写。</p>
+<h2 id="三-防抖与节流的区别是什么？"><a href="#三-防抖与节流的区别是什么？" class="headerlink" title="三.防抖与节流的区别是什么？"></a>三.防抖与节流的区别是什么？</h2><p>防抖：操作很频繁，但只执行最后一次。【回城】</p>
+<p>节流：操作很频繁，但会把多次操作转换为少量操作（规定在时间段内只能执行一次）【技能cd】</p>
+<h2 id="四-写vue项目的顺序是什么？"><a href="#四-写vue项目的顺序是什么？" class="headerlink" title="四.写vue项目的顺序是什么？"></a>四.写vue项目的顺序是什么？</h2><p>写完静态数据，发请求（就得写api），写完api之后就写仓库三连环，仓库存储数据后，组件捞数据，捞完之后展示。（VUE项目开发p42有大概步骤）</p>
+<h4 id="1-api里创建接口并暴露（主要是让仓库知道）"><a href="#1-api里创建接口并暴露（主要是让仓库知道）" class="headerlink" title="1.api里创建接口并暴露（主要是让仓库知道）"></a>1.api里创建接口并暴露（主要是让仓库知道）</h4><h4 id="2-三连环（req…此类函数是在api里配置）"><a href="#2-三连环（req…此类函数是在api里配置）" class="headerlink" title="2.三连环（req…此类函数是在api里配置）"></a>2.三连环（req…此类函数是在api里配置）</h4><h4 id="3-把已有数据合并为对象（方便数据传递）"><a href="#3-把已有数据合并为对象（方便数据传递）" class="headerlink" title="3.把已有数据合并为对象（方便数据传递）"></a>3.把已有数据合并为对象（方便数据传递）</h4><h4 id="4-组件中发请求"><a href="#4-组件中发请求" class="headerlink" title="4.组件中发请求"></a>4.组件中发请求</h4><p><img src="C:\Users\Lenovo\Desktop\整合笔记\问题发现与改正与创新\组件中发请求4.png" alt="组件中发请求3"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/09/21/%E7%AE%97%E6%B3%95/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

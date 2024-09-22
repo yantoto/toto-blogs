@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>算法 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                算法
+            
+            
+        </div>
+        <span class="post-date">
+            Sep 21, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="一-数组类"><a href="#一-数组类" class="headerlink" title="一.数组类"></a>一.数组类</h1><h2 id="1-数组包含关系的函数"><a href="#1-数组包含关系的函数" class="headerlink" title="1.数组包含关系的函数"></a>1.数组包含关系的函数</h2><p>1)includes()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let f=[&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;];</span><br><span class="line">f.includes(&quot;a&quot;)//true</span><br></pre></td></tr></table></figure>
+
+<p>2)indexOf()    返回索引值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let f=[&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;];</span><br><span class="line">f.indexOf(&#x27;b&#x27;);//1</span><br><span class="line">console.log(f.indexOf(&#x27;b&#x27;)!==-1)//true</span><br></pre></td></tr></table></figure>
+
+<p>3）find() 类似于some,every;</p>
+<p>找到结果就会定义，未找到则未定义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let f=[&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;];</span><br><span class="line">let reslut=f.find(item=&gt;&#123;</span><br><span class="line">	item===&#x27;b&#x27;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(result!==undefined)//true</span><br></pre></td></tr></table></figure>
+
+<p>4）some()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let f=[&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;];</span><br><span class="line">console.log(f.some(item=&gt;item==&#x27;b&#x27;))</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="二-辨认数据类型的方法"><a href="#二-辨认数据类型的方法" class="headerlink" title="二.辨认数据类型的方法"></a>二.辨认数据类型的方法</h1><p><strong>在实际应用中，你可以根据具体情况选择最适合的方法来检测数据类型。对于大多数基本需求，<code>typeof</code>和<code>Array.isArray()</code>应该就足够了。</strong></p>
+<p>1.typeof（）</p>
+<p>最基本也是最常用。他可以返回几乎所有类型，undefinded function object symbol string boolean bigint 等等；<strong>但他无法区分array和object</strong>（都会返回object);所以要<strong>分清数组和对象，一般使用Array.isArray(obj)—–返回true&#x2F;false来判断</strong>。</p>
+<p>2.instanceOf()</p>
+<p>判断某一属性是否在<strong>原型链上</strong>。</p>
+<p>3.Array.isArray();</p>
+<p>返回true&#x2F;false;判断该目标<strong>是否为数组。</strong></p>
+<p>4.Object.prototype.toString.call();</p>
+<p>于获取一个对象的内部<code>[[Class]]</code>属性，该属性通常表示了对象的类型。由于 <code>Object.prototype.toString</code> 是一个稳定且不会被覆盖的方法，因此它提供了一种可靠的方式来检测对象的类型，包括那些被包装成对象的基本数据类型（如数字、字符串）以及更复杂的对象（如数组、函数、日期等）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">console.log(Object.prototype.toString.call(123)); // &quot;[object Number]&quot;  </span><br><span class="line">console.log(Object.prototype.toString.call(&#x27;abc&#x27;)); // &quot;[object String]&quot;  </span><br><span class="line">console.log(Object.prototype.toString.call(true)); // &quot;[object Boolean]&quot;  </span><br><span class="line">console.log(Object.prototype.toString.call(undefined)); // &quot;[object Undefined]&quot;  </span><br><span class="line">console.log(Object.prototype.toString.call(null)); // &quot;[object Null]&quot;  </span><br><span class="line">console.log(Object.prototype.toString.call(Symbol(&#x27;id&#x27;))); // &quot;[object Symbol]&quot;  </span><br><span class="line">console.log(Object.prototype.toString.call([])); // &quot;[object Array]&quot;  </span><br><span class="line">console.log(Object.prototype.toString.call(&#123;&#125;)); // &quot;[object Object]&quot;  </span><br><span class="line">console.log(Object.prototype.toString.call(function() &#123;&#125;)); // &quot;[object Function]&quot;  </span><br><span class="line">console.log(Object.prototype.toString.call(new Date())); // &quot;[object Date]&quot;  </span><br><span class="line">console.log(Object.prototype.toString.call(/regex/)); // &quot;[object RegExp]&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="三-交换数组位置——不占用额外空间"><a href="#三-交换数组位置——不占用额外空间" class="headerlink" title="三.交换数组位置——不占用额外空间"></a>三.交换数组位置——不占用额外空间</h1><p>利用<strong>解构</strong>，可以实现两个数据的交换。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let a = 1;  </span><br><span class="line">let b = 2;  </span><br><span class="line">  </span><br><span class="line">[a, b] = [b, a];  </span><br><span class="line">  </span><br><span class="line">console.log(a); // 输出 2  </span><br><span class="line">console.log(b); // 输出 1</span><br></pre></td></tr></table></figure>
+
+<p>按照这种思想，我们就可以实现数组中两数据的交换。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for (let i = 0; i &lt; Math.floor(n / 2); i++) &#123;</span><br><span class="line">        for (let j = 0; j &lt; n; j++) &#123;</span><br><span class="line">            [matrix[i][j], matrix[n - i - 1][j]] = [matrix[n - i - 1][j], matrix[i][j]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="四-循环条件里面谨慎写两个if"><a href="#四-循环条件里面谨慎写两个if" class="headerlink" title="四.循环条件里面谨慎写两个if!!!"></a>四.循环条件里面谨慎写两个if!!!</h1><p>举个例子a.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">while(i&lt;n&amp;&amp;j&gt;=0)&#123;</span><br><span class="line">    if(matrix[i][j]==target)</span><br><span class="line">    &#123;</span><br><span class="line">    return true;</span><br><span class="line">    &#125;</span><br><span class="line">    if(matrix[i][j]&lt;target)</span><br><span class="line">    &#123;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(matrix[i][j]&gt;target)</span><br><span class="line">    &#123;</span><br><span class="line">        j--;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>和b.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">while(i&lt;n&amp;&amp;j&gt;=0)&#123;</span><br><span class="line">    if(matrix[i][j]==target)</span><br><span class="line">    &#123;</span><br><span class="line">    return true;</span><br><span class="line">    &#125;</span><br><span class="line">    if(matrix[i][j]&lt;target)</span><br><span class="line">    &#123;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    if(matrix[i][j]&gt;target)</span><br><span class="line">    &#123;</span><br><span class="line">        j--;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完全就是两个东西！！！！！！b会导致再一次循环里即i++有j–，不满足一次一行或者一次一列的情况！！！！！</p>
+<h1 id="五-哈希表"><a href="#五-哈希表" class="headerlink" title="五.哈希表"></a>五.哈希表</h1><h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p><strong>标记重复数据</strong>一般用哈希表，目前刷的题链表用它比较多。</p>
+<p><code>Set</code>对象允许你存储任何类型的唯一值，无论是原始值或者是对象引用。每个值在<code>Set</code>中都只会出现一次。</p>
+<p>用法：let set &#x3D;new Set();</p>
+<p>常用：size()    delete()  add()  has()  clear()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">// 创建一个空的Set  </span><br><span class="line">let mySet = new Set();  </span><br><span class="line">  </span><br><span class="line">// 使用数组初始化Set  </span><br><span class="line">let mySetFromArray = new Set([1, 2, 3, 4, 5, 5, 5, 6]);  </span><br><span class="line">console.log(mySetFromArray); // Set(6) &#123;1, 2, 3, 4, 5, 6&#125;  </span><br><span class="line">  </span><br><span class="line">// 使用字符串数组  </span><br><span class="line">let mySetStrings = new Set([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;b&#x27;]);  </span><br><span class="line">console.log(mySetStrings); // Set(3) &#123;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let mySet = new Set();  </span><br><span class="line">mySet.add(1).add(2).add(2); // Set中的值是唯一的  </span><br><span class="line">console.log(mySet); // Set(2) &#123;1, 2&#125;</span><br><span class="line"></span><br><span class="line">let mySet = new Set([1, 2, 3]);  </span><br><span class="line">mySet.delete(2);  </span><br><span class="line">console.log(mySet); // Set(2) &#123;1, 3&#125;  </span><br><span class="line">  </span><br><span class="line">console.log(mySet.delete(4)); // false，因为4不在Set中</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let mySet = new Set([1, 2, 3]);  </span><br><span class="line">console.log(mySet.has(1)); // true  </span><br><span class="line">console.log(mySet.has(4)); // false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let mySet = new Set([1, 2, 3]);  </span><br><span class="line">  </span><br><span class="line">for (let elem of mySet) &#123;  </span><br><span class="line">  console.log(elem);  </span><br><span class="line">&#125;  </span><br><span class="line">// 输出:  </span><br><span class="line">// 1  </span><br><span class="line">// 2  </span><br><span class="line">// 3</span><br><span class="line"></span><br><span class="line">let mySet = new Set([1, 2, 3]);  </span><br><span class="line">mySet.clear();  </span><br><span class="line">console.log(mySet.size); // 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p><code>Map</code> 对象<strong>保存键值对</strong>，并且<strong>能够记住键的原始插入顺序</strong>。任何值（对象或者原始值）都可以作为一个键或一个值。</p>
+<p>与普通的对象（Object）不同，<code>Map</code> 的键可以是任意类型，包括函数、对象或任何原始类型（数字、字符串及布尔值）。<code>Map</code> 记住了键的原始插入顺序，而普通的 <code>Object</code> 则不保证顺序。</p>
+<p>函数跟set很像，但要加入键。</p>
+<p>初始化：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let map=new Map();</span><br><span class="line"></span><br><span class="line">let map=new Map([</span><br><span class="line">	[&#x27;key1&#x27;,&#x27;value1&#x27;],</span><br><span class="line">	[&#x27;key2&#x27;,&#x27;value2&#x27;]</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line">let obj=&#123;key1:&#x27;value1&#x27;,key2:&#x27;value2&#x27;&#125;</span><br><span class="line">let map=new Map(obj.entries(obj));</span><br></pre></td></tr></table></figure>
+
+<p>添加元素：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">et myMap = new Map();  </span><br><span class="line">myMap.set(&#x27;key1&#x27;, &#x27;value1&#x27;);  </span><br><span class="line">myMap.set(1, &#x27;numberValue&#x27;);  </span><br><span class="line">myMap.set(true, &#x27;booleanValue&#x27;);  </span><br><span class="line">  </span><br><span class="line">console.log(myMap); // Map(3) &#123;&quot;key1&quot; =&gt; &quot;value1&quot;, 1 =&gt; &quot;numberValue&quot;, true =&gt; &quot;booleanValue&quot;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>删除元素：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">et myMap = new Map();  </span><br><span class="line">myMap.set(&#x27;key1&#x27;, &#x27;value1&#x27;);  </span><br><span class="line">myMap.delete(&#x27;key1&#x27;);  </span><br><span class="line">  </span><br><span class="line">console.log(myMap.has(&#x27;key1&#x27;)); // false  </span><br><span class="line">console.log(myMap.size); // 0</span><br></pre></td></tr></table></figure>
+
+<p>检查是否存在：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let myMap = new Map();  </span><br><span class="line">myMap.set(&#x27;key1&#x27;, &#x27;value1&#x27;);  </span><br><span class="line">  </span><br><span class="line">console.log(myMap.has(&#x27;key1&#x27;)); // true  </span><br><span class="line">console.log(myMap.has(&#x27;key2&#x27;)); // false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>遍历：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let myMap = new Map([  </span><br><span class="line">  [&#x27;key1&#x27;, &#x27;value1&#x27;],  </span><br><span class="line">  [&#x27;key2&#x27;, &#x27;value2&#x27;],  </span><br><span class="line">]);  </span><br><span class="line">  </span><br><span class="line">// 遍历键值对  </span><br><span class="line">for (let [key, value] of myMap.entries()) &#123;  </span><br><span class="line">  console.log(key + &#x27;: &#x27; + value);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">// 遍历键  </span><br><span class="line">for (let key of myMap.keys()) &#123;  </span><br><span class="line">  console.log(key);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">// 遍历值  </span><br><span class="line">for (let value of myMap.values()) &#123;  </span><br><span class="line">  console.log(value);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>clear()</code>：移除 <code>Map</code> 对象的所有键值对。</li>
+<li><code>get()</code>：返回指定键的值，如果键不存在则返回 <code>undefined</code></li>
+</ul>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/09/21/%E5%88%9B%E6%96%B0_%E9%97%AE%E9%A2%98_%E8%A7%A3%E5%86%B3/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/09/21/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

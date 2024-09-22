@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>git | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                git
+            
+            
+        </div>
+        <span class="post-date">
+            Sep 21, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h3 id="一-创建仓库"><a href="#一-创建仓库" class="headerlink" title="一.创建仓库"></a>一.创建仓库</h3><ul>
+<li><p>git init  本地创建</p>
+</li>
+<li><p>git clone 远程服务器上克隆已存在的仓库</p>
+</li>
+</ul>
+<h4 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h4><p>直接在当前目录下创建新仓库</p>
+<h4 id="git-init-xx"><a href="#git-init-xx" class="headerlink" title="git init  xx"></a>git init  xx</h4><p>创建xx文件夹，并在xx文件夹下创建仓库</p>
+<h3 id="二-git的三个区域"><a href="#二-git的三个区域" class="headerlink" title="二.git的三个区域"></a>二.git的三个区域</h3><p>工作区、暂存区、本地仓库</p>
+<p><img src="/../images/image-20240921223201190.png" alt="image-20240921223201190"></p>
+<h3 id="三-文件状态和提交"><a href="#三-文件状态和提交" class="headerlink" title="三.文件状态和提交"></a>三.文件状态和提交</h3><ul>
+<li><p>git status 查看当前文件状态，有哪些文件</p>
+</li>
+<li><p>git add . 将当前目录所有文件提交到暂存区，暂存</p>
+</li>
+<li><p>git rm 可以把暂存区的文件释放</p>
+</li>
+<li><p>git commit  –m “第一次提交” 把暂存区的文件提交到本地仓库，称为一次提交</p>
+</li>
+<li><p>git log 查看仓库提交记录(可以查看版本id)</p>
+</li>
+<li><p>git add . 和git commit -m [描述]可写为：</p>
+</li>
+<li><p><strong>git commit -am [描述]</strong></p>
+</li>
+</ul>
+<h3 id="四-回退版本"><a href="#四-回退版本" class="headerlink" title="四.回退版本"></a>四.回退版本</h3><h4 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h4><p><img src="/../images/image-20240921223218151.png" alt="image-20240921223218151"></p>
+<p>git reset – soft [版本id]</p>
+<p>谨慎使用hard，如果发生了<strong>误删</strong>，可以使用：</p>
+<p>git reflog 查看操作的历史记录，找到误操作的版本号，使用git reset [该版本号]返回之前的版本（这里理解为套娃）。</p>
+<p>注意，只有提交到仓库的数据是可以回溯的，本次修改还没提交的内容会丢失。</p>
+<h3 id="五-查看差异"><a href="#五-查看差异" class="headerlink" title="五.查看差异"></a>五.查看差异</h3><h4 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h4><p>查看工作区、暂存区和本地仓库之间的差异</p>
+<p><img src="/../images/image-20240921223231424.png" alt="image-20240921223231424"></p>
+<ul>
+<li><p>git diff 默认显示工作区和暂存区的差异</p>
+</li>
+<li><p>git diff HEAD 显示工作区和版本库的差异</p>
+</li>
+<li><p>git diff –cache 显示暂存区和版本库的差异</p>
+</li>
+<li><p>git diff [版本一] [版本二]显示两版本的差异</p>
+</li>
+<li><p>git diff HEAD~ HEAD 显示上一个版本和当前版本的差异</p>
+</li>
+<li><p>git diff HEAD~3 HEAD 显示上第三个版本和当前版本的差异</p>
+</li>
+<li><p>git diff HEAD~3 HEAD file3.txt显示上第三个版本和当前版本的 file3.txt差异</p>
+</li>
+</ul>
+<h3 id="六-删除文件"><a href="#六-删除文件" class="headerlink" title="六.删除文件"></a>六.删除文件</h3><p>要删除版本库中的文件，有两种方法。</p>
+<p>一：在工作区删除该文件，再提交到暂存区吗，再提交到仓库</p>
+<p>二：使用git rm，此时工作区和暂存区都删除了该文件，再commit 提交到仓库。</p>
+<h4 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h4><ul>
+<li><p>git rm file2.txt</p>
+</li>
+<li><p>git commit -m “删除了file2.txt”</p>
+</li>
+</ul>
+<h3 id="七-需要忽略的文件"><a href="#七-需要忽略的文件" class="headerlink" title="七.需要忽略的文件"></a>七.需要忽略的文件</h3><h3 id=""><a href="#" class="headerlink" title=""></a><img src="/../images/image-20240921223248088.png" alt="image-20240921223248088"></h3><p>把需要的忽略的文件名放在 .gitignore</p>
+<p>echo access.log &gt; .gitignore</p>
+<h3 id="八-远程仓库"><a href="#八-远程仓库" class="headerlink" title="八.远程仓库"></a>八.远程仓库</h3><ul>
+<li><p>HTTPS:push到远程仓库时需要验证用户名和密码。</p>
+</li>
+<li><p>SSH:不需要用户名和密码，但需要配置公钥。（推荐）</p>
+</li>
+</ul>
+<h4 id="配置秘钥："><a href="#配置秘钥：" class="headerlink" title="配置秘钥："></a>配置秘钥：</h4><ol>
+<li>回到根目录</li>
+<li>进入.ssh文件（找不到就自己创建）</li>
+<li>输入ssh-key generate 生成秘钥</li>
+<li>回车，会自动生成两个文件，没有后缀的是私钥文件 以pub结尾的是公钥文件</li>
+<li>打开公钥文件，复制内容，打开github,新建公钥，粘贴内容</li>
+</ol>
+<h4 id="本地仓库和本地仓库的联系："><a href="#本地仓库和本地仓库的联系：" class="headerlink" title="本地仓库和本地仓库的联系："></a>本地仓库和本地仓库的联系：</h4><p><img src="/../images/image-20240921223259236.png" alt="image-20240921223259236"></p>
+<ul>
+<li><p>push origin origin main:main 将远程main分支和本地main分支关联起来</p>
+</li>
+<li><p>git pull &lt;远程仓库名&gt; &lt;远程分支名&gt;：&lt;本地分支名&gt;</p>
+</li>
+</ul>
+<p><img src="/../images/image-20240921223308549.png" alt="image-20240921223308549"></p>
+<h3 id="九-文件状态"><a href="#九-文件状态" class="headerlink" title="九.文件状态"></a>九.文件状态</h3><p><img src="/../images/image-20240921223319231.png" alt="image-20240921223319231"></p>
+<h3 id="十-创建分支"><a href="#十-创建分支" class="headerlink" title="十.创建分支"></a>十.创建分支</h3><ul>
+<li>git branch dev 创建dev分支但并未切换</li>
+<li>git switch dev 切换到dev分支</li>
+</ul>
+<p>这俩等同于</p>
+<ul>
+<li>git checkout -b dev</li>
+</ul>
+<h4 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h4><h5 id="1-merge-公共"><a href="#1-merge-公共" class="headerlink" title="1.merge(公共)"></a>1.merge(公共)</h5><ul>
+<li><p>git switch main切换到目标分值</p>
+</li>
+<li><p>git merge dev 将dev分支合并到当前分支main中</p>
+</li>
+</ul>
+<h5 id="2-rebase（个人）"><a href="#2-rebase（个人）" class="headerlink" title="2.rebase（个人）"></a>2.rebase（个人）</h5><p>在任意分支都可以进行合并，但合并顺序不同，找到分叉点，并把当前分支后面切换到要合并的分支后面</p>
+<ul>
+<li>git switch dev</li>
+<li>git rebase main</li>
+</ul>
+<p><img src="/../images/image-20240921223333348.png" alt="image-20240921223333348"></p>
+<h4 id="查看分支图"><a href="#查看分支图" class="headerlink" title="查看分支图"></a>查看分支图</h4><ul>
+<li>git log –graph –oneline –decorate –all</li>
+</ul>
+<h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4><ul>
+<li>git branch -d dev</li>
+</ul>
+<h3 id="十一-合并冲突"><a href="#十一-合并冲突" class="headerlink" title="十一.合并冲突"></a>十一.合并冲突</h3><ul>
+<li>git diff 查看差异</li>
+<li>手动解决冲突</li>
+<li>git add .</li>
+<li>git commit -m [描述]</li>
+</ul>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/09/21/javascript/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/09/21/es6/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
