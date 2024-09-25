@@ -199,6 +199,12 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let num =&#x27;1&#x27;+0</span><br><span class="line">console.log(typeof num)//string</span><br></pre></td></tr></table></figure>
 
+<h5 id="基础数据类型转换为对象："><a href="#基础数据类型转换为对象：" class="headerlink" title="基础数据类型转换为对象："></a>基础数据类型转换为对象：</h5><p>当调用基础属性类型的属性和方法时，js内部会隐式的把基础数据类型转换为对象，这样就可以调用对象的属性和方法了。如string.length,string.split()</p>
+<p><strong>&#x3D;&#x3D;比较时：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">true==1 //将true转换</span><br></pre></td></tr></table></figure>
+
+
+
 <h4 id="显示转换"><a href="#显示转换" class="headerlink" title="显示转换"></a>显示转换</h4><ol>
 <li>Number()</li>
 <li>parseInt() 字符串转化为数字（只取前面的数）</li>
@@ -644,6 +650,302 @@
 <p>量词：表示重复。</p>
 <p><img src="/../images/image-20240922161140404.png" alt="image-20240922161140404"></p>
 <p>字符类：如简化\d表示0~9。</p>
+<p><img src="/../images/image-20240922165534263.png" alt="image-20240922165534263"></p>
+<h4 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h4><p>修饰符约束正则执行的某些细节行为，如是否区分大小写，是否支持多行匹配等。</p>
+<p><img src="/../images/image-20240922165902099.png" alt="image-20240922165902099"></p>
+<h2 id="（三）JS进阶"><a href="#（三）JS进阶" class="headerlink" title="（三）JS进阶"></a>（三）JS进阶</h2><h4 id="一-作用域"><a href="#一-作用域" class="headerlink" title="一.作用域"></a>一.作用域</h4><p>作用域规定了变量能够访问的范围。</p>
+<h5 id="局部作用域"><a href="#局部作用域" class="headerlink" title="局部作用域"></a>局部作用域</h5><ul>
+<li>函数作用域</li>
+<li>块级作用域</li>
+</ul>
+<h6 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h6><p>函数内部。</p>
+<h6 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h6><ol>
+<li><strong>let和const</strong>声明的常量<strong>会产生块级作用域</strong>。</li>
+<li><strong>var</strong>声明的常量<strong>不会</strong>产生。</li>
+<li>不同代码块之间的常量无法互相访问。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for(var i=0;i&lt;=3;i++)&#123;&#125;</span><br><span class="line">console.log(i)//4</span><br><span class="line">//这里其实就是忽略块了，直接提升到上一级（即	全局）</span><br><span class="line"></span><br><span class="line">for(let i=0;i&lt;=3;i++)&#123;&#125;</span><br><span class="line">console.log(i)//undefined</span><br></pre></td></tr></table></figure>
+
+<h5 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h5><script>标签和js文件的最外部一层，其他作用域都可以访问全局作用域。
+
+1. 为window对象动态添加的属性默认也是全局的，但不推荐！！
+2. 函数中没有声明关键字的变量也是全局的，但也不推荐！！
+3. 少使用声明的全局变量，防止全局变量污染
+
+##### 作用域链
+
+**本质**就是底层的**变量查找机制**。
+
+过程：优先查找最近的，若当前作用域没有，依次向上一级作用域查找。【理解为冒泡】
+
+#### 二.垃圾回收机制
+
+![image-20240922173151774](../images/image-20240922173151774.png)
+
+##### 算法说明
+
+![image-20240922173418020](../images/image-20240922173418020.png)
+
+###### 引用计数法
+
+若引用次数为0，那么该数据就是不再使用的，浏览器会进行回收。
+
+基本不使用了。
+
+使用方法就是把变量赋值为null，使指向数据的数量减少。
+
+![image-20240922173446278](../images/image-20240922173446278.png)
+
+缺陷
+
+![image-20240922173710749](../images/image-20240922173710749.png)
+
+###### 标记计数法
+
+改善：将不再使用的对象定义为**无法到达的对象**。
+
+过程：
+
+1. 从根部（js中的全局对象）出发，扫描能够到达的对象。
+2. 无法从根部到达的对象被标记为不再使用，稍后进行回收。
+
+#### 三.闭包
+
+含义：**闭包=内层函数+外层函数的变量**
+
+即内层函数利用了外层函数的变量。
+
+eg:
+
+![image-20240923160754078](../images/image-20240923160754078.png)
+
+**常用格式**：
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	const outer=function()&#123;</span><br><span class="line">		let a=10;</span><br><span class="line">		function fn()&#123;</span><br><span class="line">			console.log(a)</span><br><span class="line">		&#125;</span><br><span class="line">		return fn //封装思想，方便他人调用</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	outer()() // outer()===fn===funciton fn()&#123;&#125;</span><br><span class="line">	//涨芝士了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//多打！！！！！！！！</span><br><span class="line">const outer=function()&#123;</span><br><span class="line">	let a=10;</span><br><span class="line">	function fn()&#123;</span><br><span class="line">		console.log(a)</span><br><span class="line">	&#125;</span><br><span class="line">	return fn</span><br><span class="line">&#125;</span><br><span class="line">outer()();</span><br></pre></td></tr></table></figure>
+
+函数结束后，局部变量会销毁，正常来说就不能再访问，但是js开了洞，在返回的函数里面保存了局部变量的副本，这个特性叫做闭包。
+
+思考：如果闭包的作用是封装工具为其他人使用，那么直接定义一个函数传参数进去不就好了？为什么多此一举函数里面套函数呢？可见闭包的关键作用不在于此。所以：
+
+应用：**实现数据的私有**。
+
+![image-20240923172130454](../images/image-20240923172130454.png)  
+
+缺点：**内存泄露**。
+
+**为什么**会内存泄漏？因为全局作用域获取了闭包外层函数（outer）,闭包外层函数的返回值又是内部函数（fn）,fn 引用了外部变量，这些指向关系会让函数内部的变量不会销毁，因此只要页面不关闭（全局变量的回收条件是会话结束），顺着指向关系局部变量就不会回收，有可能导致内存泄漏。
+
+#### 四.变量提升
+
+仅存在于var未声明的情况，不是好事。 
+
+运行机制：在js代码执行前，会扫描所有var关键字声明的变量，并把它**提升到当前作用域的最前面**。（只提升声明，不提升赋值）
+
+#### 五.函数进阶
+
+##### 函数提升
+
+跟var类似，会把所有**函数声明提升到当前作用域的最前面**，只提升变量声明，不提升函数的调用。
+
+若使用函数表达式，则不会出现这种情况，推荐。
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var fun =funciton()&#123;</span><br><span class="line">	console.log(&quot;&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//其实就是</span><br><span class="line">var fun;</span><br><span class="line">fun() //报错，因为不知道是函数</span><br><span class="line">fun=function()&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+##### 函数参数
+
+- 动态参数
+- 剩余参数
+
+**动态参数**
+
+**每个函数**里面都有一个**arguments属性**，本质是**伪数组**,用于**存放所有参数**。
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let fn=function()&#123;</span><br><span class="line">	//伪数组不继承数组的方法！！不能直接用！！</span><br><span class="line">	// 使用Array.from  </span><br><span class="line">	for (let value of Array.from(args)) 	&#123;  </span><br><span class="line">	  console.log(value);  </span><br><span class="line">	&#125;  </span><br><span class="line">  </span><br><span class="line">	// 使用扩展运算符  </span><br><span class="line">	for (let value of [...args]) &#123;  </span><br><span class="line">	  console.log(value);  </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn(1,2,3)</span><br></pre></td></tr></table></figure>
+
+**剩余参数**
+
+位于参数最末端，可以**取剩余的参数**，且是**真数组**。**推荐**
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let fn=function(a,...arr)&#123;</span><br><span class="line">	for(let ele of arr)&#123;</span><br><span class="line">		console.log(ele)//依次打印数组元素</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">fn(1,2,3)</span><br></pre></td></tr></table></figure>
+
+
+
+##### 展开运算符
+
+…
+
+**写在函数里的是剩余参数，写在其他位置的是展开运算符。**
+
+补充：**不会修改原数组**。
+
+常用情况：
+
+1. 传参时将数组转换为普通类型变量；
+2. 合并数组；
+3. 将数组拆分，如将后端数据（加入都需要）直接放入data中。
+
+
+
+##### 箭头函数
+
+适用于那些**本来需要匿名函数**的地方。
+
+语法：
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const fn =()=&gt;&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">const fn = (a,b) =&gt;&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">const fn = a =&gt;&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">const fn = a =&gt;console.log(a)</span><br><span class="line">const fn = a =&gt; a //return a</span><br><span class="line"></span><br><span class="line">//若要返回一个对象，为避免和块冲突，要包裹一个括号</span><br><span class="line">const fn = name=&gt;(&#123;uname:name&#125;)</span><br><span class="line">fn(name)</span><br></pre></td></tr></table></figure>
+
+注意：
+
+1. **箭头函数没有arguments参数，但是有剩余参数…args**。
+2. 箭头函数不会创建this,他**只会从自己的作用域链的上一层沿用this**。
+
+又是一些很烦的东西：
+
+- **函数作为方法被调用时，函数作用域不起作用**！！！！
+- 对象内部的{}只是一种语法，没有作用域！！跟if和for
+
+若调用对象里的**普通函数**，那么**谁调用，this就指向谁**；
+
+
+
+函数作用域主要关注的是函数定义时的作用域链，它决定了函数内部如何访问外部变量。**但是**，当函数作为对象的方法被调用时，`this`的值并不是由函数作用域决定的，而**是由调用该函数的方式决定的。**
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">//eg1</span><br><span class="line">const fn=()=&gt;&#123;</span><br><span class="line">	console.log(this)</span><br><span class="line">&#125;</span><br><span class="line">fn()//window</span><br><span class="line"></span><br><span class="line">//因为作用域内没有创建this,所以他会往上一层查找，这里就是window</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//eg2</span><br><span class="line">const obj=&#123;</span><br><span class="line">	sayHi:function()&#123;</span><br><span class="line">		console.log(this)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.sayHi()//obj</span><br><span class="line">//首先，函数作为方法被调用时，函数作用域不起作用,所以sayHi内部是没有this的，谁调用它，this就指向谁</span><br><span class="line"></span><br><span class="line">//eg3</span><br><span class="line">const obj=&#123;</span><br><span class="line">	sayHi:()=&gt;&#123;</span><br><span class="line">		console.log(this)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.sayHi()//window</span><br><span class="line">//由于sayHi是一个箭头函数，它不会捕获到obj作为this的上下文。相反，它会捕获到定义时所在的上下文，这通常是在全局作用域中</span><br></pre></td></tr></table></figure>
+
+
+
+#### 六.解构赋值
+
+##### 数组解构 
+
+将数据快速批量的赋值给变量。
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr=[1,2]</span><br><span class="line">const [max,min=0]=arr</span><br></pre></td></tr></table></figure>
+
+应用：
+
+1. 赋值
+2. **交换变量**
+3. 多维数组解构
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let a=1</span><br><span class="line">let b=2;//注意数组解构一定要加分号！</span><br><span class="line">[b,a]=[a,b]</span><br><span class="line"></span><br><span class="line">const arr=[1,2,[3,4]]</span><br><span class="line">const [a,b,[c,d]]=arr</span><br></pre></td></tr></table></figure>
+
+**js前面要加分号的情况**：
+
+1. 立即执行函数
+2. 数组解构(数组开头的记得加分号)
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">;funcition(a)&#123;&#125;()</span><br><span class="line"></span><br><span class="line">;[b,a]=[a,b]</span><br></pre></td></tr></table></figure>
+
+- 参数少，变量多的情况：利用剩余参数
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const [a,b,c,...args]=[1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+
+- 按需导入，忽略某些条件
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const [a,b,,d]=[1,2,3,4]</span><br><span class="line">// a 1 b 2 d 4</span><br></pre></td></tr></table></figure>
+
+##### 对象解构
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const &#123;uname,age&#125;=&#123;uname:&#x27;pink&#x27;,age:10&#125;</span><br><span class="line"></span><br><span class="line">const &#123;uname:username,age&#125;=&#123;uname:&#x27;pink&#x27;,age:10&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+##### foreach函数
+
+很像map，只是没有返回值，适合遍历数组对象。
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.foreach(function(item,index)&#123;</span><br><span class="line">	</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+#### 七.构造函数
+
+##### 创建对象的三种方式
+
+1. 对象字面量创建
+2. new Object()创建（系统自带）
+3. 构造函数创建（自定义）
+
+##### 构造函数
+
+定义：一种特殊的**函数**，用于快速**初始化对象**。
+
+把对象公共部分抽取封装，放入构造函数中，构造函数中**无需写return**。
+
+![image-20240925163233086](../images/image-20240925163233086.png)
+
+##### 构造函数执行过程   ——new Pig（）
+
+1. 创建一个空对象
+2. 构造函数的this指向空对象
+3. 执行构造函数代码，将形参赋给对象的属性或方法
+4. 返回新对象
+
+![image-20240925183524578](../images/image-20240925183524578.png)
+
+##### 实例成员&静态成员
+
+**实例化对象**的**方法和属性**属于**实例成员**。
+
+由于每次实例化都开辟了新的空间，所以给每个实例成员附上新的属性，对构造函数和其他实例成员都是没有影响的。
+
+![image-20240925184004505](../images/image-20240925184004505.png)
+
+**构造函数**的**方法和属性**属于**静态成员**。
+
+如Date.now() Math.PI() Math.random()
+
+#### 八.内置构造函数
+
+- Object 
+- Array
+- String 
+- Number
+
+当调用简单数据类型的方法或属性时，js内部会隐式的把简单数据类型**包装成对象**，那么就可以调用它的内置方法了。
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//内部悄悄转换</span><br><span class="line">const str=new String(&#x27;123&#x27;)</span><br></pre></td></tr></table></figure>
+
+![image-20240925184914544](../images/image-20240925184914544.png)
+
+##### Object
+
+三个静态方法：
+
+Object.keys      ——获取对象的所有键，返回一个**数组**
+
+Object.values  ——获取对象的所有值，返回一个**数组**
+
+Object.assign  ——浅拷贝对象[合并对象]，即把对象的引用地址传给目标对象（如果有多个对象都要赋值给目标对象则比较复杂，会把所有属性都放入，相同属性后面的会覆盖前面的）
+
+assign -赋值
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const o=&#123;name:&#x27;toto&#x27;,age:10&#125;</span><br><span class="line">const newArr=Object.keys(o) //[&#x27;name&#x27;,&#x27;age&#x27;]</span><br><span class="line"></span><br><span class="line">const newArr1=Object.values(o) //[&#x27;toto&#x27;,10]</span><br><span class="line"></span><br><span class="line">const result=&#123;id:190&#125;</span><br><span class="line">Object.assign(result,o)</span><br><span class="line">console.log(result)//&#123;id:190,name:&#x27;toto&#x27;,age:10&#125;</span><br></pre></td></tr></table></figure>
+
+##### Array
+
+###### 常见方法
+
+1. forEach  ——**不返回**数组，遍历数组
+2. filter  ——**返回**新数组，用于**筛选符合条件**的数组 （长度改变，内容不变）
+3. map  ——**返回**新数组，用于**返回修改**的数组（数组长度不变，内容改变）
+4. reduce  ——**不返回**数组，返回**累计处理**的结果，常用于求和
+5. from  ——**返回**数组，将**伪数组转换为真数组**
+
+**reduce执行过程**
+
+![image-20240925191635333](../images/image-20240925191635333.png)
+
+总结：第一次进入时，上一个值是起始值或者第一个元素（取决于起始值有没有），当前元素就是上个值的下一个值，之后每循环一次，都把返回的值作为上一个值，自动轮转当前值，直到数组为空。
+
+###### 其他方法
+
+![image-20240925192402486](../images/image-20240925192402486.png)
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.find(index=&gt;index.name==&#x27;toto&#x27;)</span><br><span class="line">//返回符合条件的对象</span><br></pre></td></tr></table></figure>
+
+##### String
 
 </div> 
 

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>js精简面试篇 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                js精简面试篇
+            
+            
+        </div>
+        <span class="post-date">
+            Sep 24, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="一"><a href="#一" class="headerlink" title="一.&#x3D;&#x3D;&#x3D;"></a>一.&#x3D;&#x3D;&#x3D;</h1><p>对于简单数据类型，只判断值和类型即可；</p>
+<p>对于复杂数据类型，值、类型和引用地址都要相同才为true。</p>
+<h1 id="二-堆栈值传递"><a href="#二-堆栈值传递" class="headerlink" title="二.堆栈值传递"></a>二.堆栈值传递</h1><p><img src="/../images/image-20240924165330231.png" alt="image-20240924165330231"></p>
+<p><strong>为什么o.m不是50？</strong></p>
+<p>在JavaScript中，<strong>所有参数的传递都可以看作是“值传递”</strong>，但这个“值”的含义对于基本数据类型和引用数据类型是不同的。对于<strong>基本数据类型</strong>，传递的<strong>是值的副本</strong>；对于<strong>引用数据类型</strong>，传递的是对象<strong>引用的副本</strong>，但这个副本和原始引用都指向同一个对象，因此可以通过引用修改对象的属性。然而，如果函数内部尝试改变参数的引用（即让参数指向一个新的对象），那么这个改变不会影响到函数外部的原始引用。<strong>无论哪种类型的改变都不会影响原始数据的值。</strong></p>
+<h1 id="三-深拷贝和浅拷贝"><a href="#三-深拷贝和浅拷贝" class="headerlink" title="三.深拷贝和浅拷贝"></a>三.深拷贝和浅拷贝</h1><h3 id="浅拷贝（Shallow-Copy）"><a href="#浅拷贝（Shallow-Copy）" class="headerlink" title="浅拷贝（Shallow Copy）"></a>浅拷贝（Shallow Copy）</h3><p>浅拷贝是指创建一个新对象，这个新对象有着原始对象属性值的一份精确拷贝。<strong>如果属性是基本类型，拷贝的就是基本类型的值；如果属性是引用类型，拷贝的就是内存地址，</strong>因此如果其中一个对象<strong>改变了这个地址引用的内容</strong>，就会<strong>影响</strong>到另一个对象。在JavaScript中，常见的浅拷贝方法包括：</p>
+<ul>
+<li>直接赋值（但这通常不被视为拷贝，因为它没有创建新对象）</li>
+<li>使用扩展运算符（<code>...</code>）进行对象或数组的拷贝</li>
+<li>使用<code>Object.assign()</code>方法</li>
+<li>使用数组的<code>slice()</code>或<code>concat()</code>方法（对于数组）</li>
+</ul>
+<h3 id="深拷贝（Deep-Copy）"><a href="#深拷贝（Deep-Copy）" class="headerlink" title="深拷贝（Deep Copy）"></a>深拷贝（Deep Copy）</h3><p>深拷贝<strong>会创建一个新的对象，并递归复制原始对象中的所有嵌套对象</strong>，<strong>直到只包含基本类型的值为止</strong>。这样，新对象和原始对象在内存中是完全独立的，修改新对象不会影响原始对象。在JavaScript中，实现深拷贝的常见方法包括：</p>
+<ul>
+<li>使用<code>JSON.parse(JSON.stringify())</code>方法（但这种方法有局限性，如无法处理循环引用、函数等特殊对象）</li>
+<li>手动编写递归函数进行深拷贝</li>
+<li>使用第三方库，如lodash的<code>_.cloneDeep()</code>方法</li>
+</ul>
+<h2 id="assign"><a href="#assign" class="headerlink" title="assign"></a>assign</h2><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">javascript复制代码</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">assign</span>(target, ...sources)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>target</code>：目标对象。</li>
+<li><code>sources</code>：一个或多个源对象。</li>
+</ul>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>返回目标对象。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;  </span><br><span class="line"><span class="keyword">const</span> source1 = &#123; <span class="attr">b</span>: <span class="number">4</span>, <span class="attr">c</span>: <span class="number">5</span> &#125;;  </span><br><span class="line"><span class="keyword">const</span> source2 = &#123; <span class="attr">c</span>: <span class="number">6</span> &#125;;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">const</span> returnedTarget = <span class="title class_">Object</span>.<span class="title function_">assign</span>(target, source1, source2);  </span><br><span class="line">  </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(target);  </span><br><span class="line"><span class="comment">// 输出: Object &#123; a: 1, b: 4, c: 6 &#125;  </span></span><br><span class="line">  </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(returnedTarget);  </span><br><span class="line"><span class="comment">// 输出: Object &#123; a: 1, b: 4, c: 6 &#125;  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// 注意，target 和 returnedTarget 是同一个对象  </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(target === returnedTarget); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><strong>浅拷贝</strong>：<code>Object.assign()</code> 执行的是浅拷贝，而不是深拷贝。如果源对象的属性值是一个对象的引用，那么它只拷贝那个引用值，而不是对象本身。</li>
+<li><strong>原始值覆盖</strong>：如果多个源对象具有相同的属性，则后面的源对象属性会覆盖前面的源对象属性。</li>
+<li><strong>null 或 undefined 的处理</strong>：如果目标对象是 <code>null</code> 或 <code>undefined</code>，则会抛出 <code>TypeError</code> 异常。</li>
+<li><strong>属性的可枚举性</strong>：只有可枚举的自有属性会被拷贝。</li>
+<li><strong>性能</strong>：在处理大量属性时，<code>Object.assign()</code> 可能不是最高效的方法，因为它每次调用都会执行一次属性赋值操作。</li>
+<li><strong>自定义对象</strong>：如果源对象有 getter，赋值时会调用 getter，并且 getter 的返回值会被用作属性的新值，而不是 getter 函数本身被赋值给目标对象。</li>
+<li><strong>原始数据类型</strong>：如果目标对象不是对象（比如是一个字符串或数字），则 <code>Object.assign()</code> 会将其转换为对象，然后返回这个对象。但是，这通常不是期望的行为，因为原始值会被包装成对象，这可能导致意外的结果。</li>
+</ol>
+<h1 id="四-作用域"><a href="#四-作用域" class="headerlink" title="四.作用域"></a>四.作用域</h1><p><img src="/../images/image-20240924174144123.png" alt="image-20240924174144123"></p>
+<p>为什么立即执行函数可以保护作用域？</p>
+<h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>函数提升&gt;变量提升</p>
+<p><img src="/../images/image-20240924174658970.png" alt="image-20240924174658970"></p>
+<h2 id="执行上下文的生命周期"><a href="#执行上下文的生命周期" class="headerlink" title="执行上下文的生命周期"></a>执行上下文的生命周期</h2><p><img src="/../images/image-20240924174750603.png" alt="image-20240924174750603"></p>
+<h1 id="五-宏任务和微任务"><a href="#五-宏任务和微任务" class="headerlink" title="五.宏任务和微任务"></a>五.宏任务和微任务</h1><p><img src="/../images/image-20240924195941636.png" alt="image-20240924195941636"></p>
+<p><strong>注意Promise本身是同步的，而then和catch是异步的！！！</strong></p>
+<h2 id="事件循环："><a href="#事件循环：" class="headerlink" title="事件循环："></a><strong>事件循环：</strong></h2><ol>
+<li>js在解析时，先把所有的同步任务放进执行栈，所有的微任务放入微任务队列，所有的宏任务放入宏任务队列；</li>
+<li>首先执行执行栈里的同步任务；</li>
+<li>执行栈空后，根据先进先出的原则，把微任务队列的微任务推到执行栈中，执行完后，再看微任务队列是否有任务，如此循环；</li>
+<li>微任务队列空后，根据先进先出的原则，把宏任务队列的宏任务推到执行栈中，执行完后，再看宏任务队列是否有任务，如此循环。</li>
+</ol>
+<p><img src="/../images/image-20240924200803929.png" alt="image-20240924200803929"></p>
+<p><img src="/../images/image-20240924201331851.png" alt="image-20240924201331851"></p>
+<p><strong>执行过程：</strong></p>
+<p><img src="/../images/image-20240924201408360.png" alt="image-20240924201408360"></p>
+<p><strong>执行过程梳理：</strong></p>
+<p><img src="/../images/image-20240924202125684.png" alt="image-20240924202125684"></p>
+<p><strong>注意Promise是同步任务，resolve()是标记,都是同步任务。</strong></p>
+<p><img src="/../images/image-20240924202538498.png" alt="image-20240924202538498"></p>
+<p>没有微任务后，执行宏任务。</p>
+<p><img src="/../images/image-20240924202753888.png" alt="image-20240924202753888"></p>
+<p>接着，微任务队列里又有了，执行里面的第一个微任务。</p>
+<p><img src="/../images/image-20240924202915405.png" alt="image-20240924202915405"></p>
+<p>微任务队列里没有任务了，看宏任务。</p>
+<p><img src="/../images/image-20240924203030601.png" alt="image-20240924203030601"></p>
+<p> 所有任务执行完毕，所以是  1 7 2 4 5 6 3</p>
+<h2 id="事件循环进阶"><a href="#事件循环进阶" class="headerlink" title="事件循环进阶"></a>事件循环进阶</h2><p><img src="/../images/image-20240924204142189.png" alt="image-20240924204142189"></p>
+<p>答案是0 1 2 3 4 5 &#x2F;&#x2F;为什么？？？？？？？？？</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/09/21/%E5%88%9B%E6%96%B0_%E9%97%AE%E9%A2%98_%E8%A7%A3%E5%86%B3/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
