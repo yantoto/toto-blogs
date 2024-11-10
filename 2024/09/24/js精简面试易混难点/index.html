@@ -131,7 +131,7 @@
 <p>对于复杂数据类型，值、类型和引用地址都要相同才为true。</p>
 <h1 id="二-堆栈值传递"><a href="#二-堆栈值传递" class="headerlink" title="二.堆栈值传递"></a>二.堆栈值传递</h1><p><img src="/../images/image-20240924165330231.png" alt="image-20240924165330231"></p>
 <p><strong>为什么o.m不是50？</strong></p>
-<p>在JavaScript中，<strong>所有参数的传递都可以看作是“值传递”</strong>，但这个“值”的含义对于基本数据类型和引用数据类型是不同的。对于<strong>基本数据类型</strong>，传递的<strong>是值的副本</strong>；对于<strong>引用数据类型</strong>，传递的是对象<strong>引用的副本</strong>，但这个副本和原始引用都指向同一个对象，因此可以通过引用修改对象的属性。然而，如果函数内部尝试改变参数的引用（即让参数指向一个新的对象），那么这个改变不会影响到函数外部的原始引用。<strong>无论哪种类型的改变都不会影响原始数据的值。</strong></p>
+<p>在JavaScript中，<strong>所有参数的传递都可以看作是“值传递”</strong>，但这个“值”的含义对于基本数据类型和引用数据类型是不同的。对于<strong>基本数据类型</strong>，传递的<strong>是值的副本</strong>；对于<strong>引用数据类型</strong>，传递的是对象<strong>引用的副本</strong>，但这个副本和原始引用都指向同一个对象，因此可以通过引用修改对象的属性。然而，如果函数内部尝试改变参数的引用（即让参数指向一个新的对象），那么这个改变不会影响到函数外部的原始引用。</p>
 <h1 id="三-深拷贝和浅拷贝"><a href="#三-深拷贝和浅拷贝" class="headerlink" title="三.深拷贝和浅拷贝"></a>三.深拷贝和浅拷贝</h1><h3 id="浅拷贝（Shallow-Copy）"><a href="#浅拷贝（Shallow-Copy）" class="headerlink" title="浅拷贝（Shallow Copy）"></a>浅拷贝（Shallow Copy）</h3><p>浅拷贝是指创建一个新对象，这个新对象有着原始对象属性值的一份精确拷贝。<strong>如果属性是基本类型，拷贝的就是基本类型的值；如果属性是引用类型，拷贝的就是内存地址，</strong>因此如果其中一个对象<strong>改变了这个地址引用的内容</strong>，就会<strong>影响</strong>到另一个对象。在JavaScript中，常见的浅拷贝方法包括：</p>
 <ul>
 <li>直接赋值（但这通常不被视为拷贝，因为它没有创建新对象）</li>
@@ -170,12 +170,25 @@
 <h2 id="执行上下文的生命周期"><a href="#执行上下文的生命周期" class="headerlink" title="执行上下文的生命周期"></a>执行上下文的生命周期</h2><p><img src="/../images/image-20240924174750603.png" alt="image-20240924174750603"></p>
 <h1 id="五-宏任务和微任务"><a href="#五-宏任务和微任务" class="headerlink" title="五.宏任务和微任务"></a>五.宏任务和微任务</h1><p><img src="/../images/image-20240924195941636.png" alt="image-20240924195941636"></p>
 <p><strong>注意Promise本身是同步的，而then和catch是异步的！！！</strong></p>
-<h2 id="事件循环："><a href="#事件循环：" class="headerlink" title="事件循环："></a><strong>事件循环：</strong></h2><ol>
-<li>js在解析时，先把所有的同步任务放进执行栈，所有的微任务放入微任务队列，所有的宏任务放入宏任务队列；</li>
-<li>首先执行执行栈里的同步任务；</li>
-<li>执行栈空后，根据先进先出的原则，把微任务队列的微任务推到执行栈中，执行完后，再看微任务队列是否有任务，如此循环；</li>
-<li>微任务队列空后，根据先进先出的原则，把宏任务队列的宏任务推到执行栈中，执行完后，再看宏任务队列是否有任务，如此循环。</li>
+<h2 id="事件循环："><a href="#事件循环：" class="headerlink" title="事件循环："></a><strong>事件循环：</strong></h2><p>总体描述：</p>
+<ol>
+<li>首先js是单线程的语言，为了防止任务堵塞，出现了异步任务</li>
+<li>同步任务交给js引擎来执行，异步任务交给宿主环境来执行</li>
+<li>同步代码放入执行栈中；异步任务放入宿主环境，等时机成熟则推入任务队列</li>
+<li>执行栈执行完毕后，会去任务队列查看是否有异步任务，如果有则推入执行栈，反复循环查看执行，这个过程就是事件循环。</li>
 </ol>
+<p>细节描述：</p>
+<ol>
+<li><p>js在解析时，先把所有的同步任务放进执行栈，（所有异步任务放入宿主环境【浏览器】，等异步任务一触发，就推入任务队列）所有的微任务放入微任务队列，所有的宏任务放入宏任务队列；</p>
+</li>
+<li><p>首先执行执行栈里的同步任务；</p>
+</li>
+<li><p>执行栈空后，根据先进先出的原则，把微任务队列的微任务推到执行栈中，执行完后，再看微任务队列是否有任务，如此循环；</p>
+</li>
+<li><p>微任务队列空后，根据先进先出的原则，把宏任务队列的宏任务推到执行栈中，执行完后，再看宏任务队列是否有任务，如此循环。</p>
+</li>
+</ol>
+<p><img src="/../images/image-20240926154338768.png" alt="image-20240926154338768"></p>
 <p><img src="/../images/image-20240924200803929.png" alt="image-20240924200803929"></p>
 <p><img src="/../images/image-20240924201331851.png" alt="image-20240924201331851"></p>
 <p><strong>执行过程：</strong></p>
@@ -191,8 +204,53 @@
 <p>微任务队列里没有任务了，看宏任务。</p>
 <p><img src="/../images/image-20240924203030601.png" alt="image-20240924203030601"></p>
 <p> 所有任务执行完毕，所以是  1 7 2 4 5 6 3</p>
-<h2 id="事件循环进阶"><a href="#事件循环进阶" class="headerlink" title="事件循环进阶"></a>事件循环进阶</h2><p><img src="/../images/image-20240924204142189.png" alt="image-20240924204142189"></p>
-<p>答案是0 1 2 3 4 5 &#x2F;&#x2F;为什么？？？？？？？？？</p>
+<h2 id="事件循环（全，渡一）"><a href="#事件循环（全，渡一）" class="headerlink" title="事件循环（全，渡一）"></a>事件循环（全，渡一）</h2><h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>理解为程序执行的时候需要的内存空间。</p>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>一个进程<strong>至少有一个线程</strong>（这个线程称为主线程），如果程序需要同时执行多块代码，主线程会<strong>启动多线程来执行代码</strong>。</p>
+<p><strong>进程&gt;线程</strong></p>
+<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><p>浏览器是一个<strong>多进程多线程的应用程序</strong>。</p>
+<p>为了避免相互影响，减少连环崩坏的几率，<strong>当启动浏览器时，会自动开启多个进程</strong>。</p>
+<p><img src="/../images/image-20240926163304252.png" alt="image-20240926163304252"></p>
+<ul>
+<li>浏览器进程</li>
+<li>网络进程</li>
+<li><strong>渲染进程</strong>(重点)</li>
+</ul>
+<p>每开启一个标签页，会开启一个<strong>新的渲染进程</strong>，保证不同标签页之间不相互影响。渲染进程启动后，会开启一个<strong>渲染主线程</strong>，主线程负责执行html、Css、js代码。</p>
+<h3 id="如何理解js的异步？"><a href="#如何理解js的异步？" class="headerlink" title="如何理解js的异步？"></a>如何理解js的异步？</h3><p><img src="/../images/image-20240926171346314.png" alt="image-20240926171346314"></p>
+<p>例子：</p>
+<p>用户点击后，3s后页面改变。因为会产生<strong>绘制的异步任务</strong>，绘制要等待主线程执行完毕后才能进行。</p>
+<p><img src="/../images/image-20240926172402887.png" alt="image-20240926172402887"></p>
+<h3 id="队列的分类："><a href="#队列的分类：" class="headerlink" title="队列的分类："></a>队列的分类：</h3><p><img src="/../images/image-20240926172909761.png" alt="image-20240926172909761"></p>
+<h3 id="阐述一下js的事件循环"><a href="#阐述一下js的事件循环" class="headerlink" title="阐述一下js的事件循环"></a>阐述一下js的事件循环</h3><p><img src="/../images/image-20240926174225278.png" alt="image-20240926174225278"></p>
+<h3 id="js中的计时器有偏差吗？为什么？"><a href="#js中的计时器有偏差吗？为什么？" class="headerlink" title="js中的计时器有偏差吗？为什么？"></a>js中的计时器有偏差吗？为什么？</h3><p><img src="/../images/image-20240926175023751.png" alt="image-20240926175023751"></p>
+<p><strong>单线程是异步产生的原因</strong></p>
+<p><strong>事件循环是异步的实现方式</strong></p>
+<p>妈呀醍醐灌顶。。。。。。牛逼事件循环…….</p>
+<h1 id="六-数组方法"><a href="#六-数组方法" class="headerlink" title="六.数组方法"></a>六.数组方法</h1><h2 id="查找方法"><a href="#查找方法" class="headerlink" title="查找方法"></a>查找方法</h2><p>arr.indexOf(value) ——根据索引值查找值</p>
+<p>arr.includes(value) ——根据值查找是否存在</p>
+<h2 id="伪数组"><a href="#伪数组" class="headerlink" title="伪数组"></a>伪数组</h2><p>伪数组是拥有与数组类似的结构的对象，虽然可以利用索引值获取元素，但不能使数组的方法。</p>
+<h3 id="产生伪数组"><a href="#产生伪数组" class="headerlink" title="产生伪数组"></a>产生伪数组</h3><ol>
+<li>argument 动态参数</li>
+<li>qureySelectorAll 获取DOM元素</li>
+<li>等</li>
+</ol>
+<h3 id="如何将伪数组转化为数组"><a href="#如何将伪数组转化为数组" class="headerlink" title="如何将伪数组转化为数组"></a>如何将伪数组转化为数组</h3><ul>
+<li>Array.from()</li>
+<li>[…arr] 解构</li>
+<li>Array.prototype.slice.call()</li>
+</ul>
+<h1 id="七-宿主对象、内置对象、原生对象"><a href="#七-宿主对象、内置对象、原生对象" class="headerlink" title="七.宿主对象、内置对象、原生对象"></a>七.宿主对象、内置对象、原生对象</h1><p><strong>宿主对象</strong>是程序运行的环境（如浏览器、nodejs）提供的对象。这不是js的核心。</p>
+<p>浏览器中包括document window xmlhttprequest。</p>
+<p>nodejs中包括global process等。</p>
+<p><strong>内置对象</strong>是js提供的对象，可以直接在js环境中使用，无需额外引入或导入。如Math、Date、正则等。</p>
+<p><strong>原生对象</strong>是js语言的一部分，但不是内置对象。原生对象是通过构造函数或者字面量方式创建的对象，如arr、obj、function</p>
+<h1 id="八-作用域"><a href="#八-作用域" class="headerlink" title="八.作用域"></a>八.作用域</h1><p><strong>作用域其实就是变量能够访问的范围。</strong></p>
+<p><strong>作用域链就是底层变量查找的机制。</strong></p>
+<p>当查找变量时，会从当前作用域开始查找，如果没有，那么向上一层逐层查找，直到没找到返回null </p>
+<h1 id="九-class"><a href="#九-class" class="headerlink" title="九.class"></a>九.class</h1><p>class继承父类，利用extends关键字实现继承。继承后，可以使用super调用父类的初始化函数，而父类的方法子类的初始化对象可以直接使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">	constructor(name)&#123;</span><br><span class="line">		this.name=name</span><br><span class="line">	&#125;</span><br><span class="line">	drink()&#123;</span><br><span class="line">		console.log(&quot;喝水&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Student extends Person&#123; //extends继承父类</span><br><span class="line">	constructor(name,score)&#123;</span><br><span class="line">		super(name)</span><br><span class="line">		this.score=score</span><br><span class="line">	&#125;</span><br><span class="line">	introduce()&#123;</span><br><span class="line">		console.log(`我是$&#123;this.name&#125;,今年$&#123;this.score&#125;分`)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const stu=new Student(&#x27;toto&#x27;,99)</span><br><span class="line">console.log(stu)</span><br><span class="line">stu.introduce()</span><br><span class="line">stu.drink()</span><br></pre></td></tr></table></figure>
+
+<p>原型</p>
 
 </div> 
 
@@ -204,6 +262,11 @@
     <nav class="post-nav">
         <div class="prev-item">
            
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/10/12/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/">Prev</a>
+                </div>
+            
         </div>
         <div class="next-item">
             

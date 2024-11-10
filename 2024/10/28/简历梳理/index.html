@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Oct 28, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="西维兵项目"><a href="#西维兵项目" class="headerlink" title="西维兵项目"></a>西维兵项目</h2><h3 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h3><p>这个项目是为了打造一个校园圈子，然后分为发帖、圈子、发布、聊天板块；其中我负责的就是首页帖子和发布帖子两个板块。</p>
+<h3 id="亮点："><a href="#亮点：" class="headerlink" title="亮点："></a>亮点：</h3><h4 id="cos-sdk封装："><a href="#cos-sdk封装：" class="headerlink" title="cos.sdk封装："></a>cos.sdk封装：</h4><p>两个方法，一个初始化，一个调用sdk的上传文件方法。首先调用了一个初始化方法，利用cos sdk创建一个cos实例，并按照官网的配置相关凭证，接着利用另一个方法上传文件，</p>
+<p>这样，外部只需要导入这个js文件，先给cossdk上传图片，再将获取到的图片对应key值加入到图片对象数组中，将信息发给后端让后端去查找对应图片，实现了一个远程托管的功能。</p>
+<p>页面内：初始化cos并调用上传文件。由于配置的是单次上传，可以使用遍历将照片循环上传。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for (let i = 0; i &lt; length; i++) &#123;</span><br><span class="line">     let temp = &#123;</span><br><span class="line">       tempFilePath: originFiles[i].url,</span><br><span class="line">       size: originFiles[i].size</span><br><span class="line">     &#125;;</span><br><span class="line">     </span><br><span class="line">     const cos = new MyCOS(temp)</span><br><span class="line">     await cos.cosUploadImg().then(res =&gt; &#123;</span><br><span class="line">       imageList.push(res.code.key)</span><br><span class="line">     &#125;)</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="表情包："><a href="#表情包：" class="headerlink" title="表情包："></a>表情包：</h4><p>利用了unicode编码，利用wx-for遍历unicode数组，检测到点击时，将当前unicode编码通过trigger传给父组件，同时关闭表情面板。</p>
+<h4 id="图片九宫格："><a href="#图片九宫格：" class="headerlink" title="图片九宫格："></a>图片九宫格：</h4><p>接收到图片时进行判断图片张数，再根据一张 四张 其他转换不同的类完成操作，编写不同的css样式。</p>
+<p>其他的就是细节了，比如图片的预览状态利用tdsige的t-empty，预览出来了展示图片，空状态的考虑，以及请求失误的处理，利用try…catch，判断状态码不为200时抛出异常，并且在最后finally要关闭加载状态。</p>
+<h3 id="小程序与web端有何不同"><a href="#小程序与web端有何不同" class="headerlink" title="小程序与web端有何不同"></a>小程序与web端有何不同</h3><h4 id="小程序的跳转"><a href="#小程序的跳转" class="headerlink" title="小程序的跳转"></a>小程序的跳转</h4><p>微信小程序不支持url传参，并且用户信息也不适合传递在url(会被用户查看)。</p>
+<p>写全局参数？用本地存储？</p>
+<p>全局参数</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><h4 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h4><h2 id="智慧农业系统"><a href="#智慧农业系统" class="headerlink" title="智慧农业系统"></a>智慧农业系统</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>一个基于大数据的网站项目，主要包含了大量农作物信息展示、信息采集并返回推荐作物，以及类似于购物车的将作物选择进入个人农田，在个人农田可以查询作物各种信息等。此外还添加了实时通信的ai辅助答疑功能。</p>
+<h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><h4 id="ai答疑访问慢"><a href="#ai答疑访问慢" class="headerlink" title="ai答疑访问慢"></a>ai答疑访问慢</h4><p>由于连接了外部api，等待ai回复的事件较长，用户体验感差。因此利用了sse技术，基于http的长连接特性，在用户和服务器之间建立一条持久化的通道，允许服务器主动向客户端推送数据。</p>
+<p>首先，客户端会发动一个get请求给后端，这个请求带有特定的header，表示可以接收事件流类型，并禁用任何的事件缓存。服务器收到这个请求后，会保持链接打开，随时通过这条连接向客户端发送数据。</p>
+<h4 id="sse特点"><a href="#sse特点" class="headerlink" title="sse特点"></a>sse特点</h4><ul>
+<li><strong>单向数据流</strong>：SSE仅支持服务器向客户端推送数据，不支持客户端向服务器发送数据。这种单向通信模式使得SSE在某些应用场景下更为简单和高效。</li>
+<li><strong>实时性</strong>：SSE允许服务器实时地向客户端发送数据，无需客户端主动请求。这使得SSE非常适合用于实现实时更新功能，如新闻更新、股票报价、实时监控等。</li>
+<li><strong>易用性</strong>：SSE是标准的Web API，可以在大部分现代浏览器和移动设备上使用。同时，SSE的实现相对简单，与普通的Web应用没有太大差异。</li>
+</ul>
+<p>主要用于实现服务器向客户端<strong>的实时更新功能</strong>。</p>
+<h4 id="与WebSocket的比较"><a href="#与WebSocket的比较" class="headerlink" title="与WebSocket的比较"></a>与WebSocket的比较</h4><ul>
+<li>WebSocket支持全双工通信，即服务器和客户端可以相互发送数据。而SSE仅支持单向通信，即只能由服务器向客户端推送数据。</li>
+<li>WebSocket提供了更广泛的通讯能力，包括二进制数据传输等。而SSE主要传输文本格式的数据。</li>
+<li>在某些应用场景下，如需要双向通信或高频更新的场景，WebSocket可能更为适合。而在一些只需要服务器向客户端推送数据的场景下，SSE则是一个简单而有效的选择。</li>
+</ul>
+<h4 id="页面图片加载慢"><a href="#页面图片加载慢" class="headerlink" title="页面图片加载慢"></a>页面图片加载慢</h4><p>添加了过渡动画。手写load组件，在需要过渡的页面导入即可。</p>
+<p>load.js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  methods: &#123;</span><br><span class="line">    in(next)&#123;</span><br><span class="line">        let container = document.getElementById(&quot;loading&quot;);</span><br><span class="line">      container.classList.remove(&quot;loading_out&quot;);</span><br><span class="line">      setTimeout(()=&gt;&#123;</span><br><span class="line">        next();</span><br><span class="line">        this.$parent.check_loading();</span><br><span class="line">      &#125;,2000)</span><br><span class="line">    &#125;,</span><br><span class="line">    out() &#123;</span><br><span class="line">      let container = document.getElementById(&quot;loading&quot;);</span><br><span class="line">      container.classList.add(&quot;loading_out&quot;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>主页面.js  </p>
+<p>在挂载时关闭定时器，设置路由守卫，监视路由的改变，改变时调用子组件的in方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"> check_loading() &#123;</span><br><span class="line">      let timer = setInterval(() =&gt; &#123;</span><br><span class="line">        if (document.readyState == &quot;complete&quot;) &#123;</span><br><span class="line">          clearInterval(timer);</span><br><span class="line">          this.$refs.loading.out();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;, 300);</span><br><span class="line">    &#125;,</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> mounted() &#123;</span><br><span class="line">    // 掉天气</span><br><span class="line">    // this.getWeather();</span><br><span class="line">    this.open2();</span><br><span class="line">    this.check_loading();</span><br><span class="line">    console.log(this.$router, &quot;this.$router&quot;);</span><br><span class="line">    this.$router.beforeEach((to, from, next) =&gt; &#123;</span><br><span class="line">      let needGuard = true;</span><br><span class="line">      if (to.path === &quot;/index/typesCrops&quot;||to.path === &quot;/index/tabs&quot; ) &#123;</span><br><span class="line">        // 如果是特定的路由跳转，不需要拦截</span><br><span class="line">        needGuard = false;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      // 执行拦截逻辑</span><br><span class="line">      if (needGuard) &#123;</span><br><span class="line">        this.$refs.loading.in(next);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        next();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/11/10/%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/10/14/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

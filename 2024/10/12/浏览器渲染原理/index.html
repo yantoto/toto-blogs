@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>浏览器渲染原理 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                浏览器渲染原理
+            
+            
+        </div>
+        <span class="post-date">
+            Oct 12, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一-渲染"><a href="#一-渲染" class="headerlink" title="一.渲染"></a>一.渲染</h2><p>定义：把<strong>html字符串</strong>转换为<strong>像素信息</strong>。</p>
+<h3 id="面试题："><a href="#面试题：" class="headerlink" title="面试题："></a>面试题：</h3><p>当url地址输入按下回车键后，会发生什么事？</p>
+<ul>
+<li><p>网络：拿html</p>
+</li>
+<li><p>渲染</p>
+</li>
+</ul>
+<h3 id="渲染流水线"><a href="#渲染流水线" class="headerlink" title="渲染流水线"></a><strong>渲染流水线</strong></h3><p><img src="/../images/image-20241012191737602.png" alt="image-20241012191737602"></p>
+<h3 id="渲染过程"><a href="#渲染过程" class="headerlink" title="渲染过程"></a>渲染过程</h3><h4 id="1-解析HTML为DOM树和CSS树"><a href="#1-解析HTML为DOM树和CSS树" class="headerlink" title="1.解析HTML为DOM树和CSS树"></a><strong>1.解析HTML为DOM树和CSS树</strong></h4><p><img src="/../images/image-20241012192312381.png" alt="image-20241012192312381"></p>
+<p>DOM树</p>
+<p><img src="/../images/image-20241012192524284.png" alt="image-20241012192524284"></p>
+<p>CSS树</p>
+<p><img src="/../images/image-20241012192825486.png" alt="image-20241012192825486"></p>
+<h5 id="在html解析过程中遇到css代码该怎么办？"><a href="#在html解析过程中遇到css代码该怎么办？" class="headerlink" title="在html解析过程中遇到css代码该怎么办？"></a>在html解析过程中遇到css代码该怎么办？</h5><p>为了提高解析效率，浏览器会开启一个<strong>预解析线程。</strong></p>
+<p>在渲染主线程解析html的过程中，一旦遇到css代码，<strong>不会等待</strong>，会<strong>让预解析线程率先下载和解析css</strong>,最后把结果<strong>返还给渲染主线程</strong>。</p>
+<p><img src="/../images/image-20241012193835130.png" alt="image-20241012193835130"></p>
+<h5 id="为什么只生成dom树和css树，不生成js树？"><a href="#为什么只生成dom树和css树，不生成js树？" class="headerlink" title="为什么只生成dom树和css树，不生成js树？"></a>为什么只生成dom树和css树，不生成js树？</h5><p>因为js只需运行一遍，<strong>后续不会再使用</strong>（比如DOM事件直接交给用户线程监听即可）；而dom树和css树的节点在后续渲染过程中要反复使用。</p>
+<h5 id="在html解析过程中遇到js代码该怎么办？"><a href="#在html解析过程中遇到js代码该怎么办？" class="headerlink" title="在html解析过程中遇到js代码该怎么办？"></a>在html解析过程中遇到js代码该怎么办？</h5><p>因为<strong>js代码可能改动DOM结构</strong>，所以渲染主线程一旦遇到js代码，会<strong>暂停活动，优先执行js代码</strong>。</p>
+<h4 id="2-样式计算"><a href="#2-样式计算" class="headerlink" title="2.样式计算"></a>2.样式计算</h4><h5 id="ccs属性值的计算过程"><a href="#ccs属性值的计算过程" class="headerlink" title="ccs属性值的计算过程"></a>ccs属性值的计算过程</h5><ul>
+<li>层叠</li>
+<li>集成</li>
+</ul>
+<h5 id="视觉格式化模型"><a href="#视觉格式化模型" class="headerlink" title="视觉格式化模型"></a>视觉格式化模型</h5><ul>
+<li>盒模型</li>
+<li>包含块</li>
+</ul>
+<p><strong>在这一步中，主线程会遍历DOM树，依次为树中的每个节点计算出它的最终样式，称之为Computed Style。</strong>在这过程中很多预设值会变为绝对值，如red转换为rgb形式，rem转换为px形式。</p>
+<p><img src="/../images/image-20241013123335644.png" alt="image-20241013123335644"></p>
+<h4 id="3-布局"><a href="#3-布局" class="headerlink" title="3.布局"></a>3.布局</h4><p>布局阶段会依次遍历DOM树的每一个节点，计算每个节点的几何信息。如节点的宽高、相对位置等。</p>
+<p><img src="/../images/image-20241013123319255.png" alt="image-20241013123319255"></p>
+<p><img src="/../images/image-20241013123617724.png" alt="image-20241013123617724"></p>
+<p><img src="/../images/image-20241013124343625.png" alt="image-20241013124343625"></p>
+<h4 id="4-分层"><a href="#4-分层" class="headerlink" title="4.分层"></a>4.分层</h4><p><img src="/../images/image-20241013124918022.png" alt="image-20241013124918022"></p>
+<p><img src="/../images/image-20241013124450409.png" alt="image-20241013124450409"></p>
+<h4 id="5-绘制"><a href="#5-绘制" class="headerlink" title="5.绘制"></a>5.绘制</h4><p><img src="/../images/image-20241013125855253.png" alt="image-20241013125855253"></p>
+<p><img src="/../images/image-20241013130128714.png" alt="image-20241013130128714"></p>
+<h4 id="6-分块"><a href="#6-分块" class="headerlink" title="6.分块"></a>6.分块</h4><p><img src="/../images/image-20241013125910735.png" alt="image-20241013125910735"></p>
+<p><img src="/../images/image-20241013130103299.png" alt="image-20241013130103299"></p>
+<h4 id="7-光栅化"><a href="#7-光栅化" class="headerlink" title="7.光栅化"></a>7.光栅化</h4><p><img src="/../images/image-20241013130203155.png" alt="image-20241013130203155"></p>
+<p><img src="/../images/image-20241013130339931.png" alt="image-20241013130339931"></p>
+<p><img src="/../images/image-20241013130354321.png" alt="image-20241013130354321"></p>
+<h4 id="8-画"><a href="#8-画" class="headerlink" title="8.画"></a>8.画</h4><p><img src="/../images/image-20241013130415721.png" alt="image-20241013130415721"></p>
+<p><img src="/../images/image-20241013130635501.png" alt="image-20241013130635501"></p>
+<h4 id="完整过程"><a href="#完整过程" class="headerlink" title="完整过程"></a>完整过程</h4><p><img src="/../images/image-20241013130700434.png" alt="image-20241013130700434"></p>
+<h3 id="什么是reflow-什么是repaint"><a href="#什么是reflow-什么是repaint" class="headerlink" title="什么是reflow? 什么是repaint?"></a>什么是reflow? 什么是repaint?</h3><p><img src="/../images/image-20241013130935332.png" alt="image-20241013130935332"></p>
+<h3 id="为什么transform效率高？"><a href="#为什么transform效率高？" class="headerlink" title="为什么transform效率高？"></a>为什么transform效率高？</h3><p><img src="/../images/image-20241013131142576.png" alt="image-20241013131142576"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/10/12/%E8%BD%AF%E8%80%83/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/09/24/js%E7%B2%BE%E7%AE%80%E9%9D%A2%E8%AF%95%E6%98%93%E6%B7%B7%E9%9A%BE%E7%82%B9/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

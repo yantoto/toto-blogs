@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>前端工程化 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                前端工程化
+            
+            
+        </div>
+        <span class="post-date">
+            Oct 14, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一-工程化的作用"><a href="#一-工程化的作用" class="headerlink" title="一.工程化的作用"></a>一.工程化的作用</h2><h3 id="前端工程化"><a href="#前端工程化" class="headerlink" title="前端工程化"></a>前端工程化</h3><p>定义：前端开发的管理工具。</p>
+<p>作用：<strong>降本升效</strong>。降低成本提高效率。</p>
+<h2 id="二-模块化和包管理"><a href="#二-模块化和包管理" class="headerlink" title="二.模块化和包管理"></a>二.模块化和包管理</h2><h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><p>利用<strong>分解和聚合</strong>的思想。</p>
+<ul>
+<li>分解契合的是主观规律。</li>
+<li>聚合契合的是客观规律。</li>
+</ul>
+<p>我的理解：关键在于<strong>代码的组织结构</strong>。在利用模块化之前，代码可能就是<strong>冗杂</strong>在一起，功能与功能没有划分清楚，文件放置位置也没有明确声明（例如小型项目就就没有特别高的标准）。运用了模块化之后，<strong>代码被分为小的、实现各自功能的模块，通过不同的模块化标准【如CJS,ECM】把这些模块放置和引用【</strong>当然，这些标准也会有技术上的不同】，实现项目的管理，提升可维护性和复用性。我觉得模块化就有点面向对象的意思了，把一个项目拆分成不同的模块，并将这些模块导出个引入。</p>
+<h4 id="为什么要有前端模块化？"><a href="#为什么要有前端模块化？" class="headerlink" title="为什么要有前端模块化？"></a>为什么要有前端模块化？</h4><h5 id="1-全局污染-——分解问题"><a href="#1-全局污染-——分解问题" class="headerlink" title="1.全局污染   ——分解问题"></a>1.全局污染   ——分解问题</h5><p>eg：在html文件中引入了两个js,而这<strong>两个js中变量名一致</strong>，那么就会导致html文件<strong>不知道该调用哪一个</strong>。</p>
+<h5 id="2-依赖混乱-——聚合问题"><a href="#2-依赖混乱-——聚合问题" class="headerlink" title="2.依赖混乱   ——聚合问题"></a>2.依赖混乱   ——聚合问题</h5><p>js文件之间<strong>相互依赖</strong>，在引用js时就要<strong>注意引入顺序</strong>，一旦依赖文件变得多且复杂，那么就可能依赖混乱。</p>
+<p>前端模块化是为了解决前端开发中代码复杂度和可维护性问题的一种技术手段。在模块化前后，代码的组织结构、可维护性、复用性等方面都发生了显著的变化。以下是对前端模块化后和模块化前代码变化的详细分析：</p>
+<h4 id="一、代码组织结构的变化"><a href="#一、代码组织结构的变化" class="headerlink" title="一、代码组织结构的变化"></a>一、代码组织结构的变化</h4><ol>
+<li><strong>模块化前</strong>：<ul>
+<li>传统的前端开发中，所有的代码都写在同一个文件中，或者分散在多个没有明确关系的文件中。</li>
+<li>代码之间缺乏清晰的界限和接口，导致代码难以维护和管理。</li>
+</ul>
+</li>
+<li><strong>模块化后</strong>：<ul>
+<li>代码被划分为多个小的、独立的模块，每个模块都有自己的功能和接口。</li>
+<li>模块之间通过明确的接口进行交互，提高了代码的可读性和可维护性。</li>
+<li>模块化后的代码结构更加清晰，便于开发人员理解和维护。</li>
+</ul>
+</li>
+</ol>
+<h4 id="二、可维护性的变化"><a href="#二、可维护性的变化" class="headerlink" title="二、可维护性的变化"></a>二、可维护性的变化</h4><ol>
+<li><strong>模块化前</strong>：<ul>
+<li>随着应用程序的增大，代码变得越来越复杂，维护起来也越来越困难。</li>
+<li>命名冲突、代码冗余等问题频繁出现，增加了维护成本。</li>
+</ul>
+</li>
+<li><strong>模块化后</strong>：<ul>
+<li>每个模块都有自己的作用域和接口，避免了命名冲突。</li>
+<li>模块之间的依赖关系更加明确，便于管理和维护。</li>
+<li>开发人员可以更加专注于各自的模块开发，提高了开发效率。</li>
+</ul>
+</li>
+</ol>
+<h4 id="三、复用性的变化"><a href="#三、复用性的变化" class="headerlink" title="三、复用性的变化"></a>三、复用性的变化</h4><ol>
+<li><strong>模块化前</strong>：<ul>
+<li>相同的代码可能会被多次复制和粘贴到不同的文件中，导致代码冗余。</li>
+<li>代码复用性差，增加了开发成本和维护难度。</li>
+</ul>
+</li>
+<li><strong>模块化后</strong>：<ul>
+<li>模块可以被多个项目或模块复用，提高了代码的复用性。</li>
+<li>通过模块的组合和重用，可以快速构建出复杂的应用程序。</li>
+</ul>
+</li>
+</ol>
+<h4 id="四、模块化实现方式的变化"><a href="#四、模块化实现方式的变化" class="headerlink" title="四、模块化实现方式的变化"></a>四、模块化实现方式的变化</h4><ol>
+<li><strong>模块化前的实现方式</strong>：<ul>
+<li>主要依赖于全局变量和函数来实现代码的组织和复用。</li>
+<li>这种方式容易导致命名冲突和数据不安全等问题。</li>
+</ul>
+</li>
+<li><strong>模块化后的实现方式</strong>：<ul>
+<li>采用了多种模块化规范和技术，如CommonJS、AMD、CMD以及ES6的模块化规范等。</li>
+<li>这些规范和技术提供了更加灵活和强大的模块化能力，使得代码的组织和复用更加高效和可靠。</li>
+</ul>
+</li>
+</ol>
+<h3 id="五、示例对比"><a href="#五、示例对比" class="headerlink" title="五、示例对比"></a>五、示例对比</h3><p><strong>模块化前</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有代码都写在同一个文件中  </span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fetchData</span>(<span class="params"></span>) &#123;  </span><br><span class="line">    <span class="comment">// ...  </span></span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handleData</span>(<span class="params"></span>) &#123;  </span><br><span class="line">    <span class="comment">// ...  </span></span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 调用函数  </span></span><br><span class="line"><span class="title function_">fetchData</span>();  </span><br><span class="line"><span class="title function_">handleData</span>();</span><br></pre></td></tr></table></figure>
+
+<p><strong>模块化后</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用ES6模块化规范  </span></span><br><span class="line"><span class="comment">// fetchData.js  </span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">fetchData</span>(<span class="params"></span>) &#123;  </span><br><span class="line">    <span class="comment">// ...  </span></span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// handleData.js  </span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">handleData</span>(<span class="params"></span>) &#123;  </span><br><span class="line">    <span class="comment">// ...  </span></span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// main.js  </span></span><br><span class="line"><span class="keyword">import</span> &#123; fetchData, handleData &#125; <span class="keyword">from</span> <span class="string">&#x27;./fetchData.js&#x27;</span>;  </span><br><span class="line"><span class="keyword">import</span> &#123; handleData <span class="keyword">as</span> handleDataFromOtherModule &#125; <span class="keyword">from</span> <span class="string">&#x27;./handleData.js&#x27;</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 调用函数  </span></span><br><span class="line"><span class="title function_">fetchData</span>();  </span><br><span class="line"><span class="title function_">handleData</span>();  </span><br><span class="line"><span class="title function_">handleDataFromOtherModule</span>();</span><br></pre></td></tr></table></figure>
+
+<p>在模块化后的代码中，每个函数都被封装在一个独立的模块中，并通过<code>export</code>和<code>import</code>语句进行导出和导入。这种方式使得代码更加清晰、易于维护和管理。</p>
+<p>综上所述，前端模块化后和模块化前的代码变化主要体现在代码组织结构、可维护性、复用性以及模块化实现方式等方面。模块化后的代码更加清晰、易于维护和管理，并且提高了代码的复用性和开发效率。</p>
+<h4 id="模块化的标准"><a href="#模块化的标准" class="headerlink" title="模块化的标准"></a>模块化的标准</h4><ul>
+<li>CommonJS <strong>CJS</strong> （民间 用得也比较多）</li>
+<li>AMD</li>
+<li>CMD</li>
+<li>UMD</li>
+<li>Ecmascript Module <strong>ESM</strong>  (官方 重点)</li>
+</ul>
+<h5 id="CJS和ESM的区别："><a href="#CJS和ESM的区别：" class="headerlink" title="CJS和ESM的区别："></a>CJS和ESM的区别：</h5><p>CJS是民间的，ESM是官方的。</p>
+<p>模块化的具体方法上<strong>，CJS是运行时的，ESM是编译时。</strong></p>
+<h6 id="运行时"><a href="#运行时" class="headerlink" title="运行时"></a>运行时</h6><p>只有<strong>代码运行完之后，才能确定依赖关系。</strong></p>
+<p>如下例子，只有运行到对应位置时，才能知道依赖2还是3。</p>
+<p><img src="/../images/image-20241014152748123.png" alt="image-20241014152748123"></p>
+<h6 id="编译时"><a href="#编译时" class="headerlink" title="编译时"></a>编译时</h6><p><strong>不用运行代码</strong>，就已经确定依赖关系。强烈建议。</p>
+<p>必须在最开头引入依赖文件，不能在程序运行中途导入。</p>
+<p><img src="/../images/image-20241014152924220.png" alt="image-20241014152924220"></p>
+<h4 id="模块化的实现"><a href="#模块化的实现" class="headerlink" title="模块化的实现"></a>模块化的实现</h4><p>浏览器支持ESM,node支持ESM和CJS。</p>
+<h3 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h3><p>包：package,<strong>一系列模块的集合</strong>。</p>
+<p>分解和聚合是有层次的，最小的层次是<strong>函数</strong>，接着是<strong>文件</strong>，然后是<strong>包</strong>。</p>
+<h4 id="什么是框架和库？"><a href="#什么是框架和库？" class="headerlink" title="什么是框架和库？"></a>什么是框架和库？</h4><p>框架其实就是一种<strong>代码约束结构</strong>，<strong>在这种结构上面书写</strong>代码。</p>
+<p>而库呢是在我<strong>代码结构的基础之上</strong>，调用库实现一些功能。</p>
+<p>两者的区别在于<strong>代码结构的搭建约束</strong>。</p>
+<h4 id="前端有几个层面？"><a href="#前端有几个层面？" class="headerlink" title="前端有几个层面？"></a>前端有几个层面？</h4><ul>
+<li>语言 html js </li>
+<li>协议  http websoket oauth2</li>
+<li>环境  浏览器 web API canvas API</li>
+<li>框架&#x2F;库 vue react axios eggrn uniaapp taro lodash moment</li>
+<li>服务器 mysql mode express redis</li>
+<li>工程化 ts sass less</li>
+</ul>
+<h4 id="如何管理包？"><a href="#如何管理包？" class="headerlink" title="如何管理包？"></a>如何管理包？</h4><p>如何下载？如何管理？如何书写？如何发布？</p>
+<p>目前，<strong>利用npm、pnpm、yarn等进行包下载和管理</strong>。</p>
+<h2 id="三-JS工具链"><a href="#三-JS工具链" class="headerlink" title="三.JS工具链"></a>三.JS工具链</h2><p>由于前端语言设计存在<strong>兼容性和语言缺陷</strong>的问题，所以这里提供了不少工具来解决上述问题。</p>
+<p>这里主要介绍js语言的工具。</p>
+<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><ul>
+<li>API 兼容   ——不同版本下，函数可能无法执行。</li>
+</ul>
+<p>利用polyfill（垫片）【术语】，来解决API兼容问题。主要用<strong>core-js</strong>【工具】。</p>
+<ul>
+<li>语法兼容</li>
+</ul>
+<p>利用syntax transformer(runtime),调用函数来进行转换【把一种代码转换为另一种代码】。</p>
+<p>举个例子，利用regenarator(工具)来转换代码，把async和await转换为没有运用jsasync和await但能实现相同功能的代码。一次转换解决一种问题。</p>
+<p><strong>两者其实都是实现代码转换，只是转换的目标不同。</strong></p>
+<p><img src="/../images/image-20241014163405748.png" alt="image-20241014163405748"></p>
+<p>因此，有了<strong>babel搭建舞台</strong>，让<strong>各种转换工具都集合进来，</strong>不用一个个手动进行转换。</p>
+<h2 id="四-CSS工具链"><a href="#四-CSS工具链" class="headerlink" title="四.CSS工具链"></a>四.CSS工具链</h2><h3 id="Css语言的问题："><a href="#Css语言的问题：" class="headerlink" title="Css语言的问题："></a>Css语言的问题：</h3><ol>
+<li>语法缺失（循环、判断、拼接）</li>
+<li>功能缺失（颜色函数、数学函数、自定义函数）</li>
+</ol>
+<h3 id="预编译器"><a href="#预编译器" class="headerlink" title="预编译器"></a>预编译器</h3><p>所以<strong>产生了新语言，再利用预编译器让新语言转换为纯粹的css语言</strong>让浏览器解析。例如<strong>sass&#x2F;less</strong>等。</p>
+<h3 id="后处理器"><a href="#后处理器" class="headerlink" title="后处理器"></a>后处理器</h3><p>虽然能使用新语言并将它转换为css代码，但这些转换后的代码会有<strong>厂商前缀</strong>（兼容性问题）、<strong>代码压缩</strong>（留白过多）、<strong>代码剪枝</strong>（有的没用到的代码可以不用转换）。</p>
+<p>于是出现了<strong>postCSS，</strong>实现<strong>更多的转换。</strong></p>
+<p><img src="/../images/image-20241015162405135.png" alt="image-20241015162405135"></p>
+<h2 id="五-构建工具和脚手架"><a href="#五-构建工具和脚手架" class="headerlink" title="五.构建工具和脚手架"></a>五.构建工具和脚手架</h2><p><strong>为什么写完项目后，需要进行打包（代码转换）？</strong></p>
+<p><strong>开发和维护的代码</strong>和<strong>运行时需要的代码</strong>不一致了【例如写的是时候用sass,最后要转换为浏览器支持运行的css】。需要一个<strong>构建工具</strong>进行工程的转换。</p>
+<p><strong>构建工具需要考虑什么？</strong></p>
+<p><strong><img src="/../images/image-20241015163904440.png" alt="image-20241015163904440"></strong></p>
+<h3 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h3><p>基于对上述三个问题的不同理解，出现了如下构建工具。</p>
+<p><img src="/../images/image-20241015163933779.png" alt="image-20241015163933779"></p>
+<h4 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h4><h5 id="构建工具认为："><a href="#构建工具认为：" class="headerlink" title="构建工具认为："></a>构建工具认为：</h5><p>1.哪种工程更适合开发和维护？</p>
+<p><strong>一切皆为模块。</strong></p>
+<p>2.哪种工程更适合运行时？</p>
+<p><strong>原始工程。</strong></p>
+<p>3.如何转换？</p>
+<p><strong>以一个js文件为入口出发，寻找他的依赖关系，进行深度遍历，最后把这些文件进行合并。</strong></p>
+<p>构建工具有一套规则，来定位目标模块，进而分析对应文件。</p>
+<h4 id="开发服务器"><a href="#开发服务器" class="headerlink" title="开发服务器"></a>开发服务器</h4><p>每次运行程序都要<strong>打包（build）再放在浏览器运行查看</strong>，这样很麻烦。为了解决这个问题，<strong>产生了开发服务器（serve）。</strong></p>
+<p>这样就可以通过本地端口直接查看网页。 </p>
+<p><img src="/../images/image-20241015170000879.png" alt="image-20241015170000879"></p>
+<h4 id="文件指纹"><a href="#文件指纹" class="headerlink" title="文件指纹"></a>文件指纹</h4><p>打包后，文件名中会产生哈希值。</p>
+<p><img src="/../images/image-20241015170124367.png" alt="image-20241015170124367"></p>
+<p><strong>利用文件指纹实现浏览器缓存刷新。</strong><img src="/../images/image-20241015170300987.png" alt="image-20241015170300987"></p>
+<h4 id="原码地图"><a href="#原码地图" class="headerlink" title="原码地图"></a>原码地图</h4><p>把<strong>运行结果和源代码关联</strong>起来，这样就<strong>可以在浏览器打断点调试，方便调试。</strong></p>
+<h3 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h3><p>vue-cli vite等等。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/10/28/%E7%AE%80%E5%8E%86%E6%A2%B3%E7%90%86/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/10/12/%E8%BD%AF%E8%80%83/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

@@ -192,7 +192,7 @@
 <li>一元运算符<strong>正号</strong>【特别有用，一般表单输入的值都是字符串，可以用let data&#x3D;+prompt(‘请输入数字’)进行快速转换】</li>
 <li>二元运算符减、乘、除自动转换</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let num =+string</span><br><span class="line">console.log(typeof num)//number</span><br><span class="line">let num =&#x27;1&#x27;-0</span><br><span class="line">console.log(typeof num)//1</span><br><span class="line">let num =&#x27;1&#x27;+0</span><br><span class="line">console.log(typeof num)//10</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let num =+string</span><br><span class="line">console.log(typeof num)//number</span><br><span class="line">let num =&#x27;1&#x27;-0</span><br><span class="line">console.log(typeof num)//number  1</span><br></pre></td></tr></table></figure>
 
 <h5 id="数字转字符串："><a href="#数字转字符串：" class="headerlink" title="数字转字符串："></a>数字转字符串：</h5><ol>
 <li>二元运算符加号</li>
@@ -579,7 +579,7 @@
 <p>完整流程：当执行任务时，主线程若发现有异步任务，会把<strong>异步任务交给浏览器处理</strong>，每当异步任务执行完毕，推入任务队列中（<strong>谁先执行完毕，谁就先推入任务队列中</strong>）。而主线程执行完毕后，会查询任务队列，<strong>依次取出任务</strong>，<strong>推入主线程</strong>处理，重复该动作。</p>
 <p>第一个谁先执行完成谁先推入，其实举例就是2000的定时器会比5000的定期器先执行，无论位置。</p>
 <p>第二个依次取出任务，就是按已经排好序的来了。</p>
-<h4 id="localtion对象"><a href="#localtion对象" class="headerlink" title="localtion对象"></a>localtion对象</h4><p>使用场景：</p>
+<h4 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h4><p>使用场景：</p>
 <p>href 无需点击，自动跳转页面</p>
 <p>search 获取url提交的表单的信息（问号后面的内容）</p>
 <p>hash 获取url井号后面的内容</p>
@@ -653,7 +653,7 @@
 <p><img src="/../images/image-20240922165534263.png" alt="image-20240922165534263"></p>
 <h4 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h4><p>修饰符约束正则执行的某些细节行为，如是否区分大小写，是否支持多行匹配等。</p>
 <p><img src="/../images/image-20240922165902099.png" alt="image-20240922165902099"></p>
-<h2 id="（三）JS进阶"><a href="#（三）JS进阶" class="headerlink" title="（三）JS进阶"></a>（三）JS进阶</h2><h4 id="一-作用域"><a href="#一-作用域" class="headerlink" title="一.作用域"></a>一.作用域</h4><p>作用域规定了变量能够访问的范围。</p>
+<h2 id="（三）JS进阶"><a href="#（三）JS进阶" class="headerlink" title="（三）JS进阶"></a>（三）JS进阶</h2><h4 id="一-作用域"><a href="#一-作用域" class="headerlink" title="一.作用域"></a>一.作用域</h4><p><strong>作用域规定了变量能够访问的范围。</strong></p>
 <h5 id="局部作用域"><a href="#局部作用域" class="headerlink" title="局部作用域"></a>局部作用域</h5><ul>
 <li>函数作用域</li>
 <li>块级作用域</li>
@@ -894,6 +894,14 @@ eg:
 
 如Date.now() Math.PI() Math.random()
 
+
+
+但是，利用构造函数这种方式创建对象，存在**浪费内存**的问题。
+
+———即每创建一个对象（若属性有方法），都会创建不同地址的方法，这是没必要的。
+
+**解决方案就是原型。**
+
 #### 八.内置构造函数
 
 - Object 
@@ -946,6 +954,342 @@ assign -赋值
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.find(index=&gt;index.name==&#x27;toto&#x27;)</span><br><span class="line">//返回符合条件的对象</span><br></pre></td></tr></table></figure>
 
 ##### String
+
+实例方法
+
+split 字符串转换为数组
+
+substring 截取字符串片段
+
+startWIth 寻找是否以指定字符串开头
+
+**includes** 搜索是否有指定字符串，严格区分大小写
+
+**indexOf** 是否包含某个字符 返回索引值
+
+![image-20241004134712591](../images/image-20241004134712591.png)
+
+#### 九.编程思想
+
+##### 面向过程编程：
+
+分析出解决问题的步骤，**利用函数**一步步解决问题。
+
+##### 面向对象编程：
+
+把事物分解成一个个对象，**对象之间分工合作**。
+
+**以功能**来划分问题，而不是步骤。
+
+封装性、继承性、多态性。
+
+#### 十.原型
+
+##### 原型对象
+
+问题：构造函数每一次实例化都会开辟新的空间存放方法，这是我们不希望看到的。
+
+于是，出现了原型。
+
+- **每个构造函数都有一个prototype属性**，这个属性**存放着对象**，这个对象叫做原型对象。
+- 我们可以通过**这个对象（prototype）挂载函数**，对象的实例化可以共享这些方法，从而解决资源浪费。
+- **公共的属性写在构造函数里面，公共方法写在原型对象里面**。
+
+**定义**：原型本质是对象，是构造函数的属性，存放着对象。即prototype。
+
+**作用**：共享公共方法。
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Star(name,age)&#123;</span><br><span class="line">	this.name=name</span><br><span class="line">	this.age=age</span><br><span class="line">&#125;</span><br><span class="line">Star.prototype.sing=funciton()&#123;</span><br><span class="line">	console.log(&quot;我爱唱歌~&quot;)</span><br><span class="line">&#125;</span><br><span class="line">const toto=new Star(&#x27;toto&#x27;,20)</span><br><span class="line">toto.sing() //我爱唱歌</span><br></pre></td></tr></table></figure>
+
+**原型对象里的函数this和构造函数里的this**都指向**实例化对象**。   超级重要！！！这就是你写方法的数据来源基础了！！！通过this获得实例化对象的
+
+**面试前提：给数组创建一个求和方法。**自定义的方法放在原型对象上。
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.sum=function()&#123;</span><br><span class="line">	let sum=0</span><br><span class="line">	for(let i=0;i&lt;this.length;i++)&#123;</span><br><span class="line">		sum+=this[0]</span><br><span class="line">	&#125;</span><br><span class="line">	return sum</span><br><span class="line">&#125;</span><br><span class="line">const res=arr.sum()</span><br></pre></td></tr></table></figure>
+
+##### constructor
+
+每个**原型对象里面都有个constructor**属性，这个属性**指向构造函数**。
+
+作用：**该属性指向原型对象的构造函数**，其实就是指向他的爸爸，**找爸爸**环节（**因为原型对象是构造函数的属性**）
+
+一次性添加多个方法是可以的，但当直接给prototype赋值时，会导致原先的constructor被覆盖了。所以应该这么写。
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Star.prototype=&#123;</span><br><span class="line">	constructor:Star,</span><br><span class="line">	sing:function()&#123;</span><br><span class="line">		console.log(&quot;唱歌&quot;)</span><br><span class="line">	&#125;,</span><br><span class="line">	dance:function()&#123;</span><br><span class="line">		console.log(&quot;跳舞&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//当然追加是可以的</span><br><span class="line">Star.prototype.sing=function()&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+![image-20241008175045888](../images/image-20241008175045888.png)
+
+**我的总结：**
+
+1. **构造函数拥有原型对象**，这个原型对象**存放于构造函数的prototype属性中**；
+2. **原型对象也有指向构造函数的属性**，即constructor。
+3. **两者都是属性，指向对方，实现互指**。
+
+
+
+##### 对象原型 `__proto__`
+
+问题：前面知道了构造函数和原型对象的关系，那么实例化对象是如何访问原型对象里面的公共方法的呢？
+
+所以就是_`__proto__`_的由来。
+
+实例化对象里面有**一个属性指向原型对象**，这个属性就是`___proto__`。
+
+三者关系：
+
+![image-20241008181623132](../images/image-20241008181623132.png)
+
+其实！！就是对象的属性！指向另一个对象！！
+
+更详细一点：
+
+![image-20241008182515754](../images/image-20241008182515754.png)
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">toto.__proto__===Star.prototype // true</span><br><span class="line">//对象原型指向原型对象 （有点绕）</span><br></pre></td></tr></table></figure>
+
+##### 原型继承
+
+![image-20241009171346229](../images/image-20241009171346229.png)
+
+##### 原型链
+
+![image-20241009171307340](../images/image-20241009171307340.png)
+
+#### 十一.深浅拷贝
+
+深浅拷贝都针对的是**引用类型。**
+
+##### 浅拷贝
+
+**拷贝的是地址**。 **单层**。把**对象的最外层属性的值和地址拷贝给了新对象**，如果有更深层次，那么老对象的里层会随着新对象的改变而改变。
+
+重点：
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const obj=&#123;</span><br><span class="line">	name:&#x27;toto&#x27;,</span><br><span class="line">	age:19,</span><br><span class="line">	family:&#123;</span><br><span class="line">		baby:&#x27;时透&#x27;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">const newObj=&#123;...obj&#125; //这里就是浅拷贝过去了</span><br><span class="line">//修改新对象的name和age，老对象的对应属性不会改变</span><br><span class="line">//但若修改family的值，那么老对象也会改变</span><br><span class="line">//这是因为浅拷贝只拷贝过去了外层属性的值和引用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Object.assign(&#x27;newObj&#x27;,&#x27;obj&#x27;)</span><br><span class="line">//对象浅拷贝。</span><br><span class="line">Array.prototype.concat() </span><br><span class="line">[...arr]</span><br><span class="line">//数组浅拷贝</span><br></pre></td></tr></table></figure>
+
+###### 直接赋值和浅拷贝的区别：！！！！！！
+
+- 拿对象为例**，直接赋值直接把对象地址赋**值过去，新对象**任何的修改**都会影响原对象（哪怕是简单数据类型）；
+- 浅拷贝是把对象的**最外层属性赋值**过去，若是**简单数据类型，则拷贝值，若引用数据类型，则拷贝地址**。只管外层的拷贝，**不管深层次**的。
+
+##### 深拷贝
+
+复制出一个新的对象。我的理解就是**与原对象再无指向关系**。
+
+常利用递归实现深拷贝。
+
+什么是递归？函数自己调自己。
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let i=0;</span><br><span class="line">function fn()&#123;</span><br><span class="line">	if(i&gt;6)&#123;</span><br><span class="line">	return</span><br><span class="line">	&#125;</span><br><span class="line">	i++</span><br><span class="line">	fn()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+递归实现定时器：
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getTime()&#123;</span><br><span class="line">	document.querySelector(&#x27;div&#x27;).innerHTML=new Date().toLocaleString()</span><br><span class="line">	setTimeout(getTime,1000)</span><br><span class="line">	//注意这里是setTimeou只执行一次，并不是开启多个setINterval</span><br><span class="line">	//当然也有弊端，由于事件循环，定时器进入主线程执行需要排队时间。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+##### 拷贝函数手写
+
+###### 浅拷贝
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const obj=&#123;</span><br><span class="line">	name:&#x27;toto&#x27;,</span><br><span class="line">	age:19,</span><br><span class="line">	family:&#123;</span><br><span class="line">		baby:&#x27;时透&#x27;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">const o=&#123;&#125; //注意这里哦！因为一进去就是赋属性值，所以至少要将初始值设为对象字面量</span><br><span class="line"></span><br><span class="line">function Clone(newObj,oldObj)&#123;</span><br><span class="line">	for(let k in oldObj)&#123;</span><br><span class="line">		newObj[k]=oldObj[k]</span><br><span class="line">	&#125;</span><br><span class="line">	//为什么这里不用返回return?</span><br><span class="line">    //因为传参时引用数据类型传递的是地址，函数内部修改引用类型的属性，原对象也会跟着改变。</span><br><span class="line">    //只要不让他指向新的对象字面量，那么新和原都是关联的。</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Clone(o,obj)</span><br></pre></td></tr></table></figure>
+
+###### 深拷贝
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(newObj,oldObj)&#123;</span><br><span class="line">	for(let k in oldObj)&#123;</span><br><span class="line">	//先写ARRay再写Object,因为对象在数组的原型链上</span><br><span class="line">		if(oldObj[k] instanceof Array)&#123;</span><br><span class="line">		//发现不是基础数据类型，需要将最外层设为空的引用数据类型字面量</span><br><span class="line">			newObj[k]=[]</span><br><span class="line">			deepClone(newObj[k],OldObj[k])</span><br><span class="line">		&#125; else if(oldObj[k] instanceof Object)&#123;</span><br><span class="line">			newObj[k]=&#123;&#125;</span><br><span class="line">			deepClone(newObj[k],oldObj[k])</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			newObj[k]=oldObj[k]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+如何实现深拷贝？
+
+1. 深拷贝就是新对象的改动不影响旧对象。
+2. 深拷贝要运用递归。
+3. 递归时，如果遇到普通数据类型，直接拷贝过去
+4. 如果遇到数组类型，利用instanceof 来判断，并再次调用递归。
+5. 如果遇到对象类型，也是如此。
+6. 先判断数组类型，再判断对象类型。
+
+其他的实现深拷贝的方法：
+
+- lodash的__.cloneDeep()
+- JSON.parse(JSON.stringfy(obj))
+
+#### 十二.异常处理
+
+##### throw
+
+使用throw抛出异常，与Error合并抛出。
+
+throw抛出后，程序会终止
+
+eg
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function fn(x,y)&#123;</span><br><span class="line">	if(!x||!y)&#123;</span><br><span class="line">		throw new Error(&quot;没有传递参数！！！&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	return x+y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">concole.log(fn())</span><br></pre></td></tr></table></figure>
+
+##### try…catch(err)…finally
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function fn()&#123;</span><br><span class="line">	try&#123;</span><br><span class="line">		const p=document.querySelector(&#x27;.p&#x27;)</span><br><span class="line">		p.style.color=&#x27;red&#x27;</span><br><span class="line">	&#125;catch(err)&#123;</span><br><span class="line">		//拦截错误，提示浏览器提供的错误信息，但不会中断程序的执行</span><br><span class="line">		console.log(err.message)</span><br><span class="line">		//所以需要加return 中断程序</span><br><span class="line">		//return </span><br><span class="line">		//或者</span><br><span class="line">		throw new Error(&quot;错误错dfddsf&quot;)</span><br><span class="line">	&#125;finally&#123;</span><br><span class="line">		console.log(&quot;不管对不对都要执行！！！&quot;)</span><br><span class="line">		//比如关闭加载过程的小圆圈</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">concole.log(fn())</span><br></pre></td></tr></table></figure>
+
+##### debugger
+
+类似打断点，在代码中直接加上。
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function fn(x,y)&#123;</span><br><span class="line">	debugger</span><br><span class="line">	if(!x||!y)&#123;</span><br><span class="line">		throw new Error(&quot;没有传递参数！！！&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	return x+y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+#### 十三.处理this
+
+##### 普通函数this指向
+
+**谁调用，就指向谁。**
+
+fn() //默认是window.fn() 所以this指向window。
+
+###### 指向window
+
+![image-20241012150955494](../images/image-20241012150955494.png)
+
+###### 指向user
+
+![image-20241012151039567](../images/image-20241012151039567.png)
+
+###### 严格模式
+
+![image-20241012151108051](../images/image-20241012151108051.png)
+
+严格模式下没有调用者，this指向undefined
+
+
+
+###### 定时器
+
+定时器默认是window调用。
+
+
+
+
+
+##### 箭头函数this指向
+
+默认绑定外层函数的this,如果没找到，一层一层往上找。
+
+个人理解，可以先把箭头函数看做普通函数，**先找到普通函数的this,这个普通函数的最近外层this就是箭头函数的this**。
+
+###### 指向window
+
+![image-20241012151918619](../images/image-20241012151918619.png)
+
+##### 适用于箭头函数的情况：
+
+看是否需要用上一层的this吧。
+
+
+
+##### 不使用箭头函数的情况：
+
+- 构造函数、原型对象这种需要用this指向调用对象的情况；
+- DOM事件的回调需要利用this获取当前触发事件的DOM对象；
+
+
+
+##### 改变this指向
+
+- call()
+- apply()
+- bind()
+
+###### call ——了解
+
+1. 调用函数
+2. 改变this的指向
+3. 返回值就是原函数的返回值
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const obj =&#123;</span><br><span class="line">	uname:&#x27;pink&#x27;</span><br><span class="line">&#125;</span><br><span class="line">function fn(x,y)&#123;</span><br><span class="line">	consloe.log(this)   // obj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//1.调用函数</span><br><span class="line">//2.改变this的指向</span><br><span class="line">fn.call(obj,1,2)</span><br></pre></td></tr></table></figure>
+
+###### apply ——重要
+
+1. 调用函数
+2. 改变this的指向
+3. **第二个形参必须传入数组**
+4. 返回值就是原函数的返回值
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const obj =&#123;</span><br><span class="line">	uname:&#x27;pink&#x27;</span><br><span class="line">&#125;</span><br><span class="line">function fn(x,y)&#123;</span><br><span class="line">	consloe.log(this)   // obj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fn.apply(obj,[1,2])</span><br></pre></td></tr></table></figure>
+
+**call和apply的区别**
+
+调用的函数的参数是直接传入还是以数组形式传入。这俩其他的很类似。
+
+
+
+###### bind ——最重要
+
+1. **不会调用函数**
+2. 改变this指向
+3. 返回值是原函数的拷贝（新函数，this经过更改）
+
+
+
+使用场景：
+
+**只想改变this指向，但不想立刻执行。**
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const obj =&#123;</span><br><span class="line">	uname:&#x27;pink&#x27;</span><br><span class="line">&#125;</span><br><span class="line">function fn(x,y)&#123;</span><br><span class="line">	consloe.log(this)   // obj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const fun = fn.bind(obj)</span><br><span class="line">fun()</span><br></pre></td></tr></table></figure>
+
+使用例子：
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">btn.addEventListener(&#x27;click&#x27;,function()&#123;</span><br><span class="line">	this.disabled=true</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		this.disabled=false</span><br><span class="line">		//由于定时器默认是window打开的，所以这里this无法指向btn,需要在函数后面加上bind(btn)</span><br><span class="line">	&#125;.bind(btn),2000)</span><br><span class="line">	//由于bind(btn)是在匿名函数外部写的，所以可以写为bin(this),指向btn</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//利用箭头函数解决</span><br><span class="line">btn.addEventListener(&#x27;click&#x27;,function()&#123;</span><br><span class="line">	this.disabled=true</span><br><span class="line">	setTimeout(()=&gt;&#123;</span><br><span class="line">		this.disabled=false</span><br><span class="line">		//利用箭头函数指向上层this</span><br><span class="line">	&#125;,2000)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//利用作用域解决</span><br><span class="line">btn.addEventListener(&#x27;click&#x27;,function()&#123;</span><br><span class="line">	this.disabled=true</span><br><span class="line">	const that=this</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		that.disabled=false</span><br><span class="line">		//利用箭头函数指向上层this</span><br><span class="line">	&#125;,2000)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+#### 十四.防抖
+
+##### 防抖
+
+单位时间内，频繁触发事件**，只执行最后一次** 。
+
+类似**回城**
+
+![image-20241012163245619](../images/image-20241012163245619.png)
+
+使用场景：
+
+- 搜索框输入
+- 手机号验证
+
+实现防抖：
+
+1.使用lodash库
+
+![image-20241012164602839](../images/image-20241012164602839.png) 
+
+2.手写防抖【定时器setTimeout】
+
+![image-20241012164821826](../images/image-20241012164821826.png)
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function debounce(fn,t)&#123;</span><br><span class="line">	let timer</span><br><span class="line">	//这里利用了闭包</span><br><span class="line">	return function()&#123;</span><br><span class="line">		if(timer) clearTimeout(timer)</span><br><span class="line">		timer= setTimeout(fn,t)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">box.addEventListener(&#x27;mousemove&#x27;,debounce(mouseMove,500))</span><br><span class="line">//debounce立即执行，但debounce返回的函数则是随着监听执行</span><br></pre></td></tr></table></figure>
+
+其实还是有点搞不懂，系统是怎么判断当前是否有定时器的？定时器是如何一直存在的？
+
+**函数结束后，局部变量会销毁，正常来说就不能再访问，但是js开了洞，在返回的函数里面保存了局部变量的副本，这个特性叫做闭包。**
+
+##### 节流
+
+单位时间内，频繁触发事件，**只执行**一次。
+
+类似**技能cd**。
+
+![image-20241012171257858](../images/image-20241012171257858.png)
+
+适用于高频事件，如鼠标移动、页面尺寸缩放、滚动条滑动等等。
+
+实现节流：
+
+1.lodash库
+
+![image-20241012171221658](../images/image-20241012171221658.png)
+
+2.手写节流函数【定时器setTimeout】
+
+![image-20241012171407174](../images/image-20241012171407174.png)
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function throttle(fn,t)&#123;</span><br><span class="line">	let timer</span><br><span class="line">	//这里利用了闭包</span><br><span class="line">	return function()&#123;</span><br><span class="line">		if(timer) &#123;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			timer=setTimeout(function()&#123;</span><br><span class="line">				//1.调用fn()函数</span><br><span class="line">				fn()</span><br><span class="line">				//2.清空定时器</span><br><span class="line">				//注意概念不要混淆了，timer存放的是定时器的数字型索引，尽管setTimeou只执行一次销毁了，这个索引依旧是存在的，所以我们需要在这个定时器调用后清空索引，为下一次进入else判断做好铺垫（不然就永远不会进入这个判断条件了）</span><br><span class="line">				timer= null </span><br><span class="line">				//这里别用cleartimeout哦！这是在设置定时器的内部！！定时器还在运作！！</span><br><span class="line">				</span><br><span class="line">			&#125;,t)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">box.addEventListener(&#x27;mousemove&#x27;,throttle(mouseMove,500))</span><br><span class="line">//debounce立即执行，但debounce返回的函数则是随着监听执行</span><br></pre></td></tr></table></figure>
+
+我的总结：
+
+**单位时间内，频繁触发事件，防抖只触发最后一次，节流只触发第一次。**
 
 </div> 
 
