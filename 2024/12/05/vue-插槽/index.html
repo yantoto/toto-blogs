@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 5, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h2><p><strong>插槽就是在子组件里面挖个坑，等待父组件传入标签进行渲染。</strong></p>
+<p>用于<strong>父组件给子组件传入展示标签</strong>，使用场景是<strong>子组件内部样式未定。</strong>能够复用子组件，添加一些修改。</p>
+<p><strong>子组件内部用<slot>来接收父组件的传递</strong>；<strong>父组件的传递写在标签内部</strong>。</p>
+<h3 id="一、默认插槽"><a href="#一、默认插槽" class="headerlink" title="一、默认插槽"></a>一、默认插槽</h3><p>只能在同一个子组件里面插入一个插槽。</p>
+<p><img src="/../images/image-20241205141524426.png" alt="image-20241205141524426"></p>
+<p><img src="/../images/image-20241205141534459.png" alt="image-20241205141534459"></p>
+<p><img src="/../images/image-20241205141831372.png" alt="image-20241205141831372"></p>
+<h3 id="二、具名插槽"><a href="#二、具名插槽" class="headerlink" title="二、具名插槽"></a>二、具名插槽</h3><p>改善了默认插槽只能给一个子组件传递一个插槽的情况，利用给slot添加name属性，在父组件只需给传入的代码块命名。</p>
+<p>父：</p>
+<p><img src="/../images/image-20241205142037757.png" alt="image-20241205142037757"></p>
+<p>子：</p>
+<p><img src="/../images/image-20241205142056802.png" alt="image-20241205142056802"></p>
+<p><img src="/../images/image-20241205142136546.png" alt="image-20241205142136546"></p>
+<h3 id="三、作用域插槽"><a href="#三、作用域插槽" class="headerlink" title="三、作用域插槽"></a>三、作用域插槽</h3><p>由于上两种情况都是<strong>直接利用父组件数据</strong>，但也有需<strong>要根据子组件数据渲染页面的情况</strong>，所以产生了作用域插槽。</p>
+<p>场景：<strong>插槽内部内容需要用到子组件数据</strong>。</p>
+<p>父组件中接收子组件传递过来的参数，以<strong>键值对的形式</strong>存入定义的对象中</p>
+<p><img src="/../images/image-20241205144500583.png" alt="image-20241205144500583"></p>
+<p>子组件中利用v-bind将数据传递给父组件。</p>
+<p><img src="/../images/image-20241205144517617.png" alt="image-20241205144517617"></p>
+<p><img src="/../images/image-20241205144523278.png" alt="image-20241205144523278"></p>
+<h3 id="四、八股"><a href="#四、八股" class="headerlink" title="四、八股"></a>四、八股</h3><p>slot又名插槽，是Vue的内容分发机制，组件内部的模板引擎使用slot元素作为承载分发内容的出口。插槽slot是子组件的一个模板标签元素，而这一个标签元素是否显示，以及怎么显示是由父组件决定的。slot又分三类，默认插槽，具名插槽和作用域插槽。</p>
+<ul>
+<li>默认插槽：又名匿名插槽，当slot没有指定name属性值的时候一个默认显示插槽，一个组件内只有有一个匿名插槽。</li>
+<li>具名插槽：带有具体名字的插槽，也就是带有name属性的slot，一个组件可以出现多个具名插槽。</li>
+<li>作用域插槽：默认插槽、具名插槽的一个变体，可以是匿名插槽，也可以是具名插槽，该插槽的不同点是在子组件渲染作用域插槽时，可以将子组件内部的数据传递给父组件，让父组件根据子组件的传递过来的数据决定如何渲染该插槽。</li>
+</ul>
+<p>实现原理：当子组件vm实例化时，获取到父组件传入的slot标签的内容，存放在<code>vm.$slot</code>中，默认插槽为<code>vm.$slot.default</code>，具名插槽为<code>vm.$slot.xxx</code>，xxx 为插槽名，当组件执行渲染函数时候，遇到slot标签，使用<code>$slot</code>中的内容进行替换，此时可以为插槽传递数据，若存在数据，则可称该插槽为作用域插槽。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/05/vue-v-if%E5%92%8Cv-show/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/04/vue-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

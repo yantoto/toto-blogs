@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Nov 19, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一、HTML-和-CSS"><a href="#一、HTML-和-CSS" class="headerlink" title="一、HTML 和 CSS"></a>一、HTML 和 CSS</h2><h3 id="基础术语"><a href="#基础术语" class="headerlink" title="基础术语"></a>基础术语</h3><p>web 互联网</p>
+<p>w3c 万维网联盟 提供各种标准</p>
+<p>XML 可扩展标记语言 用于定义文档结构的。</p>
+<h3 id="HTML定义"><a href="#HTML定义" class="headerlink" title="HTML定义"></a>HTML定义</h3><p>Hyper Text Markup language 超文本标记语言</p>
+<p>用于描述页面结构的语言。</p>
+<h3 id="CSS定义"><a href="#CSS定义" class="headerlink" title="CSS定义"></a>CSS定义</h3><p>用于描述页面展示的语言。</p>
+<h3 id="执行HTML和CSS"><a href="#执行HTML和CSS" class="headerlink" title="执行HTML和CSS"></a>执行HTML和CSS</h3><p>HTML、CSS-&gt;浏览器内核-&gt;页面</p>
+<h4 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h4><p>shell：外壳</p>
+<p><strong>core：内核（js执行引擎、渲染引擎）</strong></p>
+<p><img src="/../images/image-20241119185310116.png" alt="image-20241119185310116"></p>
+<p>大多国内浏览器都是换了个外壳，内核不变。</p>
+<p>所以<strong>独立内核浏览器</strong>有：</p>
+<ul>
+<li>IE：Trient</li>
+<li>Firfox：Gecko</li>
+<li>Chrmo：webkit（之前）&#x2F;Blink（现在）</li>
+<li>Safari：webkit</li>
+<li>Opera：Presto&#x2F;BIink</li>
+</ul>
+<h3 id="目前语言标准"><a href="#目前语言标准" class="headerlink" title="目前语言标准"></a>目前语言标准</h3><p>HTML5（2014年）、CSS3（目前还没有制定完成）</p>
+<h2 id="二、HTML结构认识"><a href="#二、HTML结构认识" class="headerlink" title="二、HTML结构认识"></a>二、HTML结构认识</h2><p><img src="/../images/image-20241119192507646.png" alt="image-20241119192507646"></p>
+<p><img src="/../images/image-20241119192555811.png" alt="image-20241119192555811"></p>
+<p><img src="/../images/image-20241119192906373.png" alt="image-20241119192906373"></p>
+<h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p><img src="/../images/image-20241119194224632.png" alt="image-20241119194224632"></p>
+<p>页面中要参与显示的元素，都要写在文档体中。</p>
+<h2 id="三、语义化"><a href="#三、语义化" class="headerlink" title="三、语义化"></a>三、语义化</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ol>
+<li>每一个html元素都有具体含义。</li>
+<li>所有元素与展示效果无关。</li>
+</ol>
+<p><strong>选择什么元素，取决于内容的含义</strong>，而不是它的默认样式。</p>
+<h3 id="为什么语义化？"><a href="#为什么语义化？" class="headerlink" title="为什么语义化？"></a>为什么语义化？</h3><ol>
+<li><p>为了搜索引擎优化（SEO）</p>
+<p> 每隔一段时间，搜索引擎都会从互联网中抓取源代码。</p>
+</li>
+<li><p>为了浏览器理解网页</p>
+<p> 阅读模式、语音模式</p>
+</li>
+</ol>
+<h2 id="四、文本元素"><a href="#四、文本元素" class="headerlink" title="四、文本元素"></a>四、文本元素</h2><h3 id="H"><a href="#H" class="headerlink" title="H"></a>H</h3><p>H1~H6</p>
+<h3 id="p"><a href="#p" class="headerlink" title="p"></a>p</h3><p>段落</p>
+<h3 id="span"><a href="#span" class="headerlink" title="span"></a>span</h3><p>无语义，仅用于样式设置。</p>
+<h3 id="pre"><a href="#pre" class="headerlink" title="pre"></a>pre</h3><p>预格式化文本元素</p>
+<p>在pre元素中的内容<strong>不会出现空白折叠</strong>，会按照源代码的格式显示到页面上。通常<strong>用于显示代码</strong>。通查显示代码时外面<strong>套code</strong>。</p>
+<p><img src="/../images/image-20241119204431321.png" alt="image-20241119204431321"></p>
+<h3 id="空白折叠"><a href="#空白折叠" class="headerlink" title="空白折叠"></a>空白折叠</h3><p>多个空白会折叠为一个。方便源代码书写和观察。</p>
+<h3 id="元素类型"><a href="#元素类型" class="headerlink" title="元素类型"></a>元素类型</h3><p>以前：某些元素会独占一行（块级元素），而某些元素不会（行内元素）。</p>
+<p>现在：H5已经<strong>弃用</strong>了这种说法，因为H5提出<strong>语义化，元素含义与显示无关。</strong>现在叫<strong>行盒</strong>和<strong>块盒</strong>。</p>
+<h2 id="五、HTML实体"><a href="#五、HTML实体" class="headerlink" title="五、HTML实体"></a>五、HTML实体</h2><h3 id="实体字符"><a href="#实体字符" class="headerlink" title="实体字符"></a>实体字符</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&amp;lt 小于</span><br><span class="line">&amp;gt 大于</span><br><span class="line">&amp;nbsp; 空格</span><br><span class="line">&amp;copy 版权</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、超链接"><a href="#六、超链接" class="headerlink" title="六、超链接"></a>六、超链接</h2><h3 id="href-属性"><a href="#href-属性" class="headerlink" title="href 属性"></a>href 属性</h3><p>hyper reference 通常用于跳转地址</p>
+<ol>
+<li>普通链接</li>
+<li>锚点链接（跳转到当前页面的不同位置）</li>
+<li>功能链接（执行js，发送邮件，拨打电话）</li>
+</ol>
+<p><img src="/../images/image-20241120144235568.png" alt="image-20241120144235568"></p>
+<h3 id="target-属性"><a href="#target-属性" class="headerlink" title="target 属性"></a>target 属性</h3><p>表示跳转窗口位置</p>
+<p>target 的取值：</p>
+<p>__self：在当前页面窗口中打开，默认值</p>
+<p>__blank:在新窗口中打开</p>
+<p><img src="/../images/image-20241120145242871.png" alt="image-20241120145242871"></p>
+<h2 id="七、路径"><a href="#七、路径" class="headerlink" title="七、路径"></a>七、路径</h2><h3 id="站内资源和站外资源"><a href="#站内资源和站外资源" class="headerlink" title="站内资源和站外资源"></a>站内资源和站外资源</h3><p>站内资源：当前网站的资源</p>
+<p>站外资源：非当前网站的资源</p>
+<h3 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h3><p>站内资源：相对路径</p>
+<p>站外资源：绝对路径</p>
+<h4 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h4><p>url地址：<strong>协议名：&#x2F;&#x2F;主机名：端口号&#x2F;路径</strong></p>
+<p>eg：<a target="_blank" rel="noopener" href="http://127.0.0.1:5500/html/h5%E6%96%B0%E6%A0%87%E7%AD%BE.html#">http://127.0.0.1:5500/html/h5%E6%96%B0%E6%A0%87%E7%AD%BE.html#</a></p>
+<h5 id="协议名"><a href="#协议名" class="headerlink" title="协议名"></a>协议名</h5><p>http、https、file</p>
+<h5 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h5><p>域名、IP地址</p>
+<h5 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h5><p>如果协议是http协议，默认端口是80；若是https协议，默认端口是443。</p>
+<h4 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h4><p>以.&#x2F;开头 查看当前目录</p>
+<p>以..&#x2F;开头 返回上一个目录</p>
+<p>.&#x2F;可以省略</p>
+<p><img src="/../images/image-20241120150652372.png" alt="image-20241120150652372"></p>
+<h2 id="八、图片元素"><a href="#八、图片元素" class="headerlink" title="八、图片元素"></a>八、图片元素</h2><p>img元素 空元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;./img.png&quot; alt=&quot;网络不好，图片暂时展示不了&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>和map元素联用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>坐标演示：<img src="/../images/image-20241120152504627.png" alt="image-20241120152504627"></p>
+<p>如何测量坐标;</p>
+<p><img src="/../images/image-20241120152621974.png" alt="image-20241120152621974"></p>
+<p><img src="/../images/image-20241120155944021.png" alt="image-20241120155944021"></p>
+<p>但是这里测量有个大坑，坐标测量误差大，要么不用，要么用专业工具（ps、pxcook）</p>
+<h2 id="九、video和audio"><a href="#九、video和audio" class="headerlink" title="九、video和audio"></a>九、video和audio</h2><h3 id="video-视频"><a href="#video-视频" class="headerlink" title="video 视频"></a>video 视频</h3><p>controls：控制控件的显示，取值只能为constols</p>
+<p>autoplay：布尔属性，循环播放</p>
+<p>muted：布尔属性，静音播放</p>
+<p>某些属性，只有两种状态：1.不写 2.取值为属性名，这种属性叫做<strong>布尔属性</strong></p>
+<p>布尔属性中，在HTML5，可以<strong>不用书写属性值</strong>。</p>
+<p>即</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;./ddd.mp4&quot; controls=&quot;controls&quot;&gt;&lt;/video&gt;</span><br><span class="line"></span><br><span class="line">//可以写为</span><br><span class="line">&lt;video src=&quot;./ddd.mp4&quot; controls&gt;&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20241120161819435.png" alt="image-20241120161819435"></p>
+<p><img src="/../images/image-20241120161621178.png" alt="image-20241120161621178"></p>
+<h3 id="audio-音频"><a href="#audio-音频" class="headerlink" title="audio 音频"></a>audio 音频</h3><p>和video完全一致。</p>
+<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><ol>
+<li>旧版本的浏览器不支持这两个元素</li>
+<li>不同浏览器支持的音视频格式可能不一致</li>
+</ol>
+<p>所以，使用source来兼容不同浏览器和视频格式。</p>
+<h2 id="十、容器元素"><a href="#十、容器元素" class="headerlink" title="十、容器元素"></a>十、容器元素</h2><p>该元素内部放置其他元素。</p>
+<h3 id="div元素"><a href="#div元素" class="headerlink" title="div元素"></a>div元素</h3><p>没有语义</p>
+<p>所以HTML5提出了语义化的容器标签</p>
+<h3 id="语义化容器标签"><a href="#语义化容器标签" class="headerlink" title="语义化容器标签"></a>语义化容器标签</h3><p>header:表示页头，也可以表示文章的头部</p>
+<p>footer：表示页脚，也可以表示文章的尾部</p>
+<p>artical：通常用于表示整片文章</p>
+<p>section：通常用于表示文章的章节</p>
+<p>aside:通常用于表示侧边栏（附加信息）</p>
+<h2 id="十一、元素包含关系"><a href="#十一、元素包含关系" class="headerlink" title="十一、元素包含关系"></a>十一、元素包含关系</h2><p>以前：块级元素可以包含行级元素，行级元素并不可以包含块级元素，<strong>a元素除外</strong>。</p>
+<p><strong>现在：</strong> <strong>元素的包含关系由元素的内容类别决定。</strong></p>
+<p>具体在mdn查。</p>
+<p>总结：</p>
+<ol>
+<li>容器元素中可以包含任何元素</li>
+<li>a标签几乎可以包含任何元素</li>
+<li>某些元素有固定的子元素（ul&gt;li ol&gt;li dl&gt;dt+dd）</li>
+<li>标题元素和段落元素不能相互嵌套，并且不能包含容器元素</li>
+</ol>
+<h2 id="十二、CSS开始"><a href="#十二、CSS开始" class="headerlink" title="十二、CSS开始"></a>十二、CSS开始</h2><h2 id="十三、选择器"><a href="#十三、选择器" class="headerlink" title="十三、选择器"></a>十三、选择器</h2><h3 id="简单选择器："><a href="#简单选择器：" class="headerlink" title="简单选择器："></a>简单选择器：</h3><ul>
+<li><p>通配符选择器</p>
+</li>
+<li><p>元素选择器</p>
+<p>  <img src="/../images/image-20241120202149499.png" alt="image-20241120202149499"></p>
+</li>
+<li><p>ID选择器</p>
+</li>
+<li><p>类选择器</p>
+</li>
+<li><p>标签选择器</p>
+</li>
+<li><p>伪类选择器</p>
+<p>  <img src="/../images/image-20241120202639014.png" alt="image-20241120202639014"></p>
+<p>  1）link: 超链接未访问时的状态</p>
+<p>  2）visited: 超链接访问过后的状态</p>
+<p>  3）hover: 鼠标悬停状态</p>
+<p>  4）active：激活状态，鼠标按下状态</p>
+<p>  爱恨法则：love hate</p>
+</li>
+<li><p>伪元素选择器</p>
+<p>  before after</p>
+<p>  <img src="/../images/image-20241120202912353.png" alt="image-20241120202912353"></p>
+<p>  <strong>为什么要爱恨法则？</strong></p>
+<p>  因为<strong>特殊性一致</strong>，所以只能根据<strong>源次序来胜出</strong>。可以发现它的样式是根据点击顺序来写的。</p>
+</li>
+</ul>
+<h3 id="选择器的组合"><a href="#选择器的组合" class="headerlink" title="选择器的组合"></a>选择器的组合</h3><ol>
+<li>并且</li>
+<li>后代元素 空格</li>
+<li>子元素 大于</li>
+<li>下一个兄弟元素 +</li>
+<li>下面所有兄弟元素 ~</li>
+</ol>
+<p><img src="/../images/image-20241120203817270.png" alt="image-20241120203817270"></p>
+<p><img src="/../images/image-20241120203824649.png" alt="image-20241120203824649"></p>
+<p><img src="/../images/image-20241120203831585.png" alt="image-20241120203831585"></p>
+<p>多个选择器之间，用<strong>逗号</strong>分割。</p>
+<h2 id="十四、层叠"><a href="#十四、层叠" class="headerlink" title="十四、层叠"></a>十四、层叠</h2><h3 id="声明冲突"><a href="#声明冲突" class="headerlink" title="声明冲突"></a>声明冲突</h3><p>一个标签同一属性设置不同值。</p>
+<p><strong>层叠：解决声明冲突</strong>的过程，<strong>浏览器</strong>自动解决（<strong>处理权重</strong>）</p>
+<h3 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h3><h4 id="1-比较重要性"><a href="#1-比较重要性" class="headerlink" title="1.比较重要性"></a>1.比较重要性</h4><p>作者样式表：开发者书写的样式</p>
+<p>重要性<strong>从高到低</strong>：</p>
+<ol>
+<li>作者样式表中的！important样式</li>
+<li>作者样式表中的普通样式</li>
+<li>浏览器默认样式中的样式</li>
+</ol>
+<h4 id="2-比较特殊性"><a href="#2-比较特殊性" class="headerlink" title="2.比较特殊性"></a>2.比较特殊性</h4><p>总体规则：比较选择器。<strong>选中的范围越窄，越特殊</strong>。</p>
+<p>具体规则：<strong>通过选择器，计算出一个四位数</strong>（x x x x），哪个大，哪个更特殊，且不用考虑进位。</p>
+<ol>
+<li>千位：若是<strong>内联样式</strong>，记1，否则记0；</li>
+<li>百位：等于选择器中<strong>id选择器的数量</strong> </li>
+<li>十位：等于选择器中<strong>类选择器、伪类选择器、伪元素选择器的数量</strong></li>
+<li>个位：等于选择器中所有<strong>元素选择器的数量</strong></li>
+</ol>
+<p><img src="/../images/image-20241120205539144.png" alt="image-20241120205539144"></p>
+<h4 id="3-比较源顺序"><a href="#3-比较源顺序" class="headerlink" title="3.比较源顺序"></a>3.比较源顺序</h4><p>代码书写靠后的胜出。</p>
+<h2 id="十五、继承"><a href="#十五、继承" class="headerlink" title="十五、继承"></a>十五、继承</h2><p>继承：子元素会继承父元素的<strong>某些属性</strong>（跟字体内容相关的属性）。</p>
+<h2 id="十六、属性值的计算过程"><a href="#十六、属性值的计算过程" class="headerlink" title="十六、属性值的计算过程"></a>十六、属性值的计算过程</h2><p>树形渲染：</p>
+<p><img src="/../images/image-20241123135249345.png" alt="image-20241123135249345"></p>
+<p>渲染每个元素的前提：<strong>所有css属性必须有值。</strong></p>
+<p><strong>一个元素，从所有属性都没有值，到所有的属性都有值5，这个计算过程</strong>，叫做<strong>属性值的计算过程</strong>。</p>
+<p><img src="/../images/image-20241123140453595.png" alt="image-20241123140453595"><img src="/../images/image-20241123142148877.png" alt="image-20241123142148877"></p>
+<p>1.确定声明值：<strong>先放置没有冲突的声明</strong>（包括<strong>作者样式表和浏览器默认样式表</strong>），直接作为css属性值。</p>
+<p>2.层叠：对<strong>有冲突的声明，</strong>按照<strong>层叠</strong>的规则，确定对应的css属性。</p>
+<p>3.继承：对<strong>没有值的css属性</strong>，<strong>若可以继承，继承父元素的值</strong>。</p>
+<p>4.使用默认值：<strong>仍然没有值</strong>的css属性，使用<strong>默认值</strong>。</p>
+<p><img src="/../images/image-20241123135811078.png" alt="image-20241123135811078"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	div&#123;</span><br><span class="line">		color:red;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;a&gt;111&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;p&gt;111&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="为什么a元素不会继承红色而p元素会继承红色？"><a href="#为什么a元素不会继承红色而p元素会继承红色？" class="headerlink" title="为什么a元素不会继承红色而p元素会继承红色？"></a>为什么a元素不会继承红色而p元素会继承红色？</h3><p>因为a元素浏览器默认样式设置了默认颜色，在确定默认值时就已经确定了颜色了，而继承是继承那些没有设定值的属性，显然color已经有值了；如果这里style改成a{color:red}那么会在重叠时根据优先级，将a标签设为红色。 </p>
+<p>p元素浏览器默认样式没有颜色默认值，所以会在继承时使用父元素的值。</p>
+<p>这各种情况下，想要继承父元素颜色怎么办？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a&#123;</span><br><span class="line">	color:inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>会在层叠时确认该属性（强制继承），通过属性作用继承父元素的颜色。</p>
+<p>特殊的两个css属性：</p>
+<p>​	initial:设为属性默认值；</p>
+<p>inherit:设为继承父元素的值。</p>
+<h2 id="十七、盒模型"><a href="#十七、盒模型" class="headerlink" title="十七、盒模型"></a>十七、盒模型</h2><p>box：盒子，每个元素在也页面中会生成一个矩形区域（盒子）</p>
+<p>盒子类型：</p>
+<ol>
+<li>行盒，display等于inline的元素</li>
+<li>块盒，display等于block的元素</li>
+</ol>
+<p>浏览器默认样式表设置的块盒：容器元素、h1_h6，p</p>
+<p>常见的行盒：span、a、img、video、audio</p>
+<h3 id="盒子的组成部分"><a href="#盒子的组成部分" class="headerlink" title="盒子的组成部分"></a>盒子的组成部分</h3><p><strong>无论是行盒、还是块盒</strong>，都由下面几个部分组成，从内到外分别是：</p>
+<ol>
+<li>内容  content</li>
+</ol>
+<p>width、height，设置的是盒子内容的宽高</p>
+<p>内容部分通常叫做整个盒子的<strong>内容盒 content-box</strong></p>
+<ol start="2">
+<li>填充(内边距)  padding</li>
+</ol>
+<p>盒子边框到盒子内容的距离</p>
+<p>padding-left、padding-right、padding-top、padding-bottom</p>
+<p>padding: 简写属性</p>
+<p>padding: 上 右 下 左</p>
+<p>填充区+内容区 &#x3D; <strong>填充盒 padding-box</strong></p>
+<ol start="3">
+<li>边框  border</li>
+</ol>
+<p>边框 &#x3D; 边框样式 + 边框宽度 + 边框颜色</p>
+<p>边框样式：border-style<br>边框宽度：border-width<br>边框颜色：border-color</p>
+<p>边框+填充区+内容区 &#x3D; <strong>边框盒 border-box</strong></p>
+<ol start="4">
+<li>外边距  margin</li>
+</ol>
+<p>边框到其他盒子的距离</p>
+<p>margin-top、margin-left、margin-right、margin-bottom</p>
+<p>速写属性margin</p>
+<ol>
+<li><img src="/../images/image-20241124151103303.png" alt="image-20241124151103303"></li>
+</ol>
+<h2 id="十八、盒模型应用"><a href="#十八、盒模型应用" class="headerlink" title="十八、盒模型应用"></a>十八、盒模型应用</h2><h3 id="改变宽高范围"><a href="#改变宽高范围" class="headerlink" title="改变宽高范围"></a>改变宽高范围</h3><p>在实际开发中，<strong>往往获取的是边框盒</strong>，这不符合原来css的width和height设置的内容盒。所以css3推出了新的属性——<strong>boxsizing,改变width和height设置的盒模型。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 100px;</span><br><span class="line">            border: 3px solid red;</span><br><span class="line">            background-color: aqua;</span><br><span class="line">            box-sizing: border-box</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="改变背景覆盖范围"><a href="#改变背景覆盖范围" class="headerlink" title="改变背景覆盖范围"></a>改变背景覆盖范围</h3><p>可以通<strong>过backgroud-clip</strong>设置<strong>背景的覆盖范围</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 100px;</span><br><span class="line">            border: 3px solid red;</span><br><span class="line">            background-color: aqua;</span><br><span class="line">            backgroud-clip: padding-box</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="溢出处理"><a href="#溢出处理" class="headerlink" title="溢出处理"></a><strong>溢出</strong>处理</h3><p>  <strong>overFlow</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">overflow:hidden </span><br><span class="line">overflow:scroll</span><br><span class="line">overflow-x:scroll</span><br><span class="line">overflow-y:scroll</span><br><span class="line">overflow:auto</span><br></pre></td></tr></table></figure>
+
+<h3 id="断词规则"><a href="#断词规则" class="headerlink" title="断词规则"></a>断词规则</h3><p>word-break，会影响文字在什么位置被截断换行</p>
+<p>normal：普通。CJK字符（文字位置截断），非CJK字符（单词位置截断）</p>
+<p>break-all：截断所有。所有字符都在文字处截断</p>
+<p>keep-all：保持所有。所有文字都在单词之间截断</p>
+<h3 id="空白处理"><a href="#空白处理" class="headerlink" title="空白处理"></a>空白处理</h3><p>white-space: nowrap</p>
+<h3 id="处理文字过多的情况：（只能控制单行文本）"><a href="#处理文字过多的情况：（只能控制单行文本）" class="headerlink" title="处理文字过多的情况：（只能控制单行文本）"></a>处理文字过多的情况：（只能控制单行文本）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">li &#123;</span><br><span class="line">	width:200px;</span><br><span class="line">	white-wrap:nowrap;</span><br><span class="line">	//不允许换行</span><br><span class="line">	overflow:hidden;</span><br><span class="line">	//盒子溢出省略</span><br><span class="line">	text-owerflow:ellipsis;</span><br><span class="line">	//文字溢出则省略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20241124154521083.png" alt="image-20241124154521083"></p>
+<h2 id="十九、行盒模型"><a href="#十九、行盒模型" class="headerlink" title="十九、行盒模型"></a>十九、行盒模型</h2><p>常见行盒元素： a,audio,vedio,span,img,em,i,strong</p>
+<p>特点：</p>
+<ol>
+<li><p>盒子沿着内容延伸</p>
+</li>
+<li><p>无法设置宽高</p>
+<p> 调整行盒的宽高，应该使用字体大小、行高、字体类型来间接调整。</p>
+</li>
+<li><p>内边距、边框、外边距</p>
+<p> <strong>水平方向有效，垂直方向上仅会影响背景，不会占据实际空间。</strong></p>
+</li>
+</ol>
+<p><img src="/../images/image-20241124155023601.png" alt="image-20241124155023601"></p>
+<h3 id="行块盒"><a href="#行块盒" class="headerlink" title="行块盒"></a>行块盒</h3><p>display:inline-block 的盒子 如img</p>
+<ol>
+<li>不独占一行</li>
+<li>盒模型中所有尺寸都有效</li>
+</ol>
+<p>该属性经常用来做分页</p>
+<p><img src="/../images/image-20241124160239947.png" alt="image-20241124160239947"></p>
+<h2 id="二十、为什么使用translate来改变位置而不是改变定位？"><a href="#二十、为什么使用translate来改变位置而不是改变定位？" class="headerlink" title="二十、为什么使用translate来改变位置而不是改变定位？"></a>二十、为什么使用translate来改变位置而不是改变定位？</h2><p>在CSS中，使用<code>translate</code>来改变位置而不是直接改变定位（如使用<code>position</code>属性），主要是出于性能、动画效果和平滑性的考虑，<strong>尽管两者都可能生成独立的渲染层级（在某些情况下）。</strong>以下是详细的原因分析：</p>
+<h3 id="性能优势"><a href="#性能优势" class="headerlink" title="性能优势"></a>性能优势</h3><ol>
+<li><p>GPU加速</p>
+<p> ：</p>
+<ul>
+<li><code>translate</code>是CSS <code>transform</code>属性的一个值，它允许元素在二维空间内平移。现代浏览器通常会对<code>transform</code>属性进行硬件加速，这意味着GPU会参与到渲染过程中，从而提高动画和变换的性能。</li>
+<li>相比之下，<code>position</code>属性的改变通常是由CPU处理的，特别是在需要重排（reflow）和重绘（repaint）的情况下，性能开销较大。</li>
+</ul>
+</li>
+<li><p>减少重排和重绘</p>
+<p> ：</p>
+<ul>
+<li>使用<code>translate</code>时，由于它是基于元素的当前位置进行变换的，因此通常不会触发重排（reflow）。而<code>position</code>的改变，特别是当涉及到相对定位或绝对定位时，往往会导致元素及其周围元素的位置和尺寸发生变化，从而触发重排。</li>
+<li>重排是一个昂贵的操作，因为它需要浏览器重新计算布局并更新渲染树。</li>
+</ul>
+</li>
+</ol>
+<h3 id="动画效果和平滑性"><a href="#动画效果和平滑性" class="headerlink" title="动画效果和平滑性"></a>动画效果和平滑性</h3><ol>
+<li><p>亚像素渲染</p>
+<p> ：</p>
+<ul>
+<li><code>translate</code>允许进行亚像素级别的移动，这意味着它可以实现比1像素更精细的位移，从而使动画效果更加平滑和细腻。</li>
+<li>相比之下，<code>position</code>的改变通常是以整数像素为单位的，这可能导致动画看起来不够流畅。</li>
+</ul>
+</li>
+<li><p>组合变换</p>
+<p> ：</p>
+<ul>
+<li><code>transform</code>属性不仅可以进行平移，还可以进行旋转、缩放和倾斜等变换。这些变换可以组合在一起使用，从而创建出复杂而有趣的动画效果。</li>
+<li>使用<code>position</code>进行定位时，通常只能实现简单的位移效果，而无法直接进行其他类型的变换。</li>
+</ul>
+</li>
+</ol>
+<h3 id="层级和上下文"><a href="#层级和上下文" class="headerlink" title="层级和上下文"></a>层级和上下文</h3><ul>
+<li>虽然<code>translate</code>和改变<code>position</code>都可能生成独立的渲染层级（特别是在涉及到<code>position: absolute</code>或<code>position: fixed</code>时），但<code>translate</code>通常不会改变元素的正常文档流位置。它只是在视觉上移动了元素，而不会影响到其他元素的布局。</li>
+<li>另一方面，改变<code>position</code>属性可能会使元素脱离正常文档流，从而影响到其他元素的布局和定位。</li>
+</ul>
+<p>综上所述，使用<code>translate</code>来改变位置而不是直接改变定位，主要是因为它在性能、动画效果和平滑性方面具有显著优势。同时，它还可以保持元素在正常文档流中的位置不变，从而避免对其他元素布局的影响。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/11/28/js-%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/11/19/html%E9%9A%BE%E7%82%B9/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

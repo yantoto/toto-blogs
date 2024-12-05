@@ -128,18 +128,144 @@
 </div>
     <div class="post-content">
     <h2 id="一-分治法"><a href="#一-分治法" class="headerlink" title="一.分治法"></a>一.分治法</h2><p><img src="/../images/image-20241110205311485.png" alt="image-20241110205311485"></p>
+<ul>
+<li><em>T</em>(<em>n</em>) 表示算法处理规模为 <em>n</em> 的输入数据所需的基本操作次数。</li>
+<li><em>a</em> 是每次递归调用中，算法以规模 <em>n</em>&#x2F;<em>b</em> 进行的子调用次数。</li>
+<li><em>n</em>&#x2F;<em>b</em> 是将问题规模缩小到 <em>n</em> 的一个分数（通常 <em>b</em>&gt;1）。</li>
+<li><em>f</em>(<em>n</em>) 是除了递归调用之外，算法在处理规模为 <em>n</em> 的数据时所需的其他基本操作次数。</li>
+</ul>
 <p>例如归并算法：</p>
 <p><em>C</em>(<em>n</em>)&#x3D;2<em>C</em>(<em>n</em>&#x2F;2)+<em>n</em>−1,<em>C</em>(1)&#x3D;0 ，a&#x3D;2 b&#x3D;2 f(n)&#x3D;n-1属于 O(n),则n&#x3D;b的k次方,n&#x3D;n的k次方，k&#x3D;1;</p>
 <p>a&#x3D;2，b的d次方等于2,满足第二个关系，所以T(n)属于O(nlogn)。</p>
+<p>对于计算 <em>n</em> 的阶乘（记作 <em>n</em>!），其递归定义是：</p>
+<p><em>n</em>!&#x3D;<em>n</em>×(<em>n</em>−1)×(<em>n</em>−2)×⋯×1</p>
+<p>特别地，0!&#x3D;1。</p>
+<p>如果我们考虑用递归算法来计算 <em>n</em>!，那么递归方程可以表示为：</p>
+<p><em>T</em>(<em>n</em>)&#x3D;<em>T</em>(<em>n</em>−1)+<em>O</em>(1)</p>
 <h3 id="1-归并算法"><a href="#1-归并算法" class="headerlink" title="1.归并算法"></a>1.归并算法</h3><p>分解+递归</p>
 <p><img src="/../images/image-20241110204249650.png" alt="image-20241110204249650"></p>
-<p>代码方法：递归分解+合并</p>
+<p>代码方法：递归分解+合并 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">未排序数组A</span><br><span class="line">mergeSort(A) </span><br><span class="line">if n&gt;1</span><br><span class="line">	copy A[0,n/2-1]-&gt;B[0,n/2-1]</span><br><span class="line">	copy A[n/2,n-1]-&gt;C[0,n/2-1]</span><br><span class="line">	mergeSort(B)</span><br><span class="line">	mergeSort(C)</span><br><span class="line">	merge(B,C,A)</span><br><span class="line">end if</span><br><span class="line">return A;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">merge(B,C,A)</span><br><span class="line">int i=0;j=0;k=0;</span><br><span class="line">while i&lt;len(B) and j&lt;len(C)</span><br><span class="line">	if B[i]&lt;C[j] then</span><br><span class="line">		A[k]=C[j];j++;</span><br><span class="line">	else </span><br><span class="line">		A[k]=B[i];i++;</span><br><span class="line">	end if</span><br><span class="line">	k++;</span><br><span class="line">end while</span><br><span class="line">while i&lt;len(B)</span><br><span class="line">	A[k]=B[i];i++;k++;</span><br><span class="line">end while</span><br><span class="line">while j&lt;len(C)</span><br><span class="line">	A[k]=C[j];j++;k++;</span><br><span class="line">end while</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p><img src="/../images/image-20241110204114779.png" alt="image-20241110204114779"></p>
 <p><img src="/../images/image-20241110204333457.png" alt="image-20241110204333457"></p>
 <p><img src="/../images/image-20241110205109628.png" alt="image-20241110205109628"></p>
 <h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2.快速排序"></a>2.快速排序</h3><p>基于划分的排序</p>
 <p><img src="/../images/image-20241110211218925.png" alt="image-20241110211218925"></p>
 <p><img src="/../images/image-20241110211459217.png"></p>
+<p><img src="/../images/image-20241110213323077.png" alt="image-20241110213323077"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">quickSort(A)</span><br><span class="line">if l&lt;r then </span><br><span class="line">	s=position(A)</span><br><span class="line">	quickSort(A[0,s-1])</span><br><span class="line">	quickSort(A[s,n])</span><br><span class="line">end if</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">position(A)</span><br><span class="line">t=A[0]</span><br><span class="line">l=0;r=A.length-1;</span><br><span class="line">while l&lt;r do</span><br><span class="line">	while l&lt;r and A[r]&gt;t do</span><br><span class="line">		r--;</span><br><span class="line">	end while</span><br><span class="line">	A[l]=A[r];l++;</span><br><span class="line">	while l&lt;r and A[i]&lt;t do</span><br><span class="line">		l++;</span><br><span class="line">	end while</span><br><span class="line">	A[r]=A[l];r--;</span><br><span class="line">end while</span><br><span class="line">A[i]=t</span><br><span class="line">return i</span><br></pre></td></tr></table></figure>
+
+
+
+<p>partition()方法：[双向扫描]</p>
+<p>有左右两指针，以第一个数组为基准，取出，并把这个位置设为空；</p>
+<p>从右指针r开始，若大于基准，r——;</p>
+<p>​									若小于基准，把当前指针元素放在空白位置（即初始基准位置），当前位置设为空；这时从左指针开始，比较基准，若小于基准，l++;若大于基准，把该位置的元素放在后面空白位置，当前左指针位置设为空；接着又切换到到右指针动…</p>
+<p>如此循环，直到左右指针到同一位置，此时这个位置为空，放入基准元素。</p>
+<p>那么这部分的遍历就结束了，再划分其左右的遍历…..</p>
+<p><img src="/../images/image-20241110213110440.png" alt="image-20241110213110440"></p>
+<p><img src="/../images/image-20241110213308321.png" alt="image-20241110213308321"></p>
+<p><strong>最差情况</strong>：所有分裂点都趋于极端：两个子数组中，有一个为空，另一个子数组仅仅比被划分数组少了一个元素，比较次数Cworst(n)∈O（n*n）</p>
+<p><strong>最优情况</strong>：所有的分裂点位于相应子数组的中点。Cbest(n)&#x3D;O(nlogn)</p>
+<p><strong>平均比较次数：</strong>Cavg(n)&#x3D;O(nlogn)</p>
+<h3 id="3-堆排序"><a href="#3-堆排序" class="headerlink" title="3.堆排序"></a>3.堆排序</h3><p><img src="/../images/image-20241110214625159.png" alt="image-20241110214625159"></p>
+<p><img src="/../images/image-20241110214617316.png" alt="image-20241110214617316"></p>
+<h3 id="4-大整数乘法"><a href="#4-大整数乘法" class="headerlink" title="4.大整数乘法"></a>4.大整数乘法</h3><p><img src="/../images/image-20241110215440810.png" alt="image-20241110215440810"></p>
+<p><img src="/../images/image-20241110215504596.png" alt="image-20241110215504596"></p>
+<h3 id="5-矩阵连乘"><a href="#5-矩阵连乘" class="headerlink" title="5.矩阵连乘"></a>5.矩阵连乘</h3><p>A11&#x3D;前面的第一排乘以后面的第一列</p>
+<p><strong>Aij&#x3D;前面的第i排乘以后面的第j列</strong></p>
+<p><img src="/../images/image-20241110221019305.png" alt="image-20241110221019305"></p>
+<h2 id="二-动态规划"><a href="#二-动态规划" class="headerlink" title="二.动态规划"></a>二.动态规划</h2><p><img src="/../images/image-20241111213112197.png" alt="image-20241111213112197"></p>
+<h3 id="三个例子"><a href="#三个例子" class="headerlink" title="三个例子"></a>三个例子</h3><h4 id="币值最大问题"><a href="#币值最大问题" class="headerlink" title="币值最大问题"></a>币值最大问题</h4><p>基于递归分治：</p>
+<p><img src="/../images/image-20241111213511561.png" alt="image-20241111213511561"></p>
+<p><img src="/../images/image-20241111213726518.png" alt="image-20241111213726518"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">choose(W)</span><br><span class="line">w为给定硬币比值和排序</span><br><span class="line">f[n]</span><br><span class="line">f[0]=0;f[1]=w[0]</span><br><span class="line">for int i=1 to w.length </span><br><span class="line">	f[i]=max&#123;f[i-1],f[i-2]+w[i]&#125;;</span><br><span class="line">end for</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>动态规划法：</p>
+<p><img src="/../images/image-20241111214124027.png" alt="image-20241111214124027"></p>
+<h4 id="找零问题"><a href="#找零问题" class="headerlink" title="找零问题"></a>找零问题</h4><p><img src="/../images/image-20241112121045325.png" alt="image-20241112121045325"></p>
+<p><img src="/../images/image-20241112121113025.png" alt="image-20241112121113025"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">找零 w为总钱数 c[j]为第j个硬币的值</span><br><span class="line">f[n] 存放找零金额为n时所需最小的硬币数</span><br><span class="line">f[0]=0;k=0;</span><br><span class="line">for int i=1 to w</span><br><span class="line"> 	temp=99999</span><br><span class="line">	while j&lt;c.length and w[i]&gt;c[j] do</span><br><span class="line">		temp=min&#123;temp,f[i-c[j]]&#125;;</span><br><span class="line">		j++;</span><br><span class="line">	end while</span><br><span class="line">	f[i]=temp+1;</span><br><span class="line">end for </span><br><span class="line">return f[n];</span><br><span class="line">		</span><br></pre></td></tr></table></figure>
+
+<p>有几个硬币，就有几个F(n-d):当前值减去比值的硬币数量互相比较。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">f[n]=0</span><br><span class="line">for i=1 to n do</span><br><span class="line">	temp=9999;j=1;</span><br><span class="line">	while j&lt;m and C[j]&lt;=i do</span><br><span class="line">	temp=min(f(i-c[j]),temp)</span><br><span class="line">	j++;</span><br><span class="line">	end while</span><br><span class="line">	f[i]=temp+1;</span><br><span class="line">end for</span><br><span class="line">return f[n]</span><br></pre></td></tr></table></figure>
+
+<h4 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h4><p><img src="/../images/image-20241112122733265.png" alt="image-20241112122733265"></p>
+<p>两个循环，第一个循环遍历每一个元素；第二个循环找到该元素前面的比他小的元素，比较这些元素的最大值并加上1，就是当前元素的最大递增子序列长度，存入数组。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">f[n]存放当前元素的最长递增子序列</span><br><span class="line">w[n]为原始序列</span><br><span class="line">f[0]=1</span><br><span class="line">for int i=1 to n</span><br><span class="line">	temp=-9999</span><br><span class="line">	for int j=0 to i</span><br><span class="line">		if(w[j]&lt;w[i]) then </span><br><span class="line">			temp=max&#123;f[j]+1,temp&#125;</span><br><span class="line">		end if</span><br><span class="line">	end for</span><br><span class="line">	f[i]=temp</span><br><span class="line">end for</span><br><span class="line">return f[n]</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="编辑距离问题"><a href="#编辑距离问题" class="headerlink" title="编辑距离问题"></a>编辑距离问题</h4><p><img src="/../images/image-20241112124756740.png" alt="image-20241112124756740"></p>
+<p><img src="/../images/image-20241112124725326.png" alt="image-20241112124725326"></p>
+<p>时间复杂度 O(nm)</p>
+<h3 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h3><p><img src="/../images/image-20241112125210542.png" alt="image-20241112125210542"></p>
+<p><img src="/../images/image-20241112125520021.png" alt="image-20241112125520021"></p>
+<p><img src="/../images/image-20241112125531324.png" alt="image-20241112125531324"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">f[m][n] 存放 当物品为i，背包最大承重为j时背包最大价值 </span><br><span class="line">m为物品数量 n为背包最大承重</span><br><span class="line">w[i] 为第i个物品的重量</span><br><span class="line">v[i] 为第i个物品的价值</span><br><span class="line">f[0][x] = 0</span><br><span class="line">f[x][0] = 0</span><br><span class="line">for int i to n</span><br><span class="line">	for int j to m </span><br><span class="line">		if w[j]&gt;w then </span><br><span class="line">			f[i][j]=f[i-1]f[j]</span><br><span class="line">		else</span><br><span class="line">		 	f[i][j]=max&#123;f[i-1]f[j],v[j]+f[i-1][j-w[i]]&#125;</span><br><span class="line">	end for </span><br><span class="line">end for</span><br><span class="line">return f[n][m]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="传递闭包问题Worshale"><a href="#传递闭包问题Worshale" class="headerlink" title="传递闭包问题Worshale"></a>传递闭包问题Worshale</h3><p><img src="/../images/image-20241112132048337.png" alt="image-20241112132048337"></p>
+<p><img src="/../images/image-20241112132247171.png" alt="image-20241112132247171"></p>
+<h3 id="完全最短路径Floyd"><a href="#完全最短路径Floyd" class="headerlink" title="完全最短路径Floyd"></a>完全最短路径Floyd</h3><p>核心思想就是遍历所有节点，每个直连路径都从这个节点走的话会不会更近，近的话更新，不近的话不更新。Floyd算法就这样求出了任点到任意点的最短路径的值。但是这个最短路径怎么走，没有对应的保留。</p>
+<p><img src="/../images/image-20241112133428170.png" alt="image-20241112133428170"></p>
+<p><img src="/../images/image-20241112133530571.png" alt="image-20241112133530571"></p>
+<p><img src="/../images/image-20241112133545052.png" alt="image-20241112133545052"></p>
+<h3 id="矩阵连乘（？）"><a href="#矩阵连乘（？）" class="headerlink" title="矩阵连乘（？）"></a>矩阵连乘（？）</h3><h2 id="三-贪心算法"><a href="#三-贪心算法" class="headerlink" title="三.贪心算法"></a>三.贪心算法</h2><p><img src="/../images/image-20241112143008377.png" alt="image-20241112143008377"></p>
+<h3 id="最小生成树之prim算法"><a href="#最小生成树之prim算法" class="headerlink" title="最小生成树之prim算法"></a>最小生成树之prim算法</h3><p>注意找的是<strong>当前已联通所有节点</strong>的最短联通路径！</p>
+<p><img src="/../images/image-20241112135407291.png" alt="image-20241112135407291"></p>
+<p><img src="/../images/image-20241112135318930.png" alt="image-20241112135318930"></p>
+<p><img src="/../images/image-20241112135849651.png" alt="image-20241112135849651"></p>
+<ul>
+<li><p>VT &#x3D; VT ∪ {b}</p>
+</li>
+<li><p>将顶点 <code>b</code> 加入 <code>VT</code> 集合，表示顶点 <code>b</code> 被加入到生成树中。</p>
+</li>
+<li><p>V - VT &#x3D; V - VT - {b}</p>
+</li>
+<li><p>这里表示从剩余的顶点集合中去除顶点 <code>b</code>，使得 <code>V - VT</code> 集合中不再包含 <code>b</code>。</p>
+</li>
+<li><p>ET &#x3D; ET ∪ {(a, b)}</p>
+</li>
+<li><p>将选中的边 <code>(a, b)</code> 添加到边集合 <code>ET</code> 中。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Vt=&#123;v0&#125;</span><br><span class="line">Et=空</span><br><span class="line">for i =1 to |V|-1 do </span><br><span class="line">	找出权重最小的边&#123;a，b&#125;，其中a属于Vt,b属于V-Vt</span><br><span class="line">	Vt=Vt并&#123;b&#125;</span><br><span class="line">	V-Vt=V-Vt-&#123;b&#125;</span><br><span class="line">	Et=Et并&#123;(a,b)&#125;</span><br><span class="line">end for </span><br><span class="line">return Et</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>尼玛看不懂。</strong></p>
+<p><img src="/../images/image-20241112141248119.png" alt="image-20241112141248119"></p>
+<h3 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h3><p><strong>每次选取边值最小的边构成树。</strong></p>
+<p><img src="/../images/image-20241112141709768.png" alt="image-20241112141709768"></p>
+<p><img src="/../images/image-20241112141809797.png" alt="image-20241112141809797"></p>
+<p><img src="/../images/image-20241112142935934.png" alt="image-20241112142935934"></p>
+<h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><p><strong>单点到其他节点</strong>的最短路径。</p>
+<p><img src="/../images/image-20241112143408930.png" alt="image-20241112143408930"></p>
+<p><img src="/../images/image-20241112143653078.png" alt="image-20241112143653078"></p>
+<p><img src="/../images/image-20241112144205320.png" alt="image-20241112144205320"></p>
+<h3 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h3><p><img src="/../images/image-20241112145017207.png" alt="image-20241112145017207"></p>
+<p><img src="/../images/image-20241112145028859.png" alt="image-20241112145028859"></p>
+<h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><p><img src="/../images/image-20241112145406033.png" alt="image-20241112145406033"></p>
+<p><img src="/../images/image-20241112145651608.png" alt="image-20241112145651608"></p>
+<p><img src="/../images/image-20241112145807444.png" alt="image-20241112145807444"></p>
+<h2 id="四-回溯"><a href="#四-回溯" class="headerlink" title="四.回溯"></a>四.回溯</h2><p>N皇后 哈密顿回路</p>
+<p><img src="/../images/image-20241112153131501.png" alt="image-20241112153131501"></p>
+<h2 id="五-分支界限法"><a href="#五-分支界限法" class="headerlink" title="五.分支界限法"></a>五.分支界限法</h2><p>广度优先</p>
+<p><img src="/../images/image-20241112153349529.png" alt="image-20241112153349529"></p>
+<p><img src="/../images/image-20241112161854851.png" alt="image-20241112161854851"></p>
+<p><img src="/../images/image-20241112161944974.png" alt="image-20241112161944974"></p>
+<h2 id="六-算法"><a href="#六-算法" class="headerlink" title="六.算法"></a>六.算法</h2><p>什么是算法？</p>
+<p>解决问题而采取的方法和步骤。</p>
+<p>一系列解决问题的明确指令，对于符合规定的输入，能够在有限时间内获得符合要求的输出。</p>
+<p><img src="/../images/image-20241114140320315.png" alt="image-20241114140320315"></p>
+<p><img src="/../images/image-20241114140407812.png" alt="image-20241114140407812"><img src="/../images/image-20241114140445838.png" alt="image-20241114140445838"></p>
+<p><img src="/../images/image-20241114140531106.png" alt="image-20241114140531106"><img src="/../images/image-20241114140828455.png" alt="image-20241114140828455"></p>
+<p>算法三要素：数据、操作和控制</p>
+<p><img src="/../images/image-20241114141622880.png" alt="image-20241114141622880"><img src="/../images/image-20241114142048363.png" alt="image-20241114142048363"><img src="/../images/image-20241114142205864.png" alt="image-20241114142205864"></p>
+<p><img src="/../images/image-20241114142314078.png" alt="image-20241114142314078"></p>
+<p><img src="/../images/image-20241114145045186.png" alt="image-20241114145045186"></p>
+<p><img src="/../images/image-20241114144015255.png" alt="image-20241114144015255"></p>
+<p><img src="/../images/image-20241114144000464.png" alt="image-20241114144000464"><img src="/../images/image-20241114144837579.png"></p>
+<p><img src="/../images/image-20241114145114203.png" alt="image-20241114145114203"></p>
 
 </div> 
 
@@ -151,6 +277,11 @@
     <nav class="post-nav">
         <div class="prev-item">
            
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/11/11/%E6%95%B0%E6%8D%AE%E5%BA%93/">Prev</a>
+                </div>
+            
         </div>
         <div class="next-item">
             

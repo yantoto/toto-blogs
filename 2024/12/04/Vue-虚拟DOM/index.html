@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 4, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一、虚拟DOM出现的原因"><a href="#一、虚拟DOM出现的原因" class="headerlink" title="一、虚拟DOM出现的原因"></a>一、虚拟DOM出现的原因</h2><p>无论Vue还是React,他们都是<strong>基于数据驱动</strong>的，以数据为中心。</p>
+<p>render函数内，做到数据一变化，组件全面更新【由于操作真实DOM的价值很昂贵，所以会生成虚拟DOM，将虚拟DOM和之前对象进行比较（diff），然后把变的东西再去操作真实DOM】。</p>
+<h2 id="二、什么是虚拟DOM和真实DOM？"><a href="#二、什么是虚拟DOM和真实DOM？" class="headerlink" title="二、什么是虚拟DOM和真实DOM？"></a>二、什么是虚拟DOM和真实DOM？</h2><p>虚拟DOM：利用<strong>js生成的DOM对象</strong>，描述节点与节点之间的关系。</p>
+<p>真实DOM：原生HTML模版标签。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">        &lt;p&gt;1111&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、虚拟DOM和原生DOM各自优点"><a href="#三、虚拟DOM和原生DOM各自优点" class="headerlink" title="三、虚拟DOM和原生DOM各自优点"></a>三、虚拟DOM和原生DOM各自优点</h2><p>因此，使用虚拟DOM和原生DOM的区别在于：</p>
+<ul>
+<li><strong>首屏加载</strong>时，使用vue&#x2F;react<strong>框架的效率反而更低</strong>，因为它执行时还<strong>多生成了虚拟DOM</strong>，效率比原生js更低。</li>
+<li>但在<strong>数据变更修改视图</strong>时，框架会利用<strong>render生成虚拟DOM</strong>，<strong>与原先生成的虚拟DOM进行对比</strong>，再将变更的对象<strong>对应的原生DOM进行重新渲染</strong>，与直接生成原生对象的方法重新渲染相比，多了DIff比较的过程，节省开销。</li>
+</ul>
+<h2 id="四、diff算法"><a href="#四、diff算法" class="headerlink" title="四、diff算法"></a>四、diff算法</h2><p>对比两棵树。</p>
+<h3 id="1-diff的时机"><a href="#1-diff的时机" class="headerlink" title="1.diff的时机"></a>1.diff的时机</h3><p>当<strong>组件创建，以及依赖的函数或者数据变化</strong>时，会运行一个函数。<strong>diff发生在update函数中。</strong></p>
+<p>运行__render生成一棵新的虚拟DOM树</p>
+<p>运行__update，将新的虚拟DOM树作为参数传入，将新旧两棵树进行比较，最终完成对真实DOM的更新。</p>
+<p><img src="/../images/image-20241204183846799.png" alt="image-20241204183846799"></p>
+<h3 id="2-update函数在干什么"><a href="#2-update函数在干什么" class="headerlink" title="2.__update函数在干什么"></a>2.__update函数在干什么</h3><p><img src="/../images/image-20241204185032301.png" alt="image-20241204185032301"></p>
+<p>update函数接收一个node参数（代表新的虚拟DOM树）。</p>
+<p>在update中，可以使用this.__vnode获取旧的虚拟DOM，vnode获取新的虚拟DOM树。</p>
+<p><img src="/../images/image-20241204191538455.png" alt="image-20241204191538455"></p>
+<p>this.__patch函数的对比<strong>新旧两棵树</strong>的不同之处，从而达到：</p>
+<ul>
+<li>完成对所有真实dom的最小化</li>
+<li>让新树的节点对应合适的真实DOM</li>
+</ul>
+<p><img src="/../images/image-20241204192326620.png"></p>
+<p><img src="/../images/image-20241204192917939.png" alt="image-20241204192917939"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function update(vnode)&#123;</span><br><span class="line">	//vnode:新</span><br><span class="line">	//this._vnode：旧</span><br><span class="line">	//第一步 更新虚拟DOM树</span><br><span class="line">	var oldVnode=this._vnode</span><br><span class="line">	this._vnode=vnode</span><br><span class="line">	//第二步 判断旧的DOM树是否为空</span><br><span class="line">	//为空【比如第一次渲染】</span><br><span class="line">	if(!oldVnode)&#123;</span><br><span class="line">		this._dispatch(this.$el,vnode)//直接根据新的虚拟DOM树渲染真实DOM树，并挂载到根节点</span><br><span class="line">	&#125;</span><br><span class="line">	//不为空 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>_patch()对比两棵不为空的DOM树的详细流程：</p>
+<ol>
+<li>对比根节点</li>
+<li>对比子节点</li>
+</ol>
+<p><img src="/../images/image-20241204193512072.png" alt="image-20241204193512072"></p>
+<p><img src="/../images/image-20241204193540786.png" alt="image-20241204193540786"></p>
+<p>目标是<strong>对比新旧虚拟DOM的差异</strong>，进而<strong>改动真实DOM</strong>，尽量实现真实DOM的改动最小。</p>
+<p>比较过程有点类似于<strong>双向扫描</strong>。</p>
+<p><img src="/../images/image-20241204193851345.png" alt="image-20241204193851345"></p>
+<p><img src="/../images/image-20241204194003223.png" alt="image-20241204194003223"></p>
+<p><img src="/../images/image-20241204194127664.png" alt="image-20241204194127664"></p>
+<p><strong>因此,我们在遍历节点时需要给标签加上key。</strong>不仅是为了在重新插入、顺序颠倒时<strong>能识别每个节点，直接利用diff算法更换真实DOM的位置</strong>；更是为了在更复杂的情况下（如：设计让遍历的节点倒叙，不给根节点加key值，diff算法会认为更改后的虚拟DOM节点和之前的虚拟DOM节点是同一个，只会更新内部属性或者值的变化，如果这个节点只作为单节点倒还好，若是还有内部的子节点，那么这些子<strong>节点不会利用旧的虚拟DOM，全部都会进行重新渲染，性能开销大</strong>）</p>
+<p>根节点不加key值，子节点重新渲染：</p>
+<p><img src="/../images/image-20241204195028412.png" alt="image-20241204195028412"></p>
+<p>添加key值，避免了切换时内部所填数据不会清除的情况。</p>
+<p><img src="/../images/image-20241204195423423.png" alt="image-20241204195423423"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/04/vue-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/04/vue-MVVM/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

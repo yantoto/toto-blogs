@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 5, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="keep-alive"><a href="#keep-alive" class="headerlink" title="keep-alive"></a>keep-alive</h2><p>使用场景：页面中的组件频繁切换，组件频繁销毁。</p>
+<p><img src="/../images/image-20241205180050265.png" alt="image-20241205180050265"></p>
+<p>用法：在组件外部套上<keep-alive></keep-alive></p>
+<p>这样，尽管组件切换，DOM也不会销毁。</p>
+<h3 id="keep-alive和v-show"><a href="#keep-alive和v-show" class="headerlink" title="keep-alive和v-show"></a>keep-alive和v-show</h3><p>这俩都可以应用于组件频繁切换的场景，都不会销毁DOM节点。不同点在于：</p>
+<p>v-show<strong>首次加载时间较长</strong>，适用于较<strong>体积小、简单的组件</strong>。</p>
+<p>keep-alive在初次加载并不会加载全部要切换的z组件，首次加载时间正常，适用于一些<strong>体积大、复杂组件。</strong></p>
+<h3 id="延伸：v-if、v-show"><a href="#延伸：v-if、v-show" class="headerlink" title="延伸：v-if、v-show"></a>延伸：v-if、v-show</h3><p>若判断值为false，v-if在渲染时不会生成vnode，自然就不会生成新的DOM节点。所以这个属性在切换时会反复销毁生成DOM节点，性能开销较大。它<strong>适用于初次渲染后不会改变的场景</strong>。</p>
+<p>v-show是通过<strong>css里的display属性来控制DOM节点的显示</strong>的。无论判断值为true还是false,他都会<strong>生成一个DOM节点</strong>，只是通过css属性来显示，所以<strong>他更适用于多次切换的场景，缺点就在于首屏加载比较慢（因为全部都要渲染。）</strong></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/05/vue-vue2%E5%92%8Cvue3%E7%9A%84%E5%8C%BA%E5%88%AB/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/05/vue-v-if%E5%92%8Cv-show/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

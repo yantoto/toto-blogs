@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            May 17, 2019
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h1><p>box：盒子，每个元素在页面中都会生成一个矩形区域（盒子）</p>
+<p>盒子类型：</p>
+<ol>
+<li>行盒，display等于inline的元素</li>
+<li>块盒，display等于block的元素</li>
+</ol>
+<p>行盒在页面中不换行、块盒独占一行</p>
+<p>display默认值为inline</p>
+<p>浏览器默认样式表设置的块盒：容器元素、h1~h6、p</p>
+<p>常见的行盒：span、a、img、video、audio</p>
+<h2 id="盒子的组成部分"><a href="#盒子的组成部分" class="headerlink" title="盒子的组成部分"></a>盒子的组成部分</h2><p>无论是行盒、还是块盒，都由下面几个部分组成，从内到外分别是：</p>
+<ol>
+<li>内容  content</li>
+</ol>
+<p>width、height，设置的是盒子内容的宽高</p>
+<p>内容部分通常叫做整个盒子的<strong>内容盒 content-box</strong></p>
+<ol start="2">
+<li>填充(内边距)  padding</li>
+</ol>
+<p>盒子边框到盒子内容的距离</p>
+<p>padding-left、padding-right、padding-top、padding-bottom</p>
+<p>padding: 简写属性</p>
+<p>padding: 上 右 下 左</p>
+<p>填充区+内容区 &#x3D; <strong>填充盒 padding-box</strong></p>
+<ol start="3">
+<li>边框  border</li>
+</ol>
+<p>边框 &#x3D; 边框样式 + 边框宽度 + 边框颜色</p>
+<p>边框样式：border-style<br>边框宽度：border-width<br>边框颜色：border-color</p>
+<p>边框+填充区+内容区 &#x3D; <strong>边框盒 border-box</strong></p>
+<ol start="4">
+<li>外边距  margin</li>
+</ol>
+<p>边框到其他盒子的距离</p>
+<p>margin-top、margin-left、margin-right、margin-bottom</p>
+<p>速写属性margin</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2019/05/17/3.%20CSS%E5%9F%BA%E7%A1%80/7.%20%E7%9B%92%E6%A8%A1%E5%9E%8B/test1/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2019/05/17/3.%20CSS%E5%9F%BA%E7%A1%80/6.%20%E5%B1%9E%E6%80%A7%E5%80%BC%E7%9A%84%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B/test2/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

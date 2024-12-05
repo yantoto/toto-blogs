@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>响应式原理总结 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                响应式原理总结
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 4, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="6-vue数据双向绑定的原理是什么？"><a href="#6-vue数据双向绑定的原理是什么？" class="headerlink" title="6.vue数据双向绑定的原理是什么？"></a>6.vue数据双向绑定的原理是什么？</h2><h2 id="八股文的说法"><a href="#八股文的说法" class="headerlink" title="八股文的说法"></a>八股文的说法</h2><p><img src="/../../../images/image-20240125145019146.png" alt="image-20240125145019146"></p>
+<h5 id="A"><a href="#A" class="headerlink" title="A"></a><strong>A</strong></h5><p>Vue.js 是采用数据劫持结合发布者-订阅者模式的方式，通过 Object.defineProperty()来劫持各个属性的 setter，getter，在数据变动时发布消息给 订阅者，触发相应的监听回调。 </p>
+<p>第一步:需要 observe 的数据对象进行递归遍历，包括子属性对象的属性， 都加上 setter 和 getter<br>这样的话，给这个对象的某个值赋值，就会触发 setter，那么就能监听到了数据 变化 </p>
+<p>第二步:compile 解析模板指令，将模板中的变量替换成数据，然后初始化渲 染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者， 一旦数据有变动，收到通知，更新视图<br>第三步:Watcher 订阅者是 Observer 和 Compile 之间通信的桥梁，主要做的事情 是: </p>
+<p>1、在自身实例化时往属性订阅器(dep)里面添加自己 2、自身必须有一个 update()方法 </p>
+<p>3、<strong>待属性变动 dep.notice()通知时，能调用自身的 update()方法，并触发 Compile 中绑定的回调，则功成身退。</strong><br>第四步:MVVM 作为数据绑定的入口，整合 Observer、Compile 和 Watcher </p>
+<p><strong>三者，通过 Observer 来监听自己的 model 数据变化，通过 Compile 来解析编译模 板指令，最终利用 Watcher 搭起 Observer 和 Compile 之间的通信桥梁，达到数据 变化 -&gt; 视图更新;视图交互变化(input) -&gt; 数据 model 变更的双向绑定效果。</strong></p>
+<h5 id="B"><a href="#B" class="headerlink" title="B"></a>B</h5><p>Vue 的数据双向绑定是通过 Object.defineProperty() 方法实现的。在 Vue 中，每个组件实例都有一个对应的 Watcher 实例，Watcher 实例负责监听组件实例对象中所有用到的数据变化。</p>
+<p>当数据发生变化时，Watcher 会通知订阅它的视图进行更新，从而实现了数据的响应式渲染。</p>
+<p>具体来说，Vue 通过 Object.defineProperty() 方法实现了数据代理和数据劫持：</p>
+<ul>
+<li>数据代理：通过 Object.defineProperty() 方法将组件实例对象中的 data 对象中的属性代理到组件实例对象本身中，这样就可以通过 <a target="_blank" rel="noopener" href="http://this.xxx/">this.xxx</a> 的方式直接访问 data 中的属性。</li>
+<li>数据劫持：在代理过程中，由于使用了 Object.defineProperty() 方法，因此可以在读取或设置 data 属性值时，触发相应的 getter 和 setter 方法。在 getter 和 setter 方法中，通过收集 Watcher 实例的依赖关系，实现了数据发生变化时视图的响应式更新。</li>
+</ul>
+<p>总的来说，Vue 的数据双向绑定原理就是通过数据代理和数据劫持，以及 Watcher 实例的依赖收集和更新机制，实现了组件实例对象和视图之间的动态响应式绑定。这种机制避免了手动操作 DOM 元素的繁琐工作，提高了代码的可维护性和复用性。</p>
+<p><img src="/../../../images/image-20240125144710461.png" alt="image-20240125144710461"></p>
+<p><img src="/../../../images/image-20240125144948370.png" alt="image-20240125144948370"></p>
+<h2 id="深入探究-dep和watcher"><a href="#深入探究-dep和watcher" class="headerlink" title="深入探究 dep和watcher"></a>深入探究 dep和watcher</h2><h3 id="Dep补充"><a href="#Dep补充" class="headerlink" title="Dep补充"></a>Dep补充</h3><p>依赖收集器，每一个数据都有一个唯一的dep</p>
+<p><img src="/../../../images/image-20240125151254002.png" alt="image-20240125151254002"></p>
+<h3 id="watcher补充"><a href="#watcher补充" class="headerlink" title="watcher补充"></a>watcher补充</h3><p><img src="/../../../images/image-20240202101644551.png" alt="image-20240202101644551"></p>
+<p><img src="/../../../images/image-20240125153018052.png" alt="image-20240125153018052"></p>
+<p><img src="/../../../images/image-20240125153538474.png" alt="image-20240125153538474"></p>
+<p>在 Vue 中，<code>Dep</code>（依赖）和 <code>Watcher</code>（观察者）是实现响应式系统的重要组件。<code>Dep</code> 用来收集依赖（即 <code>Watcher</code>），当数据发生变化时，会通知所有依赖进行更新。<code>Watcher</code> 则用来观察数据的变化，当数据发生变化时，执行相应的回调函数。</p>
+<p><code>Dep.target</code> 是一个全局变量，用来在收集依赖的过程中，将当前的 <code>Watcher</code> 与 <code>Dep</code> 进行绑定。</p>
+<h3 id="两个重要的执行observe和new-watcher（vm）"><a href="#两个重要的执行observe和new-watcher（vm）" class="headerlink" title="两个重要的执行observe和new watcher（vm）"></a>两个重要的执行observe和new watcher（vm）</h3><h4 id="observe—为新对象创建一个-observer对象"><a href="#observe—为新对象创建一个-observer对象" class="headerlink" title="observe—为新对象创建一个 observer对象"></a>observe—为新对象创建一个 observer对象</h4><p>1 observer 对象 执行 definereactive（）遍历数据对象&#x2F;数组   依次为里面每一个item加一个dep （依赖收集器） 添加get和set方法 使其能被vue感知到</p>
+<p><img src="/../../../images/image-20241204160050108.png" alt="image-20241204160050108"></p>
+<p>2  <strong>在为每一个数据构造get函数时</strong> 会有一个dep.depend方法  该方法就是在render函数访问数据（即触发数据的get方法）触发，从而去实现dep和watcher之间的绑定相关联</p>
+<h5 id="dep的depend-方法"><a href="#dep的depend-方法" class="headerlink" title="dep的depend 方法"></a>dep的depend 方法</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">depend () &#123;</span><br><span class="line">   if (Dep.target) &#123; //当前的watcher       如果存在（即当前有 `Watcher` 正在观察数据</span><br><span class="line">     Dep.target.addDep(this)</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="watcher的adddep"><a href="#watcher的adddep" class="headerlink" title="watcher的adddep"></a>watcher的adddep</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 1、添加 dep 给自己（watcher） </span><br><span class="line">// 2、添加自己（watcher）到 dep</span><br><span class="line">addDep (dep: Dep) &#123;</span><br><span class="line">  const id = dep.id</span><br><span class="line">  if (!this.newDepIds.has(id)) &#123;</span><br><span class="line">    this.newDepIds.add(id)</span><br><span class="line">    this.newDeps.push(dep)</span><br><span class="line">    if (!this.depIds.has(id)) &#123;</span><br><span class="line">      dep.addSub(this)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="new-watcher（）"><a href="#new-watcher（）" class="headerlink" title="new watcher（）"></a>new watcher（）</h4><p>首次初始化过程（源码中在mount）中除了执行observe函数 还会执行new watcher（）</p>
+<p>1当 Vue 组件需要观察某个数据时（例如，在模板中使用了数据属性），Vue 会为这个数据创建一个渲染 <code>Watcher</code>。在创建 <code>Watcher</code> 的过程中，执行Watcher.get方法  将 <code>Dep.target</code> 设置为当前的 <code>Watcher</code>。 </p>
+<p><img src="/../../../images/image-20241204162021152.png" alt="image-20241204162021152"></p>
+<p><img src="/../../../images/image-20241204161642016.png" alt="image-20241204161642016"></p>
+<p>此方法中会通过this.getter.call方法去执行render函数去生成虚拟dom</p>
+<h5 id="qa：如何执行的render-因为在mountComponent函数中-也就是初始化过程中会new-Watcher-会把updateComponent传进去"><a href="#qa：如何执行的render-因为在mountComponent函数中-也就是初始化过程中会new-Watcher-会把updateComponent传进去" class="headerlink" title="qa：如何执行的render 因为在mountComponent函数中 也就是初始化过程中会new Watcher 会把updateComponent传进去"></a>qa：如何执行的render 因为在mountComponent函数中 也就是初始化过程中会new Watcher 会把updateComponent传进去</h5><p><img src="/../../../images/image-20241204162157697.png" alt="image-20241204162157697"></p>
+<p><img src="/../../../images/image-20241204162459803.png" alt="image-20241204162459803"></p>
+<p>2<strong>访问数据</strong>：<br>当组件渲染或重新渲染时，会访问数据。如果数据是响应式的（即被 <code>Vue.observable</code> 或 <code>new Vue(&#123; data: ... &#125;)</code> 包裹过），那么这个数据会有一个与之关联的 <code>Dep</code> 实例</p>
+<p>3<strong>收集依赖</strong>：<br>在访问数据的过程中，<code>Dep</code> 会检查 <code>Dep.target</code> 是否存在。如果存在（即当前有 <code>Watcher</code> 正在观察数据），那么 <code>Dep</code> 会将 <code>Dep.target</code>（即当前的 <code>Watcher</code>）添加到其依赖列表中。</p>
+<p>4<strong>重置 Dep.target</strong>：<br>收集完依赖后，会调用popTarget，会将 <code>Dep.target</code> 重置为 <code>null</code>，以确保下一个 <code>Watcher</code> 创建时不会错误地将之前的 <code>Watcher</code> 添加到新的依赖中。</p>
+<p>5<strong>数据变化通知</strong>：<br>当数据发生变化时（例如，通过 <code>this.someData = newValue</code> 修改），<code>Dep</code> 会通知其依赖列表中的所有 <code>Watcher</code>。<code>Watcher</code> 接收到通知后，会执行其回调函数 也就是再次执行render函数。</p>
+<h3 id="watcher分类"><a href="#watcher分类" class="headerlink" title="watcher分类"></a>watcher分类</h3><p>在Vue中存在三种Watcher：</p>
+<ul>
+<li>负责视图变化的渲染Watcher （data）   <strong>主要的</strong></li>
+<li>负责执行计算属性更新的的computed Watcher</li>
+<li>用户通过watcher api自定义的user Watcher</li>
+</ul>
+<h3 id="与diff时机-流程对比响应式思考"><a href="#与diff时机-流程对比响应式思考" class="headerlink" title="与diff时机 流程对比响应式思考"></a>与diff时机 流程对比响应式思考</h3><p>vue构造函数的时候当数据或者依赖改变的时候 就是上面我们说的new Watcher的时候  运行一个函数updateComponent  做两件事情     </p>
+<p>1 运行render 获取虚拟dom</p>
+<p>2 执行updade 去执行diff 比较新旧树</p>
+<p><img src="/../../../images/image-20240409140656037.png" alt="image-20240409140656037"></p>
+<p><img src="/../../../images/image-20241204164808494.png" alt="image-20241204164808494"></p>
+<h3 id="顺序问题"><a href="#顺序问题" class="headerlink" title="顺序问题"></a>顺序问题</h3><p>在Vue.js的响应式系统中，<code>Observer</code>和<code>Watcher</code>之间的依赖收集过程是紧密相关的，但它们的执行顺序和职责有所不同。</p>
+<p>首先，<code>Observer</code>类的主要职责是将一个对象转换为响应式的，即遍历对象的每个属性，并使用<code>defineReactive</code>函数将每个属性转换为getter&#x2F;setter的形式，同时为每个属性创建一个<code>Dep</code>实例来管理依赖。</p>
+<p><strong>当组件实例化或渲染时，Vue.js会创建<code>Watcher</code>实例来观察数据的变化。<code>Watcher</code>在创建时会执行其<code>getter</code>函数，这通常是组件的渲染函数或计算属性的函数。</strong></p>
+<p>在执行<code>watcher.getter</code>期间，当getter函数读取到已经做过响应式处理的属性时，会触发属性的getter方法。在getter方法中，如果该属性对应的<code>Dep</code>实例中没有这个<code>Watcher</code>的记录，那么就会将这个<code>Watcher</code>添加到该属性的<code>Dep</code>实例中，从而建立起属性与<code>Watcher</code>之间的依赖关系。</p>
+<p>所以，简单来说，<strong>Observer在前，Watcher在后</strong>。先是通过Observer将对象转换为响应式的，并初始化每个属性的Dep实例。然后，当Watcher执行其getter函数时，会读取属性并触发依赖收集过程，将Watcher添加到属性的Dep实例中。</p>
+<p>这个过程确保了当属性的值发生变化时，能够通知到所有依赖这个属性的Watcher，从而触发相应的更新操作，如重新渲染组件或重新计算属性等。</p>
+<h3 id="vue3的proxy相较于vue2-的defineprotyte的好处其一"><a href="#vue3的proxy相较于vue2-的defineprotyte的好处其一" class="headerlink" title="vue3的proxy相较于vue2 的defineprotyte的好处其一"></a>vue3的proxy相较于vue2 的defineprotyte的好处其一</h3><p>vue2中对属性进行遍历 让每一个对象变成响应式  是在creat之前完成得到的   creat的时候我们就能访问数据了 利用数据提前发一些请求</p>
+<p>vue3 中对对象进行代理  不用一开始就对对象的每一个属性变成响应式  只需要创建代理  这里相比vue2 就是如果有深入的递归对象   </p>
+<p><strong>vue3就在之前会省去很多工作</strong>  性能提升</p>
+<p><img src="/../../../images/image-20240409160029495.png" alt="image-20240409160029495"></p>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><strong><code>beforeCreate</code></strong> –  create 这个过程中  执行的就是observe（） <strong>数据观测（<code>data</code> observer）</strong></p>
+<p>create 就能获取data等的数据了 在这个钩子函数中我们可以提前发起一些请求</p>
+<p>beforemount—-&gt;  首次执行<strong>render函数</strong>—时模板已经编译好了，但是还没有挂载到真实的<code>DOM</code>上。可以在这里对最终要渲染的模板进行最后的修改。例如，对一些虚拟<code>DOM</code>节点进行预处理等操作。</p>
+<p>mounted       <code>el</code>被新创建的<code>vm.$el</code>替换  挂载真实dom</p>
+<p>updated        <code>diff</code>操作主要在<code>updated</code>生命周期之前进行</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/05/vue-%E6%8F%92%E6%A7%BD/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/04/Vue-%E8%99%9A%E6%8B%9FDOM/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

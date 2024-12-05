@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            May 16, 2019
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="常见样式声明"><a href="#常见样式声明" class="headerlink" title="常见样式声明"></a>常见样式声明</h1><ol>
+<li>color</li>
+</ol>
+<p>元素内部的文字颜色</p>
+<p><strong>预设值</strong>：定义好的单词</p>
+<p><strong>三原色，色值</strong>：光学三原色（红、绿、蓝），每个颜色可以使用0-255之间的数字来表达，色值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rgb表示法：</span><br><span class="line">rgb(0, 255, 0)</span><br><span class="line">hex（16进制）表示法：</span><br><span class="line">#红绿蓝</span><br></pre></td></tr></table></figure>
+
+<p>淘宝红：#ff4400, #f40<br>黑色：#000000，#000<br>白色：#ffffff, #fff<br>红：#ff0000, #f00<br>绿：#00ff00, #0f0<br>蓝：#0000ff, #00f<br>紫：#f0f<br>青：#0ff<br>黄：#ff0<br>灰色：#ccc</p>
+<ol start="2">
+<li>background-color</li>
+</ol>
+<p>元素背景颜色</p>
+<ol start="3">
+<li>font-size</li>
+</ol>
+<p>元素内部文字的尺寸大小</p>
+<p>1）px：像素，绝对单位，简单的理解为文字的高度占多少个像素<br>2）em：相对单位，相对于父元素的字体大小<br>每个元素必须有字体大小，如果没有声明，则直接使用父元素的字体大小，如果没有父元素（html），则使用基准字号。</p>
+<blockquote>
+<p>user agent，UA，用户代理（浏览器）</p>
+</blockquote>
+<ol start="4">
+<li>font-weight</li>
+</ol>
+<p>文字粗细程度，可以取值数字，可以取值为预设值</p>
+<blockquote>
+<p>strong，默认加粗。</p>
+</blockquote>
+<ol start="5">
+<li>font-family</li>
+</ol>
+<p>文字类型</p>
+<p>必须用户计算机中存在的字体才会有效。</p>
+<p>使用多个字体，以匹配不同环境</p>
+<p>sans-serif，非衬线字体</p>
+<ol start="6">
+<li>font-style</li>
+</ol>
+<p>字体样式，通常用它设置斜体</p>
+<blockquote>
+<p>i元素，em元素，默认样式，是倾斜字体; 实际使用中，通常用它表示一个图标（icon）</p>
+</blockquote>
+<ol start="7">
+<li>text-decoration</li>
+</ol>
+<p>文本修饰，给文本加线。</p>
+<blockquote>
+<p>a元素<br>del元素：错误的内容<br>s元素：过期的内容</p>
+</blockquote>
+<ol start="8">
+<li>text-indent</li>
+</ol>
+<p>首行文本缩进</p>
+<ol start="9">
+<li>line-height</li>
+</ol>
+<p>每行文本的高度，该值越大，每行文本的距离越大。</p>
+<p>设置行高为容器的高度，可以让单行文本垂直居中</p>
+<p>行高可以设置为纯数字，表示相对于当前元素的字体大小</p>
+<ol start="10">
+<li>width</li>
+</ol>
+<p>宽度</p>
+<ol start="11">
+<li>height</li>
+</ol>
+<p>高度</p>
+<ol start="12">
+<li>letter-space</li>
+</ol>
+<p>文字间隙</p>
+<ol start="13">
+<li>text-align</li>
+</ol>
+<p>元素内部文字的水平排列方式</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2019/05/16/3.%20CSS%E5%9F%BA%E7%A1%80/2.%20%E5%B8%B8%E8%A7%81%E6%A0%B7%E5%BC%8F%E5%A3%B0%E6%98%8E/test1/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2019/05/16/3.%20CSS%E5%9F%BA%E7%A1%80/1.%20%E4%B8%BA%E7%BD%91%E9%A1%B5%E6%B7%BB%E5%8A%A0%E6%A0%B7%E5%BC%8F/index2/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

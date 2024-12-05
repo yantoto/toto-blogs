@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 5, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="提问：请说说vue2和vue3的区别？"><a href="#提问：请说说vue2和vue3的区别？" class="headerlink" title="提问：请说说vue2和vue3的区别？"></a>提问：请说说vue2和vue3的区别？</h2><h3 id="一-响应式原理不同"><a href="#一-响应式原理不同" class="headerlink" title="一.响应式原理不同"></a>一.响应式原理不同</h3><p>vue2的底层响应式原理利用了数据劫持和订阅发布模式。</p>
+<p>在beforecreate和create之间，Observer会利用遍历data里的数据，利用Object.defineProperty给对象属性添加getter和setter。</p>
+<p>在第一次渲染执行render函数的时候，会给每个组件创建至少一个Watcher对象，这个Watcher对象会记录渲染该组件的render函数，以及渲染函数内部涉及的data内部的数据。与此同时，data内部的每个数据都会创建一个Dep对象（对象、数组、对象元素）,这个Dep对象会记录该数据用到的rennder函数。这个阶段叫做数据依赖。</p>
+<p>在修改data内的数据后，会触发setter，这个setter会通知相对应的Watcher对象。这个阶段叫做数据派发。但这个Watcher对象内部的render函数不会立刻执行，他会随着Watcher先放入一个队列，起到一个去重的作用，再利用nextTIck，将Watcher内部的函数作为回调函数放入微任务队列，随着事件循环执行。</p>
+<p>执行完毕后，又会重新更新Watcher对象内部的render和数据，为下一次渲染做准备。</p>
+<p>这也就是为什么vue2内部无法给响应式对象添加或者删除元素，因为后来添加的属性不会被数据劫持给拦截到，需要调用vue特定的方法（delete和set）实行。</p>
+<p>vue2中的数组元素呢，不会被Object.defineProperty劫持，而是进入另一个哦判断，在这个判断中会给他添加一个vue重写的原型对象，在将这个原型对象的<code>__proto__</code>连接到Array的原型对象上，因此只能通过他重写的七个方法实现对数组的响应式，而无法使用数组索引和长度来实现响应式。</p>
+<p>而vue3就不同，vue3能够深层次的监听到对象、数组的所有属性和增删改查，这是因为他给整个对象都套了一层Proxy，这个Proxy监视的是整个对象而不是单个元素，并且能够深层次的监视。因此，vue3就解决了vue2的问题。</p>
+<p>延伸：事件循环</p>
+<p>首先，js是一门单线程的语言，但是由于单线程中，一旦有一个交互一直监听，或者一个定时器一直等待，而阻碍了后面的事件的运行，那么就会大大降低效率，这不是我们所期待的。</p>
+<p>因此，后来w3c就提出了同步和异步的概念。</p>
+<p>事件分为同步事件和异步事件。同步事件在渲染主线程立刻执行，而渲染主线程一旦检测到异步事件，会立刻把他丢给宿主环境来监听，转而执行后面的事件。</p>
+<p>当宿主环境，这里就说浏览器，他检测到异步事件的条件执行完毕了，那么他就会把异步事件的回调函数推给相应的任务队列里面。不同的异步事件有不同的类型，不同类型的事件的队列优先级就不同。这个优先级根据浏览器环境来定，比如，微任务队列的优先级最高，交互任务队列优先级高，定时任务队列的优先级中。消息队列就会按照优先级将任务队列的任务取出，并推入渲染主线程依次执行。这就是js的事件循环。</p>
+<h3 id="二、api不同"><a href="#二、api不同" class="headerlink" title="二、api不同"></a>二、api不同</h3><p>vue2利用的是选项式api,数据、函数、监听等分离，虽然规范化了流程，但是如果代码量太大，逻辑流程间隔太大，不易查找；</p>
+<p>因此,vue3就提出了组合式的api,统一模块放在一起，方便维护。</p>
+<p>三、</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/05/vue-keep-alive/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

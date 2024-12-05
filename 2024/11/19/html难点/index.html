@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Nov 19, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一-什么是DOCTYPE"><a href="#一-什么是DOCTYPE" class="headerlink" title="一.什么是DOCTYPE"></a>一.什么是DOCTYPE</h2><p>这是HTML的<strong>文档声明</strong>，通过这一标签<strong>告诉浏览器使用哪一个HTML的标准解析文档</strong>。</p>
+<h2 id="二-HTML语义化的理解"><a href="#二-HTML语义化的理解" class="headerlink" title="二.HTML语义化的理解"></a>二.HTML语义化的理解</h2><p>用<strong>正确的标签做正确的事</strong>。规定标签的形式，有<strong>更可读性</strong>的页面。</p>
+<p>优点：</p>
+<ol>
+<li>在没有css的情况下也能看清页面结构；</li>
+<li>有利于SEO和搜索引擎简历良好沟通，有助于爬虫抓取更多有效新信息；</li>
+<li>有利于团队维护。</li>
+</ol>
+<h2 id="三-src和href区别"><a href="#三-src和href区别" class="headerlink" title="三.src和href区别"></a>三.src和href区别</h2><p>都用来<strong>引入外部资源</strong>。</p>
+<p>src：<strong>img,video,audio,script。</strong></p>
+<p>通过src请求外部资源时，请求的资源会镶嵌到标签所在位置。并且，<strong>请求src资源时会停止暂停其他资源下载，直到该资源加载编译执行完毕</strong>。</p>
+<p>href:  <strong>a,link</strong>。</p>
+<p>超链接。浏览器会<strong>并行下载资源</strong>，不会停止对当前文档的处理。</p>
+<h2 id="四-严格模式和混杂模式"><a href="#四-严格模式和混杂模式" class="headerlink" title="四.严格模式和混杂模式"></a>四.严格模式和混杂模式</h2><p>严格模式：浏览器支持的<strong>最高模式</strong>运行</p>
+<p>混杂模式：<strong>向下兼容</strong></p>
+<h2 id="五-前端三层"><a href="#五-前端三层" class="headerlink" title="五.前端三层"></a>五.前端三层</h2><p>结构层html，表示层css，行为层js</p>
+<h2 id="六-ifame"><a href="#六-ifame" class="headerlink" title="六.ifame"></a>六.ifame</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;index.com/page.html?param1=value1&amp;param2=value2&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>嵌入式框架</strong>，可以把网页的框架和内容嵌入到现有的网页中。</p>
+<p>优点：</p>
+<ol>
+<li>处理加载缓慢的内容</li>
+<li>页面上可以<strong>独立的显示一个页面</strong>或者内容，不与其他元素冲突</li>
+<li>多个页面中重用同一个页面，<strong>减少代码冗余</strong></li>
+<li><strong>加载异步</strong>，<strong>页面可以不等待i</strong>frame进行展示</li>
+<li>方便地实现<strong>跨域访问</strong></li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>影响主页面onload事件；</li>
+<li>与主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载；</li>
+<li>页面有多个页面，不易维护；</li>
+<li>浏览器后退按钮没作用；</li>
+<li>无法被一些搜索引擎识别。</li>
+</ol>
+<h3 id="连接池概述"><a href="#连接池概述" class="headerlink" title="连接池概述"></a>连接池概述</h3><p>连接池（Connection Pool）是一种用于管理数据库连接的缓存技术。它预先创建并维护了一定数量的数据库连接，以供应用程序在需要时直接获取，而不是每次都重新创建连接。这种方式可以显著提高应用程序的性能和效率，特别是在处理大量数据库请求时。</p>
+<p>在Web开发中，连接池通常用于管理应用程序与数据库之间的连接。通过使用连接池，应用程序可以更快地获取数据库连接，从而减少连接创建和销毁的时间开销，提高数据库的响应速度和吞吐量。</p>
+<h3 id="iframe与主页面共享连接池"><a href="#iframe与主页面共享连接池" class="headerlink" title="iframe与主页面共享连接池"></a>iframe与主页面共享连接池</h3><p>当iframe和主页面共享同一个连接池时，这意味着它们都可以从同一个连接池中获取数据库连接。这种情况通常发生在以下场景中：</p>
+<ol>
+<li><strong>同源策略</strong>：如果iframe和主页面来自<strong>同一个源（即具有相同的协议、域名和端口）</strong>，则它们可以共享浏览器的某些资源，包括连接池。然而，需要注意的是，这并不意味着它们可以无条件地共享连接池。实际是否共享还取决于浏览器的实现和应用程序的配置。</li>
+<li><strong>应用程序配置</strong>：在某些情况下，应用程序可能会配置一个全局的连接池，供所有页面（包括iframe）使用。这种方式可以确保整个应用程序在数据库连接方面的高效性和一致性。</li>
+</ol>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><strong>安全性</strong>：由于iframe可以嵌入来自不同源的内容，因此在使用时需要特别注意安全性问题。如果嵌入的页面包含恶意代码，它可能会尝试利用共享的连接池进行攻击。因此，建议仅嵌入可信的站点，并使用适当的安全措施来保护连接池和其他敏感资源。</li>
+<li><strong>性能优化</strong>：虽然共享连接池可以提高性能，但也需要根据应用程序的实际情况进行配置和优化。例如，可以根据应用程序的负载和数据库的性能来设置连接池的大小和超时时间等参数。</li>
+<li><strong>跨域问题</strong>：如果iframe和主页面来自不同的源，则它们之间的通信将受到浏览器的同源策略限制。这可能会导致无法直接共享连接池或其他资源。在这种情况下，需要使用跨域通信技术（如CORS、postMessage等）来实现不同源之间的通信和数据共享。</li>
+</ol>
+<h2 id="七-meta-viewport"><a href="#七-meta-viewport" class="headerlink" title="七.meta viewport"></a>七.meta viewport</h2><p>作用是在<strong>移动端不让用户缩放页面</strong></p>
+<h2 id="八-浏览器乱码"><a href="#八-浏览器乱码" class="headerlink" title="八.浏览器乱码"></a>八.浏览器乱码</h2><p><strong>编码格式</strong>不匹配（如网页编码格式为UTF-8而浏览器编码格式为GB2312），代码编写错误，字体缺失</p>
+<h3 id="文档声明和字符编码的区别："><a href="#文档声明和字符编码的区别：" class="headerlink" title="文档声明和字符编码的区别："></a>文档声明和字符编码的区别：</h3><ul>
+<li><strong>功能不同</strong>：文档声明用于<strong>指定文档</strong>的类型、版本和字符编码，而编码格式则专注于<strong>字符的二进制</strong>表示方式。</li>
+<li><strong>位置不同</strong>：文档声明通常位于HTML或XML文档的最前面如<!DOCTYPE html>，而编码格式则通过<code>&lt;meta&gt;</code>标签在文档的<code>&lt;head&gt;</code>部分指定。</li>
+<li><strong>作用范围不同</strong>：文档声明影响<strong>整个文档的解析和渲染</strong>，而编码格式则主要影响<strong>文档中字符的显示</strong>。</li>
+</ul>
+<h2 id="九-跨域"><a href="#九-跨域" class="headerlink" title="九.跨域"></a>九.跨域</h2><h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p>跨域是浏览器拦截的行为，<strong>请求已经发送到后端，后端返回的响应数据被浏览器拦截住了</strong>，这就是跨域的流程。跨域是指浏览器允许向服务器发送<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82&spm=1001.2101.3001.7020">跨域请求</a>，从而<strong>克服Ajax</strong>只能<strong>同源</strong>使用的限制。</p>
+<h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><p><strong>同源策略</strong>是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果<strong>缺少了同源策略，浏览器很容易受到XSS、CSFR等攻击</strong>。所谓同源是指**”协议+域名+端口”三者相同**，即便两个不同的域名指向同一个ip地址，也非同源。</p>
+<p>同源策略限制以下几种行为：</p>
+<ul>
+<li>Cookie、LocalStorage 和 IndexDB 无法读取</li>
+<li>DOM和JS对象无法获得</li>
+<li>AJAX 请求不能发送</li>
+</ul>
+<p><img src="/../images/image-20241119113948695.png" alt="image-20241119113948695"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaolinlife/article/details/130982886?ops_request_misc=%257B%2522request%255Fid%2522%253A%25222cfecb1a1f358ca6a4b14d319b730d21%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=2cfecb1a1f358ca6a4b14d319b730d21&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-130982886-null-null.142%E8%A7%81%E5%8D%9A%E5%AE%A2%E8%B7%A8%E5%9F%9F%E4%B9%9D%E7%A7%8D%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95">https://blog.csdn.net/xiaolinlife/article/details/130982886?ops_request_misc=%257B%2522request%255Fid%2522%253A%25222cfecb1a1f358ca6a4b14d319b730d21%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=2cfecb1a1f358ca6a4b14d319b730d21&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-130982886-null-null.142见博客跨域九种解决办法</a></p>
+<h2 id="十-HTML5新特性"><a href="#十-HTML5新特性" class="headerlink" title="十.HTML5新特性"></a>十.HTML5新特性</h2><p>这里的html5是一种标准哈。</p>
+<p>语义化标签</p>
+<p>增强型表单</p>
+<pre><code>    &lt;form&gt;
+        &lt;datalist id=&quot;list3&quot;&gt;
+            &lt;option&gt;腾讯&lt;/option&gt;
+            &lt;option&gt;联想&lt;/option&gt;
+            &lt;option&gt;东大街的狗场&lt;/option&gt;
+        &lt;/datalist&gt;
+           注意这里input的id与datalist的id一致
+        &lt;input type=&quot;text&quot; name=&quot;lunch&quot; list=&quot;list3&quot;/&gt;
+    &lt;/form&gt;
+</code></pre>
+<p>canvas（可用于绘制图案、艺术字、阴影等）</p>
+<p><img src="/../images/image-20241119162310721.png" alt="image-20241119162310721"></p>
+<p><img src="/../images/image-20241119162425278.png" alt="image-20241119162425278"></p>
+<p>svg(矢量图形标签，放大不失焦)</p>
+<p><img src="/../images/image-20241119162619114.png" alt="image-20241119162619114"></p>
+<p>地理等位？</p>
+<p>拖放API(给标签元素设置属性draggable值为true,能够实现对目标元素的拖动)</p>
+<p>web Storage(session Storage和local storage)</p>
+<p>web Worker(开启一个子线程运行一个脚本)</p>
+<p>web Socket(全双工双向通信协议，可以让浏览器接收服务器端的请求)</p>
+<p>dom查询（document.querySelector()  document.querySelectorAll()）</p>
+<h2 id="十一-data-属性"><a href="#十一-data-属性" class="headerlink" title="十一.data-属性"></a>十一.data-属性</h2><p><strong>自定义属性</strong>，data-是一种约定，<strong>用于储存数据放在标签。</strong></p>
+<p>通常用来作为标识（因为id只有一个，自定义属性可以根据不同分组设置无数个）</p>
+<p>现在不支持使用，不利于维护，数据还是得放在js.</p>
+<h2 id="十二-script、script-async-和-script-defer"><a href="#十二-script、script-async-和-script-defer" class="headerlink" title="十二.script、script async 和 script defer"></a>十二.script、script async 和 script defer</h2><p>script:解析到该标签，<strong>html解析中断，脚本被提取并立即执行。执行结束后，html继续解析。</strong></p>
+<p>script async：解析到标签，与html<strong>并行</strong>解析，<strong>有可能在html解析完成之前就执行</strong>。</p>
+<p>script defer【常用】：解析到标签，与html<strong>并行</strong>解析，且<strong>必须在html解析完后执行</strong>。</p>
+<h2 id="十三-html结构"><a href="#十三-html结构" class="headerlink" title="十三.html结构"></a>十三.html结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;示例页面&lt;/title&gt;</span><br><span class="line">    &lt;!-- 引入外部CSS样式表 --&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;</span><br><span class="line">    &lt;!-- 头部中的JavaScript脚本，通常用于初始化或设置一些不需要等待DOM加载的函数 --&gt;</span><br><span class="line">    &lt;script src=&quot;head-script.js&quot; defer&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 页面内容 --&gt;</span><br><span class="line">    &lt;h1&gt;欢迎来到我的网站&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;这是一个示例段落。&lt;/p&gt;</span><br><span class="line">    &lt;!-- 引入外部JavaScript脚本，通常用于操作DOM或处理用户交互 --&gt;</span><br><span class="line">    &lt;script src=&quot;body-script.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;!-- 注意：在实际开发中，通常会将最后一个&lt;script&gt;标签放在&lt;/body&gt;之前，以确保DOM完全加载后再执行脚本 --&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="十四-H5和HTML5的区别"><a href="#十四-H5和HTML5的区别" class="headerlink" title="十四.H5和HTML5的区别"></a>十四.H5和HTML5的区别</h2><p>H5并不是HTML5的简写。</p>
+<p>H5是移动端页面，HTML5是超文本标记语言（HTML）的第五个主要版本。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/11/19/HTML%E5%92%8CCSS/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/11/11/%E6%95%B0%E6%8D%AE%E5%BA%93/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

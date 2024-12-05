@@ -173,7 +173,7 @@
 <h3 id="三-常量"><a href="#三-常量" class="headerlink" title="三.常量"></a>三.常量</h3><p>本质也是变量，代表用const声明的变量。</p>
 <p>利用const声明，声明时必须初始化，一旦赋值无法改变（基本变量）。</p>
 <h3 id="四-数据类型"><a href="#四-数据类型" class="headerlink" title="四.数据类型"></a>四.数据类型</h3><p>主要分为两大类：<strong>基本数据</strong>类型和<strong>引用数据</strong>类型。</p>
-<p>基本数据类型(5)：number string boolean undefined null</p>
+<p>基本数据类型(5)：number string boolean undefined null BigInt Symbol(es6新增)</p>
 <p>引用数据类型(1)：object</p>
 <p>js是一门<strong>弱数据</strong>类型的语言。</p>
 <h4 id="number"><a href="#number" class="headerlink" title="number"></a>number</h4><p>里面比较特殊的是NaN,代表计算错误。</p>
@@ -183,11 +183,42 @@
 
 <h4 id="null"><a href="#null" class="headerlink" title="null"></a>null</h4><p>null代表的是<strong>未定义的对象</strong>，其实本质是没有放值的对象，应用场景是给为赋值的对象占位。</p>
 <h4 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h4><p>代表声明了但未赋值的变量。</p>
+<p>ps:若直接打印一个没有声明的变量，则报错。</p>
+<p><img src="/../images/image-20241124162515583.png" alt="image-20241124162515583"></p>
+<p><img src="/../images/image-20241124162529712.png" alt="image-20241124162529712"></p>
 <h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><p>为假的值：<strong>‘’  0 NaN undefined null false</strong></p>
 <p>其余全为真。</p>
 <h4 id="检测数据类型"><a href="#检测数据类型" class="headerlink" title="检测数据类型"></a>检测数据类型</h4><p><strong>typeof</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let num=10</span><br><span class="line">console.log(typeof num)//number</span><br></pre></td></tr></table></figure>
 
+<h5 id="instanceOf"><a href="#instanceOf" class="headerlink" title="instanceOf"></a>instanceOf</h5><p>利用原型链来判断。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(arr instanceOf Array)//仅能判断引用数据类型</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h5><p><strong>利用实例化对象在可以调用原型链上的方法</strong>，实例化对象可以调用<strong>对象原型的contructor方法获取构造对象</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log((2).constructor === Number); // true</span><br><span class="line">console.log((true).constructor === Boolean); // true</span><br><span class="line">console.log((&#x27;str&#x27;).constructor === String); // true</span><br><span class="line">console.log(([]).constructor === Array); // true</span><br><span class="line">console.log((function() &#123;&#125;).constructor === Function); // true</span><br><span class="line">console.log((&#123;&#125;).constructor === Object); // true</span><br></pre></td></tr></table></figure>
+
+
+
+<p>因此，若改变它的原型，则指向的构造函数也会跟着改变，而不能返回正确的数据类型了。<img src="/../images/image-20241130133916183.png" alt="image-20241130133916183"></p>
+<h5 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString"></a>Object.prototype.toString</h5><p><code>Object.prototype.toString()</code> 返回 <code>&quot;[object Type]&quot;</code>，这里的 <code>Type</code> 是对象的类型。这属于js底层所写的方法，无法直接在控制台打印。利用.call和.apply在后面绑定改变this指向，因此<strong>type指向该绑定对象的类型</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr=[]    console.log(Object.prototype.toString.apply(arr));</span><br><span class="line">       </span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="typeof-和-instanceOf"><a href="#typeof-和-instanceOf" class="headerlink" title="typeof 和 instanceOf"></a>typeof 和 instanceOf</h5><p>我的理解:</p>
+<ul>
+<li><p><strong>typeof可以用来判断简单数据类型还是引用数据类型</strong>。【返回类型】&#x2F;&#x2F;typeOf a&#x3D;&#x3D;‘object’</p>
+<p>  这种说法有点笼统，函数的type为Function 是引用数据类型但返回类型不为object（虽然函数属于对象类型，但我认为函数没什么可以特殊考虑的）</p>
+</li>
+<li><p><strong>instanceOf则可以用来判断具体是哪种引用数据类型</strong>（因为利用原型链判断）。【返回布尔值】&#x2F;&#x2F; arr instanceOf Array</p>
+<p>  可以看到<strong>typeOf基础数据类型还是都能判断</strong>的，而<strong>引用数据类型都会判断为Object</strong>。</p>
+<p>  <img src="/../images/image-20241127165959798.png" alt="image-20241127165959798"></p>
+<p>  所以进一步使用instanceOf来判断引用数据类型，<img src="/../images/image-20241127150850529.png!%5Bimage-20241127165934037%5D(../images/image-20241127165934037.png" alt="image-20241127150850529"></p>
+<p>  <strong>超级大雷点：      for in fo rOf里面的key值是string!!!!!不能用typeof判断是什么数据类型！！！！无论什么类型都会转换为string！！！！</strong></p>
+</li>
+</ul>
 <h4 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h4><h5 id="字符串转数字："><a href="#字符串转数字：" class="headerlink" title="字符串转数字："></a>字符串转数字：</h5><ol>
 <li>一元运算符<strong>正号</strong>【特别有用，一般表单输入的值都是字符串，可以用let data&#x3D;+prompt(‘请输入数字’)进行快速转换】</li>
 <li>二元运算符减、乘、除自动转换</li>
@@ -201,10 +232,10 @@
 
 <h5 id="基础数据类型转换为对象："><a href="#基础数据类型转换为对象：" class="headerlink" title="基础数据类型转换为对象："></a>基础数据类型转换为对象：</h5><p>当调用基础属性类型的属性和方法时，js内部会隐式的把基础数据类型转换为对象，这样就可以调用对象的属性和方法了。如string.length,string.split()</p>
 <p><strong>&#x3D;&#x3D;比较时：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">true==1 //将true转换</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">true==1 //将true转换1</span><br></pre></td></tr></table></figure>
 
-
-
+<p><img src="/../images/image-20241130145734432.png" alt="image-20241130145734432"></p>
+<p><img src="/../images/image-20241130145935621.png" alt="image-20241130145935621"></p>
 <h4 id="显示转换"><a href="#显示转换" class="headerlink" title="显示转换"></a>显示转换</h4><ol>
 <li>Number()</li>
 <li>parseInt() 字符串转化为数字（只取前面的数）</li>
@@ -218,17 +249,24 @@
 <li>splice(1,2,’newNum’)从第一个元素开始，删去两个值，在第一个元素后面加上newNum。<strong>直接修改</strong>原数组 【用很多】</li>
 <li>split(‘*’) 用于<strong>字符串</strong>，将字符串分割开，返回一个<strong>新数组</strong>。</li>
 <li>join(“*”)用于<strong>数组</strong>，将数组中的所有元素连接成一个字符串，并返回一个新的字符串。</li>
-<li>map() 对每个元素进行操作，<strong>返回新数组</strong></li>
+<li>filter()筛选符合条件的元素，数组长度变化，但元素不变，<strong>返回新数组</strong></li>
+<li>map() 对每个元素进行操作，数组长度不变，但元素改变，<strong>返回新数组</strong></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let numbers = [1, 4, 9];  </span><br><span class="line">let doubled = numbers.map(function(num) &#123;  </span><br><span class="line">  return num * 2;  </span><br><span class="line">&#125;);  </span><br><span class="line">  </span><br><span class="line">console.log(doubled); // 输出: [2, 8, 18]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const arr=[1,2,3,4,5,6,7,8,9]</span><br><span class="line">      console.log(arr.splice(1,2,&quot;toto&quot;));//[2, 3]</span><br><span class="line">      console.log(arr);//[1, &#x27;toto&#x27;, 4, 5, 6, 7, 8, 9]</span><br><span class="line">     const newArray= arr.filter((e)=&gt;&#123;</span><br><span class="line">          return e&gt;2</span><br><span class="line">      &#125;)</span><br><span class="line">      console.log(newArray);//[4, 5, 6, 7, 8, 9]</span><br><span class="line">      </span><br><span class="line">      const adds=arr.map((value)=&gt;&#123;</span><br><span class="line">          return value*2</span><br><span class="line">      &#125;)</span><br><span class="line">      console.log(adds);//[2, NaN, 8, 10, 12, 14, 16, 18]</span><br></pre></td></tr></table></figure>
+
+
+
 <h5 id="for…in-for…of"><a href="#for…in-for…of" class="headerlink" title="for…in ,for…of:"></a>for…in ,for…of:</h5><p><strong>for…in用来遍历键，of用来遍历值。</strong></p>
 <p>遍历数组：【直接】</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3, 4];  </span><br><span class="line">for (const key in arr) &#123;  </span><br><span class="line">  console.log(key); // 输出索引：0, 1, 2, 3  但是是字符串，很少用来遍历数组</span><br><span class="line">&#125;</span><br><span class="line">const arr = [1, 2, 3, 4];  </span><br><span class="line">for (const value of arr) &#123;  </span><br><span class="line">  console.log(value); // 输出数组元素：1, 2, 3, 4  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3, 4];  </span><br><span class="line">for (const key in arr) &#123;  </span><br><span class="line">  console.log(key); // 输出索引：0, 1, 2, 3  但是是字符串，很少用来遍历数组</span><br><span class="line">&#125;</span><br><span class="line">const arr = [1, 2, 3, 4];  </span><br><span class="line">for (const value of arr) &#123;  </span><br><span class="line">  console.log(value); // 输出数组元素：1, 2, 3, 4  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>遍历对象：【in可直接遍历，of不可以】</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123; name: &#x27;Alice&#x27;, age: 30 &#125;;  </span><br><span class="line">for (const key in obj) &#123;  </span><br><span class="line">  console.log(key); // 输出属性名：name, age  </span><br><span class="line">  console.log(obj[key]); // 输出属性值：Alice, 30 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//将对象的键转换成数组来间接使用 for...of 遍历对象的值</span><br><span class="line">for(const value of Object.keys(obj))&#123;</span><br><span class="line">	console.log(obj[key]); // 输出属性值：Alice, 30  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123; name: &#x27;Alice&#x27;, age: 30 &#125;;  </span><br><span class="line">for (const key in obj) &#123;  </span><br><span class="line">  console.log(key); // 输出属性名：name, age  </span><br><span class="line">  console.log(obj[key]); // 输出属性值：Alice, 30 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//将对象的键转换成数组来间接使用 for...of 遍历对象的值</span><br><span class="line">for(const value of Object.keys(obj))&#123;</span><br><span class="line">	console.log(obj[key]); // 输出属性值：Alice, 30  </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//为什么这里可以用const?</span><br><span class="line">//每次迭代都创建新的 const 变量，即使变量名相同，但每次迭代都有自己的作用域，不会发生重复声明错误。</span><br><span class="line">//const 关键字 保证变量在当前迭代中不可变，但是它的作用域仅限于当前迭代，所以它不会影响到其他迭代中的 key 变量。</span><br><span class="line"></span><br><span class="line">for (const i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">  console.log(i);  // 错误：i 是常量，不能修改</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h5 id="关于Obj的方法："><a href="#关于Obj的方法：" class="headerlink" title="关于Obj的方法："></a>关于Obj的方法：</h5><p><img src="/../images/image-20241124165836977.png" alt="image-20241124165836977"></p>
+<p><img src="/../images/image-20241124165848808.png" alt="image-20241124165848808"></p>
 <h5 id="关于空数组的转换："><a href="#关于空数组的转换：" class="headerlink" title="关于空数组的转换："></a>关于空数组的转换：</h5><p><img src="/../images/image-20240921223440371.png" alt="image-20240921223440371"></p>
 <h5 id="冒泡排序："><a href="#冒泡排序：" class="headerlink" title="冒泡排序："></a>冒泡排序：</h5><p><img src="/../images/image-20240921223518650.png" alt="image-20240921223518650"></p>
 <h4 id="堆栈空间分配"><a href="#堆栈空间分配" class="headerlink" title="堆栈空间分配"></a>堆栈空间分配</h4><ul>
@@ -436,7 +474,7 @@
 <p>当复选框全选时，自动勾选全选框。</p>
 <p>以前：用for循环一个个遍历是否选中。</p>
 <p>现在：利用css属性input:checked</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const inputs=document.querySelectorAll(&#x27;.ck&#x27;)</span><br><span class="line">const quanxuan=document.querySelectorAll(&#x27;.quan&#x27;)</span><br><span class="line">for(let i=0;i&lt;inputs.length;i++)&#123;</span><br><span class="line">	inputs.addEventListener&#123;						if(document.querySelector(&quot;.ck:checked&quot;).length===inputs.length)</span><br><span class="line">	&#123;</span><br><span class="line">	quanxuan.checked=true</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">	quanxuan.checked=false</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//或者,特别简洁！！！</span><br><span class="line">	quanxuan.checked=document.querySelector(&quot;.ck:checked&quot;).length==inputs.length</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const inputs=document.querySelectorAll(&#x27;.ck&#x27;)</span><br><span class="line">const quanxuan=document.querySelectorAll(&#x27;.quan&#x27;)</span><br><span class="line">for(let i=0;i&lt;inputs.length;i++)&#123;</span><br><span class="line">	inputs.addEventListener&#123;						if(document.querySelectorAll(&quot;.ck:checked&quot;).length===inputs.length)</span><br><span class="line">	&#123;</span><br><span class="line">	quanxuan.checked=true</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">	quanxuan.checked=false</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//或者,特别简洁！！！</span><br><span class="line">	quanxuan.checked=document.querySelectorAll(&quot;.ck:checked&quot;).length==inputs.length</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="二-事件流"><a href="#二-事件流" class="headerlink" title="二.事件流"></a>二.事件流</h3><h4 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h4><p>定义：事件<strong>完整执行过程</strong>中的<strong>流动路径</strong>。</p>
 <p>阶段：</p>
@@ -556,6 +594,7 @@
 </ul>
 <p><strong>swiper</strong>插件很好用。</p>
 <h3 id="——以上都为DOM事件。"><a href="#——以上都为DOM事件。" class="headerlink" title="——以上都为DOM事件。"></a>——以上都为DOM事件。</h3><h3 id="七-Window对象"><a href="#七-Window对象" class="headerlink" title="七.Window对象"></a>七.Window对象</h3><h4 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h4><p>浏览器对象模型</p>
+<p>它是与浏览器窗口进行交互的一组对象和相关的方法、属性。</p>
 <p><img src="/../images/image-20240921223745225.png" alt="image-20240921223745225"></p>
 <h4 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h4><ul>
 <li>延时函数   ——只执行一次</li>
@@ -785,6 +824,12 @@ eg:
 1. 传参时将数组转换为普通类型变量；
 2. 合并数组；
 3. 将数组拆分，如将后端数据（加入都需要）直接放入data中。
+3. 浅拷贝
+3. 拆开伪数组
+
+##### 数组去重
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const array = [1, 2, 2, 3, 4, 4, 5];</span><br><span class="line">const uniqueArray = [...new Set(array)];</span><br><span class="line">//或者 const uniqueArray = Array.from(new Set(array));</span><br><span class="line">console.log(uniqueArray); // 输出: [1, 2, 3, 4, 5]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -799,7 +844,8 @@ eg:
 注意：
 
 1. **箭头函数没有arguments参数，但是有剩余参数…args**。
-2. 箭头函数不会创建this,他**只会从自己的作用域链的上一层沿用this**。
+2. 箭头函数不会创建this,他**只会从自己的作用域链的上一层沿用this**。箭头函数不会创建自己的this， 所以它没有自己的this，它只会在自己作用域的上一层继承this。所以箭头函数**中this的指向在它在定义时已经确定了，之后不会改变。**
+2. 如果上一层已经到了最顶端了，那么不会再向上。![image-20241130152023679](../images/image-20241130152023679.png)
 
 又是一些很烦的东西：
 
@@ -1005,7 +1051,7 @@ startWIth 寻找是否以指定字符串开头
 
 **面试前提：给数组创建一个求和方法。**自定义的方法放在原型对象上。
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.sum=function()&#123;</span><br><span class="line">	let sum=0</span><br><span class="line">	for(let i=0;i&lt;this.length;i++)&#123;</span><br><span class="line">		sum+=this[0]</span><br><span class="line">	&#125;</span><br><span class="line">	return sum</span><br><span class="line">&#125;</span><br><span class="line">const res=arr.sum()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.sum=function()&#123;</span><br><span class="line">	let sum=0</span><br><span class="line">	for(let i=0;i&lt;this.length;i++)&#123;</span><br><span class="line">		sum+=this[i]</span><br><span class="line">	&#125;</span><br><span class="line">	return sum</span><br><span class="line">&#125;</span><br><span class="line">const res=arr.sum()</span><br></pre></td></tr></table></figure>
 
 ##### constructor
 
@@ -1055,6 +1101,16 @@ startWIth 寻找是否以指定字符串开头
 
 ![image-20241009171307340](../images/image-20241009171307340.png)
 
+其实还有一条隐形的链。所有构造方法都是实例化对象，他们的`__proto__`指向function的原型（即Function.prototype），而function 的构造函数的__proto__也指向function的原型（即Function.prototype），形成闭路。
+
+![img](../images/6e8ba634237d391e72aa4b11b7ab473e.jpg)
+
+所以这段代码会报两个true。
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let myInstanceof =function(left,right)&#123;</span><br><span class="line">            let proto=left.__proto__</span><br><span class="line">            </span><br><span class="line">            while(proto)&#123;</span><br><span class="line">            console.log(typeof proto);</span><br><span class="line">                </span><br><span class="line">                if(proto===right.prototype)&#123;</span><br><span class="line">                    return true</span><br><span class="line">                &#125;</span><br><span class="line">                proto=proto.__proto__</span><br><span class="line">            &#125;</span><br><span class="line">            return false</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(myInstanceof([1],Array));</span><br><span class="line">        console.log(myInstanceof(Array,Object));</span><br></pre></td></tr></table></figure>
+
+
+
 #### 十一.深浅拷贝
 
 深浅拷贝都针对的是**引用类型。**
@@ -1065,7 +1121,7 @@ startWIth 寻找是否以指定字符串开头
 
 重点：
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const obj=&#123;</span><br><span class="line">	name:&#x27;toto&#x27;,</span><br><span class="line">	age:19,</span><br><span class="line">	family:&#123;</span><br><span class="line">		baby:&#x27;时透&#x27;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">const newObj=&#123;...obj&#125; //这里就是浅拷贝过去了</span><br><span class="line">//修改新对象的name和age，老对象的对应属性不会改变</span><br><span class="line">//但若修改family的值，那么老对象也会改变</span><br><span class="line">//这是因为浅拷贝只拷贝过去了外层属性的值和引用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Object.assign(&#x27;newObj&#x27;,&#x27;obj&#x27;)</span><br><span class="line">//对象浅拷贝。</span><br><span class="line">Array.prototype.concat() </span><br><span class="line">[...arr]</span><br><span class="line">//数组浅拷贝</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const obj=&#123;</span><br><span class="line">	name:&#x27;toto&#x27;,</span><br><span class="line">	age:19,</span><br><span class="line">	family:&#123;</span><br><span class="line">		baby:&#x27;时透&#x27;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">const newObj=&#123;...obj&#125; //这里就是浅拷贝过去了</span><br><span class="line">//修改新对象的name和age，老对象的对应属性不会改变</span><br><span class="line">//但若修改family的值，那么老对象也会改变</span><br><span class="line">//这是因为浅拷贝只拷贝过去了外层属性的值和引用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Object.assign(&#x27;newObj&#x27;,&#x27;obj&#x27;)</span><br><span class="line">//对象浅拷贝。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Array.prototype.concat() </span><br><span class="line">[...arr]</span><br><span class="line">Array.prototype.slice.call(argument)</span><br><span class="line">//数组浅拷贝</span><br></pre></td></tr></table></figure>
 
 ###### 直接赋值和浅拷贝的区别：！！！！！！
 
@@ -1084,7 +1140,7 @@ startWIth 寻找是否以指定字符串开头
 
 递归实现定时器：
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getTime()&#123;</span><br><span class="line">	document.querySelector(&#x27;div&#x27;).innerHTML=new Date().toLocaleString()</span><br><span class="line">	setTimeout(getTime,1000)</span><br><span class="line">	//注意这里是setTimeou只执行一次，并不是开启多个setINterval</span><br><span class="line">	//当然也有弊端，由于事件循环，定时器进入主线程执行需要排队时间。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getTime()&#123;</span><br><span class="line">	document.querySelector(&#x27;div&#x27;).innerHTML=new Date().toLocalString()</span><br><span class="line">	setTimeout(getTime,1000)</span><br><span class="line">	//注意这里是setTimeou只执行一次，并不是开启多个setINterval</span><br><span class="line">	//当然也有弊端，由于事件循环，定时器进入主线程执行需要排队时间。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ##### 拷贝函数手写
 
@@ -1095,6 +1151,10 @@ startWIth 寻找是否以指定字符串开头
 ###### 深拷贝
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(newObj,oldObj)&#123;</span><br><span class="line">	for(let k in oldObj)&#123;</span><br><span class="line">	//先写ARRay再写Object,因为对象在数组的原型链上</span><br><span class="line">		if(oldObj[k] instanceof Array)&#123;</span><br><span class="line">		//发现不是基础数据类型，需要将最外层设为空的引用数据类型字面量</span><br><span class="line">			newObj[k]=[]</span><br><span class="line">			deepClone(newObj[k],OldObj[k])</span><br><span class="line">		&#125; else if(oldObj[k] instanceof Object)&#123;</span><br><span class="line">			newObj[k]=&#123;&#125;</span><br><span class="line">			deepClone(newObj[k],oldObj[k])</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			newObj[k]=oldObj[k]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+个人更喜欢这种写法：（又记了判断数据类型又判断了复杂数据类型）
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">      const aim = &#123;&#125;;</span><br><span class="line">      const obj = &#123;</span><br><span class="line">        name: &quot;toto&quot;,</span><br><span class="line">        age: 19,</span><br><span class="line">        family: [&quot;ba&quot;, &quot;ma&quot;],</span><br><span class="line">        sing() &#123;</span><br><span class="line">          console.log(&quot;sing&quot;);</span><br><span class="line">        &#125;,</span><br><span class="line">        other: &#123;</span><br><span class="line">          baby: &quot;toutou&quot;,</span><br><span class="line">          student: [2, 3],</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;;</span><br><span class="line">      let deepClone = function (aim = &#123;&#125;, obj) &#123;</span><br><span class="line">        for (const key in obj) &#123;</span><br><span class="line">        //虽然这里没有判断key的操作，但是提醒！！！！判断key是字符串！！！</span><br><span class="line">          if (typeof obj[key] != &quot;object&quot;) &#123;</span><br><span class="line">          //函数的type为Function 也在这里直接拷贝（虽然函数属于对象类型，但我认为函数没什么可以递归的）</span><br><span class="line">            aim[key] = obj[key];</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            if (obj[key] instanceof Array) &#123;</span><br><span class="line">              let temp = [];</span><br><span class="line">              deepClone(temp, obj[key]);</span><br><span class="line">              aim[key] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            if (obj[key] instanceof Object) &#123;</span><br><span class="line">              console.log(key, &quot;sdf&quot;);</span><br><span class="line"></span><br><span class="line">              let temp = &#123;&#125;;</span><br><span class="line">              deepClone(temp, obj[key]);</span><br><span class="line">              aim[key] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">      deepClone(aim, obj);</span><br><span class="line">      console.log(aim);</span><br><span class="line">      aim.other.baby = &quot;11&quot;;</span><br><span class="line">      console.log(obj);</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 如何实现深拷贝？
 
@@ -1108,7 +1168,38 @@ startWIth 寻找是否以指定字符串开头
 其他的实现深拷贝的方法：
 
 - lodash的__.cloneDeep()
+
 - JSON.parse(JSON.stringfy(obj))
+
+    ##### 其他震撼发现：
+
+    ![image-20241127144427675](../images/image-20241127144427675.png)
+
+    基础数据不是对象，自然没有原型对象。但是js的内置对象是有原型对象的，这就解释了这一现象。
+
+    
+
+    ![image-20241127144752940](../images/image-20241127145112797.png)
+
+##### typeof 和 instanceOf 
+
+我的理解:
+
+- **typeof可以用来判断简单数据类型还是引用数据类型**。【返回类型】//typeOf a==‘object’
+
+    这种说法有点笼统，函数的type为Function 是引用数据类型但返回类型不为object（虽然函数属于对象类型，但我认为函数没什么可以特殊考虑的）
+
+- **instanceOf则可以用来判断具体是哪种引用数据类型**（因为利用原型链判断）。【返回布尔值】// arr instanceOf Array
+
+    
+
+    可以看到**typeOf基础数据类型还是都能判断**的，而**引用数据类型都会判断为Object**。
+
+    ![image-20241127165959798](../images/image-20241127165959798.png)
+
+    所以进一步使用instanceOf来判断引用数据类型，![image-20241127150850529](../images/image-20241127150850529.png![image-20241127165934037](../images/image-20241127165934037.png)
+
+    **超级大雷点：      for in fo rOf里面的key值是string!!!!!不能用typeof判断是什么数据类型！！！！无论什么类型都会转换为string！！！！**
 
 #### 十二.异常处理
 

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            May 20, 2019
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h1><p>视觉格式化模型，大体上将页面中盒子的排列分为三种方式：</p>
+<ol>
+<li>常规流</li>
+<li>浮动</li>
+<li>定位</li>
+</ol>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
+<li>文字环绕</li>
+<li>横向排列</li>
+</ol>
+<h2 id="浮动的基本特点"><a href="#浮动的基本特点" class="headerlink" title="浮动的基本特点"></a>浮动的基本特点</h2><p>修改float属性值为：</p>
+<ul>
+<li>left：左浮动，元素靠上靠左</li>
+<li>right：右浮动，元素靠上靠右</li>
+</ul>
+<p>默认值为none</p>
+<ol>
+<li>当一个元素浮动后，元素必定为块盒(更改display属性为block)</li>
+<li>浮动元素的包含块，和常规流一样，为父元素的内容盒</li>
+</ol>
+<h2 id="盒子尺寸"><a href="#盒子尺寸" class="headerlink" title="盒子尺寸"></a>盒子尺寸</h2><ol>
+<li>宽度为auto时，适应内容宽度</li>
+<li>高度为auto时，与常规流一致，适应内容的高度</li>
+<li>margin为auto，为0.</li>
+<li>边框、内边距、百分比设置与常规流一样</li>
+</ol>
+<h2 id="盒子排列"><a href="#盒子排列" class="headerlink" title="盒子排列"></a>盒子排列</h2><ol>
+<li>左浮动的盒子靠上靠左排列</li>
+<li>右浮动的盒子考上靠右排列</li>
+<li>浮动盒子在包含块中排列时，会避开常规流块盒</li>
+<li>常规流块盒在排列时，无视浮动盒子</li>
+<li>行盒在排列时，会避开浮动盒子</li>
+<li>外边距合并不会发生</li>
+</ol>
+<blockquote>
+<p>如果文字没有在行盒中，浏览器会自动生成一个行盒包裹文字，该行盒叫做匿名行盒。</p>
+</blockquote>
+<h2 id="高度坍塌"><a href="#高度坍塌" class="headerlink" title="高度坍塌"></a>高度坍塌</h2><p>高度坍塌的根源：常规流盒子的自动高度，在计算时，不会考虑浮动盒子</p>
+<p>清除浮动，涉及css属性：clear</p>
+<ul>
+<li>默认值：none</li>
+<li>left：清除左浮动，该元素必须出现在前面所有左浮动盒子的下方</li>
+<li>right：清除右浮动，该元素必须出现在前面所有右浮动盒子的下方</li>
+<li>both：清除左右浮动，该元素必须出现在前面所有浮动盒子的下方</li>
+</ul>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2019/05/20/3.%20CSS%E5%9F%BA%E7%A1%80/12.%20%E6%B5%AE%E5%8A%A8/test1/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2019/05/20/3.%20CSS%E5%9F%BA%E7%A1%80/11.%20%E5%B8%B8%E8%A7%84%E6%B5%81%E7%BB%83%E4%B9%A0/index/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

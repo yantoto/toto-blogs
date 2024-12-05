@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            May 22, 2019
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    .clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+body {
+    line-height: 1.5;
+}
+
+.form a {
+    color: #00a1d6;
+}
+
+.form {
+    width: 980px;
+    margin: 1em auto;
+}
+
+.form h2 {
+    text-align: center;
+    font-size: 38px;
+    border-bottom: 1px solid #ddd;
+    height: 30px;
+    margin-bottom: 60px;
+}
+
+.form h2 span {
+    background: #fff;
+    padding: 0 20px;
+}
+
+/* 表单区域 */
+
+.form-area {
+    width: 423px;
+    margin: 0 auto;
+}
+
+.form-area .form-item {
+    margin: 50px 0;
+    position: relative;
+}
+
+.form-area .select .select-item,
+.form-area .select .input {
+    float: left;
+    height: 40px;
+}
+
+.form-area .select .select-item {
+    width: 140px;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px 0 0 4px;
+    box-sizing: border-box;
+    border-right: none;
+    position: relative;
+}
+
+.form-area .select .select-item ul {
+    /* 最大高度256像素 */
+    display: none;
+    max-height: 256px;
+    background: #fff;
+    color: #606266;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    padding: 10px 0;
+    font-size: 14px;
+    overflow-y: auto;
+}
+
+.form-area .select .select-item ul li {
+    height: 34px;
+    padding: 0 20px;
+    cursor: pointer;
+    line-height: 34px;
+}
+
+.form-area .select .select-item ul li.active {
+    color: #00a1d6;
+    font-weight: bold;
+}
+
+.form-area .select .select-item ul li:hover {
+    background: #f5f7fa;
+}
+
+.form-area .select .input input {
+    border-radius: 0 4px 4px 0;
+}
+
+.form-area .select .input {
+    width: 283px;
+}
+
+.form-area .select .select-item .title {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    color: #909399;
+    cursor: pointer;
+}
+
+.form-area .form-item .btn-sncode {
+    width: 130px;
+    height: 36px;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+}
+
+.form-area .form-item .error {
+    position: absolute;
+    width: 240px;
+    right: -250px;
+    top: 10px;
+    color: #f45d90;
+    font-size: 12px;
+    display: none;
+}
+
+.form-area .form-item.haserror .error {
+    display: block;
+}
+
+.form-area .form-item.haserror input {
+    border-color: #f45d90;
+}
+
+.form-area .readme {
+    margin: -40px 0;
+    font-size: 12px;
+}
+
+.form-area .readme .checkbox {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-area .readme input {
+    display: none;
+}
+
+.form-area .readme input:checked+.checkbox {
+    border-color: #00a1d6;
+}
+
+.form-area .readme input:checked+.checkbox::after {
+    content: "";
+    display: block;
+    width: 7px;
+    height: 7px;
+    background: #00a1d6;
+    border-radius: 2px;
+    margin-left: 2.5px;
+    margin-top: 2.5px;
+}
+
+/* 统一的文本框样式 */
+
+input[type="text"],
+input[type="password"] {
+    border: 1px solid #dcdfe6;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    height: 40px;
+    text-indent: 1em;
+    font-size: 14px;
+    color: #606266;
+    font-family: "PingFangSC-Medium";
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+    border-color: #c0c4cc;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: #ccc;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #00a1d6;
+}
+
+/* 统一设置按钮样式 */
+button {
+    height: 40px;
+    background: #00a1d6;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #33b4de;
+}
+
+button.fill {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.txtright {
+    text-align: right;
+}
+
+button:disabled {
+    background: #f5f5f5;
+    color: rgba(0,0,0,.25);
+    border: 1px solid #d9d9d9;
+    box-sizing:border-box;
+    cursor: not-allowed;
+}
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2019/05/23/4.%20HTML%E8%BF%9B%E9%98%B6/6.%20%E8%A1%A8%E6%A0%BC%E5%85%83%E7%B4%A0/%E7%AC%94%E8%AE%B0/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2019/05/22/4.%20HTML%E8%BF%9B%E9%98%B6/5.%20%E8%A1%A8%E5%8D%95%E7%BB%83%E4%B9%A0/css/reset/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

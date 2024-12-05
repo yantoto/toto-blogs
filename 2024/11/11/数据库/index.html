@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Nov 11, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一、数据库系统概述"><a href="#一、数据库系统概述" class="headerlink" title="一、数据库系统概述"></a>一、数据库系统概述</h2><h3 id="数据模型组成要素"><a href="#数据模型组成要素" class="headerlink" title="数据模型组成要素"></a>数据模型组成要素</h3><ol>
+<li>数据结构</li>
+<li>数据操作</li>
+<li>完整性约束条件</li>
+</ol>
+<p><strong>关系模型是一种以二维表的形式表示实体数据和实体之 间关系的数据模型，它由行和列组成。</strong></p>
+<p><strong>关系模型的完整性包括三大类，即：实体完整性（主属性不能取空值）、 参照完整性（外码不为空）和用户定义的完整性（用户自定义）。</strong></p>
+<h3 id="数据库系统的内部体系结构"><a href="#数据库系统的内部体系结构" class="headerlink" title="数据库系统的内部体系结构"></a>数据库系统的内部体系结构</h3><h4 id="三级模式结构"><a href="#三级模式结构" class="headerlink" title="三级模式结构"></a>三级模式结构</h4><p><img src="/../images/image-20241111134915863.png" alt="image-20241111134915863"></p>
+<ul>
+<li>外模式【子模式、用户模式】——数据视图  </li>
+<li>模式  ——基本表</li>
+<li>内模式【存储模式】——存储文件</li>
+</ul>
+<h2 id="二、关系数据库"><a href="#二、关系数据库" class="headerlink" title="二、关系数据库"></a>二、关系数据库</h2><h3 id="关系数据库概述"><a href="#关系数据库概述" class="headerlink" title="关系数据库概述"></a>关系数据库概述</h3><p><strong>关系数据库，是建立在关系数据模型基础上的数据库。</strong></p>
+<h3 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h3><p><img src="/../images/image-20241111135652017.png" alt="image-20241111135652017"></p>
+<p>域：一组具有相同数据类型的值的集合。</p>
+<p>笛卡尔积：</p>
+<p><img src="/../images/image-20241111135754150.png" alt="image-20241111135754150"></p>
+<p>元祖：一行为一个元祖。<strong>例题中（</strong>1<strong>，</strong>A<strong>），（</strong>1<strong>，</strong>B<strong>）等都是元组</strong> <strong>。</strong></p>
+<p>分量：<strong>笛卡尔积元素（</strong>d1<strong>，</strong>d2<strong>，</strong>…<strong>，</strong>dn<strong>）中的每一个值</strong>di <strong>叫作一 个分量。 如例题中</strong>1<strong>，</strong>A<strong>，</strong>B<strong>等都是分量。</strong></p>
+<p>候选码：</p>
+<p><img src="/../images/image-20241111140151593.png" alt="image-20241111140151593"></p>
+<h3 id="关系模式"><a href="#关系模式" class="headerlink" title="关系模式"></a>关系模式</h3><h4 id="型和值"><a href="#型和值" class="headerlink" title="型和值"></a>型和值</h4><p>关系模式是型，关系是值，关系模式是对关系的描述，关系模式是静态的，关系是动态的。</p>
+<p><strong>关系模式可以形式化地表示为：</strong> R<strong>（</strong>U<strong>，</strong>D<strong>，</strong>DOM<strong>，</strong>F<strong>）</strong></p>
+<p><img src="/../images/image-20241111140430527.png" alt="image-20241111140430527"></p>
+<h3 id="实体完整型约束"><a href="#实体完整型约束" class="headerlink" title="实体完整型约束"></a>实体完整型约束</h3><p>三个约束，见第一章。</p>
+<h3 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h3><p><img src="/../images/image-20241111141638744.png" alt="image-20241111141638744"></p>
+<p><img src="/../images/image-20241111141702598.png" alt="image-20241111141702598"></p>
+<p><img src="/../images/image-20241111141716610.png" alt="image-20241111141716610"></p>
+<p><img src="/../images/image-20241111141739905.png" alt="image-20241111141739905"></p>
+<p>选行</p>
+<p><img src="/../images/image-20241111142159574.png" alt="image-20241111142159574">投列（π)</p>
+<p><img src="/../images/image-20241111142234242.png" alt="image-20241111142234242"></p>
+<p>连接</p>
+<p><img src="/../images/image-20241111142332753.png" alt="image-20241111142332753"></p>
+<p><img src="/../images/image-20241111142353119.png" alt="image-20241111142353119"></p>
+<p><img src="/../images/image-20241111142416948.png" alt="image-20241111142416948"></p>
+<p><img src="/../images/image-20241111142457899.png" alt="image-20241111142457899"></p>
+<p><img src="/../images/image-20241111142519997.png" alt="image-20241111142519997"></p>
+<p><img src="/../images/image-20241111143346437.png" alt="image-20241111143346437"></p>
+<p><img src="/../images/image-20241111144304992.png" alt="image-20241111144304992"></p>
+<h2 id="三、sql"><a href="#三、sql" class="headerlink" title="三、sql"></a>三、sql</h2><p>​                SQL 的功能主要包括：数据定义、数据查询、数据操 纵、数据控制                                      </p>
+<p><img src="/../images/image-20241111145802642.png" alt="image-20241111145802642"></p>
+<h3 id="数据库语句"><a href="#数据库语句" class="headerlink" title="数据库语句"></a>数据库语句</h3><p>创建：create database dbtest</p>
+<p>改名：alter database dbtest</p>
+<p>​			modify name&#x3D;dbtest_1</p>
+<p>删除：drop database dbtest</p>
+<h3 id="表语句"><a href="#表语句" class="headerlink" title="表语句"></a>表语句</h3><p>定义表：create table student</p>
+<p>​		(</p>
+<p>​			SNO char（9） primary kye,</p>
+<p>​			SName c har(20) unique,</p>
+<p>​		)</p>
+<p>删除表：drop table student </p>
+<p>增加列：alter table student add SAge char20() [constaint]</p>
+<p>删除列：alter table student drop column SName</p>
+<p>修改列：alter table student alter column SAge int [constaint]</p>
+<p><img src="/../images/image-20241111151517777.png" alt="image-20241111151517777"></p>
+<p><img src="/../images/image-20241111151753018.png" alt="image-20241111151753018"></p>
+<h3 id="索引（？）"><a href="#索引（？）" class="headerlink" title="索引（？）"></a>索引（？）</h3><p><img src="/../images/image-20241111152048704.png" alt="image-20241111152048704"></p>
+<p><img src="/../images/image-20241111152331708.png" alt="image-20241111152331708"></p>
+<p><img src="/../images/image-20241111152400121.png" alt="image-20241111152400121"></p>
+<h3 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h3><p>select …. from …  where …. group by…order by…</p>
+<p>select SName,year(getdate())-Birthday as Age from student</p>
+<p>去掉重复列：select distinct sno from student </p>
+<p><img src="/../images/image-20241111152929843.png" alt="image-20241111152929843"></p>
+<p><img src="/../images/image-20241111153011405.png" alt="image-20241111153011405"></p>
+<p><img src="/../images/image-20241111153100396.png" alt="image-20241111153100396"></p>
+<p><img src="/../images/image-20241111153135156.png" alt="image-20241111153135156"></p>
+<p><img src="/../images/image-20241111153211891.png" alt="image-20241111153211891"></p>
+<p><img src="/../images/image-20241111153340323.png" alt="image-20241111153340323"></p>
+<p><img src="/../images/image-20241111153440838.png" alt="image-20241111153440838"></p>
+<h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><p>都返回一个值，所以需要group by 语句来分组返回对应组的值，进而形成表。</p>
+<p><img src="/../images/image-20241111153631024.png" alt="image-20241111153631024"></p>
+<p>count和sum：</p>
+<p>count统计元组的数量，sum统计元组内属性的总和。</p>
+<p><img src="/../images/image-20241111153829935.png" alt="image-20241111153829935"></p>
+<p><img src="/../images/image-20241111153844067.png" alt="image-20241111153844067"></p>
+<p>select Sno,count(distinct GoodsNO) as GoodsNoNumber</p>
+<p>from Salebill</p>
+<p>group by Sno</p>
+<p><img src="/../images/image-20241111153953266.png" alt="image-20241111153953266"></p>
+<p><img src="/../images/image-20241111154320665.png" alt="image-20241111154320665"></p>
+<p><img src="/../images/image-20241111154907803.png" alt="image-20241111154907803"></p>
+<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><p>内连接，外连接，自然连接</p>
+<h4 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h4><p>select * from G,C where G.name&#x3D;C.name</p>
+<p>等价于 select * from G join C on G.name&#x3D;C.name</p>
+<p><img src="/../images/image-20241111155328359.png" alt="image-20241111155328359"></p>
+<p><img src="/../images/image-20241111155506891.png" alt="image-20241111155506891"></p>
+<h4 id="自然连接"><a href="#自然连接" class="headerlink" title="自然连接"></a>自然连接</h4><p>先笛卡尔积，再挑选同名属性相同的连接为一个表，再除去同名属性。</p>
+<h4 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h4><p>就是自然连接加补全</p>
+<p><img src="/../images/image-20241111155701864.png" alt="image-20241111155701864"></p>
+<p><img src="/../images/image-20241111160005624.png" alt="image-20241111160005624"></p>
+<p><img src="/../images/image-20241111160016486.png" alt="image-20241111160016486"></p>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><p><img src="/../images/image-20241111160314534.png" alt="image-20241111160314534"></p>
+<p><img src="/../images/image-20241111160416067.png" alt="image-20241111160416067"></p>
+<p><img src="/../images/image-20241111160716773.png" alt="image-20241111160716773"></p>
+<h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><p>查询前几条语句，一般与order by  一起使用</p>
+<p><img src="/../images/image-20241111161307940.png" alt="image-20241111161307940"></p>
+<h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><h4 id="插入元组"><a href="#插入元组" class="headerlink" title="插入元组"></a>插入元组</h4><p><img src="/../images/image-20241111161531932.png" alt="image-20241111161531932"></p>
+<h3 id="数据更新"><a href="#数据更新" class="headerlink" title="数据更新"></a>数据更新</h3><p>update student set number&#x3D;number+2</p>
+<p>update student set Birthyear&#x3D;1955 where Sno&#x3D;‘121’</p>
+<p>update student set Birthyear&#x3D;1955 where number&gt;20</p>
+<p>update goods set salePrice&#x3D;salePrice*1.1 from Supplier S join Goods G on G.SupplierNo&#x3D;S.SuppilerNo where SupplierName&#x3D;‘重庆公司’</p>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p><img src="/../images/image-20241111163207321.png" alt="image-20241111163207321"></p>
+<h3 id="定义视图"><a href="#定义视图" class="headerlink" title="定义视图"></a>定义视图</h3><p><img src="/../images/image-20241111163622910.png" alt="image-20241111163622910"></p>
+<p><img src="/../images/image-20241111163655808.png" alt="image-20241111163655808"></p>
+<h2 id="四、transact-sql编程"><a href="#四、transact-sql编程" class="headerlink" title="四、transact-sql编程"></a>四、transact-sql编程</h2><p>跳过。</p>
+<h2 id="五、数据库安全和维护"><a href="#五、数据库安全和维护" class="headerlink" title="五、数据库安全和维护"></a>五、数据库安全和维护</h2><h3 id="1-安全性管理"><a href="#1-安全性管理" class="headerlink" title="1.安全性管理"></a>1.安全性管理</h3><p>具体定义太多，见ppt哈。</p>
+<h4 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h4><p>grant(deny)….on…. to…</p>
+<p>revoke…on …from …..</p>
+<h5 id="授予"><a href="#授予" class="headerlink" title="授予"></a>授予</h5><p>grant select,update on student to user1  授予数据库用户uer1 查询和修改student 表的权限</p>
+<p>grant create table ,create view on to user1  授予数据库用户uer1 创建表和创建视图的权限</p>
+<h5 id="禁止"><a href="#禁止" class="headerlink" title="禁止"></a>禁止</h5><p>deny select,insert,update,delete on student to user1</p>
+<h5 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h5><p>revoke select,update on student <strong>from</strong> user1 撤销授予的user1查询和修改student表的权限</p>
+<h5 id="权限查看"><a href="#权限查看" class="headerlink" title="权限查看"></a>权限查看</h5><p>execute sp_helprotect @username&#x3D;‘user1’ 查看数据库用户user1拥有的权限。</p>
+<p>execute sp_helprotect @name&#x3D;‘create view’ 查看获得CREATE VIEW权限的用户信息。</p>
+<h3 id="2-并发控制【懂了，但是题怎么做？两段锁】"><a href="#2-并发控制【懂了，但是题怎么做？两段锁】" class="headerlink" title="2.并发控制【懂了，但是题怎么做？两段锁】"></a>2.并发控制【懂了，但是题怎么做？两段锁】</h3><h4 id="并发操作导致的问题："><a href="#并发操作导致的问题：" class="headerlink" title="并发操作导致的问题："></a>并发操作导致的问题：</h4><p>丢失修改、读脏数据、不可重复读和“幽灵”数据</p>
+<h5 id="一、丢失修改"><a href="#一、丢失修改" class="headerlink" title="一、丢失修改"></a>一、丢失修改</h5><p>丢失修改是指在多事务并发访问数据库时，两个事务对数据进行了修改，但由于某些原因，后执行的修改操作覆盖了先执行的修改操作，导致先执行的修改操作丢失。这通常发生在两个事务都读取了同一数据，并在各自的内存区域进行修改，但最终只有一个事务的修改被写入数据库。</p>
+<p><img src="/../images/image-20241111183236897.png" alt="image-20241111183236897"></p>
+<h5 id="三、不可重复读"><a href="#三、不可重复读" class="headerlink" title="三、不可重复读"></a>三、不可重复读</h5><p>不可重复读是指在同一个事务中，对同一数据进行多次读取，但由于其他事务的并发修改，导致每次读取的结果都不同。这通常发生在事务A读取数据后，事务B对数据进行了修改并提交，然后事务A再次读取数据时，发现数据已经发生了变化。不可重复读破坏了事务的一致性。</p>
+<h5 id="四、“幽灵”数据（幽灵读-幻读）"><a href="#四、“幽灵”数据（幽灵读-幻读）" class="headerlink" title="四、“幽灵”数据（幽灵读&#x2F;幻读）"></a>四、“幽灵”数据（幽灵读&#x2F;幻读）</h5><p>幽灵数据（在数据库术语中通常称为“幻读”）是指在事务非独立执行时，一个事务在进行范围查询时，另一个事务在该范围内进行了新增操作，导致范围查询的结果数目不一致。幻读是不可重复读的一种特殊情况，它发生在事务进行范围查询时，由于其他事务的并发插入操作，导致查询结果集发生了变化。</p>
+<p>然而，需要注意的是，“幽灵”数据在数据库领域中有时也指被标记为已删除但实际上仍保留在数据页上的数据（如SQL Server中的幽灵记录）。这些幽灵记录由数据库后台进程定期清理，通常不会直接对事务处理造成影响，但如果不及时清理，可能会占用存储空间并影响数据库性能。</p>
+<ul>
+<li><strong>丢失修改</strong>：后执行的修改操作覆盖了先执行的修改操作。</li>
+<li><strong>脏读</strong>：读取了另一个事务尚未提交的数据，可能导致数据不一致。</li>
+<li><strong>不可重复读</strong>：同一个事务中多次读取同一数据，结果不同。</li>
+<li><strong>幻读</strong>（幽灵读）：事务进行范围查询时，由于其他事务的并发插入操作，导致查询结果集发生了变化。</li>
+</ul>
+<h4 id="解决并发控制："><a href="#解决并发控制：" class="headerlink" title="解决并发控制："></a>解决并发控制：</h4><p>使用<strong>封锁机制</strong></p>
+<p>排他锁 共享锁</p>
+<p><strong>封锁协议</strong>：何时申请锁、持锁时间、何时释放锁。</p>
+<h4 id="三级封锁协议"><a href="#三级封锁协议" class="headerlink" title="三级封锁协议"></a>三级封锁协议</h4><p><img src="/../images/image-20241111184550966.png" alt="image-20241111184550966"></p>
+<p><img src="/../images/image-20241111184408537.png" alt="image-20241111184408537"></p>
+<p><img src="/../images/image-20241111184456726.png" alt="image-20241111184456726"></p>
+<p><img src="/../images/image-20241111184523364.png" alt="image-20241111184523364"></p>
+<p>什么是<strong>活锁</strong>？当两个或多个事务请求对同一数据进行封锁时，可能会存在某个事务处于永</p>
+<p>远等待锁的情况，这种现象称为活锁。避免活锁最简单的方法就是采用<strong>先来先服务</strong>的策略。</p>
+<p>这样出现多个事务彼此相互等待的状态就称为<strong>死锁</strong>。</p>
+<p>预防死锁：采取措施避免死锁和发现死锁后应对。</p>
+<p><img src="/../images/image-20241111185229866.png" alt="image-20241111185229866"></p>
+<h4 id="并发的调度可串行化"><a href="#并发的调度可串行化" class="headerlink" title="并发的调度可串行化"></a>并发的调度可串行化</h4><p><img src="/../images/image-20241111190022567.png" alt="image-20241111190022567"></p>
+<p><img src="/../images/image-20241111190032368.png" alt="image-20241111190032368"></p>
+<p><img src="/../images/image-20241111190103459.png" alt="image-20241111190103459"></p>
+<p><img src="/../images/image-20241111190328266.png" alt="image-20241111190328266"></p>
+<p>申请阶段只能申请，释放阶段只能释放。</p>
+<p>两段锁协议——&gt;并发事物的可串行化调度  可串行化调度不能推两段锁协议</p>
+<p><img src="/../images/image-20241111190707678.png" alt="image-20241111190707678"></p>
+<p>无论事务T1还是T2，都是在事务处理的前面，统一进行数据 的加锁，并且在这个过程里面，没有释放任何锁。直到事务执行的后面，才统一释 放所有加了的锁，并且在这个释放的过程里面，没有再加任何锁。 </p>
+<h3 id="3-备份及恢复管理"><a href="#3-备份及恢复管理" class="headerlink" title="3.备份及恢复管理"></a>3.备份及恢复管理</h3><p>这玩意儿真的要考吗。。。。。。好痴呆。。。。</p>
+<h4 id="数据备份的种类"><a href="#数据备份的种类" class="headerlink" title="数据备份的种类"></a>数据备份的种类</h4><p>.</p>
+<p><img src="/../images/image-20241111191409942.png" alt="image-20241111191409942"></p>
+<p><img src="/../images/image-20241111191611673.png" alt="image-20241111191611673"></p>
+<p><img src="/../images/image-20241111191648189.png" alt="image-20241111191648189"></p>
+<p><img src="/../images/image-20241111192613608.png" alt="image-20241111192613608"></p>
+<p><img src="/../images/image-20241111192809743.png" alt="image-20241111192809743"></p>
+<p><img src="/../images/image-20241111192819553.png" alt="image-20241111192819553"></p>
+<p><img src="/../images/image-20241111192944848.png" alt="image-20241111192944848"></p>
+<p><img src="/../images/image-20241111193133878.png" alt="image-20241111193133878"></p>
+<h2 id="六、关系数据理论"><a href="#六、关系数据理论" class="headerlink" title="六、关系数据理论"></a>六、关系数据理论</h2><p>-<img src="/../images/image-20241111201544882.png" alt="image-20241111201544882"></p>
+<p><img src="/../images/image-20241111201559030.png" alt="image-20241111201559030"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/11/19/html%E9%9A%BE%E7%82%B9/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/11/10/%E7%AE%97%E6%B3%95%E5%A4%8D%E4%B9%A0/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

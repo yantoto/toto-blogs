@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            May 17, 2019
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h1><p>声明冲突：同一个样式，多次应用到同一个元素</p>
+<p>层叠：解决声明冲突的过程，浏览器自动处理（权重计算）</p>
+<h2 id="1-比较重要性"><a href="#1-比较重要性" class="headerlink" title="1. 比较重要性"></a>1. 比较重要性</h2><p>重要性从高到底：</p>
+<blockquote>
+<p>作者样式表：开发者书写的样式</p>
+</blockquote>
+<p>1） 作者样式表中的!important样式<br>2)  作者样式表中的普通样式<br>3)  浏览器默认样式表中的样式</p>
+<h2 id="2-比较特殊性"><a href="#2-比较特殊性" class="headerlink" title="2. 比较特殊性"></a>2. 比较特殊性</h2><p>看选择器</p>
+<p>总体规则：选择器选中的范围越窄，越特殊</p>
+<p>具体规则：通过选择器，计算出一个4位数（x x x x）</p>
+<ol>
+<li>千位：如果是内联样式，记1，否则记0</li>
+<li>百位：等于选择器中所有id选择器的数量</li>
+<li>十位：等于选择器中所有类选择器、属性选择器、伪类选择器的数量</li>
+<li>个位：等于选择器中所有元素选择器、伪元素选择器的数量</li>
+</ol>
+<h2 id="3-比较源次序"><a href="#3-比较源次序" class="headerlink" title="3. 比较源次序"></a>3. 比较源次序</h2><p>代码书写靠后的胜出</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ol>
+<li>重置样式表</li>
+</ol>
+<p>书写一些作者样式，覆盖浏览器的默认样式</p>
+<p>重置样式表 -&gt; 浏览器的默认样式</p>
+<p>常见的重置样式表：normalize.css、reset.css、meyer.css</p>
+<ol start="2">
+<li>爱恨法则</li>
+</ol>
+<p>link &gt; visited &gt; hover &gt; active</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2019/05/17/3.%20CSS%E5%9F%BA%E7%A1%80/4.%20%E5%B1%82%E5%8F%A0/test/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2019/05/16/3.%20CSS%E5%9F%BA%E7%A1%80/3.%20%E9%80%89%E6%8B%A9%E5%99%A8/css/test1/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

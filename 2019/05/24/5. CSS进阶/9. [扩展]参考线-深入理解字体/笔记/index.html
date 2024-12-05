@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            May 24, 2019
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="参考线-深入理解字体"><a href="#参考线-深入理解字体" class="headerlink" title="参考线-深入理解字体"></a>参考线-深入理解字体</h1><p>font-size、line-height、vertical-align、font-family</p>
+<h2 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h2><p>文字是通过一些文字制作软件制作的，比如fontforge</p>
+<p>制作文字时，会有几根参考线，不同的文字类型，参考线不一样。同一种文字类型，参考线一致。</p>
+<h2 id="font-size"><a href="#font-size" class="headerlink" title="font-size"></a>font-size</h2><p>字体大小，设置的是文字的相对大小</p>
+<p>文字的相对大小：1000、2048、1024</p>
+<p>文字顶线到底线的距离，是文字的实际大小（content-area，内容区）</p>
+<p>行盒的背景，覆盖content-area</p>
+<h2 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h2><p>顶线向上延申的空间，和底线向下延申的空间，两个空间相等，该空间叫做gap（空隙）</p>
+<p>gap默认情况下，是字体设计者决定</p>
+<p>top到botoom（看ppt图），叫做virtual-area（虚拟区）</p>
+<p>行高，就是virtual-area</p>
+<p>line-height:normal，默认值，使用文字默认的gap</p>
+<blockquote>
+<p>文字一定出现一行的最中间——错误<br>content-area一定出现在virtual-area的中间</p>
+</blockquote>
+<h2 id="vertical-align"><a href="#vertical-align" class="headerlink" title="vertical-align"></a>vertical-align</h2><p>决定参考线：font-size、font-family、line-height</p>
+<p>一个元素如果子元素出现行盒，该元素内部也会产生参考线</p>
+<p>baseline：该元素的基线与父元素的基线对齐</p>
+<p>super: 该元素的基线与父元素的上基线对齐</p>
+<p>sub：该元素的基线与父元素的下基线对齐</p>
+<p>text-top: 该元素的virtual-area的顶边，对齐父元素的text-top</p>
+<p>text-bottom: 该元素的virtual-area的底边，对齐父元素的text-bottom</p>
+<p>top：该元素的virtual-area的定边，对齐line-box的顶边</p>
+<p>bottom：该元素的virtual-area的底边，对齐line-box的底边</p>
+<p>middle: 该元素的中线（content-area的一半），与父元素的X字母高度一半的位置对齐</p>
+<p>行盒组合起来，可以形成多行，每一行的区域叫做line-box，line-box的顶边是该行内所有行盒最高顶边，底边是该行行盒的最低底边。</p>
+<p>实际，一个元素的实际占用高度（高度自动），高度的计算通过line-box计算。</p>
+<p>行盒：inline-box<br>行框：line-box</p>
+<p>数值：相对于基线的偏移量，向上为正数，向下为负数。</p>
+<p>百分比：相对于基线的偏移量，百分比是相对于自身virtual-area的高度</p>
+<p>line-box是承载文字内容的必要条件，以下情况不生成行框：</p>
+<ol>
+<li>某元素内部没有任何行盒</li>
+<li>某元素字体大小为0</li>
+</ol>
+<h2 id="可替换元素和行块盒的基线"><a href="#可替换元素和行块盒的基线" class="headerlink" title="可替换元素和行块盒的基线"></a>可替换元素和行块盒的基线</h2><p>图片：基线位置位于图片的下外边距。</p>
+<p>表单元素：基线位置在内容底边</p>
+<p>行块盒：</p>
+<ol>
+<li>行块盒最后一行有line-box，用最后一行的基线作为整个行块盒的基线。</li>
+<li>如果行块盒内部没有行盒，则使用下外边距作为基线</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2019/05/24/5.%20CSS%E8%BF%9B%E9%98%B6/9.%20%5B%E6%89%A9%E5%B1%95%5D%E5%8F%82%E8%80%83%E7%BA%BF-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%AD%97%E4%BD%93/test1/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2019/05/24/5.%20CSS%E8%BF%9B%E9%98%B6/8.%20%E8%A1%8C%E7%9B%92%E7%9A%84%E5%9E%82%E7%9B%B4%E5%AF%B9%E9%BD%90/test2/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
