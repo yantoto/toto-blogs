@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Jan 4, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一、Less-和-SCSS-简介"><a href="#一、Less-和-SCSS-简介" class="headerlink" title="一、Less 和 SCSS 简介"></a>一、Less 和 SCSS 简介</h2><h3 id="Less：简洁而强大"><a href="#Less：简洁而强大" class="headerlink" title="Less：简洁而强大"></a>Less：简洁而强大</h3><p>Less（Leaner Style Sheets）是一种向后兼容的 CSS 扩展，它允许开发者使用类似于编程的方式来编写 CSS。Less 引入了变量、混合（类似于函数的结构）、嵌套规则等特性，极大地提高了代码的可重用性和可维护性。它可以在客户端或服务器端（如 Node.js）运行，这为开发者提供了灵活的使用方式。</p>
+<h3 id="SCSS：丰富功能的优雅选择"><a href="#SCSS：丰富功能的优雅选择" class="headerlink" title="SCSS：丰富功能的优雅选择"></a>SCSS：丰富功能的优雅选择</h3><p>SCSS（Sassy CSS）是 Sass 的一个版本，它使用类似于 CSS 的语法，这意味着任何有效的 CSS 代码都是合法的 SCSS 代码。SCSS 不仅保留了 Less 的所有优点，还增加了诸如条件语句、循环、函数等更高级的功能。这使得 SCSS 在处理复杂项目时显得更加得心应手。</p>
+<h2 id="二、Less-和-SCSS-的异同"><a href="#二、Less-和-SCSS-的异同" class="headerlink" title="二、Less 和 SCSS 的异同"></a>二、Less 和 SCSS 的异同</h2><p>虽然 Less 和 SCSS 都是 CSS 预处理器，但它们在语法和功能上有一些关键的差异。</p>
+<h3 id="相似之处"><a href="#相似之处" class="headerlink" title="相似之处"></a>相似之处</h3><ol>
+<li><strong>预处理功能</strong>：两者都提供了变量、混合、函数、嵌套规则等功能。</li>
+<li><strong>编译到 CSS</strong>：它们都需要被编译成普通的 CSS 才能在浏览器中使用。</li>
+<li><strong>社区支持</strong>：Less 和 SCSS 都有着活跃的开发社区和丰富的文档资源。</li>
+</ol>
+<h3 id="不同之处"><a href="#不同之处" class="headerlink" title="不同之处"></a>不同之处</h3><ol>
+<li><strong>语法差异</strong>：</li>
+</ol>
+<ul>
+<li><strong>Less</strong> 使用 <code>@</code> 符号来定义变量（例如 <code>@primary-color</code>），其语法与传统 CSS 较为接近，但有自己的特点。</li>
+<li><strong>SCSS</strong> 使用 <code>$</code> 符号定义变量（例如 <code>$primary-color</code>），其语法几乎与原生 CSS 一致，这对于熟悉 CSS 的开发者来说非常友好。</li>
+</ul>
+<ol>
+<li><strong>功能差异</strong>：<ul>
+<li><strong>Less</strong> 提供了基本的预处理功能，如变量、混合和嵌套规则，适合于轻量级应用。</li>
+<li><strong>SCSS</strong> 拥有更高级的功能，如条件语句、循环、函数等，更适合复杂的项目和大型应用。</li>
+</ul>
+</li>
+<li><strong>编译环境</strong>：<ul>
+<li><strong>Less</strong> 可以在客户端（浏览器）或服务器端（如 Node.js）环境中编译。</li>
+<li><strong>SCSS</strong> 通常需要通过服务器端环境来编译，如 Ruby 或 Node.js。</li>
+</ul>
+</li>
+<li><strong>社区和生态系统</strong>：<ul>
+<li><strong>SCSS</strong>，作为 Sass 的一个版本，继承了 Sass 的强大生态系统和广泛的社区支持。</li>
+<li><strong>Less</strong> 也有一个活跃的社区，但相对于 SCSS&#x2F;Sass，它的生态系统可能稍显逊色。</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、使用场景和案例分析"><a href="#三、使用场景和案例分析" class="headerlink" title="三、使用场景和案例分析"></a>三、使用场景和案例分析</h2><h3 id="Less-在实际中的应用"><a href="#Less-在实际中的应用" class="headerlink" title="Less 在实际中的应用"></a>Less 在实际中的应用</h3><ol>
+<li><strong>小到中型项目</strong>：Less 的简洁性使其非常适合小到中型的网站或应用项目。</li>
+<li><strong>快速原型开发</strong>：需要快速迭代和原型设计时，Less 的简单性可以加速开发过程。</li>
+<li><strong>动态主题</strong>：Less 的变量和函数可以轻松创建可配置的主题样式，适用于动态主题切换。</li>
+</ol>
+<h3 id="SCSS-的使用场景"><a href="#SCSS-的使用场景" class="headerlink" title="SCSS 的使用场景"></a>SCSS 的使用场景</h3><ol>
+<li><strong>大型项目或框架</strong>：SCSS 的高级功能使其成为处理大型项目或复杂应用程序的理想选择。</li>
+<li><strong>与现代前端框架集成</strong>：SCSS 与 Angular、Vue 或 React 等前端框架结合使用，能够提供更复杂的样式管理。</li>
+<li><strong>高级功能需求</strong>：当项目需要使用条件逻辑、循环或函数等高级功能时，SCSS 是更</li>
+</ol>
+<p>好的选择。</p>
+<h2 id="四、实际代码示例"><a href="#四、实际代码示例" class="headerlink" title="四、实际代码示例"></a>四、实际代码示例</h2><p>让我们通过一个简单的按钮样式示例来进一步理解 Less 和 SCSS 的具体应用。</p>
+<h3 id="Less-代码示例"><a href="#Less-代码示例" class="headerlink" title="Less 代码示例"></a>Less 代码示例</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义变量</span></span><br><span class="line"><span class="variable">@primary-color:</span> <span class="number">#4CAF50</span>;</span><br><span class="line"><span class="variable">@warning-color:</span> <span class="number">#f44336</span>;</span><br><span class="line"><span class="variable">@font-stack:</span> Helvetica, sans-serif;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 基本按钮样式</span></span><br><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="variable">@font-stack</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">15px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">border</span>: none;</span><br><span class="line">  <span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 大号按钮</span></span><br><span class="line"><span class="selector-class">.button-large</span> &#123;</span><br><span class="line">  <span class="selector-class">.button</span>(); <span class="comment">// 使用混合</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.5em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 警告按钮</span></span><br><span class="line"><span class="selector-class">.button-warning</span> &#123;</span><br><span class="line">  <span class="selector-class">.button</span>(); <span class="comment">// 使用混合</span></span><br><span class="line">  <span class="attribute">background-color</span>: <span class="variable">@warning-color</span>;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SCSS-代码示例"><a href="#SCSS-代码示例" class="headerlink" title="SCSS 代码示例"></a>SCSS 代码示例</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// 定义变量</span><br><span class="line">$primary-<span class="attribute">color</span>: <span class="number">#4CAF50</span>;</span><br><span class="line">$warning-<span class="attribute">color</span>: <span class="number">#f44336</span>;</span><br><span class="line">$<span class="attribute">font</span>-stack: Helvetica, sans-serif;</span><br><span class="line"></span><br><span class="line">// 基本按钮样式</span><br><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: $font-stack;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">15px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">border</span>: none;</span><br><span class="line">  <span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 大号按钮</span><br><span class="line"><span class="selector-class">.button-large</span> &#123;</span><br><span class="line">  <span class="keyword">@extend</span> .button; // 使用继承</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.5em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 警告按钮</span><br><span class="line"><span class="selector-class">.button-warning</span> &#123;</span><br><span class="line">  <span class="keyword">@extend</span> .button; // 使用继承</span><br><span class="line">  <span class="attribute">background-color</span>: $warning-color;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这两个示例展示了如何在 Less 和 SCSS 中使用变量、混合（或继承）、嵌套等特性来创建一个可复用和易于维护的按钮样式。</p>
+<p>但是scss有个大坑，与node的版本兼容问题。虽然能用nvm切换，但是每次换一个项目都很麻烦。</p>
+<p>作者：雾野千里<br>链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7323271668990722058">https://juejin.cn/post/7323271668990722058</a><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/01/06/react/react-.npmrc%E6%96%87%E4%BB%B6/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/01/04/react/react-scss/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

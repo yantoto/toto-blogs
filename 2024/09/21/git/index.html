@@ -160,6 +160,7 @@
 <p>注意，只有提交到仓库的数据是可以回溯的，本次修改还没提交的内容会丢失。</p>
 <h3 id="五-查看差异"><a href="#五-查看差异" class="headerlink" title="五.查看差异"></a>五.查看差异</h3><h4 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h4><p>查看工作区、暂存区和本地仓库之间的差异</p>
 <p><img src="/../images/image-20240921223231424.png" alt="image-20240921223231424"></p>
+<p><img src="/../images/image-20241206183801386.png" alt="image-20241206183801386"></p>
 <ul>
 <li><p>git diff 默认显示工作区和暂存区的差异</p>
 </li>
@@ -177,7 +178,7 @@
 </li>
 </ul>
 <h3 id="六-删除文件"><a href="#六-删除文件" class="headerlink" title="六.删除文件"></a>六.删除文件</h3><p>要删除版本库中的文件，有两种方法。</p>
-<p>一：在工作区删除该文件，再提交到暂存区吗，再提交到仓库</p>
+<p>一：在工作区删除该文件，再提交到暂存区，再提交到仓库</p>
 <p>二：使用git rm，此时工作区和暂存区都删除了该文件，再commit 提交到仓库。</p>
 <h4 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h4><ul>
 <li><p>git rm file2.txt</p>
@@ -200,7 +201,7 @@
 <li>回车，会自动生成两个文件，没有后缀的是私钥文件 以pub结尾的是公钥文件</li>
 <li>打开公钥文件，复制内容，打开github,新建公钥，粘贴内容</li>
 </ol>
-<h4 id="本地仓库和本地仓库的联系："><a href="#本地仓库和本地仓库的联系：" class="headerlink" title="本地仓库和本地仓库的联系："></a>本地仓库和本地仓库的联系：</h4><p><img src="/../images/image-20240921223259236.png" alt="image-20240921223259236"></p>
+<h4 id="本地仓库和远程仓库的联系："><a href="#本地仓库和远程仓库的联系：" class="headerlink" title="本地仓库和远程仓库的联系："></a>本地仓库和远程仓库的联系：</h4><p><img src="/../images/image-20240921223259236.png" alt="image-20240921223259236"></p>
 <ul>
 <li><p>push origin origin main:main 将远程main分支和本地main分支关联起来</p>
 </li>
@@ -236,7 +237,7 @@
 <li>git branch -d dev</li>
 </ul>
 <h3 id="十一-合并冲突"><a href="#十一-合并冲突" class="headerlink" title="十一.合并冲突"></a>十一.合并冲突</h3><ul>
-<li>git diff 查看差异</li>
+<li><strong>git diff 查看差异</strong></li>
 <li>手动解决冲突</li>
 <li>git add .</li>
 <li>git commit -m [描述]</li>

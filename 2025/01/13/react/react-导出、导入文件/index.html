@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Jan 13, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ol>
+<li>实现获取模版导出信息</li>
+<li>实现文件校验，若失败，返回失败原因；若成功，允许进一步上传</li>
+</ol>
+<p><img src="/../../images/image-20250113180905168.png" alt="image-20250113180905168"></p>
+<h3 id="文件模版导出"><a href="#文件模版导出" class="headerlink" title="文件模版导出"></a>文件模版导出</h3><p>后端提供接口，只需携带token即可。</p>
+<p><img src="/../../images/image-20250113181656146.png" alt="image-20250113181656146"></p>
+<p>主要逻辑在接收到数据后<strong>界面文件管理器的创建</strong>。</p>
+<p><img src="/../../images/image-20250108161437736.png" alt="image-20250108161437736"></p>
+<ol>
+<li><p><strong>处理响应数据</strong>:</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const blob = new Blob([res], &#123; type: res.type &#125;);</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p> 使用响应数据创建一个 <strong>Blob 对象</strong>。Blob（Binary Large Object）表示<strong>不可变的、原始数据的类文件对象</strong>。在这里，<code>res</code> 是<strong>响应的数据</strong>，<code>res.type</code> 是<strong>响应的 MIME 类型</strong>。</p>
+</li>
+<li><p><strong>创建下载链接</strong>:</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const linkUrl = window.URL.createObjectURL(blob);</span><br><span class="line">const link = document.createElement(&#x27;a&#x27;);</span><br><span class="line">link.style.display = &#x27;none&#x27;;</span><br><span class="line">link.href = linkUrl;</span><br><span class="line">link.download = I18N.workmanage.PCWork.pCDangQianShai;</span><br><span class="line">document.body.appendChild(link);</span><br><span class="line">link.click();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>window.URL.createObjectURL(blob)</code> 创建一个指向 Blob 对象的 URL。</li>
+<li>创建一个隐藏的 <code>&lt;a&gt;</code> 元素，并设置其 <code>href</code> 属性为刚刚创建的 URL。</li>
+<li>设置 <code>download</code> 属性为 <code>I18N.workmanage.PCWork.pCDangQianShai</code>，这应该是一个国际化字符串，表示下载的文件名。</li>
+<li>将这个 <code>&lt;a&gt;</code> 元素添加到文档中，然后模拟点击它以触发下载。</li>
+</ul>
+</li>
+<li><p>导出文件如下</p>
+<p> <img src="/../../images/image-20250113181820090.png" alt="image-20250113181820090"></p>
+</li>
+</ol>
+<h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h3><p>和后端约定好数据，传递文件类型；</p>
+<p>这里利用了antd的input上传，获取到options.file文件信息，并将它放入fromData中</p>
+<p><img src="/../../images/image-20250113182017070.png" alt="image-20250113182017070"></p>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p><img src="/../../images/image-20250113182150325.png" alt="image-20250113182150325"></p>
+<ol>
+<li><p>文件导入时，后端接口中显示只需把文件对象返给body传送即可，因此第一次联调时<strong>使用的options.file传递给后端</strong>，发现<strong>报错</strong>：</p>
+<p> 在前端开发中，直接传递文件（如 <code>options.file</code>）到后端时，可能会遇到一些问题。这是因为 <strong>HTTP 请求通常以文本或 JSON 格式发送数据</strong>，而<strong>文件需要以二进制格式传输</strong>。为了确保文件正确传输和处理，我们通常使用 <strong><code>FormData</code> 对象来包装文件数据</strong>。</p>
+<p> 因此，<strong>文件传输需要使用formData来包装数据</strong>。</p>
+</li>
+<li><p>文件导出时，<strong>无法实现文件管理器弹窗</strong>：</p>
+<p> 与上述文件传输有关，需要在接<strong>口规定以文件对象blob形式接收数据，才能实现接收</strong></p>
+<p> <img src="/../../images/image-20250113184648292.png" alt="image-20250113184648292"></p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7444467218070323210?searchId=202501081619060486174C08DC216CF549%E5%89%8D%E7%AB%AFBlob%E3%80%81File%E3%80%81FileReader%E3%80%81ArrayBuffer%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85">https://juejin.cn/post/7444467218070323210?searchId=202501081619060486174C08DC216CF549前端Blob、File、FileReader、ArrayBuffer傻傻分不清</a></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/01/13/git/git-%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8F%91%E5%B8%83/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/01/12/react/react-useQuery/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

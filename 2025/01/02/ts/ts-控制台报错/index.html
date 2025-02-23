@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Jan 2, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>经常看到这种代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const list: Types.CourseInfoForLearningPathType[] = []</span><br><span class="line">   allCourseList?.forEach((course) =&gt; &#123;</span><br><span class="line">     if (course?.id) &#123;</span><br><span class="line">       list.push(&#123;</span><br><span class="line">         albumId: course?.id,</span><br><span class="line">         albumName: course?.albumName,</span><br><span class="line">         isRequired: CourseLearningTypeEnum.REQUIRED,</span><br><span class="line">       &#125;)</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+<p>加这么多问号，<strong>问号的作用</strong>是什么？</p>
+<p>首先，allCourseList?的意思是确保allCourseLis<strong>t不为null或者undefined</strong>的情况时才调用forEach方法；</p>
+<p>course?确保course不为null或者undefined时才访问属性id、albumName。</p>
+<p>不加问号不可以吗？</p>
+<p>不能，控制台会报错。由于js是单线程的，如果爆出错误不去解决，那么后续代码将会阻塞。</p>
+<ul>
+<li>访问 <code>null</code> 或 <code>undefined</code> 的属性会抛出 ReferenceError。</li>
+<li>访问一个未定义变量的属性也会抛出 TypeError。</li>
+</ul>
+<p>所以我们必须来看看<strong>哪些情况控制台会报错</strong>，才能加以<strong>预防</strong>。</p>
+<h3 id="常见错误分类"><a href="#常见错误分类" class="headerlink" title="常见错误分类"></a>常见错误分类</h3><table>
+<thead>
+<tr>
+<th>错误类型</th>
+<th>报错说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>TypeError</strong></td>
+<td>类型错误</td>
+</tr>
+<tr>
+<td><strong>ReferenceError</strong></td>
+<td>引用错误</td>
+</tr>
+<tr>
+<td><strong>SyntaxError</strong></td>
+<td>语法错误</td>
+</tr>
+<tr>
+<td><strong>RangeError</strong></td>
+<td>超出范围</td>
+</tr>
+</tbody></table>
+<p>即 <strong>类型、引用、语法、范围</strong>。</p>
+<p>介绍完常见的错误分类，下面我们对每个错误进行详细的举例说明</p>
+<h3 id="TypeError"><a href="#TypeError" class="headerlink" title="TypeError"></a>TypeError</h3><blockquote>
+<p>数据类型不正确的错误</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b = <span class="string">&#x27;xxx&#x27;</span>;</span><br><span class="line"><span class="title function_">b</span>();<span class="comment">//Uncaught TypeError: b is not a function</span></span><br></pre></td></tr></table></figure>
+
+<p>很明显,我们声明了一个’xxx’的字符串,但是却当做函数调用，所以报了一个<strong>TypeError类型错误</strong></p>
+<h3 id="ReferenceError"><a href="#ReferenceError" class="headerlink" title="ReferenceError"></a>ReferenceError</h3><blockquote>
+<p>引用的数据不存在错误</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a);<span class="comment">//Uncaught ReferenceError: a is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>我们在控制台直接输出a，由于a变量并没有声明，所以报了一个<strong>ReferenceError引用错误</strong></p>
+<h3 id="SyntaxError"><a href="#SyntaxError" class="headerlink" title="SyntaxError"></a>SyntaxError</h3><blockquote>
+<p>语法错误</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">consoe</span>(a) <span class="comment">//Uncaught ReferenceError: consoe is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>这个报错就比较简单了，由于我们把<em>coonsole</em>拼写错误，控制台会报一个<strong>SyntaxError语法错误</strong>，这类错误是最好解决的，一般也会在编辑器中会显示红色的波浪线给你提示</p>
+<h3 id="RangeError"><a href="#RangeError" class="headerlink" title="RangeError"></a>RangeError</h3><blockquote>
+<p>超出最大调用栈错误</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">test</span>()</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="title function_">test</span>() <span class="comment">//Uncaught RangeError: Maximum call stack size exceeded</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码调用后是个死循环，所以报错超出最大调用栈<strong>RangeError</strong></p>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p>我们现在已经了解js的常见错误，下面我们就需要处理这些错误。因为js是单线程的，当代码报错后你不去处理，那么后面的程序就不会执行，就像下面的例子:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">js 代码解读复制代码    <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../images/f5d9987c23af4bf29e5c9d99c85a3a8ftplv-k3u1fbpfcp-zoom-in-crop-mark1512000.awebp" alt="image.png"> 这里介绍2个常用的处理错误的方法</p>
+<p>1.捕获错误 <strong>try…catch</strong></p>
+<p>2.抛出错误 <strong>throw error</strong></p>
+<h4 id="try…catch"><a href="#try…catch" class="headerlink" title="try…catch"></a>try…catch</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">       <span class="comment">//有可能出错的代码</span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(error)&#123;</span><br><span class="line">       <span class="comment">//对错误进行处理</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../images/3f597cdc767d4bbda20d69e2e8ab8b94tplv-k3u1fbpfcp-zoom-in-crop-mark1512000.awebp" alt="image.png"> 首先上图中的报错信息<strong>Uncaught xxx</strong>,Uncaught译为<strong>未捕获的</strong>，说明次错误虽然报了，但是并没有被处理，如果我们想让123正常输出，我们可以这样写:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">   &#125;<span class="keyword">catch</span>(error)&#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../images/02fcca8a949e4f7db031b3873e2c82cbtplv-k3u1fbpfcp-zoom-in-crop-mark1512000.awebp" alt="image.png"> 可以看到，我们捕获到了错误，在控制台上并没有报红，也没有了<strong>Uncaught</strong>提示。后面的123也正常输出</p>
+<h4 id="throw-error"><a href="#throw-error" class="headerlink" title="throw error"></a>throw error</h4><p>上面的例子都是被动的报错，我们需要提前预防并处理它。当然我们也可以主动的抛出错误，这里就用到了<strong>throw</strong>这个语句。**<code>throw</code>语句**用来抛出一个用户自定义的异常。当前函数的执行将被停止（<code>throw</code>之后的语句将不会执行），并且控制将被传递到调用堆栈中的第一个<a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch"><code>catch</code></a>块。如果调用者函数中没有<code>catch</code>块，程序将会终止。我们举个例子来说明:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">boolean</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (boolean) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;参数为true&#x27;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;错误！参数为false&#x27;</span>) <span class="comment">//new Error()需传入一个报错文本</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 抛出错误一般要与捕获错误一起使用,因为throw之后的语句都不会执行</span></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="title function_">test</span>(<span class="number">0</span>)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../images/153e7ad6fa154d64ba95918e8e965499tplv-k3u1fbpfcp-zoom-in-crop-mark1512000.awebp" alt="image.png"></p>
+<p>有关js中的报错信息大概就这么多内容，有其他需要补充的也欢迎大家留言讨论！</p>
+<p>作者：Jsnewbie<br>链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7061626742150004749">https://juejin.cn/post/7061626742150004749</a><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/01/02/less-scss/less-global/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/31/ts/ts-%E6%9E%9A%E4%B8%BE/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 9, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><h3 id="互联网"><a href="#互联网" class="headerlink" title="互联网"></a>互联网</h3><h4 id="重要基本特点"><a href="#重要基本特点" class="headerlink" title="重要基本特点"></a>重要基本特点</h4><p>连通性、资源共享性</p>
+<p>网络(network)由若干结点(node)和连接这些结点的链路(link)组成，网络把许多计算机连接在一起。因特网则把许多网络连接在一起。</p>
+<h3 id="互联网的组成"><a href="#互联网的组成" class="headerlink" title="互联网的组成"></a>互联网的组成</h3><p>分为<strong>边缘部分（主机）和核心部分（路由器和网络）</strong>。</p>
+<p><img src="/../images/image-20241209202642131.png" alt="image-20241209202642131"></p>
+<h4 id="网络边缘的端系统的工作方式"><a href="#网络边缘的端系统的工作方式" class="headerlink" title="网络边缘的端系统的工作方式"></a>网络边缘的端系统的工作方式</h4><h5 id="客户服务器方式（C-S）"><a href="#客户服务器方式（C-S）" class="headerlink" title="客户服务器方式（C&#x2F;S）"></a>客户服务器方式（C&#x2F;S）</h5><p>客户是服务的请求方，服务器是服务的提供方。</p>
+<p><img src="/../images/image-20241209202942973.png" alt="image-20241209202942973"></p>
+<h5 id="对等方式（P2P）"><a href="#对等方式（P2P）" class="headerlink" title="对等方式（P2P）"></a>对等方式（P2P）</h5><p><img src="/../images/image-20241209202952388.png" alt="image-20241209202952388"></p>
+<h4 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分"></a>核心部分</h4><p>向网络边缘中的主机提供<strong>联通性</strong>，让任何一台主机都能够向其他主机通信。核心：<strong>路由器</strong>，实现<strong>分组交换</strong>的关键构件，任务是<strong>转发</strong>收到的分组</p>
+<p><img src="/../images/image-20241209203642268.png" alt="image-20241209203642268"></p>
+<h5 id="典型交换技术"><a href="#典型交换技术" class="headerlink" title="典型交换技术"></a>典型交换技术</h5><p>电路交换、分组交换、报文交换。</p>
+<p>互联网核心是分组交换技术。</p>
+<h6 id=""><a href="#" class="headerlink" title=""></a><img src="/../images/image-20241209204710688.png" alt="image-20241209204710688"></h6><p>电路交换特点：通话的两个用户始终占用<strong>端到端</strong>的通信资源</p>
+<p><img src="/../images/image-20241209205049369.png" alt="image-20241209205049369"></p>
+<p><img src="/../images/image-20241209205136914.png" alt="image-20241209205136914"></p>
+<p><img src="/../images/image-20241209205341790.png" alt="image-20241209205341790"></p>
+<p><img src="/../images/image-20241209205519808.png" alt="image-20241209205519808"></p>
+<p><img src="/../images/image-20241209205555828.png" alt="image-20241209205555828"></p>
+<h3 id="计算机网络的定义和分类"><a href="#计算机网络的定义和分类" class="headerlink" title="计算机网络的定义和分类"></a>计算机网络的定义和分类</h3><p><img src="/../images/image-20241209205644496.png" alt="image-20241209205644496"></p>
+<h3 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h3><p><img src="/../images/image-20241209205743458.png" alt="image-20241209205743458"></p>
+<p><img src="/../images/image-20241209205840780.png" alt="image-20241209205840780"></p>
+<p><img src="/../images/image-20241209205849103.png" alt="image-20241209205849103"></p>
+<p>某信道允许通过的信号频带范围成为该信道的带宽。</p>
+<p>一条通信链路的“带宽”越宽，其所能传输的“最高数据率”也越高。</p>
+<p><img src="/../images/image-20241209210222713.png" alt="image-20241209210222713"></p>
+<p><img src="/../images/image-20241209210237904.png" alt="image-20241209210237904"></p>
+<p><img src="/../images/image-20241209210534207.png" alt="image-20241209210534207"></p>
+<p>发送时延&#x3D;数据块长度&#x2F;发送速率（链路宽带）（s&#x3D;v&#x2F;t）</p>
+<p>传播时延&#x3D;信道长度&#x2F;信号在信道上的传输速率</p>
+<p>总时延&#x3D;发送时延+传输时延+排队时延+处理时延</p>
+<p><img src="/../images/image-20241209210936876.png" alt="image-20241209210936876"></p>
+<p><img src="/../images/image-20241209211017978.png" alt="image-20241209211017978"></p>
+<p><img src="/../images/image-20241209211959911.png" alt="image-20241209211959911"></p>
+<p><img src="/../images/image-20241209212906855.png" alt="image-20241209212906855"></p>
+<p>光纤链路：数据的传输速率为2×10的五次方</p>
+<p><img src="/../images/image-20241209213131681.png" alt="image-20241209213131681"></p>
+<p><img src="/../images/image-20241209213137739.png" alt="image-20241209213137739"></p>
+<p><img src="/../images/image-20241209213205390.png" alt="image-20241209213205390"></p>
+<p><img src="/../images/image-20241209213328282.png" alt="image-20241209213328282"></p>
+<p><img src="/../images/image-20241209213603369.png" alt="image-20241209213603369"></p>
+<p><img src="/../images/image-20241209213643170.png" alt="image-20241209213643170"></p>
+<h3 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h3><p>网络协议三要素：语法语义同步。</p>
+<p><img src="/../images/image-20241209213828754.png" alt="image-20241209213828754"></p>
+<p><img src="/../images/image-20241209214601398.png" alt="image-20241209214601398"></p>
+<p><img src="/../images/image-20241209214833609.png" alt="image-20241209214833609"></p>
+<p><img src="/../images/image-20241209214844796.png" alt="image-20241209214844796"></p>
+<p><img src="/../images/image-20241209214920220.png" alt="image-20241209214920220"></p>
+<p><img src="/../images/image-20241209215008880.png" alt="image-20241209215008880"></p>
+<p><img src="/../images/image-20241209215135134.png" alt="image-20241209215135134"></p>
+<h2 id="二、物理层"><a href="#二、物理层" class="headerlink" title="二、物理层"></a>二、物理层</h2><h3 id="物理层基本概念"><a href="#物理层基本概念" class="headerlink" title="物理层基本概念"></a>物理层基本概念</h3><p>机械、电气、功能、规程特性</p>
+<p><img src="/../images/image-20241209220509033.png" alt="image-20241209220509033"></p>
+<h3 id="数据通信的基本知识"><a href="#数据通信的基本知识" class="headerlink" title="数据通信的基本知识"></a>数据通信的基本知识</h3><p><img src="/../images/image-20241209220654874.png" alt="image-20241209220654874"></p>
+<p><img src="/../images/image-20241209220805136.png" alt="image-20241209220805136"></p>
+<p><img src="/../images/image-20241209220928382.png" alt="image-20241209220928382">转换为数字信号的是编码，转换为模拟信号的是调制。</p>
+<p>上跳和变都为0。     </p>
+<p>曼切斯特：上跳为0，下跳为1</p>
+<p>差分曼切斯特：变为0，不变为1</p>
+<p><img src="/../images/image-20241209222454944.png" alt="image-20241209222454944"></p>
+<p>调幅AM：载波的<strong>振幅</strong>随<strong>基带数字信号</strong>而变化</p>
+<p>调频FM：频率</p>
+<p>调相PM：初始相位</p>
+<p><img src="/../images/image-20241209223026977.png" alt="image-20241209223026977"></p>
+<p><img src="/../images/image-20241209223137487.png" alt="image-20241209223137487"></p>
+<p><strong>信道能够通过的频率范围、信噪比</strong></p>
+<p><img src="/../images/image-20241209223329919.png" alt="image-20241209223329919"></p>
+<p><img src="/../images/image-20241209223335258.png" alt="image-20241209223335258"></p>
+<p><img src="/../images/image-20241209223341070.png" alt="image-20241209223341070"></p>
+<p><img src="/../images/image-20241209223642762.png" alt="image-20241209223642762"></p>
+<p>看到<strong>损失、有噪声、信噪比</strong>选<strong>香农定理</strong></p>
+<p>看到<strong>理想条件</strong>选<strong>奈氏准则</strong></p>
+<p>奈示是香农的上限。</p>
+<p>香农：db&#x3D;10log(S&#x2F;N)</p>
+<p>eg：30db&#x3D;10log(S&#x2F;N) &#x3D;&gt;信噪比S&#x2F;N&#x3D;1000</p>
+<p><img src="/../images/image-20241209224258081.png" alt="image-20241209224258081"></p>
+<p><img src="/../images/image-20241209224420375.png" alt="image-20241209224420375"></p>
+<p><img src="/../images/image-20241209224529234.png" alt="image-20241209224529234"></p>
+<p><img src="/../images/image-20241209224621008.png" alt="image-20241209224621008"></p>
+<p><img src="/../images/image-20241209224759170.png" alt="image-20241209224759170"></p>
+<h3 id="物理层下面的传输媒体"><a href="#物理层下面的传输媒体" class="headerlink" title="物理层下面的传输媒体"></a>物理层下面的传输媒体</h3><p><img src="/../images/image-20241209225136408.png" alt="image-20241209225136408"></p>
+<p><img src="/../images/image-20241209225211927.png" alt="image-20241209225211927"></p>
+<p><img src="/../images/image-20241209225227465.png" alt="image-20241209225227465"></p>
+<p><img src="/../images/image-20241209225246085.png" alt="image-20241209225246085"></p>
+<p>多模光纤：多条不同角度入射的光纤在一条光纤中传输。</p>
+<p>会逐渐失真，适合近距离传输</p>
+<p>单模光纤：光线一直向前传播，不会产生多次反射。</p>
+<p>距离远，成本高</p>
+<p><img src="/../images/image-20241209225536106.png" alt="image-20241209225536106"></p>
+<p><img src="/../images/image-20241209225600014.png" alt="image-20241209225600014"></p>
+<h3 id="信道复用技术"><a href="#信道复用技术" class="headerlink" title="信道复用技术"></a>信道复用技术</h3><p><img src="/../images/image-20241210114615655.png" alt="image-20241210114615655"></p>
+<h2 id="三、数据链路层"><a href="#三、数据链路层" class="headerlink" title="三、数据链路层"></a>三、数据链路层</h2><h3 id="PPP点对点协议"><a href="#PPP点对点协议" class="headerlink" title="PPP点对点协议"></a>PPP点对点协议</h3><p><img src="/../images/image-20241210114628527.png" alt="image-20241210114628527"></p>
+<p><img src="/../images/image-20241210103142516.png" alt="image-20241210103142516"></p>
+<p><img src="/../images/image-20241210103306240.png" alt="image-20241210103306240"></p>
+<p><img src="/../images/image-20241210103313619.png" alt="image-20241210103313619"></p>
+<p><img src="/../images/image-20241210103321619.png" alt="image-20241210103321619"></p>
+<h3 id="使用广播信道的数据链路层"><a href="#使用广播信道的数据链路层" class="headerlink" title="使用广播信道的数据链路层"></a>使用广播信道的数据链路层</h3><p>局域网</p>
+<p><img src="/../images/image-20241210103811403.png" alt="image-20241210103811403"></p>
+<h3 id="CSMA-CD的协议"><a href="#CSMA-CD的协议" class="headerlink" title="CSMA&#x2F;CD的协议"></a>CSMA&#x2F;CD的协议</h3><p>属于半双工通信 P88</p>
+<p>先听再发</p>
+<p>边听边发</p>
+<p>冲突检测</p>
+<p>等待再发</p>
+<p><img src="/../images/image-20241210105429060.png" alt="image-20241210105429060"></p>
+<p><img src="/../images/image-20241210105528118.png" alt="image-20241210105528118"><img src="/../images/image-20241210105554132.png" alt="image-20241210105554132"><img src="/../images/image-20241210105833436.png" alt="image-20241210105833436"><img src="/../images/image-20241210105851242.png" alt="image-20241210105851242"><img src="/../images/image-20241210110939826.png" alt="image-20241210110939826"><img src="/../images/image-20241210111129425.png" alt="image-20241210111129425"></p>
+<h4 id="使用集线器的星形拓扑："><a href="#使用集线器的星形拓扑：" class="headerlink" title="使用集线器的星形拓扑："></a>使用集线器的星形拓扑：</h4><p>集线器的特点：</p>
+<ol>
+<li>工作在物理层</li>
+<li>集线器有许多端口</li>
+<li>集线器工作协议为CSMA&#x2F;CD协议</li>
+<li>同一时刻允许一个站发送数据</li>
+<li>端口简单转发比特</li>
+<li>不碰撞检测</li>
+</ol>
+<h3 id="共享式以太网"><a href="#共享式以太网" class="headerlink" title="共享式以太网"></a>共享式以太网</h3><p><img src="/../images/image-20241210111709395.png" alt="image-20241210111709395"><img src="/../images/image-20241210111714774.png" alt="image-20241210111714774"></p>
+<p><img src="/../images/image-20241210111758202.png" alt="image-20241210111758202"><img src="/../images/image-20241210111802305.png" alt="image-20241210111802305"><img src="/../images/image-20241210112019898.png" alt="image-20241210112019898"><img src="/../images/image-20241210112336757.png" alt="image-20241210112336757"></p>
+<p><img src="/../images/image-20241210112543511.png" alt="image-20241210112543511"></p>
+<p><img src="/../images/image-20241210112601032.png" alt="image-20241210112601032"></p>
+<p><strong>交换机P101 再</strong>看一遍不太清楚流程，但画了重点，</p>
+<p><strong>以太网交换机实质上，就是一个多端口的网桥。</strong></p>
+<p>以太网交换机：单个主机接收，不产生碰撞，通过自学习算法自动地逐渐建立起来。</p>
+<p>生成树协议：（STP）不改变网络的实际拓扑，但在逻辑上切除某些链路，使得一台主机到所有其他主机的路径是五环路的树状结构。</p>
+<p><img src="/../images/image-20241210112653619.png" alt="image-20241210112653619"></p>
+<p><img src="/../images/image-20241210112803168.png" alt="image-20241210112803168"></p>
+<p><img src="/../images/image-20241210112819055.png" alt="image-20241210112819055"></p>
+<p><img src="/../images/image-20241210112813151.png" alt="image-20241210112813151"></p>
+<p>记录地址、接口、时间</p>
+<p><img src="/../images/image-20241210113502988.png" alt="image-20241210113502988"></p>
+<p><img src="/../images/image-20241210113814881.png" alt="image-20241210113814881">这种格式需不需要记住？鉴别？</p>
+<h2 id="四、网络层"><a href="#四、网络层" class="headerlink" title="四、网络层"></a>四、网络层</h2><h3 id="几个重要概念"><a href="#几个重要概念" class="headerlink" title="几个重要概念"></a>几个重要概念</h3><p><img src="/../images/image-20241210115119003.png"></p>
+<h4 id="数据报服务和虚电报服务"><a href="#数据报服务和虚电报服务" class="headerlink" title="数据报服务和虚电报服务"></a>数据报服务和虚电报服务</h4><p><img src="/../images/image-20241210115205911.png" alt="image-20241210115205911"></p>
+<p><img src="/../images/image-20241210115210925.png" alt="image-20241210115210925"></p>
+<p><img src="/../images/image-20241210115419719.png" alt="image-20241210115419719"></p>
+<h3 id="网际协议IP"><a href="#网际协议IP" class="headerlink" title="网际协议IP"></a>网际协议IP</h3><p><img src="/../images/image-20241210115548744.png" alt="image-20241210115548744"></p>
+<p><img src="/../images/image-20241210115558856.png" alt="image-20241210115558856"></p>
+<p>ARP ICMP IGMP</p>
+<p><img src="/../images/image-20241210115745232.png" alt="image-20241210115745232"></p>
+<p><img src="/../images/image-20241210161137010.png" alt="image-20241210161137010"></p>
+<p><img src="/../images/image-20241210161211235.png" alt="image-20241210161211235"></p>
+<p><img src="/../images/image-20241210161549440.png" alt="image-20241210161549440"></p>
+<p><img src="/../images/image-20241210161647653.png" alt="image-20241210161647653"></p>
+<p><strong>路由器连接不同网络</strong>。转发器和交换机连接的还是一个网络。</p>
+<p>同一个局域网上的<br>主机或路由器的<br>IP 地址中的网络号<br>必须一样。</p>
+<p><img src="/../images/image-20241210161930139.png" alt="image-20241210161930139"></p>
+<p>两个路由器直接相连的接口处，可指明也可不指明 IP 地址。<br>如指明 IP 地址，则这一段连线就构成了一种只包含一段线路的特殊“网络” 。这种网络仅需两个 IP 地址，可以使用 &#x2F;31 地址块。主机号可以是 0 或 1。</p>
+<p><img src="/../images/image-20241210162134146.png" alt="image-20241210162134146"></p>
+<p><img src="/../images/image-20241210162223640.png" alt="image-20241210162223640"></p>
+<p><img src="/../images/image-20241210162539686.png" alt="image-20241210162539686"></p>
+<p>ARP作用：根据<strong>IP地址找到MAC地址</strong>。只能在<strong>一个网络上</strong>使用，所以有路由的情况无法使用ARP。先广播询问，再单播回复。</p>
+<p><img src="/../images/image-20241210163900204.png" alt="image-20241210163900204"></p>
+<p><img src="/../images/image-20241210162748057.png" alt="image-20241210162748057"></p>
+<p><img src="/../images/image-20241210163144126.png" alt="image-20241210163144126"></p>
+<p><img src="/../images/image-20241210163527717.png" alt="image-20241210163527717"></p>
+<p><img src="/../images/image-20241210163638826.png" alt="image-20241210163638826"></p>
+<p><img src="/../images/image-20241210164059441.png" alt="image-20241210164059441"></p>
+<p><img src="/../images/image-20241210163713619.png" alt="image-20241210163713619"></p>
+<p><img src="/../images/image-20241210163913090.png" alt="image-20241210163913090"></p>
+<p><img src="/../images/image-20241210164208238.png" alt="image-20241210164208238"></p>
+<p>ARP四种典型情况：</p>
+<p><strong>凡是隔网络，那么寻找本网络的路由器的硬件地址，交给路由器完成。</strong></p>
+<p><strong>凡是同网络，直接找硬件地址。</strong></p>
+<ol>
+<li>发送方是<strong>主机</strong>，要把 IP 数据报发<strong>送到本网络上的另一个主机</strong>。这时用 ARP 找到目的主机的硬件地址。 </li>
+<li>发送方是<strong>主机</strong>，要把 IP 数据报发<strong>送到另一个网络上的一个主机。</strong>这时用 ARP 找到本网络上的一个<strong>路由器的硬件地址</strong>。剩下的工作<strong>由这个路由器来完成。</strong></li>
+<li>发送方是<strong>路由器</strong>，要把 <strong>IP 数据报转发到本网络上的一个主机。</strong>这时用 ARP 找到目的主机的硬件地址。</li>
+<li>发送方是<strong>路由器</strong>，要把 IP 数据报转发到<strong>另一个网络上的一个主机</strong>。这时用 ARP 找到<strong>本网络上另一个路由器</strong>的硬件地址。剩下的工作由<strong>这个路由器来完成</strong>。</li>
+</ol>
+<p><img src="/../images/image-20241210164702005.png" alt="image-20241210164702005"></p>
+<p>路由器和网关有啥联系？有啥区别？</p>
+<p><img src="/../images/image-20241210182620087.png" alt="image-20241210182620087"></p>
+<h3 id="划分子网和构建超网"><a href="#划分子网和构建超网" class="headerlink" title="划分子网和构建超网"></a>划分子网和构建超网</h3><p><img src="/../images/image-20241210183123888.png" alt="image-20241210183123888"></p>
+<p><img src="/../images/image-20241210183149005.png" alt="image-20241210183149005"></p>
+<p><img src="/../images/image-20241210183244966.png" alt="image-20241210183244966"></p>
+<p><img src="/../images/image-20241210184042044.png" alt="image-20241210184042044"></p>
+<p>为什么子网数是2？</p>
+<p>对于子网掩码255.255.192.0，它借用了原本属于主机位的2位（从右往左数的第17位和第18位）作为网络位。这2位的二进制表示可以是00、01、10或11，因此可以划分出4种不同的组合（即2^2&#x3D;4种）。然而，在子网划分中，通常不会使用全0和全1的组合（它们分别代表整个网络和广播地址），因此实际可用的子网数是4-2&#x3D;2个。</p>
+<ul>
+<li><strong>子网数 &#x3D; 2^（借用的主机位数）- 2</strong></li>
+<li><strong>子网数 &#x3D; 2^2 - 2 &#x3D; 4 - 2 &#x3D; 2</strong></li>
+</ul>
+<p><img src="/../images/image-20241210185847530.png" alt="image-20241210185847530"></p>
+<p><img src="/../images/image-20241210191602693.png" alt="image-20241210191602693"></p>
+<p><img src="/../images/image-20241210202358222.png" alt="image-20241210202358222"></p>
+<p><img src="/../images/image-20241210202443697.png" alt="image-20241210202443697"></p>
+<p><img src="/../images/image-20241210202414804.png" alt="image-20241210202414804"></p>
+<p>练练练！！！！</p>
+<h4 id="CIDR无类别域间路由"><a href="#CIDR无类别域间路由" class="headerlink" title="CIDR无类别域间路由"></a>CIDR无类别域间路由</h4><p>128.14.32.0&#x2F;20   &#x2F;20代表什么</p>
+<p><strong>代表子网掩码的表示方法</strong></p>
+<ul>
+<li>在 IP 地址表示中，“&#x2F;20” 是一种无类别域间路由（CIDR）的表示方式。它表示子网掩码中从左边开始连续的 “1” 的个数。</li>
+<li>对于一个 IPv4 地址，子网掩码长度为 32 位。在 “&#x2F;20” 的情况下，子网掩码的前 20 位是 “1”，后 12 位是 “0”。</li>
+</ul>
+<p><img src="/../images/image-20241210203623703.png" alt="image-20241210203623703"></p>
+<p><img src="/../images/image-20241210203732194.png" alt="image-20241210203732194"></p>
+<p>目的IP地址  and 子网掩码 &#x3D;目的网络 </p>
+<p><img src="/../images/image-20241210213848907.png" alt="image-20241210213848907"></p>
+<p><img src="/../images/image-20241210214232174.png" alt="image-20241210213959129"></p>
+<h4 id="网际控制报文协议ICMP"><a href="#网际控制报文协议ICMP" class="headerlink" title="网际控制报文协议ICMP"></a>网际控制报文协议ICMP</h4><p><img src="/../images/image-20241210214847350.png" alt="image-20241210214847350"></p>
+<p>差错报告报文、询问报文</p>
+<p><img src="/../images/image-20241210215059485.png" alt="image-20241210215059485"></p>
+<p><img src="/../images/image-20241210215146194.png" alt="image-20241210215146194"></p>
+<p>ping:测试两个主机之间的<strong>连通性</strong>，利用了<strong>ICMP回送请求和回送回答请求，</strong>应<strong>用层直接使用网络层</strong>的例子</p>
+<p><img src="/../images/image-20241210215525450.png" alt="image-20241210215525450"></p>
+<p>tracetoute:用于跟踪一个分组从<strong>源点到终点的路径</strong>；利用了I<strong>P数据包中的TTL,ICMP时间超过</strong>差错报告报文和ICMP<strong>终点不可达</strong>差错报告报文实现</p>
+<h3 id="因特网的路由选择协议"><a href="#因特网的路由选择协议" class="headerlink" title="因特网的路由选择协议"></a>因特网的路由选择协议</h3><p>属于<strong>网络层控制层面</strong>的内容</p>
+<h4 id="路由算法分类"><a href="#路由算法分类" class="headerlink" title="路由算法分类"></a>路由算法分类</h4><h5 id="静态路由选择策略"><a href="#静态路由选择策略" class="headerlink" title="静态路由选择策略"></a>静态路由选择策略</h5><p>非自适应路由选择；</p>
+<p>不能及时适应网络状态的变化；</p>
+<p>简单，开销小。</p>
+<h5 id="动态路由选择策略"><a href="#动态路由选择策略" class="headerlink" title="动态路由选择策略"></a>动态路由选择策略</h5><p>自适应路由选择；</p>
+<p>能较好适应网络状态的变化；</p>
+<p>实现较为复杂。</p>
+<p><img src="/../images/image-20241210220247819.png" alt="image-20241210220247819"></p>
+<h4 id="自治系统-AS"><a href="#自治系统-AS" class="headerlink" title="自治系统 AS"></a>自治系统 AS</h4><p>每一个AS对其他AS表现出单一的，一致的路由选择策略。</p>
+<p><img src="/../images/image-20241210220924022.png" alt="image-20241210220924022"></p>
+<p><img src="/../images/image-20241210221103023.png" alt="image-20241210221103023"></p>
+<p><img src="/../images/image-20241210221343218.png" alt="image-20241210221343218"></p>
+<p><img src="/../images/image-20241210221434535.png" alt="image-20241210221434535"></p>
+<p><img src="/../images/image-20241210221508831.png" alt="image-20241210221508831"></p>
+<p>RIP步骤：</p>
+<p>先把邻居发来的路由表加一跳</p>
+<p> 路由相同，以新的为准，路由不同，看距离最短</p>
+<p><img src="/../images/image-20241210223715747.png" alt="image-20241210223715747"></p>
+<p><img src="/../images/image-20241210223841617.png" alt="image-20241210223841617"></p>
+<p><img src="/../images/image-20241210224313930.png" alt="image-20241210224313930"></p>
+<p>OSPF：</p>
+<p><img src="/../images/image-20241210224553296.png" alt="image-20241210224553296"></p>
+<p><img src="/../images/image-20241210225315206.png" alt="image-20241210225315206"><img src="/../images/image-20241210225415807.png" alt="image-20241210225415807"></p>
+<p><img src="/../images/image-20241210230059469.png" alt="image-20241210230059469"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/13/react-%E5%85%A5%E9%97%A8/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/09/%E6%B5%8F%E8%A7%88%E5%99%A8-%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

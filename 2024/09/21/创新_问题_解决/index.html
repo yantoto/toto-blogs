@@ -127,7 +127,8 @@
     </div>
 </div>
     <div class="post-content">
-    <h2 id="一-问题：图片总是无法得到特定长和宽"><a href="#一-问题：图片总是无法得到特定长和宽" class="headerlink" title="一.问题：图片总是无法得到特定长和宽"></a>一.问题：图片总是无法得到特定长和宽</h2><p>Q:图片利用时直接定义长和宽会导致图片畸形，但只定义单一长或宽又无法得到想要的大小。</p>
+    <h2 id="一-问题：图片总是无法得到特定长和宽"><a href="#一-问题：图片总是无法得到特定长和宽" class="headerlink" title="一.问题：图片总是无法得到特定长和宽"></a>一.问题：图片总是无法得到特定长和宽</h2><p>plugin:vue&#x2F;vue3-essential</p>
+<p>Q:图片利用时直接定义长和宽会导致图片畸形，但只定义单一长或宽又无法得到想要的大小。</p>
 <p>A:使用<strong>object-fit</strong>属性。在父元素中设置想要的长和宽，子元素中100%覆盖，在定义该属性后，图片会自动裁剪，得到理想图片。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.left_touxiang &#123;</span><br><span class="line">            width: 80px;</span><br><span class="line">            height: 80px;</span><br><span class="line">        &#125;</span><br><span class="line">.left_touxiang&gt;img &#123;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 100%;</span><br><span class="line">            object-fit: cover;</span><br><span class="line">            border-radius: 50%;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
 

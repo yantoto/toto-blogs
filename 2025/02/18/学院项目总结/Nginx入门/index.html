@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Feb 18, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>说明：该文档只针对Nginx在不加载第三方模块的情况，由于第三方模块太多所以也介绍不完。</p>
+<h2 id="什么是Nginx"><a href="#什么是Nginx" class="headerlink" title="什么是Nginx"></a><strong>什么是Nginx</strong></h2><p><strong>Nginx 是一款轻量级的 HTTP 服务器（或叫web服务器）</strong>，同时也提供了IMAP&#x2F;POP3&#x2F;SMTP服务。在日常开发过程中，常用于服务端的反向代理和负载均衡。</p>
+<h4 id="web服务器"><a href="#web服务器" class="headerlink" title="web服务器"></a><strong>web服务器</strong></h4><p>负责处理和响应用户请求，一般也称为http服务器，如 Apache、IIS、Nginx。 可以作为静态页面的 web 服务器，同时还支持 CGI 协议的动态语言，比如 perl、php等。但是不支持 java。Java 程序只能通过与 tomcat 配合完成。</p>
+<h4 id="应用服务器"><a href="#应用服务器" class="headerlink" title="应用服务器"></a><strong>应用服务器</strong></h4><p>存放和运行系统程序的服务器，负责处理程序中的业务逻辑，如 Tomcat、Weblogic、Jboss（现在大多数应用服务器也包含了web服务器的功能）</p>
+<h2 id="Nginx能做什么"><a href="#Nginx能做什么" class="headerlink" title="Nginx能做什么"></a><strong>Nginx能做什么</strong></h2><h3 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a><strong>正向代理</strong></h3><p><strong>隐藏真实客户端，代理的是客户端。客户端请求的服务都被代理服务器代替来请求。</strong></p>
+<p><img src="/../../images/d4672322-0946-408a-a3cb-1212f15e93f2.png" alt="img"></p>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a><strong>使用场景</strong></h4><ol>
+<li><strong>科学上网（翻墙）</strong> 有时候，我们想要访问某国外网站（google），该网站无法在国内直接访问，但是我们可以访问到一个代理服务器，这个代理服务器可以访问到这个国外网站。这个上网的过程就是用到了正向代理。</li>
+</ol>
+<p><img src="/../../images/eea1c7d9-b609-4694-aeca-a1fc1efe92e1.png" alt="img"></p>
+<ol>
+<li><strong>内网访问（vpn）</strong> 一般我们在家办公或者在非公司内网内解决问题的时候需要用到vpn，公司的一些项目或者私有git或者一些内部的网站，我么需要登录vpn才能访问。 其实现方案就是正向代理服务器，我们登录vpn之后所有的请求将会通过vpn的这台服务器代理客户去访问某些资源或者网站，那么这台代理服务器将会是公司内部的白名单ip，这样所有的请求都统一从这里进入，就实现了一个正向代理。</li>
+</ol>
+<h4 id="用途"><a href="#用途" class="headerlink" title="用途"></a><strong>用途</strong></h4><ul>
+<li><strong>突破访问显示：</strong>通过代理服务器，可以突破自身ip访问限制，访问国外网站等</li>
+<li><strong>提高访问速度：</strong>通常代理服务器都设置一个较大的硬盘缓冲区，会将部分请求的响应保存到缓冲区中，当其他用户再访问相同的信息时，则直接由缓冲区中取出信息，传给用户，以提高访问速度</li>
+<li><strong>隐藏客户端真实ip：</strong>上网者可以通过正向代理的方法隐藏自己的ip，免受攻击</li>
+</ul>
+<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a><strong>反向代理</strong></h3><p><strong>隐藏目标服务器，代理的是服务器客户端不需要关注目标服务器，由代理服务器实现目标服务配置，客户端不关心具体是访问哪个服务器。</strong></p>
+<p>就像我们打某产品的客服电话，用户不关心是具体哪个人接的，我们只关心有人响应。</p>
+<p><img src="/../../images/db20886c-4b84-4e00-8abf-c90c062d9a73.png" alt="img"></p>
+<h4 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a><strong>使用场景</strong></h4><ol>
+<li>将防火墙外的服务器提供给客户端访问</li>
+<li>为后端的多台服务器提供负载均衡</li>
+<li>为后端较慢的服务器提供缓冲服务</li>
+</ol>
+<p><img src="/../../images/414e8bf4-2357-4d1a-b6c6-fd11f77ae77e.png" alt="img"></p>
+<h4 id="用途-1"><a href="#用途-1" class="headerlink" title="用途"></a><strong>用途</strong></h4><ul>
+<li><strong>隐藏服务器真实ip</strong>：使用反向代理，可以对客户端隐藏服务器的ip地址</li>
+<li><strong>负载均衡</strong>：反向代理服务器可以做负载均衡，根据所有真实服务器的负载情况，将客户端请求分发到不同的真实服务器上</li>
+<li><strong>提高访问速度</strong>：反向代理服务器可以对静态内容及短时间内有大量访问请求的动态内容提供缓存服务，提高访问速度</li>
+<li><strong>提供安全保障</strong>：反向代理服务器可以作为应用层防火墙，为网站提供对基于web的攻击行为（例如DoS&#x2F;DDoS）的防护，更容易排查恶意软件等。还可以为后端服务器统一提供加密和SSL加速（如SSL终端代理），提供HTTP访问认证等。</li>
+</ul>
+<h3 id="正向代理和反向代理的异同"><a href="#正向代理和反向代理的异同" class="headerlink" title="正向代理和反向代理的异同"></a><strong>正向代理和反向代理的异同</strong></h3><h4 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a><strong>相同点</strong></h4><p>正向代理和反向代理所处的位置都是客户端和真实服务器之间，所做的事情也都是把客户端的请求转发给服务器，再把服务器的响应转发给客户端。</p>
+<h4 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a><strong>不同点</strong></h4><ul>
+<li>正向代理是<strong>客户端的代理</strong>，服务器不知道真正的客户端是谁；反向代理是服<strong>务器的代理</strong>，客户端不知道真正的服务器是谁</li>
+<li>正向代理一般是<strong>客户端架设</strong>的；反向代理一般是<strong>服务器架设</strong>的</li>
+<li>正向代理主要是用来解决<strong>访问限制问题</strong>；反向代理则是提供<strong>负载均衡、安全防护</strong>等作用。二者都能提高访问速度</li>
+</ul>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a><strong>负载均衡</strong></h3><p>分摊到多个操作单元上进行执行，例如Web服务器、FTP服务器、企业关键应用服务器和其它关键任务服务器等，从而共同完成工作任务。 简单而言就是当有2台或以上服务器时，根据规则随机的将请求分发到指定的服务器上处理，负载均衡配置一般都需要同时配置反向代理，通过反向代理跳转到负载均衡。</p>
+<p>Nginx目前支持自带3种负载均衡策略，还有2种常用的第三方策略。</p>
+<p><img src="/../../images/62231040-5eeb-4ddc-b9c6-f0275f0d4fa1.png" alt="img"></p>
+<h3 id="HTTP服务器（动静分离）"><a href="#HTTP服务器（动静分离）" class="headerlink" title="HTTP服务器（动静分离）"></a><strong>HTTP服务器（动静分离）</strong></h3><p><strong>Nginx只是一个静态文件服务器或者http请求转发器</strong>，它可以把静态文件的请求直接返回静态文件资源，把动态文件的请求转发给后台的处理程序，例如php-fpm、apache、tomcat、jetty等，这些后台服务，即使没有nginx的情况下也是可以直接访问的（有些时候这些服务器是放在防火墙的面，不是直接对外暴露，通过nginx做了转换）。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7082655545491980301%EF%BC%8C%E6%84%9F%E8%A7%89%E8%BF%99%E9%87%8C%E7%9A%84%E4%BE%8B%E5%AD%90%E6%8C%BA%E5%BD%A2%E8%B1%A1%E7%9A%84">https://juejin.cn/post/7082655545491980301，感觉这里的例子挺形象的</a> 很类似我们现在在location上的不同接口和服务的转发。</p>
+<p><img src="/../../images/32b110da-4d54-492e-97e9-bcd97fde14ff.png" alt="img"></p>
+<h2 id="Nginx安装及常用命令"><a href="#Nginx安装及常用命令" class="headerlink" title="Nginx安装及常用命令"></a><strong>Nginx安装及常用命令</strong></h2><h3 id="Windows安装"><a href="#Windows安装" class="headerlink" title="Windows安装"></a><strong>Windows安装</strong></h3><p>前去官网下载解压直接打开_exe_即可</p>
+<h3 id="Mac安装"><a href="#Mac安装" class="headerlink" title="Mac安装"></a><strong>Mac安装</strong></h3><p>可使用brew包管理，只需要 **brew search nginx **一行即可下载完成。</p>
+<h4 id="mac启动nginx"><a href="#mac启动nginx" class="headerlink" title="mac启动nginx"></a><strong>mac启动nginx</strong></h4><p>默认使用的是<strong>8080端口</strong>，所以我们启动成功后访问<strong>127.0.0.1:8080</strong>就可以看到经典的<strong>welcome nginx</strong>了</p>
+<p><img src="/../../images/2dc76bfa-93f5-4233-af17-149cbbb72670.png" alt="img"></p>
+<p>如果启动报如下错误，则执行：<strong>sudo nginx -s stop</strong></p>
+<p><img src="/../../images/9c908312-2275-4e27-b082-05f4a5f21506.png" alt="img"></p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a><strong>常用命令</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reopen #重启Nginx</span><br><span class="line">nginx -s reload #重新加载Nginx配置文件，然后以优雅的方式重启Nginx</span><br><span class="line">nginx -s stop #强制停止Nginx服务</span><br><span class="line">nginx -s quit #优雅地停止Nginx服务（即处理完所有请求后再停止服务）</span><br><span class="line">nginx -?,-h #打开帮助信息</span><br><span class="line">nginx -v #显示版本信息并退出</span><br><span class="line">nginx -V #显示版本和配置选项信息，然后退出</span><br><span class="line">nginx -t #检测配置文件是否有语法错误，然后退出</span><br><span class="line">nginx -T #检测配置文件是否有语法错误，转储并退出</span><br><span class="line">nginx -q #在检测配置文件期间屏蔽非错误信息</span><br><span class="line">nginx -p prefix #设置前缀路径(默认是:/usr/share/nginx/)nginx -c filename #设置配置文件(默认是:/etc/nginx/nginx.conf)</span><br><span class="line">nginx -g directives #设置配置文件外的全局指令</span><br><span class="line">killall nginx #杀死所有nginx进程</span><br></pre></td></tr></table></figure>
+
+<h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a><strong>基本配置</strong></h2><h3 id="基本配置文件"><a href="#基本配置文件" class="headerlink" title="基本配置文件"></a><strong>基本配置文件</strong></h3><p><img src="/../../images/13773775-3009-411e-97a8-993bc007eddb.png" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># 全局块   有一个工作子进程，一般设置为CPU数 * 核数</span><br><span class="line"># Nginx 服务器并发处理服务的关键配置</span><br><span class="line"># worker_processes 值越大，可以支持的并发处理量也越多，但是会受到硬件、软件等设备的制约</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">  # 一般是配置nginx进程与连接的特性</span><br><span class="line">  # 如1个word能同时允许多少连接，一个子进程最大允许连接1024个连接</span><br><span class="line">  worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 配置HTTP服务器配置段</span><br><span class="line">http &#123;</span><br><span class="line">  </span><br><span class="line">  # 配置虚拟主机段</span><br><span class="line">  server &#123;</span><br><span class="line">  </span><br><span class="line">    # 定位，把特殊的路径或文件再次定位。</span><br><span class="line">    location  &#123;</span><br><span class="line">  </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  server &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件组成部分"><a href="#文件组成部分" class="headerlink" title="文件组成部分"></a><strong>文件组成部分</strong></h3><h4 id="main块（全局块）"><a href="#main块（全局块）" class="headerlink" title="main块（全局块）"></a><strong>main块（全局块）</strong></h4><p>从配置文件开始到 events 块之间的内容。 主要会设置一些影响 nginx 服务器整体运行的配置指令，主要包括配置运行 Nginx 服务器的用户（组）、允许生成的 worker process 数，进程 PID 存放路径、日志存放路径和类型以及配置文件的引入等。</p>
+<ul>
+<li>main: Nginx的全局配置，对全局生效。</li>
+</ul>
+<h4 id="events-块"><a href="#events-块" class="headerlink" title="events 块"></a><strong>events 块</strong></h4><p>涉及的指令主要影响 Nginx 服务器与用户的网络连接，常用的设置包括是否开启对多 work process 下的网络连接进行序列化，是否允许同时接收多个网络连接，选取哪种事件驱动模型来处理连接请求，每个 word process 可以同时支持的最大连接数等。</p>
+<p>这部分的配置对 Nginx 的性能影响较大，在实际中应该灵活配置。</p>
+<ul>
+<li>events: 配置影响Nginx服务器或与用户的网络连接。</li>
+</ul>
+<h4 id="http-块"><a href="#http-块" class="headerlink" title="http 块"></a><strong>http 块</strong></h4><p>Nginx 服务器配置中最频繁的部分，代理、缓存和日志定义等绝大多数功能和第三方模块的配置都在这里。</p>
+<ul>
+<li>http: 可以嵌套多个server，每一个 server 是一个虚拟主机（站点），配置代理、缓存、日志等绝大多数功能和第三方模块的配置。<ul>
+<li>server: 配置虚拟主机的相关参数，一个http中可以有多个server。</li>
+<li>location: 配置请求的路由，以及各种页面的处理情况。</li>
+<li>upstream: 配置后端服务器的具体地址，负载均衡不可或缺的部分。</li>
+</ul>
+</li>
+</ul>
+<h3 id="常用内置变量"><a href="#常用内置变量" class="headerlink" title="常用内置变量"></a><strong>常用内置变量</strong></h3><p>Nginx一些配置中的内置全局变量，你可以在配置的任意位置使用它们。</p>
+<p><img src="/../../images/0d352564-edb6-4ae6-b0c5-f23afffe0d29.png" alt="img"></p>
+<h2 id="前端可以用nginx解决的问题"><a href="#前端可以用nginx解决的问题" class="headerlink" title="前端可以用nginx解决的问题"></a><strong>前端可以用nginx解决的问题</strong></h2><h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a><strong>跨域</strong></h3><p>如果两个页面的协议、端口、域名中有一个不相同则为跨域 由浏览器的同源策略造成的，是浏览器对JavaScript施加的安全限制。</p>
+<p>原理：Nginx对服务端转发的请求不会触发浏览器的同源策略</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 前端server的域名为：fe.server.com</span><br><span class="line"> * 后端服务的域名为：dev.server.com</span><br><span class="line"> */</span><br><span class="line">server &#123;</span><br><span class="line">  listen  80;</span><br><span class="line">  server_name  fe.server.com;</span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass dev.server.com;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="请求过滤"><a href="#请求过滤" class="headerlink" title="请求过滤"></a><strong>请求过滤</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 根据状态码过滤</span><br><span class="line">error_page 500 501 502 503 504 506 /50x.html;</span><br><span class="line">location = /50x.html &#123;</span><br><span class="line">    #将根路径改为存放html的路径。</span><br><span class="line">    root /root/static/html;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 根据请求类型过滤</span><br><span class="line">if ( $request_method !~ ^(GET|POST|HEAD)$ ) &#123;</span><br><span class="line">  return 403;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 其他：可以根据URL、文件请求类型等进行过滤。</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置gzip"><a href="#配置gzip" class="headerlink" title="配置gzip"></a><strong>配置gzip</strong></h3><p>gzip是规定的三种标准HTTP压缩格式之一。目前绝大多数的网站都在使用gzip传输 HTML、CSS、JavaScript 等资源文件。 不是每个浏览器都支持gzip的，如何知道客户端是否支持gzip呢，请求头中的Accept-Encoding来标识对压缩的支持。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//开启或者关闭gzip模块，默认值为off</span><br><span class="line">gzip                    on;</span><br><span class="line"></span><br><span class="line">// 启用gZip，所需的HTTP最低版本，默认值为HTTP/1.1 </span><br><span class="line">gzip_http_version       1.1; </span><br><span class="line"></span><br><span class="line">// 压缩级别（1-9），级别越高压缩率越大压缩时间也就越长（传输快但比较消耗cpu），默认值: 1</span><br><span class="line">gzip_comp_level         5; </span><br><span class="line"></span><br><span class="line">// 设置允许压缩的页面最小字节数，Content-Length小于该值的请求将不会被压缩。默认值: 0。当设置的值较小时，压缩后的长度可能比原文件大，建议设置1000以上</span><br><span class="line">gzip_min_length         1000;</span><br><span class="line"></span><br><span class="line">// 要采用gzip压缩的文件类型(MIME类型)，默认值: text/html(默认不压缩js/css)</span><br><span class="line">gzip_types text/csv text/xml text/css text/plain text/javascript application/javascript application/x-javascript application/json application/xml;</span><br></pre></td></tr></table></figure>
+
+<p>常规的http请求和响应：</p>
+<p><img src="/../../images/754e4288-e1a6-4701-8d6b-b01b866f640f.png" alt="img"></p>
+<h3 id="负载均衡-1"><a href="#负载均衡-1" class="headerlink" title="负载均衡"></a><strong>负载均衡</strong></h3><p>只是指定了Nginx需要转发的服务端列表，并没有指定分配策略 想要看策略的具体配置， 参见：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020290454">https://segmentfault.com/a/1190000020290454</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// upstream指定后端服务器地址列表</span><br><span class="line">upstream balanceServer &#123;</span><br><span class="line">  server 10.1.22.33:12345;</span><br><span class="line">  server 10.1.22.34:12345;</span><br><span class="line">  server 10.1.22.35:12345;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 在server中拦截响应请求，并将请求转发到upstream中配置的服务器列表。</span><br><span class="line">server &#123;</span><br><span class="line">  server_name  fe.server.com;</span><br><span class="line">  listen 80;</span><br><span class="line">  location /api &#123;</span><br><span class="line">    proxy_pass http://balanceServer;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="静态资源服务器"><a href="#静态资源服务器" class="headerlink" title="静态资源服务器"></a><strong>静态资源服务器</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 匹配以png|gif|jpg|jpeg为结尾的请求，并将请求转发到本地路径，root中指定的路径即Nginx本地路径。</span><br><span class="line">// 同时也可以进行一些缓存的设置。</span><br><span class="line">location ~* \.(png|gif|jpg|jpeg)$ &#123;</span><br><span class="line">  root    /root/static/;  </span><br><span class="line">  autoindex on;</span><br><span class="line">  access_log  off;</span><br><span class="line">  expires     10h; # 设置过期时间为10小时          </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a><strong>访问限制</strong></h3><p>经常会遇到希望网站让某些特定用户的群体（比如只让公司内网）访问，或者控制某个url不让人访问。 <strong>采用的是从上到下匹配方式，匹配到就跳出不再继续匹配</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">  deny  192.168.1.100;</span><br><span class="line">  allow 192.168.1.10/200;</span><br><span class="line">  allow 10.110.50.16;</span><br><span class="line">  deny  all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="适配PC与移动环境"><a href="#适配PC与移动环境" class="headerlink" title="适配PC与移动环境"></a><strong>适配PC与移动环境</strong></h3><p>现在很多网站都存在PC站和H5站两个站点，根据用户的浏览环境自动切换站点 Nginx可以通过内置变量$http_user_agent，获取到请求客户端的userAgent，从而知道用户处于移动端还是PC，进而控制重定向到H5站还是PC站。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">  # 移动、pc设备适配</span><br><span class="line">  if ($http_user_agent ~* &#x27;(Android|webOS|iPhone|iPod|BlackBerry)&#x27;) &#123;</span><br><span class="line">    set $mobile_request &#x27;1&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">  if ($mobile_request = &#x27;1&#x27;) &#123;</span><br><span class="line">    rewrite ^.+ http://mysite-H5.com;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h3 id="合并请求（依赖第三方）"><a href="#合并请求（依赖第三方）" class="headerlink" title="合并请求（依赖第三方）"></a><strong>合并请求（依赖第三方）</strong></h3><p>前端性能优化中重要一点就是尽量减少http资源请求的数量。 通过<a href="https://link.juejin.cn/?target=https://github.com/alibaba/nginx-http-concat">nginx-http-concat</a>模块（淘宝开发的第三方模块，需要单独安装）用一种特殊的请求url规则（例子：<a href="https://link.juejin.cn/?target=http://example.com/">example.com&#x2F;</a>??1.js,2.js,3.js ），前端可以将多个资源的请求合并成一个请求，后台Nginx会获取各个资源并拼接成一个结果进行返回。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// js资源http-concat</span><br><span class="line">// nginx-http-concat模块的参数请查阅文档</span><br><span class="line">location /static/js/ &#123;</span><br><span class="line">  concat on; # 是否打开资源合并开关</span><br><span class="line">  concat_types application/javascript; # 允许合并的资源类型</span><br><span class="line">  concat_unique off; # 是否允许合并不同类型的资源</span><br><span class="line">  concat_max_files 5; # 允许合并的最大资源数目</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="图片处理（依赖第三方）"><a href="#图片处理（依赖第三方）" class="headerlink" title="图片处理（依赖第三方）"></a><strong>图片处理（依赖第三方）</strong></h3><h3 id="页面内容修改（依赖第三方）"><a href="#页面内容修改（依赖第三方）" class="headerlink" title="页面内容修改（依赖第三方）"></a><strong>页面内容修改（依赖第三方）</strong></h3><h2 id="特别关注项"><a href="#特别关注项" class="headerlink" title="特别关注项"></a><strong>特别关注项</strong></h2><h3 id="HTTPS服务"><a href="#HTTPS服务" class="headerlink" title="HTTPS服务"></a><strong>HTTPS服务</strong></h3><p><img src="/../../images/2360770f-6325-4578-8569-a8c9a67173a5.png" alt="img"></p>
+<h3 id="Websocket服务"><a href="#Websocket服务" class="headerlink" title="Websocket服务"></a><strong>Websocket服务</strong></h3><p>使用<strong>ws服务</strong>的时候需要告诉<strong>nginx</strong>我们需要对协议进行升级，所以当你遇到这个问题的时候只需要增加两行配置即可</p>
+<p><img src="/../../images/5b44c2fa-30ba-45a8-8d15-f90ebdebccd3.png" alt="img"></p>
+<h3 id="root"><a href="#root" class="headerlink" title="root"></a><strong>root</strong></h3><p>当请求<a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=RzKwttIMrQFPkfwbmx6JHw==.yAKHQevdp0o1ma7zUPe/vsmG3amc/f5v14O7eglzWM1RjWKGjSMYbtLBEDC7oYYe">http://static.closertb.site/s...</a>时，将会返回服务器上的&#x2F;home&#x2F;static&#x2F;static&#x2F;a&#x2F;logo.png文件，即’&#x2F;home&#x2F;static’+’&#x2F;static&#x2F;a&#x2F;logo.png’,其拼接的地址是匹配字符串及其以后的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /static &#123;</span><br><span class="line">    root /home/static;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="alias"><a href="#alias" class="headerlink" title="alias"></a><strong>alias</strong></h3><p>当请求<a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=f3ENZH/phH/m/9J0nzJPag==.G0O3Ds/4XN8+ifU6sm9jyAo6xzcq3EmDeeEJMtL+IQC+/T4v3uHnJOY9m7M6Dulz">http://static.closertb.site/s...</a>时，将会返回服务器上的&#x2F;home&#x2F;static&#x2F;a&#x2F;logo.png文件，即’&#x2F;home&#x2F;static’+’&#x2F;a&#x2F;logo.png’,其拼接的地址是除了匹配字符串以后的地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /static &#123;</span><br><span class="line">    alias /home/static;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="location带’-‘与不带’-‘"><a href="#location带’-‘与不带’-‘" class="headerlink" title="location带’&#x2F;‘与不带’&#x2F;‘"></a><strong>location带’&#x2F;‘与不带’&#x2F;‘</strong></h3><ul>
+<li><strong>proxy_pass配置中url末尾带&#x2F;时，nginx转发时，会将原uri去除location匹配表达式后的内容拼接在proxy_pass中url之后。</strong></li>
+<li><strong>proxy_pass配置中url末尾不带&#x2F;时，如url中不包含path，则直接将原uri拼接在proxy_pass中url之后；如url中包含path，则将原uri去除location匹配表达式后的内容拼接在proxy_pass中的url之后。</strong></li>
+</ul>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a><strong>参考文档</strong></h2><ul>
+<li>英文文档：<a href="https://link.juejin.cn/?target=http://nginx.org/en/docs/">nginx.org&#x2F;en&#x2F;docs&#x2F;</a></li>
+<li>中文文档：<a href="https://link.juejin.cn/?target=https://www.nginx.cn/doc/">www.nginx.cn/doc/</a></li>
+<li>16张图入门nginx：<a target="_blank" rel="noopener" href="https://blog.p2hp.com/archives/7369">https://blog.p2hp.com/archives/7369</a></li>
+<li>nginx 之 proxy_pass详解：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b010c9302cd0">https://www.jianshu.com/p/b010c9302cd0</a></li>
+</ul>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/02/18/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/kiwi%E5%9B%BD%E9%99%85%E5%8C%96/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/02/18/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/%E8%B7%AF%E7%94%B1%E4%BC%98%E5%8C%96/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

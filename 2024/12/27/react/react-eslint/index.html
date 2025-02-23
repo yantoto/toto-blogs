@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 27, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一、git-提交代码，eslint-检查常见问题。"><a href="#一、git-提交代码，eslint-检查常见问题。" class="headerlink" title="一、git 提交代码，eslint 检查常见问题。"></a>一、git 提交代码，eslint 检查常见问题。</h2><p>在使用 Git 提交代码时，ESLint 是一个常用的工具来确保代码质量和一致性。以下是一些常见的 ESLint 检查问题及其解决方法：</p>
+<h3 id="1-未定义变量"><a href="#1-未定义变量" class="headerlink" title="1. 未定义变量"></a>1. 未定义变量</h3><p><strong>问题描述</strong>: <code>no-undef</code> 规则会报错，提示使用了未定义的变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(myVariable); // myVariable is not defined</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong>: 确保所有使用的变量都已定义。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let myVariable = &#x27;Hello, World!&#x27;;</span><br><span class="line">console.log(myVariable);</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="2-未使用的变量"><a href="#2-未使用的变量" class="headerlink" title="2. 未使用的变量"></a>2. 未使用的变量</h3><p><strong>问题描述</strong>: <code>no-unused-vars</code> 规则会报错，提示定义了但未使用的变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let unusedVar = &#x27;I am not used&#x27;;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong>: 删除未使用的变量或使用它们。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let usedVar = &#x27;I am used&#x27;;</span><br><span class="line">console.log(usedVar);</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="3-缺少分号"><a href="#3-缺少分号" class="headerlink" title="3. 缺少分号"></a>3. 缺少分号</h3><p><strong>问题描述</strong>: <code>semi</code> 规则会报错，提示语句末尾缺少分号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let x = 5</span><br><span class="line">console.log(x)</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong>: 在语句末尾添加分号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let x = 5;</span><br><span class="line">console.log(x);</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="4-缩进不一致"><a href="#4-缩进不一致" class="headerlink" title="4. 缩进不一致"></a>4. 缩进不一致</h3><p><strong>问题描述</strong>: <code>indent</code> 规则会报错，提示代码缩进不一致。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function example() &#123;</span><br><span class="line">  console.log(&#x27;Hello&#x27;);</span><br><span class="line">    console.log(&#x27;World&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong>: 统一代码缩进风格。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function example() &#123;</span><br><span class="line">  console.log(&#x27;Hello&#x27;);</span><br><span class="line">  console.log(&#x27;World&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="5-字符串引号不一致"><a href="#5-字符串引号不一致" class="headerlink" title="5. 字符串引号不一致"></a>5. 字符串引号不一致</h3><p><strong>问题描述</strong>: <code>quotes</code> 规则会报错，提示字符串引号不一致。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let str = &quot;Hello&quot;;</span><br><span class="line">let anotherStr = &#x27;World&#x27;;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong>: 统一字符串引号风格。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let str = &#x27;Hello&#x27;;</span><br><span class="line">let anotherStr = &#x27;World&#x27;;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="6-函数参数过多"><a href="#6-函数参数过多" class="headerlink" title="6. 函数参数过多"></a>6. 函数参数过多</h3><p><strong>问题描述</strong>: <code>max-params</code> 规则会报错，提示函数参数过多。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function example(a, b, c, d, e) &#123;</span><br><span class="line">  // do something</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong>: 减少函数参数数量，或者重构代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function example(a, b) &#123;</span><br><span class="line">  let c = a + b;</span><br><span class="line">  // do something with c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="7-行长度过长"><a href="#7-行长度过长" class="headerlink" title="7. 行长度过长"></a>7. 行长度过长</h3><p><strong>问题描述</strong>: <code>max-len</code> 规则会报错，提示单行代码长度超过限制。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let longString = &#x27;This is a very long string that exceeds the maximum line length allowed by ESLint&#x27;;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong>: 将长行拆分成多行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let longString = &#x27;This is a very long string that exceeds &#x27; +</span><br><span class="line">                 &#x27;the maximum line length allowed by ESLint&#x27;;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="8-禁止使用全局变量"><a href="#8-禁止使用全局变量" class="headerlink" title="8. 禁止使用全局变量"></a>8. 禁止使用全局变量</h3><p><strong>问题描述</strong>: <code>no-global-assign</code> 规则会报错，提示不应直接修改全局对象的属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.someGlobalVar = &#x27;value&#x27;;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong>: 避免直接修改全局对象的属性，使用局部变量代替。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let someLocalVar = &#x27;value&#x27;;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="9-禁止使用-eval"><a href="#9-禁止使用-eval" class="headerlink" title="9. 禁止使用 eval"></a>9. 禁止使用 <code>eval</code></h3><p><strong>问题描述</strong>: <code>no-eval</code> 规则会报错，提示不应使用 <code>eval</code> 函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">eval(&#x27;console.log(&quot;Hello&quot;)&#x27;);</span><br><span class="line"></span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong>: 避免使用 <code>eval</code>，改用其他安全的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;Hello&#x27;);</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="10-禁止使用-with-语句"><a href="#10-禁止使用-with-语句" class="headerlink" title="10. 禁止使用 with 语句"></a>10. 禁止使用 <code>with</code> 语句</h3><p><strong>问题描述</strong>: <code>no-with</code> 规则会报错，提示不应使用 <code>with</code> 语句。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with (obj) &#123;</span><br><span class="line">  console.log(property);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong>: 避免使用 <code>with</code> 语句，改用其他方法访问对象属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(obj.property);</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过配置和调整 ESLint 规则，可以有效提高代码质量并保持一致性。如果遇到特定的 ESLint 错误，可以根据上述示例进行相应的修改。</p>
+<h2 id="二、git-提交代码，eslint-检查提交失败，该如何解决。"><a href="#二、git-提交代码，eslint-检查提交失败，该如何解决。" class="headerlink" title="二、git 提交代码，eslint 检查提交失败，该如何解决。"></a>二、git 提交代码，eslint 检查提交失败，该如何解决。</h2><p>1，修复 ESLint 报错：逐个解决 ESLint 报错所指出的问题。根据报错信息</p>
+<p>2，手动禁用 ESLint 钩子git commit -m “Your commit message” –no-verify<br>分三步：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">第一步：git add .</span><br><span class="line"></span><br><span class="line">第二步：git commit --no-verify -m &quot;注释的内容&quot;</span><br><span class="line"></span><br><span class="line">第三步：git pull origin 自己的分支名称</span><br><span class="line"></span><br><span class="line">第四步：git push origin 自己的分支名称(这时候可能会遇到合并冲突的问题，找到对应的文件，解决掉冲突再提交就OK了)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/27/react/react-%E7%BB%91%E5%AE%9Ahost/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/27/react/react-domToImage/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

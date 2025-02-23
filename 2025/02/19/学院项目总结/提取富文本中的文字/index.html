@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Feb 19, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>需求中，用户可以发送富文本形式的帖子，而在首页中展示帖子列表，这些帖子的内容固定（不然太丑）,并且将图片便签转换为【图片】，视频标签转换为【视频】，这里将后端html字段转换为纯文本。</p>
+<h3 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>使用<strong>htmlParser2</strong>解析库，完美解决。</p>
+<p><strong>官方文档</strong>：<a target="_blank" rel="noopener" href="https://gitcode.com/gh_mirrors/ht/htmlparser2?utm_source=artical_gitcode&index=bottom&type=card&webUrl=">https://gitcode.com/gh_mirrors/ht/htmlparser2?utm_source=artical_gitcode&amp;index=bottom&amp;type=card&amp;webUrl=</a></p>
+<p><strong>基本使用</strong>：</p>
+<p><img src="/../../images/image-20250219144244991.png" alt="image-20250219144244991"></p>
+<h5 id="我的使用："><a href="#我的使用：" class="headerlink" title="我的使用："></a>我的使用：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import &#123; Parser &#125; from &#x27;htmlparser2&#x27;</span><br><span class="line"> const richTextToPlainText = (html: string): string =&gt; &#123;</span><br><span class="line">    let text = &#x27;&#x27;</span><br><span class="line">    const parser = new Parser(&#123;</span><br><span class="line">      ontext: (data) =&gt; &#123;</span><br><span class="line">        text += data // 收集纯文本</span><br><span class="line">      &#125;,</span><br><span class="line">      onopentag: (name) =&gt; &#123;</span><br><span class="line">        if (name === &#x27;img&#x27;) &#123;</span><br><span class="line">          text += &#x27;【图片】&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">        if (name === &#x27;video&#x27; || name === &#x27;iframe&#x27;) &#123;</span><br><span class="line">          text += &#x27;【视频】&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    parser.write(html)</span><br><span class="line">    parser.end()</span><br><span class="line">    return text</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="演示："><a href="#演示：" class="headerlink" title="演示："></a>演示：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const html = &#x27;&lt;p&gt;Hello, &lt;img src=&quot;image.jpg&quot; /&gt;world!&lt;/p&gt;&amp;lt;video src=&quot;video.mp4&quot;&amp;gt;&amp;lt;/video&amp;gt;&#x27;;</span><br><span class="line">const plainText = richTextToPlainText(html);</span><br><span class="line">console.log(plainText); // 输出: &quot;Hello, 【图片】world!【视频】&quot;</span><br></pre></td></tr></table></figure>
+
+<h5 id="流式输入"><a href="#流式输入" class="headerlink" title="流式输入"></a>流式输入</h5><p><img src="/../../images/image-20250219144435635.png" alt="image-20250219144435635"></p>
+<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>由于是react开发，可以使用dangerouslySetInnerHTML属性。但需要注意，尽管能满足将数据成功放到页面上，但这样做存在安全风险，并且也不符合让文本规范化，所以pass了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line">function MyComponent() &#123;</span><br><span class="line">  const htmlString = &#x27;&lt;strong&gt;HTML tags in React&lt;/strong&gt;&#x27;;</span><br><span class="line">  return &lt;div&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法三："><a href="#方法三：" class="headerlink" title="方法三："></a>方法三：</h4><p><strong>使用正则表达式</strong>进行提取，但不够健壮，对于复杂的 HTML 文档可能会出现错误或无法正确提取的情况。</p>
+<h4 id="方法四："><a href="#方法四：" class="headerlink" title="方法四："></a>方法四：</h4><p>其他html解析库，如react-html-parser或html-react-parser。这些库能够将HTML字符串解析为React元素，并可选择对其进行处理或转换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        javascript复制代码import React from &#x27;react&#x27;;</span><br><span class="line">import ReactHtmlParser from &#x27;react-html-parser&#x27;;</span><br><span class="line">function MyComponent() &#123;</span><br><span class="line">  const htmlString = &#x27;&lt;div&gt;This is an HTML string&lt;/div&gt;&#x27;;</span><br><span class="line">  return &lt;div&gt;&#123;ReactHtmlParser(htmlString)&#125;&lt;/div&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/02/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%A4%8D%E4%B9%A0ppt%E6%A2%B3%E7%90%86/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/02/19/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/RSC/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

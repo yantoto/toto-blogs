@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Jan 4, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>解释一下哈，scss和less都是css的预编译器，都对css进行了升级。</p>
+<p><strong>1. 使用className设置样式(CSS的其他选择器也是同理)</strong></p>
+<ul>
+<li>定义一个CSS文件style.css,和普通CSS一样定义class选择器</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.sty1&#123;//和普通CSS一样定义class选择器  </span><br><span class="line">       background-color: red;  </span><br><span class="line">       color: white;  </span><br><span class="line">       font-size: 40px;  </span><br><span class="line">   &#125;  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在JSX中导入编写好的CSS文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;./style.css&#x27;;  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JSX的调用</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=&quot;sty1&quot;&gt;看背景颜色和文字颜色&lt;/div&gt; </span><br></pre></td></tr></table></figure>
+
+<p><strong>说明</strong>：<strong>id选择器也是同理,由于React使用ES6编写代码,而ES6又有<code>class</code>的概念,所以为了不混淆<code>class</code>选择器在React中写成了<code>className</code></strong><br> 可能你在看别人的代码的时候可能看到以下代码,这个是通过<strong>CSS Modules</strong>的写法</p>
+<ul>
+<li>定义一个CSS文件styleother.css,和普通CSS一样定义class选择器</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.sty2&#123;//和普通CSS一样定义class选择器  </span><br><span class="line">        background-color: red;  </span><br><span class="line">        color: white;  </span><br><span class="line">        font-size: 40px;  </span><br><span class="line">    &#125;  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在JSX中导入编写好的CSS文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import StyleOther from  &#x27;./styleother.css&#x27;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JSX的调用</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=&#123;StyleOther.sty2&#125;&gt;看背景颜色和文字颜色&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>说明</strong>：使用这种方式也是可以的,只是你需要修改你的webpack的config文件,将<code>loader: &quot;style!css&quot;</code>修改为<code>loader: &quot;style!css?modules&quot;</code>,在css后面加一个modules,不过这两种方式是不能同时存在的,因为加了modules</p>
+<p><strong>2. 使用React的行内样式样式设置样式</strong></p>
+<ul>
+<li>在JSX文件中定义样式变量,和定义普通的对象变量一样</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let backAndTextColor = &#123;  </span><br><span class="line">       backgroundColor:&#x27;red&#x27;,  </span><br><span class="line">       color:&#x27;white&#x27;,  </span><br><span class="line">       fontSize:40  </span><br><span class="line">   &#125;;  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JSX的调用</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&#123;backAndTextColor&#125;&gt;看背景颜色和文字颜色&lt;/div&gt;  </span><br></pre></td></tr></table></figure>
+
+<p>当然你也可以不定义一个变量,直接写到JSX中,如下代码所示:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&#123;&#123;backgroundColor:&#x27;red&#x27;,color:&#x27;white&#x27;,fontSize:40&#125;&#125;&gt;看背景颜色和文字颜色&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析</strong>：<code>style=&#123;&#125;</code>,这里的{}里面放的是对象,不管你是定义一个对象然后使用,还是直接在里面写对象都是可以的,甚至可以写成下面的样子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">style=&#123;this.getInputStyles()&#125;  </span><br><span class="line">   getInputStyles方法根据不同的状态返回不同的样式  </span><br><span class="line">   getInputStyles() &#123;  </span><br><span class="line">       let styleObj;  </span><br><span class="line">       if (this.state.focused == true) &#123;  </span><br><span class="line">           styleObj = &#123;outlineStyle: &#x27;none&#x27;&#125;;  </span><br><span class="line">       &#125;  </span><br><span class="line">       return styleObj;  </span><br><span class="line">   &#125;  </span><br></pre></td></tr></table></figure>
+
+<p><strong>3. React行内样式扩展</strong> 在 React 中，行内样式并不是以字符串的形式出现，而是通过一个特定的样式对象来指定。在这个对象中，key 值是用驼峰形式表示的样式名，而其对应的值则是样式值，通常来说这个值是个字符串,如果是数字就不是字符串,不需要引号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var divStyle = &#123;  </span><br><span class="line">    color: &#x27;white&#x27;,  </span><br><span class="line">    backgroundImage: &#x27;url(&#x27; + imgUrl + &#x27;)&#x27;,  </span><br><span class="line">    WebkitTransition: &#x27;all&#x27;, // 注意这里的首字母&#x27;W&#x27;是大写  </span><br><span class="line">    msTransition: &#x27;all&#x27; // &#x27;ms&#x27;是唯一一个首字母需要小写的浏览器前缀  </span><br><span class="line">  &#125;;  </span><br></pre></td></tr></table></figure>
+
+<p>另外浏览器前缀除了ms以外首字母应该大写,所以这里的WebkitTransition的W是大写的。 当为内联样式指定一个像素值得时候， React 会在你的数字后面自动加上 “px” , 所以下面这样的写法是有效的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let backAndTextColor = &#123;  </span><br><span class="line">     backgroundColor:&#x27;red&#x27;,  </span><br><span class="line">     color:&#x27;white&#x27;,  </span><br><span class="line">     fontSize:40  </span><br><span class="line"> &#125;;  </span><br></pre></td></tr></table></figure>
+
+<p><strong>注释技巧</strong>：在React里注释不能用HTML的方式，那是木有用的。也不能直接用js的注释，那也是不行的。而是用大括号括起来，之后用&#x2F;**&#x2F;来注释,看起来是这样的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;/* 这是一个注释 */&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>作者：Evan_Chiu<br>链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904020285325325">https://juejin.cn/post/6844904020285325325</a><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/01/04/less-scss/less-scss-%E5%85%A5%E9%97%A8/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/01/04/git/git-%E5%9F%BA%E7%A1%80%E6%8E%A8%E6%8B%89/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

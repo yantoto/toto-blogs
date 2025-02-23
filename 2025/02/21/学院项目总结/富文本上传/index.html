@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Feb 21, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>场景：发布帖子需要实现富文本上传，界面如下：</p>
+<p><img src="/../../images/image-20250221094219031.png" alt="image-20250221094219031"></p>
+<p>步骤：</p>
+<p>在form表单中，引入封装好的富文本组件。</p>
+<p><img src="/../../images/image-20250221094313415.png" alt="image-20250221094313415"></p>
+<p>让我们来看看组件内部：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;use client&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useCallback, useEffect, useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Editor</span>, <span class="title class_">Toolbar</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@wangeditor/editor-for-react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">type</span> &#123; <span class="title class_">IDomEditor</span>, <span class="title class_">IEditorConfig</span>, <span class="title class_">IToolbarConfig</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@wangeditor/editor&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;@wangeditor/editor/dist/css/style.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">&#x27;./index.pc.module.scss&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">type</span> &#123; <span class="title class_">UploadFileParamsType</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;../UploadCollegeOss/service&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; uploadCollegeOssFile &#125; <span class="keyword">from</span> <span class="string">&#x27;../UploadCollegeOss/service&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; createMessage &#125; <span class="keyword">from</span> <span class="string">&#x27;@/components&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">type</span> &#123; <span class="title class_">RcFile</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;antd/lib/upload&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">RichTextEditorProps</span> &#123;</span><br><span class="line">  value?: <span class="built_in">string</span></span><br><span class="line">  onChange?: <span class="function">(<span class="params"><span class="attr">value</span>: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span></span><br><span class="line">  overClassName?: <span class="built_in">string</span></span><br><span class="line">  placeholder?: <span class="built_in">string</span></span><br><span class="line">  toolbarKeys?: <span class="built_in">string</span>[]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">RichTextEditor</span>: <span class="title class_">React</span>.<span class="property">FC</span>&lt;<span class="title class_">RichTextEditorProps</span>&gt; = <span class="function">(<span class="params">&#123;</span></span></span><br><span class="line"><span class="params"><span class="function">  value = <span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">  onChange,</span></span></span><br><span class="line"><span class="params"><span class="function">  overClassName = <span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">  placeholder = <span class="string">&#x27;请输入内容&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">  toolbarKeys,</span></span></span><br><span class="line"><span class="params"><span class="function">&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [editor, setEditor] = useState&lt;<span class="title class_">IDomEditor</span> | <span class="literal">null</span>&gt;(<span class="literal">null</span>) <span class="comment">// 存储编辑器实例</span></span><br><span class="line">  <span class="keyword">const</span> [html, setHtml] = useState&lt;<span class="built_in">string</span>&gt;(value) <span class="comment">// 富文本内容</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleEditorCreated</span> = (<span class="params"><span class="attr">editorInstance</span>: <span class="title class_">IDomEditor</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setEditor</span>(editorInstance)</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      editorInstance.<span class="title function_">blur</span>()</span><br><span class="line">    &#125;, <span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 上传文件到富文本</span></span><br><span class="line">  <span class="keyword">const</span> uploadFileToEditor = <span class="title function_">useCallback</span>(</span><br><span class="line">    <span class="title function_">async</span> (</span><br><span class="line">      <span class="attr">fileInfo</span>: <span class="title class_">UploadFileParamsType</span>,</span><br><span class="line">      <span class="attr">callbackConfig</span>: &#123;</span><br><span class="line">        <span class="attr">onSuccess</span>: <span class="function">(<span class="params"><span class="attr">url</span>: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span></span><br><span class="line">        successTip?: <span class="built_in">string</span></span><br><span class="line">        onError?: <span class="function">(<span class="params"><span class="attr">error</span>: <span class="built_in">any</span></span>) =&gt;</span> <span class="built_in">void</span></span><br><span class="line">        <span class="attr">errorTip</span>: <span class="built_in">string</span></span><br><span class="line">      &#125;</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> <span class="title function_">uploadCollegeOssFile</span>(fileInfo).<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; data, code, msg &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (code === <span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">            <span class="comment">// 插入图片/视频到编辑器</span></span><br><span class="line">            callbackConfig.<span class="title function_">onSuccess</span>(data.<span class="property">fileLink</span>)</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="title function_">createMessage</span>(&#123; <span class="attr">children</span>: msg || callbackConfig.<span class="property">errorTip</span>, <span class="attr">mode</span>: <span class="string">&#x27;warning&#x27;</span> &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(callbackConfig.<span class="property">errorTip</span>, error)</span><br><span class="line">        callbackConfig?.<span class="property">onError</span>?.(error)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    []</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">setHtml</span>(value)</span><br><span class="line">  &#125;, [value, editor])</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 工具栏配置</span></span><br><span class="line">  <span class="keyword">const</span> <span class="attr">toolbarConfig</span>: <span class="title class_">Partial</span>&lt;<span class="title class_">IToolbarConfig</span>&gt; = &#123;</span><br><span class="line">    <span class="attr">toolbarKeys</span>: toolbarKeys || [</span><br><span class="line">      <span class="string">&#x27;headerSelect&#x27;</span>, <span class="comment">// 标题</span></span><br><span class="line">      <span class="string">&#x27;blockquote&#x27;</span>, <span class="comment">// 引用</span></span><br><span class="line">      <span class="comment">// &#x27;|&#x27;,</span></span><br><span class="line">      <span class="string">&#x27;bold&#x27;</span>, <span class="comment">// 加粗</span></span><br><span class="line">      <span class="string">&#x27;underline&#x27;</span>, <span class="comment">// 下划线</span></span><br><span class="line">      <span class="string">&#x27;italic&#x27;</span>, <span class="comment">// 斜体</span></span><br><span class="line">      <span class="string">&#x27;color&#x27;</span>, <span class="comment">// 文字颜色</span></span><br><span class="line">      <span class="string">&#x27;bgColor&#x27;</span>, <span class="comment">// 背景色</span></span><br><span class="line">      <span class="comment">// &#x27;|&#x27;,</span></span><br><span class="line">      <span class="string">&#x27;bulletedList&#x27;</span>, <span class="comment">// 无序列表</span></span><br><span class="line">      <span class="string">&#x27;numberedList&#x27;</span>, <span class="comment">// 有序列表</span></span><br><span class="line">      <span class="comment">// &#x27;|&#x27;,</span></span><br><span class="line">      <span class="string">&#x27;emotion&#x27;</span>, <span class="comment">// 表情</span></span><br><span class="line">      <span class="string">&#x27;insertLink&#x27;</span>, <span class="comment">// 插入链接</span></span><br><span class="line">      <span class="string">&#x27;uploadImage&#x27;</span>, <span class="comment">// 插入图片</span></span><br><span class="line">      <span class="string">&#x27;uploadVideo&#x27;</span>, <span class="comment">// 插入视频</span></span><br><span class="line">      <span class="comment">// &#x27;|&#x27;,</span></span><br><span class="line">      <span class="string">&#x27;codeBlock&#x27;</span>, <span class="comment">// 代码块</span></span><br><span class="line">      <span class="string">&#x27;divider&#x27;</span>, <span class="comment">// 分割线</span></span><br><span class="line">      <span class="comment">// &#x27;|&#x27;,</span></span><br><span class="line">      <span class="string">&#x27;undo&#x27;</span>, <span class="comment">// 撤销</span></span><br><span class="line">      <span class="string">&#x27;redo&#x27;</span>, <span class="comment">// 重做</span></span><br><span class="line">    ],</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 编辑器配置</span></span><br><span class="line">  <span class="keyword">const</span> <span class="attr">editorConfig</span>: <span class="title class_">Partial</span>&lt;<span class="title class_">IEditorConfig</span>&gt; = &#123;</span><br><span class="line">    placeholder,</span><br><span class="line">    <span class="attr">MENU_CONF</span>: &#123;</span><br><span class="line">      <span class="attr">uploadImage</span>: &#123;</span><br><span class="line">        <span class="keyword">async</span> <span class="title function_">customUpload</span>(<span class="params"><span class="attr">file</span>: <span class="title class_">RcFile</span>, <span class="attr">insertFn</span>: (url: <span class="built_in">string</span>) =&gt; <span class="built_in">void</span></span>) &#123;</span><br><span class="line">          <span class="keyword">await</span> <span class="title function_">uploadFileToEditor</span>(</span><br><span class="line">            &#123; file, <span class="attr">fileType</span>: <span class="string">&#x27;image&#x27;</span> &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">onSuccess</span>: insertFn,</span><br><span class="line">              <span class="attr">errorTip</span>: <span class="string">&#x27;图片上传失败&#x27;</span>,</span><br><span class="line">            &#125;</span><br><span class="line">          )</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">async</span> <span class="title function_">customPaste</span>(<span class="params"><span class="attr">file</span>: <span class="title class_">RcFile</span>, <span class="attr">insertFn</span>: (url: <span class="built_in">string</span>) =&gt; <span class="built_in">void</span></span>) &#123;</span><br><span class="line">          <span class="keyword">await</span> <span class="title function_">uploadFileToEditor</span>(</span><br><span class="line">            &#123; file, <span class="attr">fileType</span>: <span class="string">&#x27;image&#x27;</span> &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">onSuccess</span>: insertFn,</span><br><span class="line">              <span class="attr">errorTip</span>: <span class="string">&#x27;图片粘贴上传失败&#x27;</span>,</span><br><span class="line">            &#125;</span><br><span class="line">          )</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">uploadVideo</span>: &#123;</span><br><span class="line">        <span class="keyword">async</span> <span class="title function_">customUpload</span>(<span class="params"><span class="attr">file</span>: <span class="title class_">RcFile</span>, <span class="attr">insertFn</span>: (url: <span class="built_in">string</span>) =&gt; <span class="built_in">void</span></span>) &#123;</span><br><span class="line">          <span class="keyword">await</span> <span class="title function_">uploadFileToEditor</span>(</span><br><span class="line">            &#123; file, <span class="attr">fileType</span>: <span class="string">&#x27;video&#x27;</span> &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">onSuccess</span>: insertFn,</span><br><span class="line">              <span class="attr">errorTip</span>: <span class="string">&#x27;视频上传失败&#x27;</span>,</span><br><span class="line">            &#125;</span><br><span class="line">          )</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">async</span> <span class="title function_">customPaste</span>(<span class="params"><span class="attr">file</span>: <span class="title class_">RcFile</span>, <span class="attr">insertFn</span>: (url: <span class="built_in">string</span>) =&gt; <span class="built_in">void</span></span>) &#123;</span><br><span class="line">          <span class="keyword">await</span> <span class="title function_">uploadFileToEditor</span>(</span><br><span class="line">            &#123; file, <span class="attr">fileType</span>: <span class="string">&#x27;video&#x27;</span> &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">onSuccess</span>: insertFn,</span><br><span class="line">              <span class="attr">errorTip</span>: <span class="string">&#x27;视频粘贴上传失败&#x27;</span>,</span><br><span class="line">            &#125;</span><br><span class="line">          )</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 监听内容变化</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleChange</span> = (<span class="params"><span class="attr">editor</span>: <span class="title class_">IDomEditor</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> content = editor.<span class="title function_">getHtml</span>()</span><br><span class="line">    <span class="keyword">const</span> realContent = content === <span class="string">&#x27;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&#x27;</span> ? <span class="string">&#x27;&#x27;</span> : content</span><br><span class="line">    onChange?.(realContent)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (editor) &#123;</span><br><span class="line">        editor.<span class="title function_">destroy</span>()</span><br><span class="line">        <span class="title function_">setEditor</span>(<span class="literal">null</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [editor])</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;</span>`<span class="attr">w-full</span> $&#123;<span class="attr">styles</span>[&#x27;<span class="attr">editor</span>&#x27;]&#125; $&#123;<span class="attr">overClassName</span>&#125;`&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;/* 工具栏 */&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Toolbar</span> <span class="attr">editor</span>=<span class="string">&#123;editor&#125;</span> <span class="attr">defaultConfig</span>=<span class="string">&#123;toolbarConfig&#125;</span> <span class="attr">mode</span>=<span class="string">&quot;default&quot;</span> <span class="attr">className</span>=<span class="string">&quot;border-b&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;/* 编辑器 */&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Editor</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">defaultConfig</span>=<span class="string">&#123;editorConfig&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">value</span>=<span class="string">&#123;html&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">onCreated</span>=<span class="string">&#123;handleEditorCreated&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">onChange</span>=<span class="string">&#123;handleChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">mode</span>=<span class="string">&quot;default&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">className</span>=<span class="string">&quot;min-h-[200px] px-2&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">RichTextEditor</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.wangeditor.com/v5/getting-started.html#%E5%BC%95%E5%85%A5-css-%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F">https://www.wangeditor.com/v5/getting-started.html#%E5%BC%95%E5%85%A5-css-%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F</a></p>
+<p>具体细节可以看官网~这个库有详细说明。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/02/21/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/%E6%97%A0%E5%A4%B4%E5%83%8F%E5%B1%95%E7%A4%BA%E9%A6%96%E5%AD%97%E7%AC%A6/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/02/20/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/react%E5%B8%B8%E7%9C%8B/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

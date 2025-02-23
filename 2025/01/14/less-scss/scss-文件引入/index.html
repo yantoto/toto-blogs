@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Jan 14, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>在项目中，我们经常看到这样的项目结构：</p>
+<p><img src="/../../images/image-20250114143645918.png" alt="image-20250114143645918"></p>
+<p><img src="/../../images/image-20250114143717409.png" alt="image-20250114143717409"></p>
+<p>在page.tsx中，如下引入scss模版：</p>
+<p><img src="/../../images/image-20250114143749068.png" alt="image-20250114143749068"></p>
+<p>引入样式的使用如下：</p>
+<p><img src="/../../images/image-20250114143823521.png" alt="image-20250114143823521"></p>
+<p>那么，<strong>为什么要使用scss？又为什么要用这种引入方式？</strong></p>
+<p>原因：</p>
+<ol>
+<li><p><strong>模块化</strong>：通过<strong>模块化的方式</strong>引入样式，可以确保<strong>每个组件的样式是独立</strong>的，不会与其他组件的样式发生冲突。这在<strong>大型项目</strong>中尤为重要，<strong>因为不同组件可能会使用相同的类名，如果不进行模块化处理，这些类名可能会相互覆盖。</strong></p>
+</li>
+<li><p><strong>作用域隔离</strong>：使用 <strong>CSS Modules（即 <code>.module.scss</code> 文件），可以为每个组件生成唯一的类名</strong>，从而<strong>避免全局样式污染</strong>。这意味着你可以放心地使用通用类名而不必担心它们会意外地影响其他组件。</p>
+</li>
+<li><p><strong>编译支持</strong>：<code>.scss</code> 文件需要经过<strong>预处理器</strong>（如 Sass）的编译才能转换为标准的 CSS。通过这种方式引入，构建工具（如 Webpack、Next.js 等）会自动处理这些文件，将其编译为浏览器可以理解的 CSS。</p>
+</li>
+<li><p><strong>动态绑定</strong>：<strong>引入的 <code>styles</code> 对象是一个 JavaScript 对象，其中键是类名，值是编译后的类名。</strong>这使得你可以在 JSX 中动态绑定类名，例如：</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=&#123;styles.myClass&#125;&gt;Hello World&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 这样可以确保类名是唯一且正确的。</p>
+</li>
+<li><p><strong>热更新</strong>：在开发环境中，CSS Modules 通常支持热更新功能，这意味着当你修改 <code>.scss</code> 文件时，样式会立即反映在页面上，而<strong>无需手动刷新</strong>整个页面。</p>
+</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/01/14/git/git-%E4%B8%8B%E7%8F%AD%E8%AF%B4/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/01/14/git/git-commit%E5%89%8D%E7%BC%80%E8%A7%84%E8%8C%83/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

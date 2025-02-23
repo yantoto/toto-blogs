@@ -127,7 +127,9 @@
     </div>
 </div>
     <div class="post-content">
-    <h2 id="一-宏任务与微任务"><a href="#一-宏任务与微任务" class="headerlink" title="一.宏任务与微任务"></a>一.宏任务与微任务</h2><h3 id="1-宏任务（MacroTask）："><a href="#1-宏任务（MacroTask）：" class="headerlink" title="1.宏任务（MacroTask）："></a>1.宏任务（MacroTask）：</h3><ul>
+    <h2 id="一-宏任务与微任务"><a href="#一-宏任务与微任务" class="headerlink" title="一.宏任务与微任务"></a>一.宏任务与微任务</h2><p>微任务是异步的，包括Promise的回调函数，process.nextTick；</p>
+<p>宏任务是同步的,除了微任务都是宏任务。</p>
+<h3 id="1-宏任务（MacroTask）："><a href="#1-宏任务（MacroTask）：" class="headerlink" title="1.宏任务（MacroTask）："></a>1.宏任务（MacroTask）：</h3><ul>
 <li>定义：宏任务是消息队列（或称为回调队列）中的任务，这些任务由宿主环境（如浏览器或Node.js）提供，并通过事件循环不断从消息队列中取出并执行。</li>
 <li>特性：宏任务在执行时，不能获取到任务外的上下文。</li>
 <li>示例：包括整体代码（script，可以理解为外层同步代码）、setTimeout、setInterval、setImmediate（在IE或Node.js中）、requestAnimationFrame、I&#x2F;O、UI rendering、注册事件等</li>
@@ -224,11 +226,11 @@
 </li>
 <li><p>头部 unshift出 shift 入</p>
 </li>
-<li><p>分割slice(start,end) 不影响原数组 插入splice(start,last,a,b,c…）影响原数组，均不包括起始位置。个人觉得splice的作用就很广泛了，什么都可以干。</p>
+<li><p>分割slice(start,end) 不影响原数组 插入<strong>splice</strong>(start,last,a,b,c…）影响原数组，均不包括起始位置。个人觉得splice的作用就很广泛了，什么都可以干。</p>
 </li>
 <li><p>filter（fn）,改变原数组，fn返回符合条件的数组；</p>
 </li>
-<li><p>map ( fn ) 遍历数组，返回新数组</p>
+<li><p>map ( fn ) 遍历数组，返回新数组【filter返回时数组长度改变，但元素内容不变，map返回时数组长度不变，但内容改变】</p>
 </li>
 <li><p>sort (fn) 改变原数组，若返回的值是正数，交换位置</p>
 </li>
@@ -253,9 +255,15 @@
 </li>
 </ol>
 <h2 id="六-项目中的问题"><a href="#六-项目中的问题" class="headerlink" title="六.项目中的问题"></a>六.项目中的问题</h2><h4 id="1-首次进入页面加载慢，出现默认样式"><a href="#1-首次进入页面加载慢，出现默认样式" class="headerlink" title="1.首次进入页面加载慢，出现默认样式"></a>1.首次进入页面加载慢，出现默认样式</h4><ol>
-<li><strong>CSS 动画&#x2F;过渡</strong>:<br> 如果问题是你希望页面以某种动画方式平滑地出现，而不是突然地完全显示，你可以使用 Vue 的 <code>&lt;transition&gt;</code> 组件和 CSS 动画&#x2F;过渡来实现。这不会等待 CSS 加载完成，但可以提供更好的用户体验。</li>
-<li><strong>骨架屏（Skeleton Screens）或加载指示器</strong>:<br> 最后，一个常见的做法是在页面加载时使用骨架屏或加载指示器来隐藏页面的实际内容，直到所有数据（包括 CSS）都加载完成。这样，用户就会看到一个加载中的动画或占位符，而不是页面的“半成品”状态。当所有数据都加载完成后，你可以隐藏加载指示器并显示页面的实际内容。</li>
-<li><strong>使用 CSS 加载器（如 loadCSS）</strong>:<br> 你可以使用像 <code>loadCSS</code> 这样的库来异步加载 CSS，并在加载完成后通过回调或事件来触发页面的显示。但是，这种方法主要用于非阻塞 CSS 的加载，而不是等待 CSS 加载后再渲染页面。</li>
+<li><p><strong>CSS 动画&#x2F;过渡</strong>:</p>
+<p> 如果问题是你希望页面以某种动画方式平滑地出现，而不是突然地完全显示，你可以使用 Vue 的 <code>&lt;transition&gt;</code> 组件和 CSS 动画&#x2F;过渡来实现。这不会等待 CSS 加载完成，但可以提供更好的用户体验。</p>
+</li>
+<li><p><strong>骨架屏（Skeleton Screens）或加载指示器</strong>:</p>
+<p> 最后，一个常见的做法是在页面加载时使用骨架屏或加载指示器来隐藏页面的实际内容，直到所有数据（包括 CSS）都加载完成。这样，用户就会看到一个加载中的动画或占位符，而不是页面的“半成品”状态。当所有数据都加载完成后，你可以隐藏加载指示器并显示页面的实际内容。</p>
+</li>
+<li><p><strong>使用 CSS 加载器（如 loadCSS）</strong>:</p>
+<p> 你可以使用像 <code>loadCSS</code> 这样的库来异步加载 CSS，并在加载完成后通过回调或事件来触发页面的显示。但是，这种方法主要用于非阻塞 CSS 的加载，而不是等待 CSS 加载后再渲染页面。</p>
+</li>
 <li></li>
 </ol>
 <h2 id="七-面经"><a href="#七-面经" class="headerlink" title="七.面经"></a>七.面经</h2><h3 id="1-CSS怎么解析选择器"><a href="#1-CSS怎么解析选择器" class="headerlink" title="1.CSS怎么解析选择器"></a>1.CSS怎么解析选择器</h3><ol>
@@ -290,7 +298,9 @@
 <li>应用样式到元素</li>
 </ol>
 <ul>
-<li>最后，浏览器将计算出的样式应用到匹配的元素上。这包括改变元素的外观（如颜色、字体、布局等）以及触发任何与样式更改相关的行为（如动画、过渡等）。</li>
+<li><p>最后，浏览器将计算出的样式应用到匹配的元素上。这包括改变元素的外观（如颜色、字体、布局等）以及触发任何与样式更改相关的行为（如动画、过渡等）。</p>
+<p>总结：解析css规则 解析css选择器 匹配css选择器到dom元素 计算样式 应用样式到dom元素</p>
+</li>
 </ul>
 <h3 id="2-V8解析执行JavaScript代码过程"><a href="#2-V8解析执行JavaScript代码过程" class="headerlink" title="2.V8解析执行JavaScript代码过程"></a>2.V8解析执行JavaScript代码过程</h3><p>词法分析 语法分析 语法规则检测 生成字节码 执行字节码 优化和编译机器代码 垃圾回收机制</p>
 <ol>
@@ -301,47 +311,67 @@
 </ul>
 </li>
 <li><p>语义分析（Semantic Analysis）</p>
-<ul>
-<li>在语法分析之后，V8 会检查 AST 是否符合 JavaScript 语言的语义规则。例如，它会检查变量是否在使用前已声明，函数参数的数量是否正确等。</li>
-</ul>
-</li>
-<li><p>生成字节码（Generate Bytecode）</p>
-<ul>
-<li>接下来，V8 的 Ignition 解释器会将 AST 转换为字节码（bytecode）。字节码是介于源代码和机器代码之间的一种中间表示形式。与直接生成机器代码相比，生成字节码可以更快地完成，并且允许后续的优化。</li>
-</ul>
-</li>
-<li><p>执行字节码</p>
-<ul>
-<li>Ignition 解释器执行字节码。与许多传统的解释器一样，它逐个执行字节码指令。但是，由于 V8 的优化技术，这个过程通常比传统的解释器要快得多。</li>
-</ul>
-</li>
-<li><p>优化和编译为机器代码（Optimization and Compilation to Machine Code）</p>
-<ul>
-<li>如果 V8 检测到某个函数被频繁调用（即它是“热”的），它会启动 TurboFan 编译器。TurboFan 是一个基于 JIT（Just-In-Time）编译的编译器，它将字节码编译为高效的机器代码。</li>
-<li>TurboFan 使用各种优化技术来生成更高效的机器代码，包括内联（inlining）、死代码消除（dead code elimination）、循环展开（loop unrolling）等。</li>
-<li>编译后的机器代码会存储在 V8 的代码缓存中，以便后续快速执行。</li>
-</ul>
-</li>
-<li><p>垃圾回收（Garbage Collection）</p>
-<ul>
-<li>V8 还包括一个高效的垃圾回收器，用于管理 JavaScript 对象占用的内存。当不再需要某个对象时，垃圾回收器会释放其占用的内存。</li>
-</ul>
-</li>
-<li><p>其他优化</p>
-<ul>
-<li>V8 还包括许多其他优化技术，如隐藏类（hidden classes）用于优化对象属性的访问，内联缓存（inline caches）用于加速属性查找等。</li>
-</ul>
 </li>
 </ol>
+<p>​	</p>
+<pre><code>- 在语法分析之后，V8 会检查 AST 是否符合 JavaScript 语言的语义规则。例如，它会检查变量是否在使用前已声明，函数参数的数量是否正确等。
+</code></pre>
+<ol start="3">
+<li>生成字节码（Generate Bytecode）</li>
+</ol>
+<p>​	</p>
+<pre><code>- 接下来，V8 的 Ignition 解释器会将 AST 转换为字节码（bytecode）。字节码是介于源代码和机器代码之间的一种中间表示形式。与直接生成机器代码相比，生成字节码可以更快地完成，并且允许后续的优化。
+</code></pre>
+<ol start="4">
+<li>执行字节码</li>
+</ol>
+<p>​	</p>
+<pre><code>- Ignition 解释器执行字节码。与许多传统的解释器一样，它逐个执行字节码指令。但是，由于 V8 的优化技术，这个过程通常比传统的解释器要快得多。
+</code></pre>
+<ol start="5">
+<li>优化和编译为机器代码（Optimization and Compilation to Machine Code）</li>
+</ol>
+<p>​	</p>
+<pre><code>- 如果 V8 检测到某个函数被频繁调用（即它是“热”的），它会启动 TurboFan 编译器。TurboFan 是一个基于 JIT（Just-In-Time）编译的编译器，它将字节码编译为高效的机器代码。
+- TurboFan 使用各种优化技术来生成更高效的机器代码，包括内联（inlining）、死代码消除（dead code elimination）、循环展开（loop unrolling）等。
+- 编译后的机器代码会存储在 V8 的代码缓存中，以便后续快速执行。
+</code></pre>
+<ol start="6">
+<li>垃圾回收（Garbage Collection）</li>
+</ol>
+<p>​	</p>
+<pre><code>- V8 还包括一个高效的垃圾回收器，用于管理 JavaScript 对象占用的内存。当不再需要某个对象时，垃圾回收器会释放其占用的内存。
+</code></pre>
+<ol start="7">
+<li>其他优化</li>
+</ol>
+<p>​	</p>
+<pre><code>- V8 还包括许多其他优化技术，如隐藏类（hidden classes）用于优化对象属性的访问，内联缓存（inline caches）用于加速属性查找等。
+</code></pre>
 <p>注意，上述过程是一个高级概述，V8 的内部实现更加复杂。而且，随着时间的推移，V8 的开发者会不断改进和优化这些过程，以提高性能。</p>
+<p>词法分析（将源码转换为字符流）</p>
+<p>语法分析（将字符流转换为AST抽象语法树）</p>
+<p>语义分析（会根据js规则检查js的代码编写）</p>
+<p>生成为字节码（与直接生成机器代码相比，生成字节码可以更快地完成，并且允许后续的优化。）</p>
+<p>【优化和编译为机器代码】（中途若检测到有的函数反复调用，编译为机器代码，运行速度更快）</p>
+<p>执行字节码</p>
+<p>垃圾回收机制</p>
 <h3 id="3-什么情况会脱离文档流"><a href="#3-什么情况会脱离文档流" class="headerlink" title="3.什么情况会脱离文档流"></a>3.什么情况会脱离文档流</h3><ol>
-<li><strong>浮动（Float）</strong>：<br> 当元素设置了 <code>float</code> 属性（如 <code>float: left;</code> 或 <code>float: right;</code>）时，它会脱离文档流，向左或向右浮动，使文本或内联元素环绕它。浮动元素不会占据文档流中的空间，而是处于浮动状态。</li>
-<li><strong>绝对定位（Absolute Positioning）</strong>：<br> 当元素的 <code>position</code> 属性设置为 <code>absolute</code> 时，它会脱离文档流并相对于其最近的已定位祖先元素（而不是正常的文档流）进行定位。如果没有已定位的祖先元素，那么它会相对于初始包含块进行定位。绝对定位的元素不会占据文档流中的空间。</li>
-<li><strong>固定定位（Fixed Positioning）</strong>：<br> 与绝对定位类似，当元素的 <code>position</code> 属性设置为 <code>fixed</code> 时，它会脱离文档流并相对于浏览器窗口进行定位。无论页面如何滚动，固定定位的元素都会保持在同一的位置。</li>
-<li><strong>Flexbox 和 Grid 布局</strong>：<br> 虽然 Flexbox 和 Grid 布局系统本身并不直接导致元素脱离文档流，但它们提供了更高级的布局控制，允许元素在容器内部以不同于常规文档流的方式排列和对齐。然而，在这些布局中，元素仍然属于其容器，并且受到容器尺寸和布局的约束。</li>
+<li><p><strong>浮动（Float）</strong>：</p>
+<p> 当元素设置了 <code>float</code> 属性（如 <code>float: left;</code> 或 <code>float: right;</code>）时，它会脱离文档流，向左或向右浮动，使文本或内联元素环绕它。浮动元素不会占据文档流中的空间，而是处于浮动状态。</p>
+</li>
+<li><p><strong>绝对定位（Absolute Positioning）</strong>：</p>
+<p> 当元素的 <code>position</code> 属性设置为 <code>absolute</code> 时，它会脱离文档流并相对于其最近的已定位祖先元素（而不是正常的文档流）进行定位。如果没有已定位的祖先元素，那么它会相对于初始包含块进行定位。绝对定位的元素不会占据文档流中的空间。</p>
+</li>
+<li><p><strong>固定定位（Fixed Positioning）</strong>：</p>
+<p> 与绝对定位类似，当元素的 <code>position</code> 属性设置为 <code>fixed</code> 时，它会脱离文档流并相对于浏览器窗口进行定位。无论页面如何滚动，固定定位的元素都会保持在同一的位置。</p>
+</li>
+<li><p><strong>Flexbox 和 Grid 布局</strong>：</p>
+<p> 虽然 Flexbox 和 Grid 布局系统本身并不直接导致元素脱离文档流，但它们提供了更高级的布局控制，允许元素在容器内部以不同于常规文档流的方式排列和对齐。然而，在这些布局中，元素仍然属于其容器，并且受到容器尺寸和布局的约束。</p>
+</li>
 </ol>
 <p>当元素脱离文档流时，它们在文档中的位置将由其他属性（如 <code>top</code>、<code>right</code>、<code>bottom</code>、<code>left</code>）或相对于其他元素（在绝对或固定定位的情况下）来确定。脱离文档流的元素不会影响或受到周围文档流中元素的影响。</p>
-<h3 id="4-怎么形成BFC"><a href="#4-怎么形成BFC" class="headerlink" title="4.怎么形成BFC"></a>4.怎么形成BFC</h3><p>我把他理解为脱离文档流后对的布局</p>
+<h3 id="4-怎么形成BFC"><a href="#4-怎么形成BFC" class="headerlink" title="4.怎么形成BFC"></a>4.怎么形成BFC</h3><p>我把他理解为脱离文档流后的布局</p>
 <p>BFC（Block Formatting Context）是W3C CSS 2.1规范中的一个概念，它指的是页面中的一块渲染区域，这块区域拥有一套自己的渲染规则，能够决定子元素在页面的定位以及和其他元素的相互作用。要形成一个BFC，可以通过以下几种方式：</p>
 <ol>
 <li><strong>浮动元素</strong>：当元素的<code>float</code>属性值不为<code>none</code>时（即<code>left</code>或<code>right</code>），会创建BFC。</li>
@@ -350,18 +380,34 @@
 <li>**元素的<code>position</code>为<code>absolute</code>或<code>fixed</code>**：当元素的定位方式为绝对定位或固定定位时，会创建BFC。</li>
 </ol>
 <p>BFC的一个主要特性是它会阻止垂直外边距折叠。只有同属于一个BFC时，两个元素才有可能发生垂直margin的重叠。如果两个元素不希望发生垂直margin的重叠，可以将它们分别放在两个BFC中。</p>
+<p>触发BFC的情况：浮动 、 定位 、overflow、dispaly（前面的我都懂，这玩意儿为啥？）</p>
 <h3 id="5-ES6新特性"><a href="#5-ES6新特性" class="headerlink" title="5.ES6新特性"></a>5.ES6新特性</h3><p>set map  Symbol 箭头函数 Promise let const 本地存储 块级作用域 解构赋值 类和模块 迭代器与生成器 默认参数 扩展运算符 模板字符串</p>
 <p>ES6（ECMAScript 2015）引入了许多新特性和语法改进，以下是一些主要的ES6新特性：</p>
 <ol>
-<li><strong>块级作用域</strong>：通过<code>let</code>和<code>const</code>关键字可以在块级作用域中声明变量。在ES5中，只有函数作用域和全局作用域，这可能导致变量污染和意外的变量覆盖。</li>
-<li><strong>箭头函数</strong>：箭头函数提供了一种新的函数声明方式，使用箭头(<code>=&gt;</code>)取代了传统的<code>function</code>关键字。箭头函数没有自己的<code>this</code>、<code>arguments</code>、<code>super</code>或<code>new.target</code>，这些值由外围的正常函数值提供。</li>
-<li><strong>解构赋值</strong>：这是一种从数组或对象中提取值并赋值给变量的语法。它允许你以一种更简洁、更语义化的方式访问对象的属性和数组的元素。</li>
-<li><strong>默认参数</strong>：ES6引入了函数的默认参数，允许在函数定义时为参数提供默认值。如果函数调用时没有提供参数，那么将使用默认值。</li>
-<li><strong>扩展运算符</strong>：扩展运算符（<code>...</code>）可以将数组或对象展开，提取出其中的元素或属性。这在复制数组、合并对象等方面非常有用。</li>
-<li><strong>模板字符串</strong>：模板字符串允许你嵌入表达式，并通过<code>$&#123;&#125;</code>来访问JavaScript变量的值。这使得字符串拼接和插入变量值变得更加简洁和易读。</li>
-<li><strong>类和模块</strong>：ES6引入了类的概念，这是一种更面向对象的方式来组织代码。同时，ES6也支持模块化的导入和导出，使得代码的组织和复用更加灵活和方便。</li>
-<li><strong>迭代器和生成器</strong>：迭代器允许你遍历集合（如数组、Map、Set等）的元素，而生成器则是一种返回迭代器的函数。它们提供了一种更灵活、更可控制的方式来处理集合数据。</li>
-<li><strong>Promise对象</strong>：Promise是一种表示异步操作最终完成或失败的对象。它提供了一种更优雅的方式来处理异步操作，避免了回调地狱等问题。</li>
+<li><p><strong>块级作用域</strong>：通过<code>let</code>和<code>const</code>关键字可以在块级作用域中声明变量。在ES5中，只有函数作用域和全局作用域，这可能导致变量污染和意外的变量覆盖。</p>
+<p> 原来只有var的情况可能会导致变量提升，导致意外的变量覆盖，let、const需要注意的就是先定义再使用</p>
+</li>
+<li><p><strong>箭头函数</strong>：箭头函数提供了一种新的函数声明方式，使用箭头(<code>=&gt;</code>)取代了传统的<code>function</code>关键字。箭头函数没有自己的<code>this</code>、<code>arguments</code>、<code>super</code>或<code>new.target</code>，这些值由外围的正常函数值提供。</p>
+<p> 除了写法更简单，他另一个特点是没有自己的this&#x2F;argument、super等，由外层正常函数提供</p>
+</li>
+<li><p><strong>解构赋值</strong>：这是一种从数组或对象中提取值并赋值给变量的语法。它允许你以一种更简洁、更语义化的方式访问对象的属性和数组的元素。</p>
+<p> 常用于提取对象里面的特定数据进行渲染，比如在react的prop对象中可以进行解构，在子组件中直接使用解构出的值</p>
+</li>
+<li><p><strong>默认参数</strong>：ES6引入了函数的默认参数，允许在函数定义时为参数提供默认值。如果函数调用时没有提供参数，那么将使用默认值。</p>
+<p> 比如在react的prop对象中，就可以定义它的初始值</p>
+</li>
+<li><p><strong>扩展运算符</strong>：扩展运算符（<code>...</code>）可以将数组或对象展开，提取出其中的元素或属性。这在复制数组、合并对象等方面非常有用。</p>
+<p> 主要就用于根据已有对象拷贝一个新的一样的对象，但外层包裹不同，常用的地方是react里更新useState定义的数据。</p>
+</li>
+<li><p><strong>模板字符串</strong>：模板字符串允许你嵌入表达式，并通过<code>$&#123;&#125;</code>来访问JavaScript变量的值。这使得字符串拼接和插入变量值变得更加简洁和易读。</p>
+<p> 我用的比较多的是路由跳转携带参数的时候</p>
+</li>
+<li><p><strong>类和模块</strong>：ES6引入了类的概念，这是一种更面向对象的方式来组织代码。同时，ES6也支持模块化的导入和导出，使得代码的组织和复用更加灵活和方便。</p>
+</li>
+<li><p><strong>迭代器和生成器</strong>：迭代器允许你遍历集合（如数组、Map、Set等）的元素，而生成器则是一种返回迭代器的函数。它们提供了一种更灵活、更可控制的方式来处理集合数据。</p>
+</li>
+<li><p><strong>Promise对象</strong>：Promise是一种表示异步操作最终完成或失败的对象。它提供了一种更优雅的方式来处理异步操作，避免了回调地狱等问题。</p>
+</li>
 </ol>
 <p>除了以上这些主要的新特性外，ES6还引入了许多其他的新特性和语法改进，如<code>Map</code>、<code>Set</code>、<code>Symbol</code>等新的数据结构，以及<code>for...of</code>循环、<code>Array.prototype.includes()</code>等新的语法和API。这些新特性和改进使得JavaScript代码更加简洁、易读和强大。</p>
 <h3 id="6-ES6新增什么作用域，之前有什么作用域"><a href="#6-ES6新增什么作用域，之前有什么作用域" class="headerlink" title="6.ES6新增什么作用域，之前有什么作用域"></a>6.ES6新增什么作用域，之前有什么作用域</h3><p><strong>ES6新增了块级作用域</strong>，这是通过<code>let</code>和<code>const</code>关键字来实现的。在ES6之前，JavaScript只有全局作用域和函数作用域两种。</p>
@@ -407,7 +453,8 @@
 <li>大型企业官网：提升企业形象和用户体验。</li>
 </ul>
 <p>总之，CDN 通过将内容分发至全球各地的 CDN 节点，实现就近访问和缓存，从而提高了网站的访问速度和可用性，是提升网站性能的重要工具之一。</p>
-<h3 id="8-http2-0"><a href="#8-http2-0" class="headerlink" title="8.http2.0"></a>8.http2.0</h3><p>HTTP&#x2F;2.0（原名HTTP&#x2F;2.0）即超文本传输协议2.0，是下一代HTTP协议，由互联网工程任务组（IETF）的Hypertext Transfer Protocol Bis（httpbis）工作小组进行开发，是自1999年HTTP 1.1发布后的首个更新。HTTP 2.0在2013年8月进行了首次合作共事性测试。以下是关于HTTP 2.0的主要特点和优势：</p>
+<h3 id="8-http2-0"><a href="#8-http2-0" class="headerlink" title="8.http2.0"></a>8.http2.0</h3><p>超文本传输协议2.0</p>
+<p>HTTP&#x2F;2.0（原名HTTP&#x2F;2.0）即超文本传输协议2.0，是下一代HTTP协议，由互联网工程任务组（IETF）的Hypertext Transfer Protocol Bis（httpbis）工作小组进行开发，是自1999年HTTP 1.1发布后的首个更新。HTTP 2.0在2013年8月进行了首次合作共事性测试。以下是关于HTTP 2.0的主要特点和优势：</p>
 <ol>
 <li>多路复用：HTTP&#x2F;2.0允许同时发送多个请求和响应，而不是像HTTP&#x2F;1.1一样只能一个一个地处理。这样可以减少延迟，提高效率，提高网络吞吐量。</li>
 <li>二进制传输：HTTP&#x2F;2.0使用二进制协议，与HTTP&#x2F;1.1使用的文本协议不同。二进制协议可以更快地解析，更有效地传输数据，减少了传输过程中的开销和延迟。</li>
@@ -474,7 +521,8 @@
 <p>需要注意的是，虽然TCP和UDP在设计和应用场景上有所不同，但在实际应用中，它们并不是完全独立的。很多应用会同时使用TCP和UDP来满足不同的需求。例如，一个在线游戏可能使用UDP来传输实时游戏数据，而使用TCP来传输游戏设置和更新信息。</p>
 <h2 id="八-哪些数据可以继承"><a href="#八-哪些数据可以继承" class="headerlink" title="八.哪些数据可以继承"></a>八.哪些数据可以继承</h2><p>在CSS中，一些属性是可以从父元素继承到子元素的。这些属性主要涉及到文本的样式和字体的设置。以下是一些可以继承的CSS属性：</p>
 <ol>
-<li><strong>字体系列属性</strong>：<ul>
+<li><p><strong>字体系列属性</strong>：</p>
+<ul>
 <li><code>font</code></li>
 <li><code>font-family</code></li>
 <li><code>font-weight</code></li>
@@ -485,7 +533,8 @@
 <li><code>font-size-adjust</code></li>
 </ul>
 </li>
-<li><strong>文本系列属性</strong>（对于内联元素）：<ul>
+<li><p><strong>文本系列属性</strong>（对于内联元素）：</p>
+<ul>
 <li><code>text-decoration</code></li>
 <li><code>text-align</code></li>
 <li><code>letter-spacing</code></li>
@@ -497,19 +546,22 @@
 <li><code>direction</code></li>
 </ul>
 </li>
-<li><strong>块级元素和终端块状元素</strong>：<ul>
+<li><p><strong>块级元素和终端块状元素</strong>：</p>
+<ul>
 <li><code>text-indent</code></li>
 <li><code>text-align</code></li>
 </ul>
 </li>
-<li><strong>列表元素</strong>：<ul>
+<li><p><strong>列表元素</strong>：</p>
+<ul>
 <li><code>list-style</code></li>
 <li><code>list-style-type</code></li>
 <li><code>list-style-position</code></li>
 <li><code>list-style-image</code></li>
 </ul>
 </li>
-<li><strong>其他</strong>：<ul>
+<li><p><strong>其他</strong>：</p>
+<ul>
 <li><code>visibility</code></li>
 <li><code>cursor</code></li>
 </ul>
@@ -708,6 +760,7 @@
 <li><p>在Vue组件中，您需要确保它们可以在服务器端和客户端都能运行。这通常意味着您需要避免在组件的<code>created</code>、<code>mounted</code>等生命周期钩子中执行依赖于DOM的操作，因为这些操作在服务器端是不可用的。</p>
 </li>
 </ol>
+<p>​	</p>
 <p>为了克服这些挑战，开发者需要根据项目的具体需求、技术栈和框架来选择合适的SSR实现方案，并综合考虑性能、开发体验、部署成本和维护复杂度等因素来做出决策。例如，一些前端框架（如Next.js、Nuxt.js等）提供了内置的SSR功能，可以更方便地实现SSR，并优化开发体验和性能。</p>
 <h2 id="十五-性能优化"><a href="#十五-性能优化" class="headerlink" title="十五.性能优化"></a>十五.性能优化</h2><h3 id="首屏加载优化"><a href="#首屏加载优化" class="headerlink" title="首屏加载优化"></a>首屏加载优化</h3><p>SSR 终极方案</p>
 <p>思路：什么原因导致加载慢?</p>

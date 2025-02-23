@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Feb 8, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h3 id="2-08-2-10"><a href="#2-08-2-10" class="headerlink" title="2.08~2.10"></a>2.08~2.10</h3><p>1.获取帖子需要发帖者的头像 +<strong>【分页查询所有帖子和获取推荐帖子两个接口合在一起讨论下周一</strong>】</p>
+<p><img src="/../../images/image-20250208165923607.png" alt="image-20250208165923607"></p>
+<p><img src="/../../images/image-20250208165934996.png" alt="image-20250208165934996"></p>
+<p>2.好学榜、贡献榜用户头像缺失</p>
+<p><img src="/../../images/image-20250208171015115.png" alt="image-20250208171015115"></p>
+<p><img src="/../../images/image-20250208171029759.png" alt="image-20250208171029759"></p>
+<p>3.取消关注接口没找到</p>
+<p><img src="/../../images/image-20250210155714470.png" alt="image-20250210155714470"></p>
+<ol start="4">
+<li><p>查询不同状态的问答帖子</p>
+<p> 全部则不传 未解决字段为0 已解决字段为1？【因为测试里有isSovled为5的字段，不太确定】 </p>
+<p><img src="/../../images/image-20250210163757483.png" alt="image-20250210163757483"></p>
+</li>
+</ol>
+<p><img src="/../../images/image-20250210163457574.png" alt="image-20250210163457574"></p>
+<h3 id="2-11"><a href="#2-11" class="headerlink" title="2.11"></a>2.11</h3><p>1.获取好学、贡献榜没有数据返回</p>
+<p><img src="/../../images/image-20250211112356545.png" alt="image-20250211112356545"></p>
+<p><img src="/../../images/image-20250211112433780.png" alt="image-20250211112433780"></p>
+<p>2.登录后，个人信息接口缺失。（这个我看了看以前的接口没有【加入天数】的字段，所以需要提供一个新的接口）</p>
+<p><img src="/../../images/image-20250211151454331.png" alt="image-20250211151454331"></p>
+<h3 id="2-12"><a href="#2-12" class="headerlink" title="2.12"></a>2.12</h3><p>1.搜索查询话题、帖子的接口添加 【查询类型字段】【推荐、问答、文章、公告、话题总数字段】</p>
+<p>【推荐、问答、文章、公告、话题总数字段】位置存疑，可以放在这个搜索接口，也可以单独出一个新接口来返回这五个字段</p>
+<p><img src="/../../images/image-20250212144649448.png" alt="image-20250212144649448"></p>
+<h3 id="2-13"><a href="#2-13" class="headerlink" title="2.13"></a>2.13</h3><p>今日任务：</p>
+<ol>
+<li>个人卡片悬浮以及跳转</li>
+<li>轮播图圆点</li>
+<li>拿搜索的接口文档</li>
+</ol>
+<h4 id="跳转问题"><a href="#跳转问题" class="headerlink" title="跳转问题"></a>跳转问题</h4><p>1.用户主页的跳转路径？传参？</p>
+<p><img src="/../../images/image-20250213114402868.png" alt="image-20250213114402868"></p>
+<p>2.搜索跳转  ok</p>
+<p><img src="/../../images/image-20250213152403560.png" alt="image-20250213152403560"></p>
+<p>输入框为空且点击回车时，返回首页；</p>
+<p>输入框为空，保留当前结果</p>
+<p>明天搞搜索！！全部搞完！！！</p>
+<p><a target="_blank" rel="noopener" href="https://app.apifox.com/project/2022142">https://app.apifox.com/project/2022142</a></p>
+<h3 id="2-17"><a href="#2-17" class="headerlink" title="2.17"></a>2.17</h3><p>1.【根据内容搜索帖子数量】获取各帖子总数、话题总数参数未修改</p>
+<p><img src="/../../images/image-20250217094427637.png" alt="image-20250217094427637"></p>
+<p>2.【根据内容搜索话题】状态是已发布，但发完请求后显示404</p>
+<p><img src="/../../images/image-20250217094717505.png" alt="image-20250217094717505"></p>
+<p>3.【获取所有发布的banner】，发请求后状态也是404</p>
+<p><img src="/../../images/image-20250217095041304.png" alt="image-20250217095041304"></p>
+<h3 id="2-18"><a href="#2-18" class="headerlink" title="2.18"></a>2.18</h3><h4 id="待办："><a href="#待办：" class="headerlink" title="待办："></a>待办：</h4><ol>
+<li>文档，看加截图</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/02/10/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/%E5%88%86%E9%A1%B5%E4%BC%98%E9%9B%85%E5%86%99%E6%B3%95/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/02/07/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/%E6%8E%92%E6%9C%9F/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

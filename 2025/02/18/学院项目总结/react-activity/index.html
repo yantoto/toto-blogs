@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Feb 18, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>我们先来思考一个问题，在react中我们想要隐藏一个组件该怎么做？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 卸载组件</span><br><span class="line">&#123;open &amp;&amp; &lt;Counter /&gt;&#125;</span><br><span class="line">// css display none</span><br><span class="line">&lt;Counter style=&#123;&#123; display: open: &#x27;block&#x27; : &#x27;none&#x27; &#125;&#125; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我们接着思考第二个问题，react组件可以有几种状态？</p>
+<p>挂载</p>
+<p>卸载</p>
+<p>？？？</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>问答结束，我们先来剖析下第一个问题</p>
+<p>先说卸载组件的方式，简单明了，很多人也会想到这种方式，但是假如现在有一个分步表单的需求，我们想在每一步不可见的同时保持表单状态，改怎么做？</p>
+<p>再说第二种css hidden的方式，状态是可以保持了，但是组件还是不断在重新渲染，effect还是会执行，它仅是在浏览器层面display none了</p>
+<p>那有没有一种两全其美的方式呢</p>
+<p><img src="/../../images/5eecdaf48460cde5be39d3dd4e0fcb73f374d314346ddbc36b62cd78a0845422d425d877b3dfa2c565a117e969287064a58252ec5e25a6aa6523ee7ad85b2939d4c8ff809832e7f177e8f4df1b32ba6a7a6bd6956605b39ba900dfd662445084.gif" alt="img"></p>
+<p>在介绍这两全其美方式之前呢，我们再来看下第二个问题，react组件除了挂载和卸载两种方式之外其实还存在第三种方式 - <strong>失活</strong></p>
+<p><strong>失活即在不卸载组件的隐藏组件，同时被隐藏的组件不会re-render</strong></p>
+<h2 id="talk-is-cheap-show-you-the-code"><a href="#talk-is-cheap-show-you-the-code" class="headerlink" title="talk is cheap, show you the code"></a><strong>talk is cheap, show you the code</strong></h2><p>说了这么多，终于可以把这个两全其美的方式告诉大家了，他就是Activity(Offscreen)组件，我们先看demo</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import &#123; useState &#125; from &#x27;react&#x27;;</span><br><span class="line">import ReactDOM from &#x27;react-dom/client&#x27;;</span><br><span class="line">import &#123; Activity &#125; from &#x27;@ivliu/react-offscreen&#x27;;</span><br><span class="line"></span><br><span class="line">const Counter = () =&gt; &#123;</span><br><span class="line">  const [count, setCount] = useState(0);</span><br><span class="line"></span><br><span class="line">  return &lt;p onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;&#123;count&#125;&lt;/p&gt;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const App = () =&gt; &#123;</span><br><span class="line">  const [open, setOpen] = useState(false);</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setVisible(!open)&#125;&gt;&#123;open&#125;&lt;/button&gt;</span><br><span class="line">      &lt;Activity mode=&#123;open ? &#x27;visible&#x27; : &#x27;hidden&#x27;&#125;&gt;</span><br><span class="line">        &lt;Counter /&gt;</span><br><span class="line">      &lt;/Activity&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ReactDOM.createRoot(document.getElementById(&#x27;root&#x27;)!).render(&lt;App /&gt;);</span><br><span class="line">import type &#123; ReactNode &#125; from &#x27;react&#x27;;</span><br><span class="line"></span><br><span class="line">export type ActivityMode = &#x27;visible&#x27; | &#x27;hidden&#x27;;</span><br><span class="line"></span><br><span class="line">export interface IProps &#123;</span><br><span class="line">  mode: ActivityMode;</span><br><span class="line">  children: ReactNode | ((mode: ActivityMode) =&gt; ReactNode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>大家可以在链接里体验</p>
+<p><a target="_blank" rel="noopener" href="http://10.20.11.106:5173/">Activity demo</a></p>
+<p>我们尝试下把count值做一些改变，然后把组件隐藏，再点击force update看效果</p>
+<p><img src="/../../images/5eecdaf48460cde5be39d3dd4e0fcb73f374d314346ddbc36b62cd78a0845422d425d877b3dfa2c565a117e9692870644749210b000dab370f7b2e2ce6b33fe8c1ade274c8fc81ef5a7df016ceb020af26385cc7f9e2a4efa5f44275aa76f220.png" alt="img"></p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a><strong>应用场景</strong></h2><p>先说结论，<strong>但凡你需要设计一个open或者visible状态的时候，都可以应用react-offscreen</strong></p>
+<p>下面具体说下</p>
+<ul>
+<li>step form不可见的step</li>
+<li>tabs的不可见tab content</li>
+<li>dialog或者modal的隐藏状态</li>
+<li>collapse或者tree的折叠状态</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a><strong>原理</strong></h2><p>大家不用关心原理</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a><strong>其他</strong></h2><p>想象一下一个最完美的tabs组件应该是什么样子的</p>
+<ul>
+<li>tab切换应该是即时的、无阻塞的，即时子组件很沉重。要怎么做？</li>
+<li>后台tab content应该是失活的，它不应该丢失状态，更不能拖累性能。要怎么做？</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a><strong>参考</strong></h2><p><a target="_blank" rel="noopener" href="https://github.com/IVLIU/react-offscreen">https://github.com/IVLIU/react-offscreen</a></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/02/19/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/RSC/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/02/18/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/kiwi%E5%9B%BD%E9%99%85%E5%8C%96/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

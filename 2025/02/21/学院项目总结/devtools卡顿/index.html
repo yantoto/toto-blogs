@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Feb 21, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>前辈总结：</p>
+<h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a><strong>现象</strong></h2><p>在运营平台、门户、取数宝系统开发中，我们使用 Umi 和 Module Federation 构建了一个主项目 Framework 和多个子项目（如 Cmd）。</p>
+<p>在开发过程中，打开浏览器的元素调试面板时，发现其<strong>响应非常迟钝</strong>，往往需要<strong>等待 5-10 秒。</strong></p>
+<p>此外，切换元素时右侧的样式更新也十分卡顿，甚至会<strong>导致调试工具闪退</strong>。</p>
+<h2 id="导致的问题"><a href="#导致的问题" class="headerlink" title="导致的问题"></a><strong>导致的问题</strong></h2><p>Devtools 是前端开发中<strong>必不可少的开发工具</strong>， <strong>Devtools 的流畅度直接影响开发效率。</strong></p>
+<p>尤其在运营平台、门户、取数宝调试 bug，修改 UI 样式的时候。</p>
+<p>正常情况下，打开 devtools 进行 dom 调试，断点调试，就像写代码一样自然。</p>
+<p>目前情况，devtools 打开通常需要 5~10s （取决于电脑配置），在我的电脑上，甚至经常闪退。</p>
+<p>此问题长期存在，开发过运营平台、门户、取数宝的<strong>开发者，实习生，外包同学都反映过此问题。</strong></p>
+<p><strong>严重拖慢了开发效率，bug 修复速度。</strong></p>
+<h2 id="分析原因"><a href="#分析原因" class="headerlink" title="分析原因"></a><strong>分析原因</strong></h2><p>起初我认为这与 模块联邦特殊的结构有关，但是经过排查后，发现是因为 CSS 导致。</p>
+<p>但是具体原因还需要深入分析。</p>
+<h4 id="直接原因"><a href="#直接原因" class="headerlink" title="直接原因"></a><strong>直接原因</strong></h4><p>在元素的样式来源面板中，可以看到 <code>global.less</code> 文件被重复引用了上百次。</p>
+<p><img src="/../../images/5eecdaf48460cde5f7160d46ca276fe732e18b075f85679f6b62cd78a0845422d425d877b3dfa2c565a117e969287064ddd27b01325601017754152452d9b745d4de5379ac9ce5ba998bb29108e1edf8c50a0cb4e875bb0a07afbbdd4225fe9b.png" alt="img"></p>
+<p>大量相同类名的覆盖导致了卡顿现象。</p>
+<p>然而，通常我们只在项目入口处引入一次 <code>global.less</code>，</p>
+<p>那么为何会重复引入呢？</p>
+<h4 id="分析-css-来源"><a href="#分析-css-来源" class="headerlink" title="分析 css 来源"></a><strong>分析 css 来源</strong></h4><p>检查 <code>&lt;head&gt;</code> 中所有 CSS 文件的来源：</p>
+<p><img src="/../../images/5eecdaf48460cde5f7160d46ca276fe732e18b075f85679f6b62cd78a0845422d425d877b3dfa2c565a117e969287064155757e9007f98b319a09d37b9814680ea32f847dc8d4ca5dfb7a0cff4427bd08b0e796b517854d6a5f44275aa76f220.png" alt="img"></p>
+<p>例如：</p>
+<ul>
+<li><code>http://localhost:3002/src_components_TipsContent_index_tsx.chunk.css</code></li>
+<li><code>http://localhost:3002/remote.js/../src_exposes_PageListContent_index_tsx.chunk.css</code></li>
+</ul>
+<p>很明显，这两个链接对应的是 <code>TipsContent</code> 和 <code>PageListContent</code> 组件的 CSS 文件。</p>
+<p>这两个组件的代码相对简单，CSS 也不复杂：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// components/TipsContent/index.less</span><br><span class="line"> </span><br><span class="line">@import &#x27;~@/assets/styles/variable.less&#x27;;</span><br><span class="line"> </span><br><span class="line">.tipsContent &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  align-items: center;</span><br><span class="line">  width: 100%;</span><br><span class="line">  height: 32px;</span><br><span class="line">  background: rgba(47, 154, 255, 10%);</span><br><span class="line">  color: @help-color;</span><br><span class="line">  padding: 0 18px;</span><br><span class="line"> </span><br><span class="line">  p &#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  .icon &#123;</span><br><span class="line">    font-size: 15px;</span><br><span class="line">    margin-right: 5px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>但是访问 <code>TipsContent</code> 的打包后链接时，发现文件中<strong>包含了大量来自</strong> <code>global.less</code> <strong>的样式</strong>：</p>
+<p><img src="/../../images/5eecdaf48460cde5f7160d46ca276fe732e18b075f85679f6b62cd78a0845422d425d877b3dfa2c565a117e9692870643857b3d5f25f893a9a272c98b23808c6ef6eaca5536836c82bf356bbd11865bf2fab02b148a9d40507afbbdd4225fe9b.png" alt="img"></p>
+<p>对比其他 CSS 资源链接发现，许多资源中也包含了 <code>global.less</code> 的内容，导致了 CSS 重复。</p>
+<p>但是在检查 <code>PageListContent</code> 的资源链接时，发现它<strong>仅包含自身所需的样式</strong>：</p>
+<p><img src="/../../images/5eecdaf48460cde5f7160d46ca276fe732e18b075f85679f6b62cd78a0845422d425d877b3dfa2c565a117e9692870646d723a7aa5c52b461d70fc427bbf3dd0e8d0ab1786ca60aaaf9436c6eb9eb7e24e64e0fe520cf4b4f2ac17fb040400bd.png" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// components/PageListContent/index.less</span><br><span class="line"> </span><br><span class="line">.page-list-content &#123;</span><br><span class="line">  padding: 20px 20px 4px;</span><br><span class="line"> </span><br><span class="line">  &amp;.tabs-in-header &#123;</span><br><span class="line">    padding-top: 8px;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  :global &#123;</span><br><span class="line">    .sz-searchform &#123;</span><br><span class="line">      margin-bottom: 20px;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>也就是说，</p>
+<ol>
+<li><strong>有的组件 less 编译后的 css 文件竟然包含了大量的全局样式。</strong></li>
+<li><strong>有的组件只包含了自身需要的样式。</strong></li>
+</ol>
+<p>通过对比 CSS 代码，我发现所有打包后包含 <code>global.less</code> 的文件都使用了 less 变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@import &#x27;~@/assets/styles/variable.less&#x27;;</span><br><span class="line"> </span><br><span class="line">.tipsContent &#123;</span><br><span class="line">  color: @help-color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a><strong>原因</strong></h4><p>由此推断，使用 @import 关键字引入 global.less 文件，导致该文件被多次引入，而许多组件采用相同方式，引发了样式重复。</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="为什么-import-会重复引入？"><a href="#为什么-import-会重复引入？" class="headerlink" title="为什么 @import 会重复引入？"></a><strong>为什么</strong> <code>@import</code> <strong>会重复引入？</strong></h4><p>查阅 less 文档发现，@import 还可以搭配一些参数如 <code>@import (reference) &#39;../global.less&#39;</code></p>
+<p><em>使用 @import (reference) 导入外部文件，但除非引用，否则不会将导入的样式添加到编译输出中。</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">reference: use a Less file but do not output it</span><br><span class="line">inline: include the source file in the output but do not process it</span><br><span class="line">less: treat the file as a Less file, no matter what the file extension</span><br><span class="line">css: treat the file as a CSS file, no matter what the file extension</span><br><span class="line">once: only include the file once (this is default behavior)</span><br><span class="line">multiple: include the file multiple times</span><br><span class="line">optional: continue compiling when file is not found</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>reference: 使用 Less 文件但不输出</li>
+<li>inline: 将源文件包含在输出中但不处理</li>
+<li>less: 将文件视为 Less 文件，不论文件扩展名</li>
+<li>css: 将文件视为 CSS 文件，不论文件扩展名</li>
+<li>once: 仅包括一次（默认行为）</li>
+<li>multiple: 多次包含文件</li>
+<li>optional: 文件未找到时继续编译</li>
+</ul>
+<p>使用 <code>@import (reference)</code> 导入外部文件时，除非引用样式，否则不会将导入的样式添加到编译输出中。</p>
+<p>当导入文件中每个@规则和选择器标记为引用时，正常导入的样式在生成 CSS 时，”Reference” 选择器及其媒体查询不会输出。只有在引用样式被用作 mixin 或 extend 时，Reference 样式才会出现在生成的 CSS 中。</p>
+<p>换句话说：</p>
+<ul>
+<li>使用 <code>@import &quot;global.less&quot;</code> 将完整导入 <code>global.less</code>。</li>
+<li>使用 <code>@import (reference) &quot;global.less&quot;</code> 只会引入使用到的变量。</li>
+</ul>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h2><p>在 less 引入的地方，使用 <code>reference</code>按需引入。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- @import &#x27;~@/assets/styles/variable.less&#x27;;</span><br><span class="line">+ @import (reference) &#x27;~@/assets/styles/variable.less&#x27;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a><strong>测试</strong></h2><p>经过测试，该解决方案运行良好，完全杜绝了 devtools 卡顿的问题，并且不会影响到原有样式与功能。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a><strong>后续</strong></h2><p>目前 Web 端的CSS方案已经逐渐由 CSS Module 方案转移到 Tailwind CSS 方案，</p>
+<p>Tailwind CSS 具有灵活，效率高等特点, 具体的好处有这些：</p>
+<ul>
+<li><p><strong>在代码规范方面</strong>：由于传统CSS需要定义 CSS 类名，而CSS类名往往会忽略规范（驼峰 命名，-下划线等连接符，变量语义），导致风格不统一，代码不直观。</p>
+</li>
+<li><p><strong>在开发效率方面</strong>：Tailwind 减少了模板代码书写，灵活性更高, 减少 coding 时间。</p>
+<ul>
+<li>高内聚，将样式直接与DOM绑定，避免了CSS Module需要再引入文件，并且 CSS 嵌套层级极深，导致调整dom层级困难，css复用困难。</li>
+</ul>
+</li>
+</ul>
+<p>比如新人接手，旧的css层级不敢删除，只能在原有基础上新加类名，周而复始越来越多。。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h2><p>目前，运营平台、门户、取数宝开发的几个痛点问题基本解决。</p>
+<ul>
+<li>主子应用组件 TS 定义共享 （导致只能使用 js 开发）</li>
+<li>Devtools 卡顿问题。</li>
+<li>子应用无法热更新。</li>
+</ul>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/02/21/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/flex/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/02/21/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85%E6%80%9D%E8%B7%AF/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

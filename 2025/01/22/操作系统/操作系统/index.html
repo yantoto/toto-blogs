@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Jan 22, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一、操作系统概述"><a href="#一、操作系统概述" class="headerlink" title="一、操作系统概述"></a>一、操作系统概述</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><img src="/../../images/image-20250122181050564.png" alt="image-20250122181050564"></p>
+<p>操作系统是<strong>软件</strong>，他对<strong>计算机资源</strong>进行管理和配置，<strong>提供用户和计算机之间的操作界面（接口）。</strong></p>
+<h3 id="种类"><a href="#种类" class="headerlink" title="种类"></a>种类</h3><p>linux、windows、Mac OS、</p>
+<h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><ol>
+<li>并发：<strong>两个或者多个活动</strong>在<strong>同一给定的时间段</strong>（时间间隔）中进行。</li>
+<li>共享：计算机的<strong>资源被多个进程</strong>共享。</li>
+<li>异步：<strong>进程</strong>以<strong>不可预知的速度</strong>进行。</li>
+<li>虚拟：把一个<strong>物理</strong>上的实体<strong>变为</strong>若干个<strong>逻辑</strong>上的对应物。</li>
+</ol>
+<p>最<strong>基本</strong>特征：<strong>并发、共享</strong>。</p>
+<h3 id="如何理解并发和异步？"><a href="#如何理解并发和异步？" class="headerlink" title="如何理解并发和异步？"></a>如何理解并发和异步？</h3><p>在<strong>单核</strong>的前提下，事件都是排队执行的，但是如果一段极短时间内能执行多个活动，那么称为<strong>并发*；如果</strong>这段时间内<strong>事件的执行顺序是不可预知的，那么成为</strong>异步**。通常，并发和异步是会同时出现的（但不是一个东西哈）</p>
+<h3 id="并行和并发的区别？"><a href="#并行和并发的区别？" class="headerlink" title="并行和并发的区别？"></a>并行和并发的区别？</h3><p><strong>并行</strong>是在<strong>同一时刻</strong>执行多个任务，<strong>并发</strong>是在<strong>同一时间段</strong>执行多个任务。</p>
+<p>我的思考：</p>
+<p>所以单核或者单线程的情况下，只会有并发，不会有并行？</p>
+<ul>
+<li><strong>单核</strong>：指处理器只有一个核心，即一个计算单元。在计算机系统中，单核处理器是早期的常见配置，其处理能力相对有限，一次只能执行一个线程的任务。</li>
+<li><strong>单线程</strong>：是一种程序设计模型，指程序或进程在同一时间只使用一个线程来执行任务，任务按照顺序一个接一个地执行。</li>
+</ul>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p><img src="/../../images/image-20250122183535695.png" alt="image-20250122183535695"></p>
+<p>处理机管理、存储管理、设备管理、文件管理、用户接口</p>
+<h3 id="历程"><a href="#历程" class="headerlink" title="历程"></a>历程</h3><p><img src="/../../images/image-20250122183901761.png" alt="image-20250122183901761"></p>
+<p>单道批处理、多道批处理、分时操作系统、实时操作系统</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><img src="/../../images/image-20250122184159985.png" alt="image-20250122184159985"></p>
+<p>特权指令、非特权指令、内核程序、应用程序</p>
+<h3 id="原语"><a href="#原语" class="headerlink" title="原语"></a>原语</h3><p><img src="/../../images/image-20250122184316591.png" alt="image-20250122184316591"></p>
+<p><img src="/../../images/image-20250122184411611.png" alt="image-20250122184411611"></p>
+<p><img src="/../../images/image-20250122185223044.png" alt="image-20250122185223044"></p>
+<p><img src="/../../images/image-20250122185300291.png" alt="image-20250122185300291"></p>
+<h2 id="二、进程管理"><a href="#二、进程管理" class="headerlink" title="二、进程管理"></a>二、进程管理</h2><h3 id="进程概念"><a href="#进程概念" class="headerlink" title="进程概念"></a>进程概念</h3><p><img src="/../../images/image-20250123165858788.png" alt="image-20250123165858788"></p>
+<p>进程是<strong>资源分配的基本单位</strong>，是程序的执行</p>
+<h3 id="进程特点"><a href="#进程特点" class="headerlink" title="进程特点"></a>进程特点</h3><p>动态性、并发性、异步性、独立性</p>
+<p><img src="/../../images/image-20250123170053980.png"></p>
+<h3 id="进程的状态（记下来会画）"><a href="#进程的状态（记下来会画）" class="headerlink" title="进程的状态（记下来会画）"></a>进程的状态（记下来会画）</h3><p>创建、就绪、运行、阻塞、终止状态</p>
+<p><img src="/../../images/image-20250123170504214.png" alt="image-20250123170504214"></p>
+<p><img src="/../../images/image-20250123171057868.png" alt="image-20250123171057868"></p>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p><img src="/../../images/image-20250123171152657.png" alt="image-20250123171152657"></p>
+<p><strong>进程</strong>是计算机<strong>资源调度</strong>的最小单位</p>
+<p><strong>线程</strong>是计算机<strong>运算调度</strong>的最小单位</p>
+<p><img src="/../../images/image-20250123171524862.png" alt="image-20250123171524862"></p>
+<h3 id="处理机调度"><a href="#处理机调度" class="headerlink" title="处理机调度"></a>处理机调度</h3><p><img src="/../../images/image-20250123171825555.png" alt="image-20250123171825555"></p>
+<p><img src="/../../images/image-20250123171928559.png" alt="image-20250123171928559"></p>
+<p>算法：</p>
+<ol>
+<li>先来先服务</li>
+<li>短作业优先</li>
+<li>优先级调度算法</li>
+<li>最高响应比优先   【既兼顾短小作业又兼顾长作业】</li>
+<li><img src="/../../images/image-20250123172405276.png" alt="image-20250123172405276"></li>
+</ol>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><img src="/../../images/image-20250124171209739.png" alt="image-20250124171209739"></p>
+<ol>
+<li>先判断运行顺序</li>
+<li>再根据公式算每个作业的时间</li>
+</ol>
+<h4 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h4><ol>
+<li>周转时间&#x3D;完成时间-到达时间</li>
+<li>带权周转时间&#x3D;周转时间&#x2F;运行时间</li>
+<li>等待时间&#x3D;周转时间-运行时间&#x3D;完成时间-到达时间-运行时间</li>
+</ol>
+<p>若上述题目是先来先服务</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>P1</th>
+<th>P2</th>
+<th>P3</th>
+<th>P4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>周转时间</td>
+<td>7</td>
+<td>9</td>
+<td>8</td>
+<td>11</td>
+</tr>
+<tr>
+<td>带权周转时间</td>
+<td>1</td>
+<td>2.25</td>
+<td>8</td>
+<td>11&#x2F;4</td>
+</tr>
+<tr>
+<td>等待时间</td>
+<td>0</td>
+<td>2</td>
+<td>7</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<p>平均周转时间&#x3D;（7+9+8+11)&#x2F;4</p>
+<h3 id="临界区"><a href="#临界区" class="headerlink" title="临界区"></a>临界区</h3><p><img src="/../../images/image-20250124174502973.png" alt="image-20250124174502973"></p>
+<p><img src="/../../images/image-20250124174558977.png" alt="image-20250124174558977"></p>
+<p><strong><img src="/../../images/image-20250124174738742.png" alt="image-20250124174738742"></strong></p>
+<p><strong>什么是临界区？</strong></p>
+<p><strong>每个进程中访问临界资源的那段代码成为临界区</strong></p>
+<p><strong>进程同步机制应该遵循的原则：空闲让进、忙则等待、有限等待、让权等待</strong></p>
+<p><strong>进程同步的机制：信号量机制、管程机制</strong> </p>
+<h3 id="生产者消费者问题"><a href="#生产者消费者问题" class="headerlink" title="生产者消费者问题"></a>生产者消费者问题</h3><p>背！！！！！！！！</p>
+<p><img src="/../../images/image-20250124175217898.png"></p>
+<p><img src="/../../images/image-20250124175332581.png" alt="image-20250124175332581"></p>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁<img src="/../../images/image-20250124175445303.png" alt="image-20250124175445303"></h3><p>银行家算法很关键！！</p>
+<p><img src="/../../images/image-20250124175607674.png" alt="image-20250124175607674"></p>
+<p>背公式 最多可申请数量&#x3D;资源数&#x2F;进程数量+1</p>
+<h3 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h3><p><img src="/../../images/image-20250124175730315.png" alt="image-20250124175730315"></p>
+<p><img src="/../../images/image-20250125160706091.png" alt="image-20250125160706091">必考！第三个问相当于插队P2先提出请求 银行就必须先满足他的</p>
+<p>P2 Allocation1 3 5 4 +1 2 2 2&#x3D;2 5 7 6  Need 2356-1</p>
+<p>222&#x3D;1134 银行1622 和1134相比后两位无法满足 那么就无法分配   </p>
+<p>Allocation 已分配 Need还需要 Avaiable可分配资源</p>
+<p><img src="/../../images/image-20250125161001794.png" alt="image-20250125161001794"></p>
+<h2 id="三、内存管理"><a href="#三、内存管理" class="headerlink" title="三、内存管理"></a>三、内存管理</h2><p><img src="/../../images/image-20250126195933358.png" alt="image-20250126195933358"></p>
+<h3 id="程序的运行"><a href="#程序的运行" class="headerlink" title="程序的运行"></a>程序的运行</h3><p><img src="/../../images/image-20250126200129308.png" alt="image-20250126200129308"></p>
+<ol>
+<li>编辑阶段</li>
+<li>编译阶段</li>
+<li>链接阶段</li>
+<li>装入阶段</li>
+<li>运行阶段</li>
+</ol>
+<h3 id="装入方式"><a href="#装入方式" class="headerlink" title="装入方式"></a>装入方式</h3><p>绝对装入</p>
+<p><img src="/../../images/image-20250126200230772.png" alt="image-20250126200230772"></p>
+<p>静态重定位</p>
+<p><img src="/../../images/image-20250126200319306.png" alt="image-20250126200319306"></p>
+<p>动态重定位</p>
+<p><img src="/../../images/image-20250126200407971.png" alt="image-20250126200407971"></p>
+<h3 id="虚拟地址和物理地址"><a href="#虚拟地址和物理地址" class="headerlink" title="虚拟地址和物理地址"></a>虚拟地址和物理地址</h3><p><img src="/../../images/image-20250126200549921.png" alt="image-20250126200549921"></p>
+<p>虚拟地址是给用户看的 物理地址是给计算机看的</p>
+<h3 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h3><p><img src="/../../images/image-20250126200844448.png" alt="image-20250126200844448"></p>
+<p><img src="/../../images/image-20250126201459667.png" alt="image-20250126201459667"></p>
+<h2 id="四、文件系统"><a href="#四、文件系统" class="headerlink" title="四、文件系统"></a>四、文件系统</h2><p><img src="/../../images/image-20250219185646737.png" alt="image-20250219185646737"></p>
+<p><img src="/../../images/image-20250219185728869.png" alt="image-20250219185728869"></p>
+<p><img src="/../../images/image-20250219185913752.png" alt="image-20250219185913752"></p>
+<p><img src="/../../images/image-20250219190137298.png" alt="image-20250219190137298"></p>
+<p><img src="/../../images/image-20250219190142488.png" alt="image-20250219190142488"></p>
+<p><img src="/../../images/image-20250219190438460.png" alt="image-20250219190438460"></p>
+<p><img src="/../../images/image-20250219190544073.png" alt="image-20250219190544073"></p>
+<p><img src="/../../images/image-20250219190723352.png" alt="image-20250219190723352"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/01/28/react/react-form%E8%A1%A8%E5%8D%95/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/01/15/git/git-%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

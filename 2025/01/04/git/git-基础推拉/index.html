@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Jan 4, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h3 id="一般项目拉取操作"><a href="#一般项目拉取操作" class="headerlink" title="一般项目拉取操作"></a>一般项目拉取操作</h3><ol>
+<li><code>git clone 远程仓库</code>；</li>
+<li>在<strong>远程仓库先建立自己的分支</strong>；【自己去网页添加分支】</li>
+<li>本地<code>git branch</code>查看分支；<ul>
+<li>如果<strong>本地有对应分支</strong>（同名），<strong>切换</strong>到该分支<code>git switch &lt;分支名&gt;</code></li>
+<li>如果<strong>本地没有对应分支</strong>，<strong>创建并切换</strong><code>git checkout -b &lt;分支名&gt;</code></li>
+</ul>
+</li>
+<li>切换到与远程仓库同名的分支后，利用<code>git branch --set-upstream-to=origin/&lt;远程分支名&gt; &lt;本地分支名&gt;</code>关联远程仓库分支；</li>
+<li><strong>关联完毕</strong>，利用<code>git pull -r</code><strong>拉取远程分支</strong>；</li>
+<li><strong>本地修改完毕</strong>后，利用<code>git push</code> <strong>推送至远程分支</strong>。</li>
+</ol>
+<h3 id="每次推送前注意"><a href="#每次推送前注意" class="headerlink" title="每次推送前注意"></a>每次推送前注意</h3><p><strong>git branch 查看本地分支！！git branch 查看本地分支！！</strong></p>
+<p><strong>git branch 查看本地分支！！git branch 查看本地分支！！</strong></p>
+<p>很重要。确认无误再继续操作，如果<strong>推拉远程分支无效</strong>，可以<code>git branch -r</code><strong>查看远程分支</strong>，看是否有对应分支。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/01/04/react/react-scss/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/01/04/react/react-%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

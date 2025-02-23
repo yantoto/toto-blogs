@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 13, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一、初识react项目"><a href="#一、初识react项目" class="headerlink" title="一、初识react项目"></a>一、初识react项目</h2><h3 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h3><p><img src="/../../images/image-20241213172154972.png" alt="image-20241213172154972"></p>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p><img src="/../../images/image-20241213171931922.png" alt="image-20241213171931922"></p>
+<h4 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h4><p><img src="/../../images/image-20241213172053510.png" alt="image-20241213172053510"><img src="/../../images/image-20241213172109932.png" alt="image-20241213172109932"></p>
+<p>整个项目的入口，内部包含react必要的两个核心包。</p>
+<p>导入根节点，并把根节点渲染到id为root的dom节点上。</p>
+<h4 id="App-js"><a href="#App-js" class="headerlink" title="App.js"></a>App.js</h4><p>项目的根节点。</p>
+<h2 id="二、JSX基础"><a href="#二、JSX基础" class="headerlink" title="二、JSX基础"></a>二、JSX基础</h2><h3 id="JSX定义"><a href="#JSX定义" class="headerlink" title="JSX定义"></a>JSX定义</h3><p><strong>Javascript和html</strong>的缩写，代表在<strong>js代码中编写html模版结构。</strong></p>
+<h3 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h3><p>是js的语法拓展，浏览器无法直接识别，需要解析工具解析后才能运行。</p>
+<h3 id="高频场景"><a href="#高频场景" class="headerlink" title="高频场景"></a>高频场景</h3><p>和vue一样，{}里面可以<strong>放字符串、变量、函数</strong> </p>
+<p>仅<strong>支持表达式</strong>，而不是语句。</p>
+<p><img src="/../../images/image-20241213190203379.png" alt="image-20241213190203379"></p>
+<h4 id="简单的渲染列表："><a href="#简单的渲染列表：" class="headerlink" title="简单的渲染列表："></a>简单的渲染列表：</h4><p>注意加上独一无二的key值。</p>
+<p><img src="/../../images/image-20241213190852900.png" alt="image-20241213190852900"></p>
+<h4 id="条件渲染："><a href="#条件渲染：" class="headerlink" title="条件渲染："></a>条件渲染：</h4><ol>
+<li>&amp;&amp;：true则显示后面的，否则不显示。</li>
+<li>? :   展示true和false的两种情况。</li>
+<li>if+函数：通过调用函数，函数内部判断。</li>
+</ol>
+<p><img src="/../../images/image-20241213191811876.png" alt="image-20241213191811876"></p>
+<p><img src="/../../images/image-20241213191820133.png" alt="image-20241213191820133"></p>
+<h3 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h3><ul>
+<li><strong>没有参数</strong>的函数，直接在**{}里面调用函数**</li>
+<li>仅有<strong>事件对象参数</strong>的函数，只需给<strong>函数形式参加上e，{}里面正常调用不传参</strong>。</li>
+<li>有<strong>其他参数</strong>的函数，需要在<strong>模版内{()&#x3D;&gt;fn(“name”)}，用箭头函数来过渡</strong>，把实参放入函数调用的括号里面</li>
+<li><strong>有其他参数和事件对象</strong>的函数，写法跟上一个<strong>类似</strong>，只需<strong>注意参数顺序就乐意了</strong></li>
+</ul>
+<h5 id="为什么要加箭头函数？"><a href="#为什么要加箭头函数？" class="headerlink" title="为什么要加箭头函数？"></a>为什么要加箭头函数？</h5><p>因为<strong>传参无非是想在函数调用括号后面写进参数</strong>，但是若直接为此写个括号，那么这个函数就是立即调用，无法等着事件触发而进行回调。所以需要在<strong>外面套一层函数，函数内部可以自由编写，这样触发事件就是触发的外层函数，进而触发内层</strong>。</p>
+<p><img src="/../../images/image-20241213193234128.png" alt="image-20241213193234128"></p>
+<h2 id="三、组件"><a href="#三、组件" class="headerlink" title="三、组件"></a>三、组件</h2><p>概念：一个<strong>组件</strong>就是<strong>用户界面的一部分</strong>，他可以有<strong>自己的逻辑和外观</strong>。组件之间可以<strong>相互嵌套</strong>，或者<strong>复用多次。</strong></p>
+<p><img src="/../../images/image-20241213194106484.png" alt="image-20241213194106484"></p>
+<p><strong>React内部</strong>，一个<strong>首字母大写的函数就是一个组件</strong>，可以在根组件内部调用函数。</p>
+<p>调用方式：</p>
+<ol>
+<li>单标签</li>
+<li>双标签</li>
+<li>{Button()}函数调用（我认为的）</li>
+</ol>
+<p><img src="/../../images/image-20241213194737505.png" alt="image-20241213194737505"></p>
+<p><img src="/../../images/image-20241213194742153.png" alt="image-20241213194742153"></p>
+<h2 id="四、React-Hook"><a href="#四、React-Hook" class="headerlink" title="四、React Hook"></a>四、React Hook</h2><h3 id="UseState"><a href="#UseState" class="headerlink" title="UseState"></a>UseState</h3><p>useState是一个React Hook（函数），允许我们向组件添加一个<strong>状态变量，</strong>从而控制组件的渲染结果。</p>
+<p>有点<strong>像vue3的ref</strong>，但是这个<strong>在定义时还添加了可以修改它的函数</strong>，之后<strong>再触发调用回调函数。</strong></p>
+<p><strong><img src="/../../images/image-20241213202215991.png" alt="image-20241213202215991"></strong></p>
+<p>先修改数据，然后数据驱动视图修改。</p>
+<p>注意：useState里面的值<strong>只能替换，不能修改</strong>！！！！！！</p>
+<p>必须遵守：<strong>使用新值替换老值。</strong></p>
+<p>总结：</p>
+<ul>
+<li><p><strong>vue允许修改而不允许替换</strong></p>
+</li>
+<li><p><strong>react允许替换而不允许修改</strong></p>
+</li>
+</ul>
+<h5 id="为什么使用setCount-count-会报错？"><a href="#为什么使用setCount-count-会报错？" class="headerlink" title="为什么使用setCount(count++)会报错？"></a>为什么使用setCount(count++)会报错？</h5><p>我的理解：因为直接将count加法前传给了setCount,count并未改变，因此报了错</p>
+<h2 id="五、基础样式控制"><a href="#五、基础样式控制" class="headerlink" title="五、基础样式控制"></a>五、基础样式控制</h2><p>分类：</p>
+<ol>
+<li>行内</li>
+<li>class</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;./index.css&#x27;</span><br><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">      &lt;div style=&#123;&#123;color:&#x27;red&#x27;,fontSize:&#x27;50px&#x27;&#125;&#125;&gt;羊胎素打多了&lt;/div&gt;</span><br><span class="line">      &lt;div className=&quot;foo&quot;&gt;羊胎素打多了&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<h3 id="classNames"><a href="#classNames" class="headerlink" title="classNames"></a>classNames</h3><p>一种js库，通过条件动态显示类，更优雅简洁。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">y//原方法</span><br><span class="line">className=&#123;`normal $&#123;item.type===ActiveType &amp;&amp; &#x27;active&#x27;&#125;`&#125;</span><br><span class="line"></span><br><span class="line">//使用classNames库</span><br><span class="line">className=&#123;classNames(&#x27;nomarl&#x27;,&#123;active:item.type===activeType&#125;)&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../images/image-20241214230652977.png" alt="image-20241214230652977"></p>
+<h2 id="六、受控表单绑定"><a href="#六、受控表单绑定" class="headerlink" title="六、受控表单绑定"></a>六、受控表单绑定</h2><p>其实就是类似于v-model,给input框绑定值，并把事件更新的值再绑定给这个值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const [value,setValue]=useState(&#x27;abc&#x27;)</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">        &lt;input value=&#123;value&#125; onChange=&#123;(e)=&gt;setValue(e.target.value)&#125;&gt;&lt;/input&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、react中获取DOM"><a href="#七、react中获取DOM" class="headerlink" title="七、react中获取DOM"></a>七、react中获取DOM</h2><p>使用<strong>useRef</strong>将<strong>DOM对象绑定给变量</strong>，注意<strong>渲染完毕</strong>后DOM对象才可以获取打印（利用<strong>变量名.current</strong>）</p>
+<p><img src="/../../images/image-20241214233554521.png" alt="image-20241214233554521"></p>
+<p><img src="/../../images/image-20241214233611762.png" alt="image-20241214233611762"></p>
+<h2 id="八、比较方便的工具"><a href="#八、比较方便的工具" class="headerlink" title="八、比较方便的工具"></a>八、比较方便的工具</h2><h3 id="生成id"><a href="#生成id" class="headerlink" title="生成id"></a>生成id</h3><p>利用<strong>uuid库</strong>生成。</p>
+<p>具体细节看官网，很简单。</p>
+<h3 id="格式化时间"><a href="#格式化时间" class="headerlink" title="格式化时间"></a>格式化时间</h3><p>利用<strong>dayjs库</strong>生成，看官网。</p>
+<p><img src="/../../images/image-20241215152917176.png" alt="image-20241215152917176"></p>
+<p>先npm再引入。</p>
+<p><img src="/../../images/image-20241215152930236.png" alt="image-20241215152930236"></p>
+<h2 id="九、组件之间的通信"><a href="#九、组件之间的通信" class="headerlink" title="九、组件之间的通信"></a>九、组件之间的通信</h2><h3 id="父子通信"><a href="#父子通信" class="headerlink" title="父子通信"></a>父子通信</h3><h4 id="props-——父传子"><a href="#props-——父传子" class="headerlink" title="props ——父传子"></a>props ——父传子</h4><p>父组件传递数据，子组件利用参数(虽然可以随便写，但是最好写成props)接收。</p>
+<p><strong>传递过来的props数据作为对象属性，存放在对象中。</strong></p>
+<p><img src="/../../images/image-20241215154216344.png" alt="image-20241215154216344"></p>
+<p>说明：</p>
+<ol>
+<li><p>props可以传递<strong>任意数据</strong></p>
+</li>
+<li><p>props对象是<strong>只读的，不可修改</strong>（只能父组件修改）</p>
+</li>
+<li><p><strong>特殊的prop children</strong>(在父组件的<strong>子标签内部写html元素</strong>，默认将它以children属性传递到props中)</p>
+<p> <img src="/../../images/image-20241215154602884.png" alt="image-20241215154602884"></p>
+<p> <img src="/../../images/image-20241215154858796.png" alt="image-20241215154858796"></p>
+</li>
+</ol>
+<h4 id="绑定回调——子传父"><a href="#绑定回调——子传父" class="headerlink" title="绑定回调——子传父"></a>绑定回调——子传父</h4><p>父，<strong>设定回调函数，并将函数传递给子</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;./index.css&#x27;</span><br><span class="line">import Son from &#x27;./Son&#x27;</span><br><span class="line"></span><br><span class="line">const getMsg=(data)=&gt;&#123;</span><br><span class="line">  console.log(data);</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">      &lt;Son onChange=&#123;getMsg&#125;&gt;&lt;/Son&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<p>子，<strong>触发回调函数，并传参</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import &#x27;./index.css&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function Son(&#123;onChange&#125;) &#123;</span><br><span class="line">  const name=&#x27;我来自子组件&#x27; </span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;()=&gt;onChange(name)&#125;&gt;你好&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default Son;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="状态提升——子子传递"><a href="#状态提升——子子传递" class="headerlink" title="状态提升——子子传递"></a>状态提升——子子传递</h4><p><img src="/../../images/image-20241215160442042.png" alt="image-20241215160442042"></p>
+<h3 id="兄弟通信"><a href="#兄弟通信" class="headerlink" title="兄弟通信"></a>兄弟通信</h3><h3 id="跨层通信"><a href="#跨层通信" class="headerlink" title="跨层通信"></a>跨层通信</h3><p><img src="/../../images/image-20241215162344763.png" alt="image-20241215162344763"></p>
+<p>原理我懂了，写得有点蒙。</p>
+<h2 id="十、useEffect"><a href="#十、useEffect" class="headerlink" title="十、useEffect"></a>十、useEffect</h2><p>是React Hook函数，不是<strong>由事件引起，而是由渲染本身引起的操作</strong>，类似vue的生命周期。</p>
+<p><img src="/../../images/image-20241215165210365.png" alt="image-20241215165210365"></p>
+<p>例子：在组件渲染完毕后调用请求展示数据。</p>
+<p><img src="/../../images/image-20241215170322503.png" alt="image-20241215170322503"></p>
+<p>用法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useEffect(fn,[])</span><br><span class="line">//fn回调函数  []为参数，控制回调在什么时候执行</span><br></pre></td></tr></table></figure>
+
+<p>三种用法：</p>
+<ol>
+<li>不传入初始值  初始渲染+组件更新（只要组件更新就触发）</li>
+<li>传入空数组初始值 只初始渲染</li>
+<li>传入放变量的数组 初始渲染+变量更新（绑定该变量）</li>
+</ol>
+<p><img src="/../../images/image-20241215185811268.png" alt="image-20241215185811268"></p>
+<p>作用：</p>
+<p><strong>清除副作用</strong>（比如关闭定时器）</p>
+<p><img src="/../../images/image-20241216103732154.png" alt="image-20241216103732154"></p>
+<h2 id="十一、封装Hook函数"><a href="#十一、封装Hook函数" class="headerlink" title="十一、封装Hook函数"></a>十一、封装Hook函数</h2><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1.以<strong>常规步骤</strong>把问题解决</p>
+<p>2.声明<strong>use开头的函数</strong>，把要<strong>复用的代码粘贴</strong>进去</p>
+<p>3**.返回外部要用到的数据和函数**（放入对象并返回）</p>
+<p>4.外层<strong>调用该函数</strong>，并<strong>解构变量</strong></p>
+<p><img src="/../../images/image-20241216104743490.png" alt="image-20241216104743490"></p>
+<h2 id="十二、React-Hooks使用规则"><a href="#十二、React-Hooks使用规则" class="headerlink" title="十二、React Hooks使用规则"></a>十二、React Hooks使用规则</h2><p><img src="/../../images/image-20241216105334379.png" alt="image-20241216105334379"></p>
+<h2 id="十三、网络请求"><a href="#十三、网络请求" class="headerlink" title="十三、网络请求"></a>十三、网络请求</h2><p>使用axios请求后端数据，使用<strong>json-server</strong>模拟后端请求。</p>
+<p>json-server使用</p>
+<ol>
+<li>npm安装</li>
+<li>在package.json包里配置触发语句</li>
+<li>开启终端，不要关闭（）</li>
+</ol>
+<p><img src="/../../images/image-20241216111358847.png" alt="image-20241216111358847"></p>
+<p><img src="/../../images/image-20241216111410394.png" alt="image-20241216111410394"></p>
+<p><img src="/../../images/image-20241216111448291.png" alt="image-20241216111448291"></p>
+<p>利用axios获取：</p>
+<p>axios用法：</p>
+<ol>
+<li>npm</li>
+<li>在js中引入</li>
+<li>使用</li>
+</ol>
+<p><img src="/../../images/image-20241216111517048.png" alt="image-20241216111517048"></p>
+<h2 id="十四、Redux"><a href="#十四、Redux" class="headerlink" title="十四、Redux"></a>十四、Redux</h2><p>Redux是React最常用的<strong>集中状态管理工具</strong>，类似于**vue中的pinia(Vuex)**，可以独立于框架使用。</p>
+<p><img src="/../../images/image-20241216141940039.png" alt="image-20241216141940039"></p>
+<p><img src="/../../images/image-20241216162419671.png" alt="image-20241216162419671"></p>
+<h3 id="redux-react"><a href="#redux-react" class="headerlink" title="redux+react"></a>redux+react</h3><p><img src="/../../images/image-20241216163127591.png" alt="image-20241216163127591">、</p>
+<p>步骤：</p>
+<p><strong>子模块的创建：</strong></p>
+<ol>
+<li>创建js文件，文件内部引入createSlice</li>
+<li>调用createSlice函数并用变量接收，函数内部传入一个对象，对象内放置name、initialState（初始值）、reducers（修改值的方法）</li>
+<li>在外部接收变量的方法、reducer</li>
+<li>再把reducer（默认导出）和方法（按需导出）导出</li>
+</ol>
+<p><strong>子模块的组合：</strong></p>
+<ol>
+<li>在index.js文件中，导入子模块reducer</li>
+<li>并调用configureStore并用变量store接收，传入reducer(元素值是子模块传递过来的reducer)</li>
+<li>导出store</li>
+</ol>
+<p><strong>为react注入store:</strong></p>
+<p><strong>react中使用</strong>：</p>
+<p>以下是同步例子</p>
+<p><img src="/../../images/image-20241217110852273.png" alt="image-20241217110852273"><img src="/../../images/image-20241217114545518.png" alt="image-20241217114545518"></p>
+<p><img src="/../../images/image-20241217111657424.png" alt="image-20241217111657424"></p>
+<p><img src="/../../images/image-20241217111646442.png" alt="image-20241217111646442"></p>
+<p><img src="/../../images/image-20241217114601263.png" alt="image-20241217114601263"></p>
+<p>异步例子：</p>
+<p><img src="/../../images/image-20241217185420893.png" alt="image-20241217185420893"></p>
+<p><img src="/../../images/image-20241217190108516.png" alt="image-20241217190108516"></p>
+<h2 id="十五、react-router"><a href="#十五、react-router" class="headerlink" title="十五、react-router"></a>十五、react-router</h2><p>用法和vue-router很相似。</p>
+<p>用法（初步）：</p>
+<ol>
+<li>npm</li>
+<li>在index.js中导入createBrowserRouter，RouterProvider</li>
+<li>调用createBrowserRouter创建路由</li>
+<li>利用RouterProvider将路由挂载到根节点中</li>
+</ol>
+<p><img src="/../../images/image-20241218112754584.png" alt="image-20241218112754584"></p>
+<p><img src="/../../images/image-20241218112928096.png" alt="image-20241218112928096"></p>
+<h3 id="标准用法："><a href="#标准用法：" class="headerlink" title="标准用法："></a>标准用法：</h3><ol>
+<li><p>根据需求自己创建页面组件，并把组件导出</p>
+</li>
+<li><p>创建router文件夹，创建index.js，引入需要的组件</p>
+</li>
+<li><p>引入createBrowserRouter，并调用它的方法生成touter，导出router.</p>
+</li>
+<li><p>在根目录下的index.js下，引入router,再利用RouterProvider挂载到根组件</p>
+<p> <img src="/../../images/image-20241218114746222.png" alt="image-20241218114746222"></p>
+</li>
+</ol>
+<p><img src="/../../images/image-20241218114814903.png" alt="image-20241218114814903"></p>
+<h3 id="路由跳转方式："><a href="#路由跳转方式：" class="headerlink" title="路由跳转方式："></a>路由跳转方式：</h3><ol>
+<li>声明式导航</li>
+<li>路由式导航</li>
+</ol>
+<p>声明式导航</p>
+<ol>
+<li>导入内置link标签</li>
+<li>调用link标签</li>
+</ol>
+<p>路由式导航</p>
+<ol>
+<li>导入内置useNavigate方法</li>
+<li>调用该方法，得到并接受回调函数</li>
+<li>在需要的地方调用回调函数，并传入路径参数</li>
+</ol>
+<p><img src="/../../images/image-20241218115852514.png" alt="image-20241218115852514"></p>
+<h3 id="路由跳转传参方法："><a href="#路由跳转传参方法：" class="headerlink" title="路由跳转传参方法："></a>路由跳转传参方法：</h3><ol>
+<li>searchParams传参</li>
+<li>params传参</li>
+</ol>
+<p>searchParams传参：（我更喜欢）</p>
+<ol>
+<li>传递参数是在url后面加上？name&#x3D;toto&amp;&amp;id&#x3D;1001 【注意路由传参字符串不要带双引号！】</li>
+<li>接收方导入useSearchParams</li>
+<li>调用useSearchParams，解构获取params对象</li>
+<li>在对象内部调用对应元素</li>
+</ol>
+<p>params传参：</p>
+<ol>
+<li>传递参数后面直接用&#x2F;name&#x3D;toto&#x2F;id&#x3D;1001【注意路由传参字符串不要带双引号！】</li>
+<li>在router&#x2F;index.js内部给对应path加上占位符</li>
+<li>接收方导入useParams</li>
+<li>调用useParams，并且利用对象获取元素</li>
+</ol>
+<p><img src="/../../images/image-20241218141724844.png" alt="image-20241218141724844"></p>
+<h3 id="二级路由"><a href="#二级路由" class="headerlink" title="二级路由"></a>二级路由</h3><p>和vue类似，配置router里的children，并且在一级下放置二级路由的标签Outlet</p>
+<p><img src="/../../images/image-20241218144708608.png" alt="image-20241218144708608"></p>
+<p><img src="/../../images/image-20241218144723629.png" alt="image-20241218144723629"></p>
+<h3 id="设置默认二级路由："><a href="#设置默认二级路由：" class="headerlink" title="设置默认二级路由："></a>设置默认二级路由：</h3><p><img src="/../../images/image-20241218144815871.png" alt="image-20241218144815871"></p>
+<h3 id="路径兜底"><a href="#路径兜底" class="headerlink" title="路径兜底"></a>路径兜底</h3><p>场景：为所有路径输错进行兜底。</p>
+<p>说白了就是新加一个组件。</p>
+<p><img src="/../../images/image-20241218145645478.png" alt="image-20241218145645478"></p>
+<p><img src="/../../images/image-20241218145659304.png" alt="image-20241218145659304"></p>
+<h3 id="两种路由模式"><a href="#两种路由模式" class="headerlink" title="两种路由模式"></a>两种路由模式</h3><p>history和hash模式。</p>
+<p><img src="/../../images/image-20241218150050459.png" alt="image-20241218150050459"></p>
+<p>上述的所有演示都是用的history模式，下面示范怎么切换hash模式。</p>
+<p>只需要：</p>
+<p><img src="/../../images/image-20241218150031052.png" alt="image-20241218150031052"></p>
+<h2 id="十六、ant-Design-Mobile组件库"><a href="#十六、ant-Design-Mobile组件库" class="headerlink" title="十六、ant Design Mobile组件库"></a>十六、ant Design Mobile组件库</h2><p>搜官网，学</p>
+<h2 id="十七、useMemo"><a href="#十七、useMemo" class="headerlink" title="十七、useMemo"></a>十七、useMemo</h2><p>用法：二次计算</p>
+<p>场景：分组账单，并返回</p>
+<p><img src="/../../images/image-20241223101533569.png" alt="image-20241223101533569"></p>
+<p>这里的用法很干货，利用lodash根据时间进行二次分组，并在返回时将原始时间格式化。牛逼牛逼lodash和dayjs</p>
+<p>lodash的groupby:</p>
+<p><img src="/../../images/image-20241223101728273.png" alt="image-20241223101728273"></p>
+<p>场景：根据后端返回对象返回支出、收入、结余</p>
+<p><img src="/../../images/image-20241223102603012.png" alt="image-20241223102603012"></p>
+<p><img src="/../../images/image-20241223102618364.png" alt="image-20241223102618364"></p>
+<p><img src="/../../images/image-20241223102318042.png" alt="image-20241223102318042"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/17/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/13/react-%E5%85%A5%E9%97%A8/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

@@ -167,11 +167,11 @@
 <p><strong>全篇背诵：</strong></p>
 <ol>
 <li><strong>首先，在beforeCreate和created期间，Observer会调用Object.defineProperty给data里的每一个对象属性添加getter和setter,以及Dep对象。</strong></li>
-<li><strong>接着，在初次render渲染函数执行后，每个组件会创建一个watcher，watcher会放置相应的render函数（可能为其他函数）和该函数调用对应的响应式数据；Dep也会记录每个数据相关的watcher。【依赖收集】</strong></li>
-<li><strong>当属性修改时，调用对应setter函数，会给其绑定的watcher函数派发更新，watcher内部的render函数不会立即执行，而是将Watcher交给Scheduler维护的队列里面，该队列里的重复Watcher只能出现一次【去重】；</strong></li>
-<li><strong>接着利用nextTick将watcher内部绑定的函数放入微队列里，随着事件循环执行。执行完毕后，会重新更新watcher内部绑定的函数和对应响应式数据（因为有可能组件在一种条件下渲染A,另一种条件下渲染B，对应的render和数据不同）。</strong></li>
+<li><strong>接着，在beforemount和mounted期间，初次render渲染函数执行，每个组件会创建一个watcher，watcher会放置相应的render函数（可能为其他函数）和该函数调用对应的响应式数据；Dep也会记录每个数据相关的watcher。【依赖收集】</strong></li>
+<li><strong>当属性修改时（此时beforeUpdate函数被调用），更新调用对应setter函数，会给其绑定的watcher函数派发更新，watcher内部的render函数不会立即执行，而是将Watcher交给Scheduler维护的队列里面，该队列里的重复Watcher只能出现一次【去重】；</strong></li>
+<li><strong>接着利用nextTick将watcher内部绑定的函数放入微队列里，随着事件循环执行（updated更新完毕，重新挂载了DOM树）。执行完毕后，会重新更新watcher内部绑定的函数和对应响应式数据（因为有可能组件在一种条件下渲染A,另一种条件下渲染B，对应的render和数据不同）。</strong></li>
 </ol>
-<p>完结，撒花。</p>
+<p>串起来了，全都串起来了。完结，撒花。</p>
 <h2 id="六、更深层次"><a href="#六、更深层次" class="headerlink" title="六、更深层次"></a>六、更深层次</h2><ol>
 <li><p><strong>首次渲染时Watcher的触发</strong></p>
 <ul>

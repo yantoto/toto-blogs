@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Jan 2, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>我们可以把泛型比喻为一个类型占位符，它告诉编译器：“嘿，这里有一个类型参数，我现在不确定具体是什么类型，但稍后会告诉你。”</p>
+<p>通过使用泛型，我们可以编写更灵活、更可复用的代码。它允许我们在定义函数、类或接口时使用类型占位符来表示类型，而不直接指定具体的类型。这样，在实际使用时，我们可以传入不同的类型参数，使得代码可以适用于多种情况。</p>
+<p>例如，让我们看一个简单的例子，来解释泛型的使用。假设我们有一个名为 <code>identity</code> 的函数，它接受一个参数并返回该参数：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> identity&lt;T&gt;(<span class="attr">value</span>: T): T &#123;</span><br><span class="line">  <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>**第一个 <code>T</code>**：这是定义泛型类型的占位符。在这个例子中，<code>T</code> 是一个类型变量，表示函数可以接受和返回任何类型的值。</li>
+<li>**第二个 <code>T</code>**：这是函数参数的类型注解。它告诉编译器，<code>value</code> 参数的类型是 <code>T</code>，即与泛型类型一致。</li>
+<li>**第三个 <code>T</code>**：这是函数返回值的类型注解。它告诉编译器，函数将返回一个类型为 <code>T</code> 的值，即与传入的参数类型相同。</li>
+<li><code>function identity&lt;T&gt;(value) &#123;</code><br>   <code>return value;</code><br> <code>&#125;</code> 和 </li>
+<li><code>function identity(value: T): T &#123;</code><br>   <code>return value;</code><br> <code>&#125;</code>都有可能报错，所以定义三个最保险。</li>
+</ol>
+<p><img src="D:\前端全部资料笔记\搭建博客\toto\source\images\0e4f197e9c1c4f3c8d5f0a2693745329tplv-k3u1fbpfcp-jj-mark3024000q75.awebp#" alt="来源于网络"> 图片来源网络</p>
+<p>在上述代码中，<code>&lt;T&gt;</code> 表示这是一个泛型函数，<code>T</code> 是一个类型参数，可以是任何类型。函数的参数 <code>arg</code> 的类型为 <code>T</code>，返回值的类型也是 <code>T</code>。</p>
+<p>这样，我们可以在函数调用时传入不同的类型参数，使得函数适用于各种类型的参数。</p>
+<p>例如，我们可以这样调用 <code>identity</code> 函数：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">let</span> result1 = identity&lt;<span class="built_in">number</span>&gt;(<span class="number">42</span>); <span class="comment">// 传入 number 类型</span></span><br><span class="line"><span class="keyword">let</span> result2 = identity&lt;<span class="built_in">string</span>&gt;(<span class="string">&quot;Hello, TypeScript&quot;</span>); <span class="comment">// 传入 string 类型</span></span><br></pre></td></tr></table></figure>
+
+<p>在第一次调用时，类型参数 <code>number</code> 被传递给 <code>identity</code> 函数，所以返回值的类型也是 <code>number</code>。而在第二次调用时，类型参数 <code>string</code> 被传递给 <code>identity</code> 函数，所以返回值的类型是 <code>string</code>。</p>
+<p>通过使用泛型，我们可以编写出更加通用的函数，不限于特定的类型。这样一来，我们能够避免代码的重复编写，提高代码的可复用性和灵活性。</p>
+<p>泛型主要用在四个场合：函数、接口、类和别名。</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>泛型使用尖括号 <code>&lt;T&gt;</code> 来表示，并在定义函数、类或接口时指定类型参数。下面是一些基本的使用示例：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="comment">// 示例1: 创建一个泛型函数</span></span><br><span class="line"><span class="keyword">function</span> identity&lt;T&gt;(<span class="attr">arg</span>: T): T &#123;</span><br><span class="line">  <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例2: 使用泛型函数</span></span><br><span class="line"><span class="keyword">let</span> output = identity&lt;<span class="built_in">string</span>&gt;(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output); <span class="comment">// 输出: Hello</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例3: 使用类型推断，自动推断泛型类型</span></span><br><span class="line"><span class="keyword">let</span> output2 = <span class="title function_">identity</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output2); <span class="comment">// 输出: Hello</span></span><br></pre></td></tr></table></figure>
+
+<p>在示例 1 中，函数 <code>identity</code> 使用了泛型类型参数 <code>T</code>，表示参数和返回值的类型可以是任何类型。示例 2 和示例 3 展示了如何使用泛型函数并指定参数的类型。 。</p>
+<h2 id="2-使用泛型变量："><a href="#2-使用泛型变量：" class="headerlink" title="2. 使用泛型变量："></a>2. 使用泛型变量：</h2><p>泛型变量允许我们在函数或类中使用一种不确定的类型，而在实际使用时才确定具体的类型。</p>
+<p>举个例子，考虑一个简单的函数<code>identity</code>，它接受一个参数并返回相同的值：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">function</span> identity&lt;T&gt;(<span class="attr">arg</span>: T): T &#123;</span><br><span class="line">  <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们使用了泛型变量<code>T</code>，它可以代表任意类型。当我们调用函数<code>identity</code>时，编译器会根据传入的参数类型自动推断<code>T</code>的具体类型。</p>
+<p>例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">let</span> result = identity&lt;<span class="built_in">string</span>&gt;(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result); <span class="comment">// 输出：Hello</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> value = identity&lt;<span class="built_in">number</span>&gt;(<span class="number">42</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(value); <span class="comment">// 输出：42</span></span><br></pre></td></tr></table></figure>
+
+<p>通过使用泛型变量，函数<code>identity</code>可以适用于不同类型的参数，提供了更高的灵活性和可重用性。</p>
+<h2 id="3-泛型类型："><a href="#3-泛型类型：" class="headerlink" title="3. 泛型类型："></a>3. 泛型类型：</h2><p>泛型类型允许我们创建可以适用于不同类型的变量、函数或类。</p>
+<p>举个例子，考虑一个简单的数组反转函数<code>reverse</code>：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">function</span> reverse&lt;T&gt;(<span class="attr">array</span>: T[]): T[] &#123;</span><br><span class="line">  <span class="keyword">return</span> array.<span class="title function_">reverse</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们定义了一个泛型函数<code>reverse</code>，接受一个数组参数，并返回反转后的数组。泛型类型<code>T</code>用于指定数组的元素类型。</p>
+<p>例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">let</span> <span class="attr">numbers</span>: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> reversedNumbers = <span class="title function_">reverse</span>(numbers);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reversedNumbers); <span class="comment">// 输出：[5, 4, 3, 2, 1]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">strings</span>: <span class="built_in">string</span>[] = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;orange&quot;</span>];</span><br><span class="line"><span class="keyword">let</span> reversedStrings = <span class="title function_">reverse</span>(strings);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reversedStrings); <span class="comment">// 输出：[&quot;orange&quot;, &quot;banana&quot;, &quot;apple&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p>通过使用泛型类型，函数<code>reverse</code>可以适用于不同类型的数组，提供了更高的灵活性和可重用性。</p>
+<h2 id="4-泛型类："><a href="#4-泛型类：" class="headerlink" title="4. 泛型类："></a>4. 泛型类：</h2><p>泛型类允许我们创建可以适用于多种类型的类。类中的成员可以使用泛型类型进行声明和使用。</p>
+<p>举个例子，考虑一个简单的<code>Box</code>类，用于存储任意类型的值：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">class</span> <span class="title class_">Box</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">value</span>: T;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="attr">value</span>: T</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span> = value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">getValue</span>(): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">value</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们定义了一个泛型类<code>Box</code>，它具有一个私有成员<code>value</code>和一个公共方法<code>getValue</code>用于获取值。</p>
+<p>例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">let</span> box1 = <span class="keyword">new</span> <span class="title class_">Box</span>&lt;<span class="built_in">number</span>&gt;(<span class="number">42</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(box1.<span class="title function_">getValue</span>()); <span class="comment">// 输出：42</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> box2 = <span class="keyword">new</span> <span class="title class_">Box</span>&lt;<span class="built_in">string</span>&gt;(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(box2.<span class="title function_">getValue</span>()); <span class="comment">// 输出：Hello</span></span><br></pre></td></tr></table></figure>
+
+<p>过使用泛型参数<code>&lt;T&gt;</code>，可以在类的定义中引入类型变量来表示未知的类型。这样一来，我们可以在类实例化时指定具体的类型，从而创建适用于不同类型数据的类的实例。</p>
+<h2 id="5-泛型约束："><a href="#5-泛型约束：" class="headerlink" title="5. 泛型约束："></a>5. 泛型约束：</h2><p>泛型约束允许我们限制泛型类型的范围，使其满足特定条件</p>
+<h3 id="5-1-确保属性存在"><a href="#5-1-确保属性存在" class="headerlink" title="5.1. 确保属性存在"></a>5.1. 确保属性存在</h3><p>举个例子，假设我们想编写一个函数<code>getLength</code>，用于获取对象的长度。但是并不是所有的对象都有<code>length</code>属性，所以我们需要对泛型类型进行约束，确保它具有该属性。</p>
+<p>例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">interface</span> <span class="title class_">HasLength</span> &#123;</span><br><span class="line">  <span class="attr">length</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> getLength&lt;T <span class="keyword">extends</span> <span class="title class_">HasLength</span>&gt;(<span class="attr">obj</span>: T): <span class="built_in">number</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> obj.<span class="property">length</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们使用泛型约束<code>T extends HasLength</code>来限制泛型类型<code>T</code>必须满足<code>HasLength</code>接口的要求，即具有<code>length</code>属性。</p>
+<p>例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">let</span> str = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getLength</span>(str)); <span class="comment">// 输出：5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getLength</span>(arr)); <span class="comment">// 输出：5</span></span><br></pre></td></tr></table></figure>
+
+<p>通过使用泛型约束，函数<code>getLength</code>可以接受具有<code>length</code>属性的对象，并返回其长度。</p>
+<h3 id="5-2-检查对象的-key"><a href="#5-2-检查对象的-key" class="headerlink" title="5.2 检查对象的 key"></a>5.2 检查对象的 key</h3><p>1、keyof typescript 中检测类型的方法，以联合类型的方式方返回类型的所有 key 2、搭配泛型约、<code>&lt;T,K extends keyof T &gt;</code></p>
+<p>refs<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904184894980104#heading-0">juejin.cn&#x2F;post&#x2F;684490…</a> 使用泛型，可以让我们在编译前发现错误。</p>
+<h2 id="6-泛型接口："><a href="#6-泛型接口：" class="headerlink" title="6 泛型接口："></a>6 泛型接口：</h2><p>泛型接口允许我们定义可以适用于不同类型的接口。</p>
+<p>举个例子，考虑一个简单的<code>Transformer</code>接口，它定义了一个将输入值转换为输出值的转换器：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">interface</span> <span class="title class_">Transformer</span>&lt;T, U&gt; &#123;</span><br><span class="line">  <span class="title function_">transform</span>(<span class="attr">input</span>: T): U;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们定义了一个泛型接口<code>Transformer</code>，它有两个类型参数<code>T</code>和<code>U</code>，用于定义输入类型和输出类型。</p>
+<p>例如，我们可以实现一个字符串到数字的转换器：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">class</span> <span class="title class_">StringToNumberTransformer</span> <span class="keyword">implements</span> <span class="title class_">Transformer</span>&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt; &#123;</span><br><span class="line">  <span class="title function_">transform</span>(<span class="attr">input</span>: <span class="built_in">string</span>): <span class="built_in">number</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseFloat</span>(input);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过定义实现了<code>Transformer</code>接口的类，我们可以创建不同类型的转换器。</p>
+<p>例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">let</span> transformer = <span class="keyword">new</span> <span class="title class_">StringToNumberTransformer</span>();</span><br><span class="line"><span class="keyword">let</span> result = transformer.<span class="title function_">transform</span>(<span class="string">&quot;3.14&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result); <span class="comment">// 输出：3.14</span></span><br></pre></td></tr></table></figure>
+
+<p>通过使用泛型接口，我们可以定义可重用、可灵活的接口，适用于不同类型的转换操作。</p>
+<h3 id="接口搭配泛型，应用在-calss-类上"><a href="#接口搭配泛型，应用在-calss-类上" class="headerlink" title="接口搭配泛型，应用在 calss 类上"></a>接口搭配泛型，应用在 calss 类上</h3><p>extend people 约束泛型类 在 people 接口范围内 此时是 泛型变量占位符，在实例化 class 类是传递类型</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">typescript 代码解读复制代码<span class="keyword">interface</span> people &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Popele</span>&lt;T <span class="keyword">extends</span> people&gt; &#123;</span><br><span class="line">  <span class="attr">data</span>: T;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="attr">data</span>: T</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span> = data;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">hi</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.data.name&#125;</span>,,<span class="subst">$&#123;<span class="variable language_">this</span>.data.age&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> zhagnsan = <span class="keyword">new</span> <span class="title class_">Popele</span>&lt;people&gt;(&#123; <span class="attr">name</span>: <span class="string">&quot;张三&quot;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>作者：程序员王天<br>链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7290753121702166539">https://juejin.cn/post/7290753121702166539</a><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/01/02/react/react-%E6%8E%88%E6%9D%83/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/01/02/ts/ts-%E8%A7%A3%E6%9E%84/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

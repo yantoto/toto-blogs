@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Feb 10, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* eslint-disable @next/next/no-img-element */</span></span><br><span class="line"><span class="string">&#x27;use client&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Link</span> <span class="keyword">from</span> <span class="string">&#x27;next/link&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">IconFont</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@/components/IconFont&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useEffect, useMemo, useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">type</span> <span class="title class_">IPageQueryExamPaperParamsType</span>, <span class="keyword">type</span> <span class="title class_">IPageQueryExamPaperBackType</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;../../type&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; message, <span class="title class_">Spin</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;antd&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; queryExamPaperByPage &#125; <span class="keyword">from</span> <span class="string">&#x27;./service&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">CollapseBlock</span> <span class="keyword">from</span> <span class="string">&#x27;../CollapseBlock&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 无记录显示内容</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Fallback</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">section</span> <span class="attr">className</span>=<span class="string">&quot;flex flex-col justify-center items-center my-20&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">img</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">src</span>=<span class="string">&quot;https://cdn-static-resources.ai-indeed.com/rpa-colleage/images/zh-CN/pc/normal_empty.png&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">alt</span>=<span class="string">&quot;fallback&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">width</span>=<span class="string">&#123;74&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">height</span>=<span class="string">&#123;61&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;text-[13px] text-[#848A90] leading-9&quot;</span>&gt;</span>还未获得任何证书，继续加油吧<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Link</span> <span class="attr">href</span>=<span class="string">&quot;/certification/mine&quot;</span> <span class="attr">className</span>=<span class="string">&quot;flex gap-1 text-[13px] !text-primary hover:!font-medium &quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>去考试<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">IconFont</span> <span class="attr">type</span>=<span class="string">&quot;iconbannerqianjin&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询考试记录默认请求参数</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">InitQueryRecordParams</span> = &#123;</span><br><span class="line">  <span class="attr">current</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">size</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">page</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">CertificationList</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 试卷记录列表</span></span><br><span class="line">  <span class="keyword">const</span> [tableData, setTableData] = useState&lt;<span class="title class_">IPageRes</span>&lt;<span class="title class_">IPageQueryExamPaperBackType</span>&gt;&gt;()</span><br><span class="line">  <span class="keyword">const</span> [loading, setLoading] = <span class="title function_">useState</span>(<span class="literal">false</span>)</span><br><span class="line">  <span class="keyword">const</span> [collapseBlockCount, setCollapseBlockCount] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>)</span><br><span class="line">  <span class="comment">// 获取考试试卷列表</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">getExamPaperList</span> = <span class="keyword">async</span> (<span class="params">isRefresh = <span class="literal">false</span>, params?: <span class="title class_">IPageQueryExamPaperParamsType</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setLoading</span>(<span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">queryExamPaperByPage</span>(&#123;</span><br><span class="line">      ...<span class="title class_">InitQueryRecordParams</span>,</span><br><span class="line">      <span class="attr">current</span>: params?.<span class="property">current</span> || tableData?.<span class="property">current</span> || <span class="title class_">InitQueryRecordParams</span>.<span class="property">current</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; code, data &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (code === <span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">          <span class="title function_">setTableData</span>(data)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="title function_">setTableData</span>(<span class="literal">undefined</span>)</span><br><span class="line">          message.<span class="title function_">error</span>(<span class="string">&#x27;获取考卷信息失败&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="title function_">finally</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (isRefresh) &#123;</span><br><span class="line">          <span class="title function_">setCollapseBlockCount</span>(<span class="function">(<span class="params">preState</span>) =&gt;</span> preState + <span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">setLoading</span>(<span class="literal">false</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 是否存在记录数据</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title class_">IsRecords</span> = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> tableData &amp;&amp; tableData?.<span class="property">records</span> &amp;&amp; tableData?.<span class="property">records</span>?.<span class="property">length</span> &gt; <span class="number">0</span></span><br><span class="line">  &#125;, [tableData])</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">getExamPaperList</span>()</span><br><span class="line">  &#125;, [])</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Spin</span> <span class="attr">spinning</span>=<span class="string">&#123;loading&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;IsRecords ? (</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">CollapseBlock</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">paperList</span>=<span class="string">&#123;tableData?.records</span> || []&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">overClassName</span>=<span class="string">&quot;&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onReFresh</span>=<span class="string">&#123;()</span> =&gt;</span> getExamPaperList(true)&#125;</span></span><br><span class="line"><span class="language-xml">          collapseBlockKey=&#123;collapseBlockCount&#125;</span></span><br><span class="line"><span class="language-xml">          key=&#123;collapseBlockCount&#125;</span></span><br><span class="line"><span class="language-xml">        /&gt;</span></span><br><span class="line"><span class="language-xml">      ) : (</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Fallback</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      )&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Spin</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>醍醐灌顶哈</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/02/11/%E7%AE%97%E6%B3%95/Untitled/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/02/08/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/%E6%8E%A5%E5%8F%A3/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

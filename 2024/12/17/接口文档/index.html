@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 17, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一、登录"><a href="#一、登录" class="headerlink" title="一、登录"></a>一、登录</h2><p>管理员只有一个表，无法注册</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	id：&quot;&quot;,</span><br><span class="line">	username:&quot;&quot;,</span><br><span class="line">	password:&quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>学生有一个表，可注册</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">const studentId = ref(&quot;&quot;);</span><br><span class="line">const password = ref(&quot;&quot;);</span><br><span class="line">const name = ref(&quot;&quot;);</span><br><span class="line">const college = ref(&quot;&quot;);</span><br><span class="line">const phone = ref(&quot;&quot;);</span><br><span class="line">const email = ref(&quot;&quot;);</span><br><span class="line">const wechat = ref(&quot;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、学生功能"><a href="#二、学生功能" class="headerlink" title="二、学生功能"></a>二、学生功能</h2><h3 id="预约教室"><a href="#预约教室" class="headerlink" title="预约教室"></a>预约教室</h3><p><img src="/../images/image-20241217142255462.png" alt="image-20241217142255462"></p>
+<p>发送预约请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	studentId ：&quot;&quot;，//x</span><br><span class="line">   classroomNum: &quot;C101&quot;, //房间号</span><br><span class="line">   location: &quot;Bldg 1, 2nd Fl&quot;, //地址</span><br><span class="line">   openTime: &quot;M-F 8:00-22:00&quot;, //开放时间</span><br><span class="line">   capacity: 40, //容量</span><br><span class="line">   nowCapacity: 20//当前容量</span><br><span class="line">   desksChairs: &quot;桌椅40套&quot;, // 中文数据</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="预约信息查看"><a href="#预约信息查看" class="headerlink" title="预约信息查看"></a>预约信息查看</h3><p><img src="/../images/image-20241217142512594.png" alt="image-20241217142512594"></p>
+<p>获取该用户的预约信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	studentId ：&quot;&quot;，//x</span><br><span class="line">   classroomNum: &quot;C101&quot;, //房间号</span><br><span class="line">   location: &quot;Bldg 1, 2nd Fl&quot;, //地址</span><br><span class="line">   openTime: &quot;M-F 8:00-22:00&quot;, //开放时间</span><br><span class="line">   capacity: 40, //容量，</span><br><span class="line">   nowCapacity: 20//当前容量</span><br><span class="line">   desksChairs: &quot;桌椅40套&quot;, // 中文数据</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>取消预约</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	studentId ：&quot;&quot;，//x</span><br><span class="line">   classroomNum: &quot;C101&quot;, //房间号</span><br><span class="line">   location: &quot;Bldg 1, 2nd Fl&quot;, //地址</span><br><span class="line">   openTime: &quot;M-F 8:00-22:00&quot;, //开放时间</span><br><span class="line">   capacity: 40, //容量</span><br><span class="line">   nowCapacity: 20，//当前容量</span><br><span class="line">   desksChairs: &quot;桌椅40套&quot;, // 中文数据</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、管理员"><a href="#三、管理员" class="headerlink" title="三、管理员"></a>三、管理员</h2><h3 id="学生信息管理"><a href="#学生信息管理" class="headerlink" title="学生信息管理"></a>学生信息管理</h3><p><img src="/../images/image-20241217142834121.png" alt="image-20241217142834121"></p>
+<p>获取数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 第一个学生的信息</span><br><span class="line">    studentId: &quot;20230001&quot;, // 学号，就是用户名</span><br><span class="line">    password: &quot;password123&quot;, // 密码（注意：在实际应用中，密码不应以明文形式存储）</span><br><span class="line">    name: &quot;张三&quot;, // 姓名</span><br><span class="line">    college: &quot;计算机科学学院&quot;, // 学院</span><br><span class="line">    phone: &quot;13800000001&quot;, // 电话号码</span><br><span class="line">    email: &quot;zhangsan@example.com&quot;, // 电子邮件</span><br><span class="line">    wechat: &quot;zhangsan_wechat&quot;, // 微信（可选）</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>删除学生信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 第一个学生的信息</span><br><span class="line">    studentId: &quot;20230001&quot;, // 学号，就是用户名</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>新增</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 第一个学生的信息</span><br><span class="line">    studentId: &quot;20230001&quot;, // 学号，就是用户名</span><br><span class="line">    password: &quot;password123&quot;, // 密码（注意：在实际应用中，密码不应以明文形式存储）</span><br><span class="line">    name: &quot;张三&quot;, // 姓名</span><br><span class="line">    college: &quot;计算机科学学院&quot;, // 学院</span><br><span class="line">    phone: &quot;13800000001&quot;, // 电话号码</span><br><span class="line">    email: &quot;zhangsan@example.com&quot;, // 电子邮件</span><br><span class="line">    wechat: &quot;zhangsan_wechat&quot;, // 微信（可选）</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="教室管理"><a href="#教室管理" class="headerlink" title="教室管理"></a>教室管理</h3><p><img src="/../images/image-20241217142947351.png" alt="image-20241217142947351"></p>
+<p>获取、删除、上传</p>
+<p>开放时间改一改，不开放 0、未来一天1、未来三天 2</p>
+<p>不设置上午下午预约，预约就是一整天。</p>
+<p>那么预约信息表就是按日期来放置，每天的最大容量就是教室容量。</p>
+<p>学生预约时根据表示，选择展示不同时期。</p>
+<p>0 不可选 1 可选未来三天的日期 2可选未来五天</p>
+<p>预约阶段可以超出容量预约，只有在管理员审核通过后，当前教室才会+1</p>
+<p>但是管理员审核的时候，系统会统计（查当天该教室通过预约信息）数量（表里面建一个当前容量），如果超过，那么返回信息提醒（或者直接将状态改为false）</p>
+<p>订单只是订单，订单只需要该用户需要看到的就可以了。管理员审核通过后，则后面查看是否人满只需要查对应的教室和日期看他的当前人数。不需要建一个表去记录教室满没满。</p>
+<p>只有自己可以删除（取消）预约，管理员是不可以的，只能驳回和批准</p>
+<p>相当于第一次提交预约，预约初始状态自动为waiting</p>
+<p>修改教室的教室编号</p>
+<p>预约表内包括</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Lists &#123;</span><br><span class="line">    public String id;</span><br><span class="line">    public String classroomNum;</span><br><span class="line">    public String orderedTime;</span><br><span class="line">    public String isOrdered;</span><br><span class="line">    public Boolean isOpened;</span><br><span class="line">    public String studentId;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相当于，如果删除了教室信息，那么对应的预约信息也会删除（？）</p>
+<p>如果修改了教室的开放时间，那么需要查询预约表，把超出的时间的预约isOrdered改为failed，并且修改reason为修改了教室开放时间。</p>
+<p>所以修改教室信息，预约表不需要删除，而只需要修改状态和原因。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    classroomNum: &quot;C101&quot;, //房间号</span><br><span class="line">    location: &quot;Bldg 1, 2nd Fl&quot;, //地址</span><br><span class="line">    openTime: &quot;&quot;, //开放时间</span><br><span class="line">    capacity: 40, //容量</span><br><span class="line">    nowCapacity: 20//当前容量，</span><br><span class="line">    desksChairs: &quot;桌椅40套&quot;, // 中文数据</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<p>还差管理员批准时判断是否超过当前容量，（先查该天该教室的预约条数，然后查教室信息将容量和条数对比，若超过，则修改该条状态和原因；未超过，则批准通过）</p>
+<h3 id="预约信息管理"><a href="#预约信息管理" class="headerlink" title="预约信息管理"></a>预约信息管理</h3><p><img src="/../images/image-20241217143057487.png" alt="image-20241217143057487"></p>
+<p>获取预约信息（未批准的）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 第一个预约的信息</span><br><span class="line">    username: &#x27;user1&#x27;, // 用户名</span><br><span class="line">    studentId: &#x27;20230001&#x27;, // 学号</span><br><span class="line">    classroomNum: &#x27;C101&#x27;, // 教室号</span><br><span class="line">    location: &#x27;第一教学楼101室&#x27;, // 教室地址</span><br><span class="line">    openTime: &#x27;2023-10-05T14:00:00&#x27;, // 预约时间（ISO 8601格式）</span><br><span class="line">    // 可以添加其他属性，如预约状态、预约课程等（这里省略）</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>驳回</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 第一个预约的信息</span><br><span class="line">    username: &#x27;user1&#x27;, // 用户名</span><br><span class="line">    studentId: &#x27;20230001&#x27;, // 学号</span><br><span class="line">    classroomNum: &#x27;C101&#x27;, // 教室号</span><br><span class="line">    location: &#x27;第一教学楼101室&#x27;, // 教室地址</span><br><span class="line">    openTime: &#x27;2023-10-05T14:00:00&#x27;, // 预约时间（ISO 8601格式）</span><br><span class="line">    flag:false,</span><br><span class="line">    reason:“不准申请”</span><br><span class="line">    // 可以添加其他属性，如预约状态、预约课程等（这里省略）</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>批准</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 第一个预约的信息</span><br><span class="line">    username: &#x27;user1&#x27;, // 用户名</span><br><span class="line">    studentId: &#x27;20230001&#x27;, // 学号</span><br><span class="line">    classroomNum: &#x27;C101&#x27;, // 教室号</span><br><span class="line">    location: &#x27;第一教学楼101室&#x27;, // 教室地址</span><br><span class="line">    openTime: &#x27;2023-10-05T14:00:00&#x27;, // 预约时间（ISO 8601格式）</span><br><span class="line">    flag:true</span><br><span class="line">  </span><br><span class="line">    // 可以添加其他属性，如预约状态、预约课程等（这里省略）</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、添加"><a href="#四、添加" class="headerlink" title="四、添加"></a>四、添加</h2><p>1.用户可查看该教室已通过预约条数和预约容量、位置。（学生查看时）</p>
+<p>2.数据库设计，添加主码 OK </p>
+<p>3.界面设计修改，加动画</p>
+<p>4.注册时学号查重 OK</p>
+<p>5.list增加已预约条数和教室预约信息。（要吗？不要这样每次管理员批准（驳回和等待都不会）就会将所有相关数据的人数进行修改。。地址那些就是每次查的时候返回【根据classroomNum查地址和容量，根据时间和studentId返回通过条数，】）</p>
+<p>或者list不增加已预约条数，而是返回给前端一个额外的字段    采纳 </p>
+<p>6.管理员预约信息查看同样需要查看地址和容量。</p>
+<p>7.修改时间开放也需要考虑驳回预约。</p>
+<p>开放时间修改，则将不在期限的预约信息打为驳回。</p>
+<p>预约信息查看！！！接口有问题要显示自己的！！！</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/26/react/react-%E5%85%AC%E5%8F%B8%E5%AD%A6%E4%B9%A0/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/13/react/react-%E5%85%A5%E9%97%A8/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

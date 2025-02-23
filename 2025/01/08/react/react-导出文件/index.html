@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Jan 8, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>场景：PC端大量数据需要导出，生成xls文件。</p>
+<p>后端提供接口，只需携带token即可。</p>
+<p>主要逻辑在接收到数据后<strong>界面文件管理器的创建</strong>。</p>
+<p><img src="/../../images/image-20250108161437736.png" alt="image-20250108161437736"></p>
+<ol>
+<li><p><strong>处理响应数据</strong>:</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const blob = new Blob([res], &#123; type: res.type &#125;);</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p> 使用响应数据创建一个 <strong>Blob 对象</strong>。Blob（Binary Large Object）表示<strong>不可变的、原始数据的类文件对象</strong>。在这里，<code>res</code> 是<strong>响应的数据</strong>，<code>res.type</code> 是<strong>响应的 MIME 类型</strong>。</p>
+</li>
+<li><p><strong>创建下载链接</strong>:</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const linkUrl = window.URL.createObjectURL(blob);</span><br><span class="line">const link = document.createElement(&#x27;a&#x27;);</span><br><span class="line">link.style.display = &#x27;none&#x27;;</span><br><span class="line">link.href = linkUrl;</span><br><span class="line">link.download = I18N.workmanage.PCWork.pCDangQianShai;</span><br><span class="line">document.body.appendChild(link);</span><br><span class="line">link.click();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>window.URL.createObjectURL(blob)</code> 创建一个指向 Blob 对象的 URL。</li>
+<li>创建一个隐藏的 <code>&lt;a&gt;</code> 元素，并设置其 <code>href</code> 属性为刚刚创建的 URL。</li>
+<li>设置 <code>download</code> 属性为 <code>I18N.workmanage.PCWork.pCDangQianShai</code>，这应该是一个国际化字符串，表示下载的文件名。</li>
+<li>将这个 <code>&lt;a&gt;</code> 元素添加到文档中，然后模拟点击它以触发下载。</li>
+</ul>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7444467218070323210?searchId=202501081619060486174C08DC216CF549%E5%89%8D%E7%AB%AFBlob%E3%80%81File%E3%80%81FileReader%E3%80%81ArrayBuffer%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85">https://juejin.cn/post/7444467218070323210?searchId=202501081619060486174C08DC216CF549前端Blob、File、FileReader、ArrayBuffer傻傻分不清</a></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/01/11/react/react-%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/01/06/css%E5%B8%83%E5%B1%80/css-%E6%B0%B4%E5%B9%B3%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E5%9D%87%E5%88%86/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 26, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="一-语法学习"><a href="#一-语法学习" class="headerlink" title="一.语法学习"></a>一.语法学习</h2><h3 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h3><p>缓存计算。</p>
+<p>useMemo(Fn,[dependencies])</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const visibleTodos = useMemo(</span><br><span class="line">    () =&gt; filterTodos(todos, tab),</span><br><span class="line">    [todos, tab]</span><br><span class="line">  );</span><br><span class="line">  //第一个参数是调用计算的回调，第二个是回调执行</span><br></pre></td></tr></table></figure>
+
+<p>Fn：React 将会在首次渲染时调用该函数；在之后的渲染中，如果 <code>dependencies</code> 没有发生变化，React 将直接返回相同值。否则，将会再次调用 <code>calculateValue</code> 并返回最新结果，然后缓存该结果以便下次重复使用。</p>
+<h3 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h3><p>组件树中跨层级传递数据（爷孙）</p>
+<p>爷创建</p>
+<p>孙定义类型，并接受爷</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; createContext, useContext &#125; <span class="keyword">from</span><span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义Context的默认值类型</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">ContextValue</span> = &#123;</span><br><span class="line">  <span class="attr">theme</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建Context对象</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ThemeContext</span> = createContext&lt;<span class="title class_">ContextValue</span> | <span class="literal">null</span>&gt;(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数式组件中使用useContext获取并消费Context中的数据</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">MyComponent</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> contextData = <span class="title function_">useContext</span>(<span class="title class_">ThemeContext</span>);</span><br><span class="line">  <span class="keyword">if</span> (!contextData) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;ThemeContext is not provided&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;`Current theme: $&#123;contextData.theme&#125;`&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在另一个组件中作为Provider提供数据</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">ThemeContext.Provider</span> <span class="attr">value</span>=<span class="string">&#123;&#123;</span> <span class="attr">theme:</span> &#x27;<span class="attr">dark</span>&#x27; &#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">MyComponent</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ThemeContext.Provider</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="FC极其类似"><a href="#FC极其类似" class="headerlink" title="FC极其类似"></a>FC极其类似</h3><h3 id="React-FunctionComponent（与-FC-基本等同）"><a href="#React-FunctionComponent（与-FC-基本等同）" class="headerlink" title="React.FunctionComponent（与 FC 基本等同）"></a>React.FunctionComponent（与 FC 基本等同）</h3><p><code>React.FunctionComponent</code> 实际上和 <code>FC</code> 是类似的概念，都用于定义函数式组件。<code>FC</code> 其实就是 <code>React.FunctionComponent</code> 的一个类型别名，它们的使用方式基本一致，例如：</p>
+<p>收起</p>
+<p>typescript</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span><span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Props</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">MyComponent</span>: <span class="title class_">React</span>.<span class="property">FunctionComponent</span>&lt;<span class="title class_">Props</span>&gt; = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;props.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这里使用 <code>React.FunctionComponent</code> 来明确 <code>MyComponent</code> 这个函数式组件接收的属性类型为 <code>Props</code>，在功能和效果上与使用 <code>FC</code> 是等价的。</p>
+<h3 id="React-Component"><a href="#React-Component" class="headerlink" title="React.Component"></a>React.Component</h3><p><code>React.Component</code> 用于定义基于类的 React 组件（与之对应的是函数式组件）。它是一个抽象基类，自定义的类组件需要继承自它，并且要实现 <code>render</code> 方法来返回要渲染的内容。同时，可以通过定义 <code>state</code> 属性来管理组件的内部状态，示例如下：</p>
+<p>收起</p>
+<p>typescript</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">Component</span> &#125; <span class="keyword">from</span><span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Props</span> = &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">State</span> = &#123;</span><br><span class="line">  <span class="attr">count</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClassComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span>&lt;<span class="title class_">Props</span>, <span class="title class_">State</span>&gt; &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="attr">props</span>: <span class="title class_">Props</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="attr">count</span>: <span class="number">0</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;this.props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Count: &#123;this.state.count&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在上述代码中，<code>MyClassComponent</code> 继承自 <code>React.Component&lt;Props, State&gt;</code>，其中 <code>&lt;Props, State&gt;</code> 分别指定了组件接收的外部属性类型和内部状态的类型，这有助于利用 TypeScript 的类型检查来规范类组件在属性和状态方面的数据使用。</p>
+<h3 id="React-PureComponent"><a href="#React-PureComponent" class="headerlink" title="React.PureComponent"></a>React.PureComponent</h3><p><code>React.PureComponent</code> 同样用于定义类组件，它和 <code>React.Component</code> 的区别在于其内部实现了 <code>shouldComponentUpdate</code> 方法的一个浅层比较版本。这个方法会自动对组件的 <code>props</code> 和 <code>state</code> 进行浅比较，如果它们没有发生变化，组件就不会重新渲染，从而在一定程度上优化了组件的性能。使用示例如下：</p>
+<p>收起</p>
+<p>typescript</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">PureComponent</span> &#125; <span class="keyword">from</span><span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Props</span> = &#123;</span><br><span class="line">  <span class="attr">data</span>: <span class="built_in">string</span>[];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyPureComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">PureComponent</span>&lt;<span class="title class_">Props</span>&gt; &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;this.props.data.map((item, index) =&gt; (</span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">p</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        ))&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这里 <code>MyPureComponent</code> 继承自 <code>React.PureComponent&lt;Props&gt;</code>，如果其 <code>props</code> 中的 <code>data</code> 数组引用没有改变（即使数组内部元素有修改，但只要引用没变），组件在下次渲染时就可能不会重新渲染，避免了不必要的更新操作，适合用于 <code>props</code> 和 <code>state</code> 变化不频繁且进行简单数据展示的组件场景。</p>
+<h3 id="React-memo"><a href="#React-memo" class="headerlink" title="React.memo"></a>React.memo</h3><p><code>React.memo</code> 用于对函数式组件进行包装，实现类似 <code>React.PureComponent</code> 的功能，也就是对组件的 <code>props</code> 进行浅比较，当 <code>props</code> 没有变化时，阻止组件重新渲染，达到性能优化的目的。例如：</p>
+<p>收起</p>
+<p>typescript</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; memo &#125; <span class="keyword">from</span><span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Props</span> = &#123;</span><br><span class="line">  <span class="attr">text</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">MyMemoizedComponent</span> = <span class="title function_">memo</span>(<span class="function">(<span class="params"><span class="attr">props</span>: <span class="title class_">Props</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;props.text&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在上述代码中，<code>MyMemoizedComponent</code> 通过 <code>memo</code> 进行包装后，只要传入的 <code>props</code> 里的 <code>text</code> 属性引用等没有变化，组件就不会再次渲染，常用于一些简单的、只依赖 <code>props</code> 展示内容的函数式组件来提升性能。</p>
+<h3 id="React-Context"><a href="#React-Context" class="headerlink" title="React.Context"></a>React.Context</h3><p><code>React.Context</code> 用于在 React 组件树中跨层级传递数据，避免了层层通过 <code>props</code> 向下传递的麻烦。它需要先创建一个 <code>Context</code> 对象，然后通过 <code>Provider</code> 和 <code>Consumer</code>（或者 <code>useContext</code> 钩子函数，在函数式组件中常用）来进行数据的提供和消费。在 TypeScript 中也需要对其相关类型进行定义，示例如下：</p>
+<p>收起</p>
+<p>typescript</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; createContext, useContext &#125; <span class="keyword">from</span><span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义Context的默认值类型</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">ContextValue</span> = &#123;</span><br><span class="line">  <span class="attr">theme</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建Context对象</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ThemeContext</span> = createContext&lt;<span class="title class_">ContextValue</span> | <span class="literal">null</span>&gt;(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数式组件中使用useContext获取并消费Context中的数据</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">MyComponent</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> contextData = <span class="title function_">useContext</span>(<span class="title class_">ThemeContext</span>);</span><br><span class="line">  <span class="keyword">if</span> (!contextData) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;ThemeContext is not provided&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;`Current theme: $&#123;contextData.theme&#125;`&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在另一个组件中作为Provider提供数据</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">ThemeContext.Provider</span> <span class="attr">value</span>=<span class="string">&#123;&#123;</span> <span class="attr">theme:</span> &#x27;<span class="attr">dark</span>&#x27; &#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">MyComponent</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ThemeContext.Provider</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在这个例子中，先定义了 <code>ContextValue</code> 类型来明确 <code>ThemeContext</code> 中传递的数据结构，然后创建 <code>ThemeContext</code> 对象，后续组件可以通过不同方式来利用这个 <code>Context</code> 进行数据的传递和使用，保证了数据在组件树中共享时的类型安全。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/27/react/react-domToImage/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/17/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

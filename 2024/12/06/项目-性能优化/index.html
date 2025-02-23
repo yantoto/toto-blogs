@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 6, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>\6. 实习做的所有性能优化工作 ✅</p>
+<p>1.按需导入</p>
+<p>2.图片懒加载，当时是利用了一个lazy库给每个图片都增加了属性，实现图片加载完毕之前进行预展示</p>
+<p>3.SSE流式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">createSseConnect()&#123;</span><br><span class="line">                   if(window.EventSource)&#123;</span><br><span class="line">                       const eventSource = new EventSource(&#x27;http://localhost:8081/sse/connect&#x27;);</span><br><span class="line">                       console.log(eventSource)</span><br><span class="line">                       </span><br><span class="line">                       eventSource.onmessage = (event) =&gt;&#123;</span><br><span class="line">                           console.log(&quot;onmessage: &quot;+event.data)</span><br><span class="line">                           this.message = this.message + event.data</span><br><span class="line">                       &#125;;</span><br><span class="line">                       </span><br><span class="line">                       eventSource.onopen = (event) =&gt;&#123;</span><br><span class="line">                           console.log(&quot;onopen:&quot;+event)</span><br><span class="line">                       &#125;;</span><br><span class="line">                       </span><br><span class="line">                       eventSource.onerror = (event) =&gt;&#123;</span><br><span class="line">                           console.log(&quot;onerror:&quot;+event)</span><br><span class="line">                       &#125;;</span><br><span class="line">                       </span><br><span class="line">                       eventSource.close = (event) =&gt;&#123;</span><br><span class="line">                           console.log(&quot;close :&quot;+event)</span><br><span class="line">                       &#125;;</span><br><span class="line">                </span><br><span class="line">                   &#125;else&#123;</span><br><span class="line">                       console.log(&quot;你的浏览器不支持SSE~&quot;)</span><br><span class="line">                   &#125;</span><br><span class="line">                   console.log(&quot; 测试 打印&quot;)</span><br><span class="line">               &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>利用SSE与后端开启一个长期的联系，之后每接收到一个新的回复，把他push到数组里面，再将数组转换为字符串更新到页面上。减少了时间开销。</p>
+<p>4.封装组件，形成复用：帖子组件、图片上传组件</p>
+<p>只需上层组件传递参数和判断条件进来，组件内部自行渲染</p>
+<p>图片上传组件：（当时我们是把图片上传到了腾讯云的平台，再根据平台返回的key 传给后端，涉及到调用腾讯云的上传接口）二次封装了cossdk的图片上传，返回一个Promise参数，并将.then的结果作为获取到的数据执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const cos = new MyCOS(temp)</span><br><span class="line">      await cos.cosUploadImg().then(res =&gt; &#123;</span><br><span class="line">        imageList.push(res.code.key)</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/06/webpack-%E5%AE%9A%E4%B9%89/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/06/%E5%90%91/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

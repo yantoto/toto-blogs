@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Jan 14, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p><strong>Set结构类似数组，Map结构类似对象。</strong></p>
+<p>既然有了数组和对象，那么为什么需要这两个新的数据类型？</p>
+<p>原因如下：</p>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>与数组的<strong>不同</strong>之处：</p>
+<ol>
+<li>Set的<strong>元素是唯一</strong>的，因此可以去重</li>
+<li>Set<strong>无法直接用下标</strong>获取，但可以利用<strong>方法</strong>（has、get等）获取值或判断值</li>
+</ol>
+<p>因此，我们创建Set来<strong>去重</strong>，并且由于里面的元素是唯一的，查找<strong>速度会更快</strong>，只不过查找方式不同。</p>
+<h4 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h4><p><strong>数组和字符串去重</strong>皆可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//数组</span><br><span class="line">const set=new Set([1,2,3,1,2])</span><br><span class="line">const newArr=[...set]</span><br><span class="line">console.log(newArr)// 1,2,3</span><br><span class="line"></span><br><span class="line">//字符串</span><br><span class="line">const set=new Set(&quot;abcbbcca&quot;)</span><br><span class="line">const newStr=[...set].join(&#x27;&#x27;)</span><br><span class="line">console.log(newStr)// abc</span><br></pre></td></tr></table></figure>
+
+<h4 id="常见方法"><a href="#常见方法" class="headerlink" title="常见方法"></a>常见方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const set=new Set([a,b,c])</span><br><span class="line">set.has(a) // true</span><br><span class="line">set.add(d) //[a,b,c,d]</span><br><span class="line">set.delete(d) //[a,b,c]</span><br><span class="line">set.size </span><br><span class="line">set.keys() //[a,b,c]</span><br><span class="line">set.values() //[1,2,3]</span><br><span class="line">set.entries() // &#123;[a,1],[b,2],[c,3]&#125;</span><br><span class="line">set.clear() //清空</span><br></pre></td></tr></table></figure>
+
+<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><p>Set可以被for..of  forEach遍历。</p>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p><strong>出现原因</strong>：<strong>对象的键只能是字符串</strong>，就算定义时是其他数据类型，也会<strong>自动转换</strong>为字符串类型，而<strong>Map的键可以是任何数据类型</strong>，因此，在一些场景下我们需要<strong>使用Map来存储特定类型的数据类型</strong>，方便查找。</p>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let n = 123</span><br><span class="line">const obj = &#123;</span><br><span class="line">    [n]: 1,</span><br><span class="line">    n: 1,</span><br><span class="line">    name: &#x27;张三&#x27;,</span><br><span class="line">    [[]]: &#x27;1&#x27;</span><br><span class="line">&#125;</span><br><span class="line">console.log(obj);</span><br></pre></td></tr></table></figure>
+
+<p>结果为：<img src="/../../images/image-20250114094255489.png" alt="image-20250114094255489"></p>
+<p>与<strong>对象</strong>的不同之处：</p>
+<ol>
+<li><strong>键的数据类型更多。</strong></li>
+<li>键是唯一的，不存在重复键。</li>
+</ol>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const map =new Map()</span><br><span class="line">map.set(&quot;name&quot;,&#x27;张三&#x27;)</span><br><span class="line">map.get(&quot;name&quot;)</span><br><span class="line">map.has(&quot;name&quot;)</span><br><span class="line">map.delete(&quot;name&quot;)</span><br><span class="line">map.clear()</span><br><span class="line">map.size</span><br><span class="line">map.keys() //[a,b,c]</span><br><span class="line">map.values() //[1,2,3]</span><br><span class="line">map.entries() // &#123;[a,1],[b,2],[c,3]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结下，</p>
+<ol>
+<li>Map除了定义时有对值的操作，<strong>其他时候都是对键的操作</strong>。</li>
+<li>Map的方法和Set类似。</li>
+</ol>
+<h4 id="遍历-1"><a href="#遍历-1" class="headerlink" title="遍历"></a>遍历</h4><p>Map也可以被forEach  for…of遍历。</p>
+<h3 id="强引用和弱引用"><a href="#强引用和弱引用" class="headerlink" title="强引用和弱引用"></a>强引用和弱引用</h3><p>WeakSet和WeakMap都是弱引用，首先了解一下什么是弱引用。</p>
+<p><strong>弱引用是不能确保其引用的对象不会被垃圾回收器回收的引用，而强引用是确保其引用的对象不会被垃圾回收器回收的引用。</strong></p>
+<p>也就是说，JavaScript引擎在执行代码时，对象通过变量直接赋值形成的引用会被视为强引用，垃圾回收器就不会回收这类对象；通过<code>WeakMap</code>和<code>WeakSet</code>建立的引用会被视为弱引用，这类引用无法阻止垃圾回收器的回收。</p>
+<p>当一个变量被设置为<code>null</code>时，会断开该变量与原对象间的引用，该对象就会变成垃圾回收器的回收目标。</p>
+<p><img src="/../../images/image-20250114094925739.png" alt="image-20250114094925739"></p>
+<h3 id="WeakSet和WeakMap"><a href="#WeakSet和WeakMap" class="headerlink" title="WeakSet和WeakMap"></a>WeakSet和WeakMap</h3><h4 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h4><p>WeakSet和Set非常相似，但是有一些不同之处：</p>
+<ol>
+<li>成员类型：WeakSet的成员只能是Symbol值和对象，不能是其他的数据类型；Set的成员可以是任意数据类型。</li>
+<li>引用类型：WeakSet是弱引用；Set是强引用。</li>
+<li>方法和属性：WeakSet不支持迭代，所以没有<code>forEach</code>, <code>values</code>, <code>keys</code>, <code>entries</code>方法，并且也没有<code>size</code>属性；Set有<code>forEach</code>, <code>values</code>, <code>keys</code>, <code>entries</code>方法，也有<code>size</code>属性。</li>
+<li>作用：WeakSet可以实现自动清理回收；Set可以通过元素的唯一性用于实现去重工作。</li>
+</ol>
+<h4 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h4><p>WeakMap和Map也非常相似，但是也是有一些不同：</p>
+<ol>
+<li>键的类型：WeakMap的键类型只能是对象和Symbol值；Map的键类型可以是任意数据类型。</li>
+<li>引用类型：WeakMap是弱引用；Map是强引用。</li>
+<li>方法和属性：WeakMap不支持迭代，所以没有<code>forEach</code>, <code>values</code>, <code>keys</code>, <code>entries</code>方法，并且也没有<code>size</code>属性；Map有<code>forEach</code>, <code>values</code>, <code>keys</code>, <code>entries</code>方法，也有<code>size</code>属性。</li>
+<li>作用：WeakMap也可以实现自动清理回收；Map提供需要高效键值对的操作。</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/01/14/git/git-commit%E5%89%8D%E7%BC%80%E8%A7%84%E8%8C%83/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/01/13/git/git-%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8F%91%E5%B8%83/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

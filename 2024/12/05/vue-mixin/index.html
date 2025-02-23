@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 5, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h2><h3 id="一、到底什么是mixin"><a href="#一、到底什么是mixin" class="headerlink" title="一、到底什么是mixin?"></a>一、到底什么是mixin?</h3><p><strong>官方解释:</strong></p>
+<p>混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。一个混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被“混合”进入该组件本身的选项。</p>
+<p><strong>民间解释：</strong></p>
+<p>将组件的公共逻辑或者配置提取出来，哪个组件需要用到时，直接将提取的这部分混入到组件内部即可。这样既可以减少代码冗余度，也可以让后期维护起来更加容易。</p>
+<p><strong>人话：</strong></p>
+<p>mixin<strong>提取的是逻辑或者配置</strong>，而不是html和css代码。其实他就是<strong>组件中的组件</strong>，<strong>Vue组件化让我们的代码复用性更高</strong>，那么<strong>组件和组件之间海鸥重复部分，就可以使用mixin再抽离一遍。</strong></p>
+<h3 id="二、mixin和vuex的区别"><a href="#二、mixin和vuex的区别" class="headerlink" title="二、mixin和vuex的区别"></a>二、mixin和vuex的区别</h3><p>上面一点说Mixin就是一个抽离公共部分的作用。在Vue中，Vuex状态管理似乎也是做的这一件事，<strong>它也是将组件之间可能共享的数据抽离出来</strong>。两者看似一样，实则还是有细微的区别，区别如下：</p>
+<ul>
+<li>Vuex公共状态管理，<strong>如果在一个组件中更改了Vuex中的某个数据，那么其它所有引用了Vuex中该数据的组件也会跟着变化</strong>。</li>
+<li>Mixin中的数据和方法都是<strong>独立的</strong>，组件之间使用后是<strong>互相不影响的</strong>。</li>
+</ul>
+<h3 id="三、mixin的结构"><a href="#三、mixin的结构" class="headerlink" title="三、mixin的结构"></a>三、mixin的结构</h3><p>其实就是在src&#x2F;mixin&#x2F;index.js创建js文件，文件内部内容跟vue内部的script便签一致。</p>
+<p><img src="/../images/image-20241205195859623.png" alt="image-20241205195859623"></p>
+<p>需要用到mixin的地方，可以局部引入。</p>
+<p><img src="/../images/image-20241205200205361.png" alt="image-20241205200205361"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/06/%E6%99%BA%E8%83%BD%E9%9D%A2%E7%AD%8B/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/05/vue-vue2%E5%92%8Cvue3%E7%9A%84%E5%8C%BA%E5%88%AB/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

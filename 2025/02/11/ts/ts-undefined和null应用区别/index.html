@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Feb 11, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>刷题的时候常常遇到以下问题，会报错。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while(cur)&#123;</span><br><span class="line">	cur.next.next=1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while(cur&amp;&amp;cur.next)&#123;</span><br><span class="line">	cur.next.next=1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则不会报错了，因为运行时访问 <code>undefined</code> 的属性或方法，会直接抛出错误,所以需要对cur及cur.next进行检验。</p>
+<p>又出现了这种情况：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while(cur)&#123;</span><br><span class="line">        map.get(cur).next=map.get(cur.next) || null</span><br><span class="line">        map.get(cur).random=map.get(cur.random) || null</span><br><span class="line">        cur=cur.next</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>不加||null就无法检测过去，报错。</p>
+<p>所以，以下对null和undefined进行了了解。</p>
+<p><code>undefined</code> 在 JavaScript 中表示“未定义”或“缺失值”，它可能会导致以下问题：</p>
+<hr>
+<h3 id="1-运行时错误"><a href="#1-运行时错误" class="headerlink" title="1. 运行时错误"></a>1. <strong>运行时错误</strong></h3><ul>
+<li>如果尝试访问 <code>undefined</code> 的属性或方法，会直接抛出错误。</li>
+<li>例如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="literal">undefined</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>); <span class="comment">// TypeError: Cannot read properties of undefined</span></span><br></pre></td></tr></table></figure></li>
+<li>这种错误会导致程序崩溃，尤其是在没有错误处理的情况下。</li>
+</ul>
+<hr>
+<h3 id="2-逻辑错误"><a href="#2-逻辑错误" class="headerlink" title="2. 逻辑错误"></a>2. <strong>逻辑错误</strong></h3><ul>
+<li><code>undefined</code> 可能会破坏代码的逻辑，因为它是一个“假值”（falsy value），但它的语义并不明确。</li>
+<li>例如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> value = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">if</span> (value) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Value is truthy&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Value is falsy&quot;</span>); <span class="comment">// 会执行这里</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>如果代码逻辑依赖于 <code>null</code> 或特定值，<code>undefined</code> 可能会导致意外行为。</li>
+</ul>
+<hr>
+<h3 id="3-难以调试"><a href="#3-难以调试" class="headerlink" title="3. 难以调试"></a>3. <strong>难以调试</strong></h3><ul>
+<li><code>undefined</code> 通常表示变量未初始化或属性不存在，但它不会直接告诉你问题的根源。</li>
+<li>例如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = &#123; <span class="attr">name</span>: <span class="string">&quot;Alice&quot;</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(data.<span class="property">age</span>); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里 <code>data.age</code> 是 <code>undefined</code>，但你无法确定是因为 <code>age</code> 属性不存在，还是它的值被显式设置为 <code>undefined</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4-与-null-的混淆"><a href="#4-与-null-的混淆" class="headerlink" title="4. 与 null 的混淆"></a>4. <strong>与 <code>null</code> 的混淆</strong></h3><ul>
+<li><code>undefined</code> 和 <code>null</code> 都表示“无值”，但它们的语义不同：<ul>
+<li><code>undefined</code>：表示未定义或缺失。</li>
+<li><code>null</code>：表示明确的“空值”。</li>
+</ul>
+</li>
+<li>如果代码中混用 <code>undefined</code> 和 <code>null</code>，可能会导致逻辑混乱。</li>
+<li>例如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getUser</span>(<span class="params">id</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!id) <span class="keyword">return</span> <span class="literal">undefined</span>; <span class="comment">// 表示未找到用户</span></span><br><span class="line">    <span class="keyword">return</span> &#123; id, <span class="attr">name</span>: <span class="string">&quot;Alice&quot;</span> &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> user = <span class="title function_">getUser</span>();</span><br><span class="line"><span class="keyword">if</span> (user === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;User is null&quot;</span>); <span class="comment">// 不会执行</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (user === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;User is undefined&quot;</span>); <span class="comment">// 会执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果代码期望 <code>null</code> 作为“无值”的表示，但实际返回了 <code>undefined</code>，可能会导致逻辑错误。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="5-影响函数默认值"><a href="#5-影响函数默认值" class="headerlink" title="5. 影响函数默认值"></a>5. <strong>影响函数默认值</strong></h3><ul>
+<li>在函数参数中，<code>undefined</code> 会触发默认值，而 <code>null</code> 不会。</li>
+<li>例如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params">name = <span class="string">&quot;Guest&quot;</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">greet</span>(<span class="literal">undefined</span>); <span class="comment">// Hello, Guest（触发默认值）</span></span><br><span class="line"><span class="title function_">greet</span>(<span class="literal">null</span>); <span class="comment">// Hello, null（不触发默认值）</span></span><br></pre></td></tr></table></figure></li>
+<li>如果函数逻辑依赖于默认值，<code>undefined</code> 可能会导致意外行为。</li>
+</ul>
+<hr>
+<h3 id="6-影响-JSON-序列化"><a href="#6-影响-JSON-序列化" class="headerlink" title="6. 影响 JSON 序列化"></a>6. <strong>影响 JSON 序列化</strong></h3><ul>
+<li><code>undefined</code> 在 JSON 序列化时会被忽略，而 <code>null</code> 会被保留。</li>
+<li>例如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">name</span>: <span class="string">&quot;Alice&quot;</span>, <span class="attr">age</span>: <span class="literal">undefined</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj)); <span class="comment">// &#123;&quot;name&quot;:&quot;Alice&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果代码依赖于序列化后的数据，<code>undefined</code> 可能会导致数据丢失。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>undefined</code> 可能会导致以下问题：</p>
+<ul>
+<li>运行时错误（如访问属性或方法）。</li>
+<li>逻辑错误（因为它是“假值”但语义不明确）。</li>
+<li>调试困难（难以区分未定义和显式设置为 <code>undefined</code>）。</li>
+<li>与 <code>null</code> 的混淆（语义不同）。</li>
+<li>影响函数默认值和 JSON 序列化。</li>
+</ul>
+<p>为了避免这些问题，通常建议：</p>
+<ul>
+<li>使用 <code>null</code> 表示明确的“空值”。</li>
+<li>在可能返回 <code>undefined</code> 的地方，使用默认值或显式检查。</li>
+</ul>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/02/12/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/%E6%8A%80%E6%9C%AF%E6%A0%88/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/02/11/%E7%AE%97%E6%B3%95/Untitled/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

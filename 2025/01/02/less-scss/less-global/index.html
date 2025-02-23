@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Jan 2, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>在CSS中，<code>:global</code> 伪类选择器通常用于作用域样式（Scoped CSS）的环境中，例如在使用模块化的CSS工具（如CSS Modules）或某些前端框架（如Vue.js、React等）时。它的作用是确保样式规则应用到全局范围，而不是仅限于当前模块或组件。</p>
+<p>具体到你的例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.upload-file</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  :global &#123;</span><br><span class="line">    <span class="selector-class">.ant-upload</span> &#123;</span><br><span class="line">      <span class="attribute">width</span>: <span class="number">280px</span>;</span><br><span class="line">      <span class="attribute">height</span>: <span class="number">156px</span>;</span><br><span class="line"></span><br><span class="line">      <span class="selector-tag">img</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">270px</span> <span class="meta">!important</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">146px</span> <span class="meta">!important</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>:global</code> 的作用是将内部的 <code>.ant-upload</code> 和 <code>img</code> 样式规则提升到全局作用域，使其能够影响整个文档中的相应元素，而不仅仅是当前组件或模块内的元素。</p>
+<h3 id="为什么使用-global？"><a href="#为什么使用-global？" class="headerlink" title="为什么使用 :global？"></a>为什么使用 <code>:global</code>？</h3><ol>
+<li><p><strong>模块化&#x2F;局部作用域</strong>：在一些框架或构建工具中，CSS默认是局部作用域的，即样式只作用于当前组件或模块。使用 <code>:global</code> 可以打破这种限制，使样式具有全局作用域。</p>
+</li>
+<li><p><strong>样式冲突</strong>：在某些情况下，你可能需要确保某个特定样式应用于全局范围内的元素，即使它在局部作用域中被覆盖或未定义。</p>
+</li>
+<li><p><strong>第三方库</strong>：当你使用第三方UI库（如 Ant Design）时，这些库的组件样式通常是全局的。如果你希望在你的组件中覆盖或扩展这些样式，你需要使用 <code>:global</code> 来确保你的样式能够正确地作用于这些全局组件。</p>
+</li>
+</ol>
+<h3 id="示例解释"><a href="#示例解释" class="headerlink" title="示例解释"></a>示例解释</h3><p>假设你在一个使用CSS Modules的React组件中有以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">&#x27;./UploadFile.module.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">UploadFile</span> = (<span class="params"></span>) =&gt; (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.uploadFile&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Upload</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>UploadFile.module.css</code> 中：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.upload-file</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  :global &#123;</span><br><span class="line">    <span class="selector-class">.ant-upload</span> &#123;</span><br><span class="line">      <span class="attribute">width</span>: <span class="number">280px</span>;</span><br><span class="line">      <span class="attribute">height</span>: <span class="number">156px</span>;</span><br><span class="line"></span><br><span class="line">      <span class="selector-tag">img</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">270px</span> <span class="meta">!important</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">146px</span> <span class="meta">!important</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的 <code>:global</code> 确保了 <code>.ant-upload</code> 和 <code>img</code> 样式规则不仅适用于当前组件内的上传组件，还适用于整个应用中的上传组件。这对于需要统一样式或覆盖第三方组件样式的场景非常有用。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/01/02/ts/ts-%E6%B3%9B%E5%9E%8B/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/01/02/ts/ts-%E6%8E%A7%E5%88%B6%E5%8F%B0%E6%8A%A5%E9%94%99/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

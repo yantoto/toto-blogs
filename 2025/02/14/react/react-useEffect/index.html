@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Feb 14, 2025
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>Effect 通常应该使组件与 <strong>外部</strong> 系统保持同步。如果没有外部系统，你只想根据其他状态调整一些状态，那么 <a target="_blank" rel="noopener" href="https://react.docschina.org/learn/you-might-not-need-an-effect">你也许不需要 Effect</a>。</p>
+<p><img src="/../../images/image-20250214185604589.png" alt="image-20250214185604589"></p>
+<h3 id="依赖数组中可忽略的值"><a href="#依赖数组中可忽略的值" class="headerlink" title="依赖数组中可忽略的值"></a>依赖数组中可忽略的值</h3><p>目前总结是通过react hooks提供的参数。</p>
+<p><img src="/../../images/image-20250214185917141.png" alt="image-20250214185917141"></p>
+<p><img src="/../../images/image-20250214185928807.png" alt="image-20250214185928807"></p>
+<h3 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h3><p>react会有意挂载组件两次，useEffect会挂载两次，方便查看副作用的清除。（请记住，在开发环境中，React 会 <a target="_blank" rel="noopener" href="https://react.docschina.org/learn/lifecycle-of-reactive-effects#how-react-verifies-that-your-effect-can-re-synchronize">额外执行一次</a> 来对逻辑进行压力测试。）</p>
+<p><img src="/../../images/image-20250214191247518.png" alt="image-20250214191247518"></p>
+<p><img src="/../../images/image-20250214191303345.png" alt="image-20250214191303345"></p>
+<p>所以我们需要清除副作用，以提高用户体验。</p>
+<h3 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h3><p>获取数据的<strong>副作用处理</strong>：</p>
+<p>醍醐灌顶！不是调用setTodo(null)！！</p>
+<p><img src="/../../images/image-20250214191755202.png" alt="image-20250214191755202"></p>
+<p><img src="/../../images/image-20250214191902398.png" alt="image-20250214191902398"></p>
+<p>醍醐灌顶！怪不得切换到新组件（有useEffect）请求会发出两次！！！</p>
+<h3 id="Effect获取数据弊端"><a href="#Effect获取数据弊端" class="headerlink" title="Effect获取数据弊端"></a>Effect获取数据弊端</h3><p><img src="/../../images/image-20250214192220032.png" alt="image-20250214192220032"></p>
+<p>比如我们用的框架 umi 用useQuery,next用SWR。</p>
+<p><img src="/../../images/image-20250214193243048.png" alt="image-20250214193243048"></p>
+<p><img src="/../../images/image-20250214194254352.png" alt="image-20250214194254352"></p>
+<p><img src="/../../images/image-20250215091414639.png" alt="image-20250215091414639"></p>
+<h3 id="调整Effect"><a href="#调整Effect" class="headerlink" title="调整Effect"></a>调整Effect</h3><p><img src="/../../images/image-20250215095027695.png" alt="image-20250215095027695"></p>
+<p><img src="/../../images/image-20250215095143391.png" alt="image-20250215095143391"></p>
+<p>当你决定将某些逻辑放入事件处理函数还是 Effect 中时，你需要回答的主要问题是：从用户的角度来看它是 <strong>怎样的逻辑</strong>。如果这个逻辑是由某个特定的交互引起的，请将它保留在相应的事件处理函数中。如果是由用户在屏幕上 <strong>看到</strong> 组件时引起的，请将它保留在 Effect 中。</p>
+<p><img src="/../../images/image-20250215101206673.png" alt="image-20250215101206673"></p>
+<p><img src="/../../images/image-20250215111921376.png" alt="image-20250215111921376"></p>
+<p><a target="_blank" rel="noopener" href="https://react.docschina.org/learn/you-might-not-need-an-effect">https://react.docschina.org/learn/you-might-not-need-an-effect</a></p>
+<p>这个练习真的醍醐灌顶，多看多看多刷。。。</p>
+<h3 id="Effect的生命周期"><a href="#Effect的生命周期" class="headerlink" title="Effect的生命周期"></a>Effect的生命周期</h3><h4 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h4><p><img src="/../../images/image-20250215205934780.png" alt="image-20250215205934780"></p>
+<p>react同步与清除同步（即react内部的函数和返回的卸载函数）</p>
+<p>为什么需要清除同步？当两次交互速度特别快，先后影响了组件接收到的prop值，而组件的上一个effect还没执行完，上一个值对我们而言已经失效了，我们需要一个函数来清除上一次带来的影响，所以需要return来解决问题。</p>
+<p><img src="/../../images/image-20250215211632457.png" alt="image-20250215211632457"></p>
+<p>effect<strong>不关注组件的生命周期这种时间点</strong>，他在任何时候都能运行，只需要绑定的触发条件满足即可，只因为effect在挂载、卸载时调用得比较多，所以我们误以为effect与生命周期挂钩，这是不正确的。</p>
+<p><strong>effect始终专注于单个启动&#x2F;停止周期。无论组件是挂载、更新还是卸载，都不应该有影响。只需要描述如何开始同步和如何停止。如果做得好，Effect 将能够在需要时始终具备启动和停止的弹性</strong>。</p>
+<h3 id="effect“响应”于响应式"><a href="#effect“响应”于响应式" class="headerlink" title="effect“响应”于响应式"></a>effect“响应”于响应式</h3><p>只需把会因重新渲染而改变的值放入依赖项。</p>
+<p><strong>在组件内部声明的 props、state 和其他值都是 响应式 的，因为它们是在渲染过程中计算的，并参与了 React 的数据流</strong>。</p>
+<p><img src="/../../images/image-20250215212608992.png" alt="image-20250215212608992"></p>
+<h4 id="在组件主体中声明的所有变量都是响应式的"><a href="#在组件主体中声明的所有变量都是响应式的" class="headerlink" title="在组件主体中声明的所有变量都是响应式的"></a>在组件主体中声明的所有变量都是响应式的</h4><p>Props 和 state <strong>并不是唯一</strong>的响应式值。<strong>从它们计算出的值也是响应式的。如果 props 或 state 发生变化，组件将重新渲染，从中计算出的值也会随之改变。</strong>这就是为什么 Effect 使用的组件主体中的所有变量都应该在依赖列表中。</p>
+<p><img src="/../../images/image-20250215214306354.png" alt="image-20250215214306354"></p>
+<h4 id="不属于依赖项的特例"><a href="#不属于依赖项的特例" class="headerlink" title="不属于依赖项的特例"></a>不属于依赖项的特例</h4><p><img src="/../../images/image-20250215214642699.png" alt="image-20250215214642699"></p>
+<h3 id="react认为不变的值"><a href="#react认为不变的值" class="headerlink" title="react认为不变的值"></a>react认为不变的值</h3><p>外部参数（没有通过props传递），hooks返回的事件（如useState返回的set，useRef返回的ref对象）。</p>
+<p>因此，当不想重新渲染时，可以考虑把数据放在组件外部（不通过props传递）；把数据定义在Effect内部；把数据通过事件返回（？半懂）</p>
+<p><img src="/../../images/image-20250215215016733.png" alt="image-20250215215016733"></p>
+<p><img src="/../../images/image-20250215215307782.png" alt="image-20250215215307782"></p>
+<p><img src="/../../images/image-20250215215540062.png" alt="image-20250215215540062"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2025/02/18/%E5%AD%A6%E9%99%A2%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E5%90%8D%E8%AF%8D/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2025/02/12/%E7%AE%97%E6%B3%95/%E5%A0%86-%E5%A4%A7%E9%A1%B6%E5%A0%86%E5%B0%8F%E9%A1%B6%E5%A0%86/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>

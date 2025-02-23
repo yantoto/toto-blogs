@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Frame.
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 31, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>首先，在ts中定义变量的类型是必不可缺的。</p>
+<p>基本数据类型直接在后先跟对应类型即可。</p>
+<p>而复杂数据类型往往需要</p>
+<p>我们经常会看到两种复杂类型的定义。</p>
+<h4 id="interface"><a href="#interface" class="headerlink" title="interface"></a>interface</h4><p><img src="/../../images/image-20241231153220422.png" alt="image-20241231153220422"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/** 学习路径信息 */</span><br><span class="line">export interface LearningPathInfoBackType &#123;</span><br><span class="line"></span><br><span class="line">  updatedTime?: number | null</span><br><span class="line"></span><br><span class="line">  id?: number | null</span><br><span class="line"> </span><br><span class="line">  learningPathCourseList?: CourseInfoForLearningPathType[] | null</span><br><span class="line"> </span><br><span class="line">  pathName?: null | string</span><br><span class="line"></span><br><span class="line">  pathSlogan?: null | string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种接口类型，往往定义一个interface.ts，定义接口后export出去。</p>
+<p>在要接受的界面，则通过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import type &#123;</span><br><span class="line">  QueryLearningPathListParamsType,</span><br><span class="line">  LearningPathInfoBackType,</span><br><span class="line">  CourseInfoForLearningPathType,</span><br><span class="line">&#125; from &#x27;../interface.d&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>来接受，注意前面加上type。</p>
+<h3 id="使用-interface-的情况"><a href="#使用-interface-的情况" class="headerlink" title="使用 interface 的情况"></a>使用 <code>interface</code> 的情况</h3><ol>
+<li><p><strong>面向对象编程</strong>：</p>
+<ul>
+<li>当你需要定义一个对象的结构时，特别是当这个结构可能会被多个类实现或扩展时。<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">User</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> <span class="keyword">implements</span> <span class="title class_">User</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="attr">name</span>: <span class="built_in">string</span>, <span class="attr">age</span>: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>接口继承</strong>：</p>
+<ul>
+<li>当你需要创建接口的层次结构，即一个接口继承另一个接口时。<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">  <span class="attr">breed</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>可选属性和默认值</strong>：</p>
+<ul>
+<li>当你需要在接口中定义可选属性或默认值时。<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">User</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>; <span class="comment">// optional property</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>类型检查和实现</strong>：</p>
+<ul>
+<li>当你希望确保某些对象符合特定的结构时，可以使用 <code>interface</code> 进行类型检查。<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params"><span class="attr">person</span>: &#123; name: <span class="built_in">string</span> &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`Hello, <span class="subst">$&#123;person.name&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h3 id="使用-type-的情况"><a href="#使用-type-的情况" class="headerlink" title="使用 type 的情况"></a>使用 <code>type</code> 的情况</h3><ol>
+<li><p><strong>基本类型和联合类型</strong>：</p>
+<ul>
+<li>当你需要定义基本类型、联合类型或元组时。<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">StringOrNumber</span> = <span class="built_in">string</span> | <span class="built_in">number</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">value</span>: <span class="title class_">StringOrNumber</span> = <span class="string">&quot;hello&quot;</span>; <span class="comment">// OK</span></span><br><span class="line">value = <span class="number">42</span>; <span class="comment">// OK</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>交叉类型</strong>：</p>
+<ul>
+<li>当你需要组合多个类型以创建新类型时。<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Person</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Employee</span> = <span class="title class_">Person</span> &amp; &#123; <span class="attr">id</span>: <span class="built_in">number</span> &#125;;</span><br><span class="line"><span class="comment">//Person &amp; &#123; id: number &#125;; 代表两个合在一起</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">employee</span>: <span class="title class_">Employee</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Alice&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">  <span class="attr">id</span>: <span class="number">12345</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>映射类型</strong>：</p>
+<ul>
+<li>当你需要对现有类型进行转换和修改时。<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Readonly</span>&lt;T&gt; = &#123;</span><br><span class="line">  <span class="keyword">readonly</span> [P <span class="keyword">in</span> keyof T]: T[P];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Mutable</span> = &#123; <span class="attr">x</span>: <span class="built_in">number</span> &#125;;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Immutable</span> = <span class="title class_">Readonly</span>&lt;<span class="title class_">Mutable</span>&gt;;;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj</span>: <span class="title class_">Immutable</span> = &#123; <span class="attr">x</span>: <span class="number">10</span> &#125;;</span><br><span class="line"><span class="comment">// obj.x = 20; // Error: Cannot assign to &#x27;x&#x27; because it is a read-only property.</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>函数类型</strong>：</p>
+<ul>
+<li>当你需要定义复杂的函数签名或重载时。<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">SearchFunc</span> = <span class="function">(<span class="params"><span class="attr">source</span>: <span class="built_in">string</span>, <span class="attr">subString</span>: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">boolean</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>别名</strong>：</p>
+<ul>
+<li>当你需要为已有的类型起一个更有意义的名字时。<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">StringArray</span> = <span class="built_in">string</span>[];</span><br><span class="line"><span class="keyword">const</span> <span class="attr">arr</span>: <span class="title class_">StringArray</span> = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>]; <span class="comment">// OK</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><strong>使用 <code>interface</code><strong>：当你需要</strong>描述对象的结构和行为</strong>，特别是在面向对象编程场景下，或者<strong>需要可选属性和默认值</strong>时。</li>
+<li><strong>使用 <code>type</code><strong>：当你需要定义</strong>基本类型、联合类型、交叉类型、映射类型</strong>，或者<strong>为复杂类型起别名</strong>时。</li>
+</ul>
+<p>选择使用哪一个取决于你的具体需求和代码风格偏好。理解它们的区别和适用场景可以帮助你编写出更加清晰和可维护的 TypeScript 代码。</p>
+<p>所以我是认<strong>为interface使用地方更多</strong>。一般要<strong>拼接、交叉类型、起别名的时候则会使用type。</strong></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/12/31/ts/ts-%E6%9E%9A%E4%B8%BE/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/31/react/react-%E5%BC%80%E5%8F%91%E5%AE%9E%E7%94%A8/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
